@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE `sessions` MODIFY `expires` DATETIME(3) NULL,
+    MODIFY `sessionToken` VARCHAR(191) NULL,
+    MODIFY `accessToken` VARCHAR(191) NULL,
+    MODIFY `createdAt` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
+    MODIFY `updatedAt` DATETIME(3) NULL;
