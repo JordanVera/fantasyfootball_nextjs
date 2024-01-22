@@ -72,7 +72,7 @@ export default function Appbar() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src={session.user.image}
+                        src={session?.user?.image}
                         alt=""
                       />
                     </Menu.Button>

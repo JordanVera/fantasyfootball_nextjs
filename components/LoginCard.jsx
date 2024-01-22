@@ -17,18 +17,6 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
         <GithubSignupButton />
         <FacebookSignupButton />
         <GoogleSignupButton />
-
-        {/* <Button
-          variant="gradient"
-          color="black"
-          size="sm"
-          className="w-full capitalize"
-          onClick={() => {
-            setOnboarding(true);
-          }}
-        >
-          Begin facial recognition
-        </Button> */}
       </div>
     </div>
   );

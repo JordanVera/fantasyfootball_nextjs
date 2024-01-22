@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Inter } from 'next/font/google';
-import WebcamCapture from '@/components/WebcamCapture';
 import LoginCard from '@/components/LoginCard';
 import SignupCard from '@/components/SignupCard';
 const inter = Inter({ subsets: ['latin'] });
@@ -22,8 +21,6 @@ export default function Home() {
       {loginOrSignup === 'signup' && (
         <SignupCard setOnboarding={setOnboarding} />
       )}
-
-      <WebcamCapture onboarding={onboarding} setOnboarding={setOnboarding} />
     </main>
   );
 }

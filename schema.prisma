@@ -7,14 +7,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model KnownFaces {
-  id          Int    @id @default(autoincrement())
-  name        String
-  email       String @unique
-  image       String
-  descriptors String // Storing descriptors as a string
-}
-
 model User {
   id            Int       @id @default(autoincrement())
   name          String?
