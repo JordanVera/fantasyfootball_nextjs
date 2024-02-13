@@ -18,7 +18,9 @@ export default async function handle(req, res) {
 }
 
 async function getAllUsers(req, res, session) {
-  console.log('HIT IT');
+  if (!session) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
 
   try {
     const users = await prisma.user.findMany();
