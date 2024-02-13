@@ -1,3 +1,4 @@
+
 class AuthService {
   constructor(apiUrl) {
     this.apiUrl = apiUrl;
@@ -7,7 +8,7 @@ class AuthService {
 
   async recognize(images) {
     try {
-      const response = await fetch(`http://localhost:3000/api/recognize`, {
+      const response = await fetch(`${process.env.BASE_URL}/api/recognize`, { // Use process.env.BASE_URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -18,8 +19,6 @@ class AuthService {
     } catch (error) {
       console.log(error);
     }
-
-    
   }
 }
 
