@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import UserService from '@/services/UserService';
 import { UserContext } from '@/context/UserContext';
 import { Avatar } from '@material-tailwind/react';
+import CheckoutButton from '@/components/buttons/CheckoutButton';
 
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
@@ -29,6 +30,7 @@ const Dashboard_Protected = () => {
   return (
     <div className="max-w-[1000px] mx-auto">
       <h1>Protected Page</h1>
+      <CheckoutButton />
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
@@ -41,7 +43,7 @@ const Dashboard_Protected = () => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {users.map((user) => (
+          {users?.map((user) => (
             <tr key={user.id} className="bg-gray-900">
               <td className="px-6 py-2 whitespace-nowrap">
                 <div className="flex items-center">
