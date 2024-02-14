@@ -5,25 +5,13 @@ import { useRouter } from 'next/router';
 import UserService from '@/services/UserService';
 import { UserContext } from '@/context/UserContext';
 import { Avatar } from '@material-tailwind/react';
-import CheckoutButton from '@/components/buttons/CheckoutButton';
+
+import RegistrationDialog from '@/components/dialogs/RegistrationDialog';
 
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   const { users, loading } = useContext(UserContext);
-
-  const items = [
-    {
-      price_data: {
-        currency: 'usd',
-        product_data: {
-          name: 'T-shirt',
-        },
-        unit_amount: 2000,
-      },
-      quantity: 1,
-    },
-  ];
 
   useEffect(() => {
     if (status === 'loading') return; // Do nothing while loading
@@ -43,7 +31,8 @@ const Dashboard_Protected = () => {
   return (
     <div className="max-w-[1000px] mx-auto">
       <h1>Protected Page</h1>
-      <CheckoutButton items={items} />
+
+      <RegistrationDialog />
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
