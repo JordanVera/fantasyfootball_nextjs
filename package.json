@@ -19,6 +19,7 @@
     "colors": "^1.4.0",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
+    "pino": "^8.18.0",
     "react": "^18",
     "react-dom": "^18",
     "react-webcam": "^7.2.0",

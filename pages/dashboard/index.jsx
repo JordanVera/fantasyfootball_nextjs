@@ -12,6 +12,19 @@ const Dashboard_Protected = () => {
   const router = useRouter();
   const { users, loading } = useContext(UserContext);
 
+  const items = [
+    {
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 2000,
+      },
+      quantity: 1,
+    },
+  ];
+
   useEffect(() => {
     if (status === 'loading') return; // Do nothing while loading
 
@@ -30,7 +43,7 @@ const Dashboard_Protected = () => {
   return (
     <div className="max-w-[1000px] mx-auto">
       <h1>Protected Page</h1>
-      <CheckoutButton />
+      <CheckoutButton items={items} />
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>

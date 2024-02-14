@@ -1,9 +1,8 @@
 // components/CheckoutButton.js or wherever you implement your checkout logic
 import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-const stripePromise = loadStripe(
-  'pk_test_51NkWBtEUVwjR7SD7ecFDMBlM0TiUg9CwYfDzEgatFhf3inD4V6LRI4rRMA6KMS8kbWgr1efzACCHTgv54UkJ598I001VpYPvTi'
-);
+import { Button } from '@material-tailwind/react';
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const CheckoutButton = ({ items }) => {
   const handleCheckout = async () => {
@@ -14,6 +13,10 @@ const CheckoutButton = ({ items }) => {
       },
       body: JSON.stringify({ items }),
     });
+
+    console.log('RESPONSE');
+    console.log(res);
+
     const { sessionId } = await res.json();
     console.log('Session ID:', sessionId); // Add this line to debug
     const stripe = await stripePromise;
@@ -25,7 +28,11 @@ const CheckoutButton = ({ items }) => {
     }
   };
 
-  return <button onClick={handleCheckout}>Checkout</button>;
+  return (
+    <Button variant="gradient" color="orange" onClick={handleCheckout}>
+      Checkout
+    </Button>
+  );
 };
 
 export default CheckoutButton;
