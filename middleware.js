@@ -5,7 +5,7 @@ import logger from './utils/logger'; // Ensure the path to logger is correct
 export function middleware(request) {
   const { pathname } = request.nextUrl;
   const method = request.method;
-  logger.info(`Method: ${method}, Path: ${pathname}`);
+  // logger.info(`Method: ${method}, Path: ${pathname}`);
 
   return NextResponse.next();
 }

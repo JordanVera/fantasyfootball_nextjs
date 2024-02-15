@@ -1,8 +1,8 @@
 // pages/api/webhook.js
 import { buffer } from 'micro';
-import stripe from 'stripe';
+import Stripe from 'stripe';
 
-const Stripe = new stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export const config = {
   api: {
@@ -15,26 +15,39 @@ async function handler(req, res) {
     const buf = await buffer(req);
     const sig = req.headers['stripe-signature'];
 
+    console.log(process.env.STRIPE_WEBHOOK_SECRET);
+
     let event;
 
     try {
-      event = Stripe.webhooks.constructEvent(
+      event = stripe.webhooks.constructEvent(
         buf.toString(),
         sig,
-        process.env.STRIPE_WEBHOOK_SECRET
+        'whsec_5f9fa0727f655f3b59e297a6684e109a69874214f3eaf565a7e0ed4b69e29476'
       );
+
+      // console.log('EVNT');
+      // console.log(event);
     } catch (err) {
+      console.error(err.message);
       res.status(400).send(`Webhook Error: ${err.message}`);
       return;
     }
 
-    if (event.type === 'checkout.session.completed') {
-      console.log('PAYMENT SUCCESSFUL CUH');
-      const session = event.data.object;
+    try {
+      switch (event.type) {
+        case 'checkout.session.completed':
+          console.log('PAYMENT SUCCESSFUL CUH');
+          const session = event.data.object;
 
-      // Here you should update the user object based on the successful payment
-      // For example, you might want to mark the user as a premium user
-      // updateUser(session);
+          const userId = session.metadata.userId;
+
+          console.log('USERID');
+          console.log(userId);
+      }
+    } catch (err) {
+      console.error('Error in webhook handler:', err);
+      res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
     res.json({ received: true });

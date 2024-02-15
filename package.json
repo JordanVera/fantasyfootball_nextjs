@@ -17,6 +17,7 @@
     "@stripe/stripe-js": "^3.0.0",
     "axios": "^1.6.5",
     "colors": "^1.4.0",
+    "micro": "^10.0.1",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
     "pino": "^8.18.0",
