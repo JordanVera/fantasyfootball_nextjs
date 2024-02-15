@@ -15,7 +15,7 @@ async function handler(req, res) {
     const buf = await buffer(req);
     const sig = req.headers['stripe-signature'];
 
-    console.log(process.env.STRIPE_WEBHOOK_SECRET);
+    // console.log(process.env.STRIPE_WEBHOOK_SECRET);
 
     let event;
 
@@ -41,9 +41,14 @@ async function handler(req, res) {
           const session = event.data.object;
 
           const userId = session.metadata.userId;
+          const quantity = session.metadata.quantity;
 
-          console.log('USERID');
-          console.log(userId);
+          // console.log(session);
+
+          console.log('session.payment_status');
+          console.log(session.payment_status);
+          console.log('______________________');
+          console.log({ userId, quantity });
       }
     } catch (err) {
       console.error('Error in webhook handler:', err);

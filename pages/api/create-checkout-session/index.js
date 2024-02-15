@@ -26,6 +26,7 @@ export default async function handler(req, res) {
         cancel_url: `${req.headers.origin}/cancel`,
         metadata: {
           userId: user.id,
+          quantity: req.body.items[0].quantity,
         },
       });
 
