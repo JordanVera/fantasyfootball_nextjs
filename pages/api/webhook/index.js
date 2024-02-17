@@ -40,8 +40,9 @@ async function handler(req, res) {
           console.log('PAYMENT SUCCESSFUL CUH');
           const session = event.data.object;
 
-          const userId = session.metadata.userId;
-          const quantity = session.metadata.quantity;
+          const userId = parseInt(session.metadata.userId);
+          
+          const quantity = parseInt(session.metadata.quantity);
 
           // console.log(session);
 
