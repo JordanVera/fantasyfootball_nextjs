@@ -1,6 +1,7 @@
 // pages/api/webhook.js
 import { buffer } from 'micro';
 import Stripe from 'stripe';
+import prisma from '../../../lib/prisma';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -41,7 +42,7 @@ async function handler(req, res) {
           const session = event.data.object;
 
           const userId = parseInt(session.metadata.userId);
-          
+
           const quantity = parseInt(session.metadata.quantity);
 
           // console.log(session);
@@ -49,7 +50,22 @@ async function handler(req, res) {
           console.log('session.payment_status');
           console.log(session.payment_status);
           console.log('______________________');
+          // console.log('SESSION');
+          // console.log(session);
           console.log({ userId, quantity });
+
+          try {
+            const checkout = await prisma.checkout.create({
+              data: {
+                userId,
+                quantity,
+              },
+            });
+          } catch (error) {
+            console.log(error);
+
+            console.log(error.message);
+          }
       }
     } catch (err) {
       console.error('Error in webhook handler:', err);

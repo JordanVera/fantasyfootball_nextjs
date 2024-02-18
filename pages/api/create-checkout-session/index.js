@@ -30,8 +30,8 @@ export default async function handler(req, res) {
         },
       });
 
-      console.log('checkoutSession');
-      console.log(checkoutSession);
+      // console.log('checkoutSession');
+      // console.log(checkoutSession);
 
       res.status(200).json({ sessionId: checkoutSession.id });
     } else {
