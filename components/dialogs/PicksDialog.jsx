@@ -109,19 +109,17 @@ const WeeksAccordion = ({ user }) => {
   // Function to handle the form submission
   const handleSubmit = (event) => {
     event.preventDefault();
+    UserService.submitPicks(week, picks);
+  };
 
-    // Gather all the values from the select inputs into an array
-    let picksArray = [];
-    const selectInputs = document.querySelectorAll('select');
-    selectInputs.forEach((select) => {
-      picksArray.push(select.value);
-    });
+  const handleWeekChange = (week) => {
+    setWeek(week);
+  };
 
-    // Update the picks state
-    setPicks(picksArray);
-
-    // Call the UserService.submitPicks function
-    UserService.submitPicks(week, picksArray);
+  const handlePickChange = (index, value) => {
+    const newPicks = [...picks];
+    newPicks[index] = value;
+    setPicks(newPicks);
   };
 
   return (
@@ -132,7 +130,10 @@ const WeeksAccordion = ({ user }) => {
           className="mb-2 rounded-lg border border-blue-gray-100 px-4"
         >
           <AccordionHeader
-            onClick={() => handleOpen(weekIndex)}
+            onClick={() => {
+              handleOpen(weekIndex);
+              handleWeekChange(weekIndex);
+            }}
             className={`border-b-0 transition-colors ${
               open === weekIndex ? 'text-blue-500 hover:!text-blue-700' : ''
             }`}
@@ -147,7 +148,7 @@ const WeeksAccordion = ({ user }) => {
                   label={`Entry ${j + 1}`}
                   className="capitalize"
                   color="orange"
-                  onChange={() => setWeek(weekIndex)}
+                  onChange={(val) => handlePickChange(j, val)}
                 >
                   {teamsArr.map((team, j) => (
                     <Option key={j} value={team}>
