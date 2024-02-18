@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import { Avatar } from '@material-tailwind/react';
 
 const UserTable = ({ users }) => {
-  useEffect(() => {
-    console.log('UZRZ');
-    console.log(users);
-  }, [users]);
+
+  
+  // useEffect(() => {
+  //   console.log('UZRZ');
+  //   console.log(users);
+  // }, [users]);
 
   return (
     <div className="overflow-x-auto">

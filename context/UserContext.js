@@ -5,13 +5,17 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const response = await UserService.getAllUsers();
-      setUsers(response);
+      const Users = await UserService.getAllUsers();
+      const User = await UserService.getCurrentlyLoggedInUser();
+
+      setUser(User.user);
+      setUsers(Users);
       setLoading(false);
     }
 
@@ -19,7 +23,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ users, loading }}>
+    <UserContext.Provider value={{ users, user, loading }}>
       {children}
     </UserContext.Provider>
   );

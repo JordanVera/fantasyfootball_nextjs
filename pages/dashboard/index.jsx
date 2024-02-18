@@ -11,7 +11,7 @@ import UserTable from '@/components/tables/UserTable';
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const { users, loading } = useContext(UserContext);
+  const { users, user, loading } = useContext(UserContext);
 
   useEffect(() => {
     if (status === 'loading') return; // Do nothing while loading
@@ -26,7 +26,7 @@ const Dashboard_Protected = () => {
   return (
     <div className="max-w-[1000px] mx-auto py-10">
       <RegistrationDialog />
-      <PicksDialog />
+      <PicksDialog users={users} user={user} />
       <UserTable users={users} />
     </div>
   );

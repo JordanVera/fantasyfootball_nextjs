@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {
   Button,
   Dialog,
@@ -10,10 +10,16 @@ import {
 } from '@material-tailwind/react';
 import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+import { UserContext } from '@/context/UserContext';
 
 export default function RegistrationDialog() {
+  const { user } = useContext(UserContext);
   const [open, setOpen] = useState(false);
-  const [numberOfEntries, setNumberOfEntries] = useState(0);
+
+  useEffect(() => {
+    console.log(`USR`);
+    console.log(user);
+  }, [user]);
 
   const teamsArr = [
     'ARI',
@@ -50,19 +56,6 @@ export default function RegistrationDialog() {
     'WAS',
   ];
 
-  const items = [
-    {
-      price_data: {
-        currency: 'usd',
-        product_data: {
-          name: 'T-shirt',
-        },
-        unit_amount: 2000,
-      },
-      quantity: numberOfEntries,
-    },
-  ];
-
   const handleOpen = () => setOpen(!open);
 
   return (
@@ -80,7 +73,7 @@ export default function RegistrationDialog() {
               label="make your selection"
               className="capitalize"
               color="orange"
-              onChange={(val) => setNumberOfEntries(val)}
+              onChange={() => console.log('yesirski')}
             >
               {teamsArr.map((team, index) => (
                 <Option key={index} value={team}>
