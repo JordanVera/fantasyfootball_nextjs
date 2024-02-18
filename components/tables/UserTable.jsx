@@ -3,7 +3,6 @@ import { Avatar } from '@material-tailwind/react';
 
 const UserTable = ({ users }) => {
 
-  
   // useEffect(() => {
   //   console.log('UZRZ');
   //   console.log(users);

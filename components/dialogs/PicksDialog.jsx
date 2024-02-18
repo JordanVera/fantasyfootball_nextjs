@@ -7,10 +7,12 @@ import {
   DialogFooter,
   Option,
   Select,
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
 } from '@material-tailwind/react';
-import { loadStripe } from '@stripe/stripe-js';
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 import { UserContext } from '@/context/UserContext';
+import UserService from '@/services/UserService';
 
 export default function RegistrationDialog() {
   const { user } = useContext(UserContext);
@@ -20,6 +22,52 @@ export default function RegistrationDialog() {
     console.log(`USR`);
     console.log(user);
   }, [user]);
+
+  const handleOpen = () => setOpen(!open);
+
+  return (
+    <>
+      <Button onClick={handleOpen} variant="gradient" className="capitalize">
+        Make your picks
+      </Button>
+      <Dialog
+        open={open}
+        handler={handleOpen}
+        className="bg-blue-gray-900 overflow-y-auto h-96"
+        size="xs"
+      >
+        <DialogHeader className="text-white capitalize text-center">
+          Please make your selections
+        </DialogHeader>
+        <DialogBody>
+          <WeeksAccordion user={user} />
+        </DialogBody>
+        <DialogFooter>
+          {/* <Button
+            variant="text"
+            color="red"
+            onClick={handleOpen}
+            className="mr-1"
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="gradient"
+            color="orange"
+            onClick={() => console.log('yesirski')}
+          >
+            Checkout
+          </Button> */}
+        </DialogFooter>
+      </Dialog>
+    </>
+  );
+}
+
+const WeeksAccordion = ({ user }) => {
+  const [open, setOpen] = useState(-1);
+  const [picks, setPicks] = useState([]);
+  const [week, setWeek] = useState('');
 
   const teamsArr = [
     'ARI',
@@ -56,51 +104,71 @@ export default function RegistrationDialog() {
     'WAS',
   ];
 
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = (value) => setOpen(open === value ? 0 : value);
+
+  // Function to handle the form submission
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Gather all the values from the select inputs into an array
+    let picksArray = [];
+    const selectInputs = document.querySelectorAll('select');
+    selectInputs.forEach((select) => {
+      picksArray.push(select.value);
+    });
+
+    // Update the picks state
+    setPicks(picksArray);
+
+    // Call the UserService.submitPicks function
+    UserService.submitPicks(week, picksArray);
+  };
 
   return (
-    <>
-      <Button onClick={handleOpen} variant="gradient" className="capitalize">
-        Make your picks
-      </Button>
-      <Dialog open={open} handler={handleOpen} className="bg-blue-gray-900">
-        <DialogHeader className="text-white capitalize">
-          Please make your selections
-        </DialogHeader>
-        <DialogBody className="text-gray-600">
-          <div className="w-72 my-10">
-            <Select
-              label="make your selection"
-              className="capitalize"
-              color="orange"
-              onChange={() => console.log('yesirski')}
-            >
-              {teamsArr.map((team, index) => (
-                <Option key={index} value={team}>
-                  {team}
-                </Option>
+    <div className="flex flex-col gap-3">
+      {Array.from({ length: 18 }).map((_, weekIndex) => (
+        <Accordion
+          open={open === weekIndex}
+          className="mb-2 rounded-lg border border-blue-gray-100 px-4"
+        >
+          <AccordionHeader
+            onClick={() => handleOpen(weekIndex)}
+            className={`border-b-0 transition-colors ${
+              open === weekIndex ? 'text-blue-500 hover:!text-blue-700' : ''
+            }`}
+          >
+            Week {weekIndex + 1}
+          </AccordionHeader>
+          <AccordionBody className="font-normal">
+            <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+              {Array.from({ length: user.bullets }).map((_, j) => (
+                <Select
+                  key={j}
+                  label={`Entry ${j + 1}`}
+                  className="capitalize"
+                  color="orange"
+                  onChange={() => setWeek(weekIndex)}
+                >
+                  {teamsArr.map((team, j) => (
+                    <Option key={j} value={team}>
+                      {team}
+                    </Option>
+                  ))}
+                </Select>
               ))}
-            </Select>
-          </div>
-        </DialogBody>
-        <DialogFooter>
-          <Button
-            variant="text"
-            color="red"
-            onClick={handleOpen}
-            className="mr-1"
-          >
-            Cancel
-          </Button>
-          <Button
-            variant="gradient"
-            color="orange"
-            onClick={() => console.log('yesirski')}
-          >
-            Checkout
-          </Button>
-        </DialogFooter>
-      </Dialog>
-    </>
+
+              <Button
+                type="submit"
+                className="capitalize"
+                color="orange"
+                size="sm"
+              >
+                submit
+              </Button>
+            </form>
+          </AccordionBody>
+        </Accordion>
+      ))}
+    </div>
   );
-}
+};

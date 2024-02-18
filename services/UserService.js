@@ -47,6 +47,37 @@ class UserService {
       console.log(error);
     }
   }
+
+  async submitPicks(week, picks) {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/picks`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ week, picks }),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to fetch subscription');
+      }
+
+      const sub = await response.json();
+
+      // displaySuccessToast(
+      //   'you have succesfully requested access to join this class'
+      // );
+
+      return sub;
+    } catch (error) {
+      console.error('Failed to fetch subscription', error);
+      throw error;
+    }
+  }
 }
 
 export default new UserService();
