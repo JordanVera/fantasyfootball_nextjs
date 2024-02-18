@@ -55,11 +55,22 @@ async function handler(req, res) {
           console.log({ userId, quantity });
 
           try {
-            const checkout = await prisma.checkout.create({
+            await prisma.checkout.create({
               data: {
                 userId,
                 quantity,
                 stripeCheckoutId: session.id,
+              },
+            });
+
+            await prisma.user.update({
+              where: {
+                id: userId,
+              },
+              data: {
+                bullets: {
+                  increment: quantity,
+                },
               },
             });
           } catch (error) {

@@ -12,6 +12,7 @@ model User {
   name          String?
   email         String?    @unique
   image         String?
+  bullets       Int        @default(0) @map("bullets")
   emailVerified DateTime?  @map("emailVerified")
   createdAt     DateTime   @default(now()) @map("createdAt")
   updatedAt     DateTime   @updatedAt @map("updatedAt")

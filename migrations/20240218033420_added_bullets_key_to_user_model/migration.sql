@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `users` ADD COLUMN `bullets` INTEGER NOT NULL DEFAULT 0;
