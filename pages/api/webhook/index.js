@@ -50,8 +50,8 @@ async function handler(req, res) {
           console.log('session.payment_status');
           console.log(session.payment_status);
           console.log('______________________');
-          // console.log('SESSION');
-          // console.log(session);
+          console.log('SESSION');
+          console.log(session);
           console.log({ userId, quantity });
 
           try {
@@ -59,6 +59,7 @@ async function handler(req, res) {
               data: {
                 userId,
                 quantity,
+                stripeCheckoutId: session.id,
               },
             });
           } catch (error) {
