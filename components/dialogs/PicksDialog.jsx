@@ -15,8 +15,8 @@ import {
 import { UserContext } from '@/context/UserContext';
 import UserService from '@/services/UserService';
 
-export default function RegistrationDialog() {
-  const { user } = useContext(UserContext);
+export default function PicksDialog() {
+  const { user, updateUserPicks } = useContext(UserContext);
   const [open, setOpen] = useState(false);
 
   // useEffect(() => {
@@ -41,14 +41,14 @@ export default function RegistrationDialog() {
           Please make your selections
         </DialogHeader>
         <DialogBody>
-          <WeeksAccordion user={user} />
+          <WeeksAccordion user={user} updateUserPicks={updateUserPicks} />
         </DialogBody>
       </Dialog>
     </>
   );
 }
 
-const WeeksAccordion = ({ user }) => {
+const WeeksAccordion = ({ user, updateUserPicks }) => {
   const [open, setOpen] = useState(-1);
   const [picks, setPicks] = useState([]);
   const [week, setWeek] = useState('');
@@ -91,9 +91,11 @@ const WeeksAccordion = ({ user }) => {
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
   // Function to handle the form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    UserService.submitPicks(week, picks);
+    await UserService.submitPicks(week, picks);
+
+    await updateUserPicks();
   };
 
   const handleWeekChange = (week) => {

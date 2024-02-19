@@ -66,7 +66,7 @@ class UserService {
       const res = await response.json();
 
       if (!response.ok) {
-        toast(res.error, {
+        toast.error(res.error, {
           position: 'top-right',
           autoClose: 5000,
           hideProgressBar: false,
@@ -74,10 +74,21 @@ class UserService {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: 'light',
+          theme: 'dark',
         });
         // throw new Error(errorData.error || 'Failed to fetch resscription');
       }
+
+      toast.success(res.message, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
 
       return res;
     } catch (error) {

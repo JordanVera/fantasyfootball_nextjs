@@ -11,12 +11,12 @@ import UserTable from '@/components/tables/UserTable';
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const { users, user, loading } = useContext(UserContext);
+  const { users, updateUsersData, user, loading } = useContext(UserContext);
 
   useEffect(() => {
-    if (status === 'loading') return; // Do nothing while loading
+    if (status === 'loading') return;
 
-    if (!session) signIn(); // Redirect to sign-in if not authenticated
+    if (!session) signIn();
   }, [session, status, router]);
 
   if (loading || status === 'loading') {

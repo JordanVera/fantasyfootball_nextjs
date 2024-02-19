@@ -68,7 +68,12 @@ async function postPicksForUser(req, res, session) {
       });
     }
 
-    return res.status(200).json({ msg: 'yesirkski' });
+    return res
+      .status(200)
+      .json({
+        success: true,
+        message: `successfully updated picks for week ${week + 1}`,
+      });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Internal Server Error' });

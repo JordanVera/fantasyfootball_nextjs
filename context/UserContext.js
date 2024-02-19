@@ -9,21 +9,26 @@ export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchData() {
-      setLoading(true);
-      const Users = await UserService.getAllUsers();
-      const User = await UserService.getCurrentlyLoggedInUser();
-
-      setUser(User?.user || {});
-      setUsers(Users);
-      setLoading(false);
-    }
-
     fetchData();
   }, []);
 
+  async function fetchData() {
+    setLoading(true);
+    const Users = await UserService.getAllUsers();
+    const User = await UserService.getCurrentlyLoggedInUser();
+
+    setUser(User?.user || {});
+    setUsers(Users);
+    setLoading(false);
+  }
+
+  const updateUserPicks = async (week, picks) => {
+    await UserService.submitPicks(week, picks);
+    fetchData();
+  };
+
   return (
-    <UserContext.Provider value={{ users, user, loading }}>
+    <UserContext.Provider value={{ users, updateUserPicks, user, loading }}>
       {children}
     </UserContext.Provider>
   );
