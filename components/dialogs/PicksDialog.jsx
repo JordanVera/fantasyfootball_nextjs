@@ -118,7 +118,7 @@ const WeeksAccordion = ({ user }) => {
 
   const handlePickChange = (index, value) => {
     const newPicks = [...picks];
-    newPicks[index] = value;
+    newPicks[index] = { entry: index, pick: value };
     setPicks(newPicks);
   };
 
@@ -126,6 +126,7 @@ const WeeksAccordion = ({ user }) => {
     <div className="flex flex-col gap-3">
       {Array.from({ length: 18 }).map((_, weekIndex) => (
         <Accordion
+          key={weekIndex}
           open={open === weekIndex}
           className="mb-2 rounded-lg border border-blue-gray-100 px-4"
         >

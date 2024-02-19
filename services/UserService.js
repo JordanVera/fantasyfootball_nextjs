@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 class UserService {
   constructor(apiUrl) {
     this.apiUrl = apiUrl;
@@ -61,18 +63,23 @@ class UserService {
         }
       );
 
+      const res = await response.json();
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to fetch subscription');
+        toast(res.error, {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        });
+        // throw new Error(errorData.error || 'Failed to fetch resscription');
       }
 
-      const sub = await response.json();
-
-      // displaySuccessToast(
-      //   'you have succesfully requested access to join this class'
-      // );
-
-      return sub;
+      return res;
     } catch (error) {
       console.error('Failed to fetch subscription', error);
       throw error;

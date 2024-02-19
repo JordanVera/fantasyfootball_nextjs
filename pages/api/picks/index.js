@@ -2,6 +2,7 @@
 import prisma from '../../../lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]';
+import colors from 'colors';
 
 export default async function handle(req, res) {
   const session = await getServerSession(req, res, authOptions);
@@ -18,6 +19,8 @@ export default async function handle(req, res) {
 }
 
 async function postPicksForUser(req, res, session) {
+  const { picks, week } = req.body;
+
   if (!session) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
@@ -26,11 +29,44 @@ async function postPicksForUser(req, res, session) {
     console.log(`REQ`);
     console.log(req.body);
 
-    // const user = await prisma.user.findUnique({
-    //   where: {
-    //     id: session.user.id,
-    //   },
-    // });
+    // console.log(session.user);
+
+    // Assuming picks is an array of picks the user wants to create or update
+    for (let pick of picks) {
+      const existingPick = await prisma.picks.findFirst({
+        where: {
+          userId: session.user.id,
+          entryNumber: pick.entry,
+        },
+      });
+
+      if (existingPick) {
+        return res.status(400).json({ error: 'Pick already exists' });
+      }
+    }
+
+    // If no existing picks were found, proceed with creating or updating the picks
+    for (let pick of picks) {
+      const newPick = await prisma.picks.upsert({
+        where: {
+          userId_week_entryNumber: {
+            userId: session.user.id,
+            week: week,
+            entryNumber: pick.entry,
+          },
+        },
+        update: {
+          team: pick.pick,
+        },
+        create: {
+          userId: session.user.id,
+          week: week,
+          team: pick.pick,
+          entryNumber: pick.entry,
+        },
+      });
+    }
+
     return res.status(200).json({ msg: 'yesirkski' });
   } catch (error) {
     console.error(error);

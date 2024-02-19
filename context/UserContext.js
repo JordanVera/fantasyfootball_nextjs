@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
       const Users = await UserService.getAllUsers();
       const User = await UserService.getCurrentlyLoggedInUser();
 
-      setUser(User.user);
+      setUser(User?.user || {});
       setUsers(Users);
       setLoading(false);
     }
