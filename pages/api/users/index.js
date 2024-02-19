@@ -23,7 +23,11 @@ async function getAllUsers(req, res, session) {
   }
 
   try {
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+      include: {
+        Picks: true,
+      },
+    });
     return res.status(200).json(users);
   } catch (error) {
     console.error(error);

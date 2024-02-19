@@ -37,6 +37,7 @@ async function postPicksForUser(req, res, session) {
         where: {
           userId: session.user.id,
           entryNumber: pick.entry,
+          team: pick.pick,
         },
       });
 

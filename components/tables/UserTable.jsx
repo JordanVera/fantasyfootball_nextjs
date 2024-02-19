@@ -2,11 +2,10 @@ import { useEffect } from 'react';
 import { Avatar } from '@material-tailwind/react';
 
 const UserTable = ({ users }) => {
-
-  // useEffect(() => {
-  //   console.log('UZRZ');
-  //   console.log(users);
-  // }, [users]);
+  useEffect(() => {
+    console.log('UZRZ');
+    console.log(users);
+  }, [users]);
 
   return (
     <div className="overflow-x-auto">
@@ -24,8 +23,18 @@ const UserTable = ({ users }) => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {users?.map((user) =>
-            Array.from({ length: user.bullets }).map((_, index) => (
+          {users?.map((user) => {
+            const groupedPicks = user.Picks.reduce((grouped, pick) => {
+              (grouped[pick.entryNumber] = grouped[pick.entryNumber] || {})[
+                pick.week
+              ] = pick;
+              return grouped;
+            }, {});
+
+            console.log('groupedPicks for user ', user.name);
+            console.log(groupedPicks);
+
+            return Array.from({ length: user.bullets }).map((_, index) => (
               <tr key={`${user.id}-${index}`} className="bg-gray-900 w-full">
                 <td className="px-6 py-2 whitespace-nowrap">
                   <div className="flex items-center">
@@ -43,12 +52,15 @@ const UserTable = ({ users }) => {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {/* Additional user information */}
-                </td>
+
+                {Array.from({ length: 18 }).map((_, weekIndex) => (
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {groupedPicks[index]?.[weekIndex]?.team}
+                  </td>
+                ))}
               </tr>
-            ))
-          )}
+            ));
+          })}
         </tbody>
       </table>
     </div>

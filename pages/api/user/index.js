@@ -27,6 +27,9 @@ async function getCurrentlyLoggedInUser(req, res, session) {
       where: {
         id: session.user.id,
       },
+      include: {
+        Picks: true,
+      },
     });
     return res.status(200).json({ user });
   } catch (error) {

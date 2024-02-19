@@ -11,6 +11,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from '@material-tailwind/react';
+
 import { UserContext } from '@/context/UserContext';
 import UserService from '@/services/UserService';
 
@@ -18,10 +19,10 @@ export default function RegistrationDialog() {
   const { user } = useContext(UserContext);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    console.log(`USR`);
-    console.log(user);
-  }, [user]);
+  // useEffect(() => {
+  //   console.log(`USR`);
+  //   console.log(user);
+  // }, [user]);
 
   const handleOpen = () => setOpen(!open);
 
@@ -42,23 +43,6 @@ export default function RegistrationDialog() {
         <DialogBody>
           <WeeksAccordion user={user} />
         </DialogBody>
-        <DialogFooter>
-          {/* <Button
-            variant="text"
-            color="red"
-            onClick={handleOpen}
-            className="mr-1"
-          >
-            Cancel
-          </Button>
-          <Button
-            variant="gradient"
-            color="orange"
-            onClick={() => console.log('yesirski')}
-          >
-            Checkout
-          </Button> */}
-        </DialogFooter>
       </Dialog>
     </>
   );
