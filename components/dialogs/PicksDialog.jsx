@@ -93,9 +93,8 @@ const WeeksAccordion = ({ user, updateUserPicks }) => {
   // Function to handle the form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await UserService.submitPicks(week, picks);
 
-    await updateUserPicks();
+    await updateUserPicks(week, picks);
   };
 
   const handleWeekChange = (week) => {
