@@ -36,7 +36,9 @@ const Dashboard_Protected = () => {
           variant="text"
           className="capitalize text-blue-500 text-sm font-normal"
         >
-          Schedule
+          <a href="https://www.nfl.com/schedules/" target="_blank">
+            Schedule
+          </a>
         </Button>
       </div>
 
