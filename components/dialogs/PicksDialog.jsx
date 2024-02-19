@@ -11,6 +11,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from '@material-tailwind/react';
+import SportsFootballIcon from '@mui/icons-material/SportsFootball';
 
 import { UserContext } from '@/context/UserContext';
 import UserService from '@/services/UserService';
@@ -28,7 +29,14 @@ export default function PicksDialog() {
 
   return (
     <>
-      <Button onClick={handleOpen} variant="gradient" className="capitalize">
+      <Button
+        onClick={handleOpen}
+        variant="gradient"
+        className="capitalize flex flex-row gap-3 items-center"
+        color="orange"
+        size="sm"
+      >
+        <SportsFootballIcon />
         Make your picks
       </Button>
       <Dialog

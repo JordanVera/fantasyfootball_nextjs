@@ -6,12 +6,7 @@ import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { Button } from '@material-tailwind/react';
 
-const navigation = [
-  { name: 'Dashboard', href: '/dashboard', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-];
+const navigation = [{ name: 'Dashboard', href: '/dashboard', current: true }];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
