@@ -14,7 +14,11 @@ const DashboardHero = ({ user }) => {
 
       <h2 className="text-orange-500">
         ***Please note you must make your pick on Thursday before 6pm CST (7pm
-        EST) for every bullet. Even if you are not picking the thursday game.***
+        EST) for every bullet.{' '}
+        <span className="font-bold">
+          Even if you are not picking the thursday game
+        </span>
+        .***
       </h2>
     </div>
   );

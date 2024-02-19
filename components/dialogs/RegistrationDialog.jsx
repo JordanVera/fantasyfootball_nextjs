@@ -10,7 +10,7 @@ import {
 } from '@material-tailwind/react';
 import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
-import SportsFootballIcon from '@mui/icons-material/SportsFootball';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
 
 export default function RegistrationDialog() {
   const [open, setOpen] = useState(false);
@@ -56,8 +56,12 @@ export default function RegistrationDialog() {
 
   return (
     <>
-      <Button onClick={handleOpen} variant="gradient" className="capitalize">
-        <SportsFootballIcon />
+      <Button
+        onClick={handleOpen}
+        variant="text"
+        className="capitalize flex flex-row gap-3 items-center text-blue-500"
+      >
+        <CreditCardIcon />
         register
       </Button>
       <Dialog open={open} handler={handleOpen} className="bg-black ">
