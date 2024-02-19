@@ -27,7 +27,7 @@ const Dashboard_Protected = () => {
   }
 
   return (
-    <div className="max-w-[1000px] mx-auto py-10 flex flex-col gap-10">
+    <div className="max-w-[1000px] mx-auto py-10 flex flex-col gap-10 ">
       <div className="flex flex-row justify-center gap-3 w-full">
         <PicksDialog users={users} user={user} />
         <RegistrationDialog />
