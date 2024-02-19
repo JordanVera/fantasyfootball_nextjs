@@ -31,13 +31,15 @@ async function postPicksForUser(req, res, session) {
 
     // console.log(session.user);
 
-    // Assuming picks is an array of picks the user wants to create or update
     for (let pick of picks) {
       const existingPick = await prisma.picks.findFirst({
         where: {
           userId: session.user.id,
           entryNumber: pick.entry,
           team: pick.pick,
+          NOT: {
+            week: week,
+          },
         },
       });
 
@@ -68,12 +70,10 @@ async function postPicksForUser(req, res, session) {
       });
     }
 
-    return res
-      .status(200)
-      .json({
-        success: true,
-        message: `successfully updated picks for week ${week + 1}`,
-      });
+    return res.status(200).json({
+      success: true,
+      message: `successfully updated picks for week ${week + 1}`,
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Internal Server Error' });
