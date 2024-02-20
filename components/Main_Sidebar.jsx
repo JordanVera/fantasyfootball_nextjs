@@ -1,4 +1,5 @@
-import { Sidebar, Menu, MenuItem, useProSidebar } from 'react-pro-sidebar';
+import { useState } from 'react';
+import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
@@ -8,15 +9,15 @@ import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
 export default function Main_Sidebar() {
-  const { collapseSidebar } = useProSidebar();
+  const [collapsed, setCollapsed] = useState(true);
 
   return (
-    <Sidebar>
+    <Sidebar collapsed={collapsed}>
       <Menu>
         <MenuItem
           icon={<MenuOutlinedIcon />}
           onClick={() => {
-            collapseSidebar();
+            setCollapsed(!collapsed);
           }}
           style={{ textAlign: 'center' }}
         >
