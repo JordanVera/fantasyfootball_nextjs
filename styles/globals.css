@@ -28,3 +28,15 @@ body {
   box-shadow: 20px 20px 60px #489dcf,
     -20px -20px 60px #62d5ff;
 }
+
+
+/* SIDEBAR */
+
+.ps-sidebar-root,
+.ps-menu-root {
+  height: 100%;
+}
+
+.ps-menu-button:hover {
+  background-color: red !important;
+}
