@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Inter } from 'next/font/google';
 import LoginCard from '@/components/LoginCard';
 import SignupCard from '@/components/SignupCard';
+import TeamLogosSlider from '@/components/TeamLogosSlider';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-center p-24 ${inter.className} bg-black`}
     >
+      {/* <TeamLogosSlider /> */}
       {loginOrSignup === 'login' && (
         <LoginCard
           setOnboarding={setOnboarding}
