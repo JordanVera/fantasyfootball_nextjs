@@ -7,13 +7,14 @@ import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import Link from 'next/link';
 
 export default function Main_Sidebar() {
   const [collapsed, setCollapsed] = useState(true);
 
   return (
-    <Sidebar collapsed={collapsed}>
-      <Menu>
+    <Sidebar collapsed={collapsed} className="bg-black border-none">
+      <Menu className="bg-black border-none">
         <MenuItem
           icon={<MenuOutlinedIcon />}
           onClick={() => {
@@ -25,8 +26,12 @@ export default function Main_Sidebar() {
           <h2>Admin</h2>
         </MenuItem>
 
-        <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>
-        <MenuItem icon={<PeopleOutlinedIcon />}>Team</MenuItem>
+        <Link href="/">
+          <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>
+        </Link>
+        <Link href="/dashboard">
+          <MenuItem icon={<PeopleOutlinedIcon />}>Dashboard</MenuItem>
+        </Link>
         <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
         <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
         <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>

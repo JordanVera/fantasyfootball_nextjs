@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
     <SessionProvider session={pageProps.session}>
       <UserProvider>
         <div id="app" className="flex h-screen w-screen">
-          <div className=" bg-gray-800 text-white">
+          <div className=" bg-black text-white border-r border-gray-800">
             {/* Sidebar content goes here */}
             <Main_Sidebar />
           </div>
