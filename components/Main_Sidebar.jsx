@@ -36,14 +36,14 @@ export default function Main_Sidebar() {
             op3n
           </MenuItem>
 
-          <Link href="/" className="hover:bg-red-500">
-            <MenuItem className="hover:bg-red-500" icon={<HomeOutlinedIcon />}>
+          <MenuItem className="hover:bg-red-500" icon={<HomeOutlinedIcon />}>
+            <Link href="/" className="hover:bg-red-500">
               Home
-            </MenuItem>
-          </Link>
-          <Link href="/dashboard">
-            <MenuItem icon={<PeopleOutlinedIcon />}>Dashboard</MenuItem>
-          </Link>
+            </Link>
+          </MenuItem>
+          <MenuItem icon={<PeopleOutlinedIcon />}>
+            <Link href="/dashboard">Dashboard</Link>
+          </MenuItem>
           <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
           <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
           <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
