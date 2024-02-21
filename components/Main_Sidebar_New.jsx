@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { IconButton } from '@material-tailwind/react';
 import Link from 'next/link';
+
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
+
 function Main_Sidebar_New() {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -11,8 +15,8 @@ function Main_Sidebar_New() {
 
   return (
     <div
-      className={`transition-all duration-200 ease-in-out ${
-        isCollapsed ? 'w-16' : 'w-48'
+      className={`transition-all duration-200 ease-in-out flex flex-col p-5 gap-2 ${
+        isCollapsed ? 'w-16 items-center ' : 'w-48 justify-start'
       }`}
     >
       <IconButton onClick={toggleSidebar}>
@@ -22,7 +26,13 @@ function Main_Sidebar_New() {
       <Link href="/" className="flex items-center">
         <HomeOutlinedIcon />
         <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
-          Text
+          Home
+        </span>
+      </Link>
+      <Link href="/dashboard" className="flex items-center">
+        <SpaceDashboardIcon />
+        <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
+          Dashboard
         </span>
       </Link>
       {/* Repeat the above div for each item */}
@@ -31,11 +41,3 @@ function Main_Sidebar_New() {
 }
 
 export default Main_Sidebar_New;
-
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
-import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
-import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
-import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
