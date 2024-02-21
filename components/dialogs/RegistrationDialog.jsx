@@ -7,14 +7,19 @@ import {
   DialogFooter,
   Option,
   Select,
+  IconButton,
 } from '@material-tailwind/react';
 import { loadStripe } from '@stripe/stripe-js';
+import { useRegister } from '@/context/RegisterContext';
+
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 
 export default function RegistrationDialog() {
   const [open, setOpen] = useState(false);
   const [numberOfEntries, setNumberOfEntries] = useState(0);
+
+  const { isCollapsed, setIsCollapsed } = useRegister();
 
   const items = [
     {
@@ -56,14 +61,24 @@ export default function RegistrationDialog() {
 
   return (
     <>
-      <Button
+      {/* <IconButton
         onClick={handleOpen}
         variant="text"
         className="capitalize flex flex-row gap-3 items-center text-blue-500"
       >
         <CreditCardIcon />
         register
-      </Button>
+      </IconButton> */}
+
+      <div
+        href="/dashboard"
+        className="flex flex-row items-center hover:bg-gray-900 p-2 rounded-lg"
+      >
+        <CreditCardIcon />
+        <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
+          Register
+        </span>
+      </div>
       <Dialog open={open} handler={handleOpen} className="bg-black ">
         <DialogHeader className="text-white capitalize">
           how many entries would you like to purchase?

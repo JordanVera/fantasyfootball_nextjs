@@ -10,11 +10,13 @@ import PicksDialog from '@/components/dialogs/PicksDialog';
 import UserTable from '@/components/tables/UserTable';
 import RulesDialog from '@/components/dialogs/RulesDialog';
 import DashboardHero from '@/components/DashboardHero';
+import { useRegister } from '@/context/RegisterContext';
 
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   const { users, updateUsersData, user, loading } = useContext(UserContext);
+  const { isCollapsed } = useRegister();
 
   useEffect(() => {
     if (status === 'loading') return;
@@ -30,7 +32,7 @@ const Dashboard_Protected = () => {
     <div className="mx-auto py-10 flex flex-col justify-center gap-10 max-w-[1000px]">
       <div className="flex flex-row justify-center gap-3 w-full">
         <PicksDialog users={users} user={user} />
-        <RegistrationDialog />
+        <RegistrationDialog isCollapsed={isCollapsed} />
         <RulesDialog />
         <Button
           variant="text"

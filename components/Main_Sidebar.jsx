@@ -6,10 +6,13 @@ import Link from 'next/link';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import { useSession } from 'next-auth/react';
+import RegistrationDialog from './dialogs/RegistrationDialog';
+import { useRegister } from '@/context/RegisterContext';
 
 function Main_Sidebar() {
   const { data: session, status } = useSession();
-  const [isCollapsed, setIsCollapsed] = useState(true);
+
+  const { isCollapsed, setIsCollapsed } = useRegister();
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -24,7 +27,6 @@ function Main_Sidebar() {
       <IconButton onClick={toggleSidebar}>
         <MenuIcon className="text-white" />
       </IconButton>
-
       <Link
         href="/"
         className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
@@ -34,7 +36,6 @@ function Main_Sidebar() {
           Home
         </span>
       </Link>
-
       <Link
         href="/dashboard"
         className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
@@ -44,7 +45,7 @@ function Main_Sidebar() {
           Dashboard
         </span>
       </Link>
-
+      <RegistrationDialog />
       <div className="mt-auto">
         <Link
           href="/dashboard"
