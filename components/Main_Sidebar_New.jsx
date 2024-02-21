@@ -15,7 +15,7 @@ function Main_Sidebar_New() {
 
   return (
     <div
-      className={`transition-all duration-200 ease-in-out flex flex-col p-5 gap-2 ${
+      className={`transition-all duration-200 ease-in-out flex flex-col p-5 gap-3 ${
         isCollapsed ? 'w-16 items-center ' : 'w-48 justify-start'
       }`}
     >
@@ -35,7 +35,7 @@ function Main_Sidebar_New() {
           Dashboard
         </span>
       </Link>
-      {/* Repeat the above div for each item */}
+      
     </div>
   );
 }
