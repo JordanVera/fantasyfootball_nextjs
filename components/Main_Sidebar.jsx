@@ -28,7 +28,6 @@ function Main_Sidebar() {
         <MenuIcon className="text-white" />
       </IconButton>
 
-
       <Link
         href="/"
         className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
@@ -48,6 +47,8 @@ function Main_Sidebar() {
         </span>
       </Link>
       <RegistrationDialog />
+
+      
       <div className="mt-auto">
         <Link
           href="/dashboard"
