@@ -1,7 +1,7 @@
 import { SessionProvider } from 'next-auth/react';
 import { UserProvider } from '@/context/UserContext';
 import { ToastContainer } from 'react-toastify';
-import Main_Sidebar_New from '@/components/Main_Sidebar_New';
+import Main_Sidebar from '@/components/Main_Sidebar';
 import 'react-toastify/dist/ReactToastify.css';
 import '@/styles/globals.css';
 
@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
         <div id="app" className="flex h-screen w-screen">
           <div className=" bg-black text-white border-r border-gray-800">
             {/* Sidebar content goes here */}
-            <Main_Sidebar_New />
+            <Main_Sidebar />
           </div>
 
           <div className="flex-grow">
