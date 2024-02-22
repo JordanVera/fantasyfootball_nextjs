@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
-import { IconButton, Avatar } from '@material-tailwind/react';
+import {
+  IconButton,
+  Avatar,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+  Button,
+} from '@material-tailwind/react';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
+import { signOut } from 'next-auth/react';
 
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
@@ -20,7 +29,7 @@ function Main_Sidebar() {
 
   return (
     <div
-      className={`transition-all duration-200 ease-in-out flex flex-col p-5 h-full ${
+      className={`fixed border-r border-gray-900 transition-width duration-200 ease-in-out flex flex-col p-2 h-full ${
         isCollapsed ? 'w-18 items-center ' : 'w-48 justify-start'
       }`}
     >
@@ -48,17 +57,21 @@ function Main_Sidebar() {
       </Link>
       <RegistrationDialog />
 
-      
       <div className="mt-auto">
-        <Link
-          href="/dashboard"
-          className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
-        >
-          <Avatar src={session?.user?.image} className="h-8 w-8" />
-          <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
-            {`${session?.user?.name}`}
-          </span>
-        </Link>
+        <Menu>
+          <MenuHandler>
+            <Button className=" p-0 m-0">
+              <Avatar src={session?.user?.image} className="h-8 w-8" />
+              <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
+                {`${session?.user?.name}`}
+              </span>
+            </Button>
+          </MenuHandler>
+          <MenuList>
+            <MenuItem>Settings</MenuItem>
+            <MenuItem onClick={() => signOut()}>Signout</MenuItem>
+          </MenuList>
+        </Menu>
       </div>
     </div>
   );

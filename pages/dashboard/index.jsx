@@ -33,7 +33,9 @@ const Dashboard_Protected = () => {
       <div className="flex flex-row justify-center gap-3 w-full">
         <PicksDialog users={users} user={user} />
         <RegistrationDialog isCollapsed={isCollapsed} />
+
         <RulesDialog />
+
         <Button
           variant="text"
           className="capitalize text-blue-500 text-sm font-normal"

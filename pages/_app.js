@@ -12,12 +12,9 @@ export default function App({ Component, pageProps }) {
       <RegisterProvider>
         <UserProvider>
           <div id="app" className="flex h-screen w-screen">
-            <div className=" bg-black text-white border-r border-gray-800">
-              {/* Sidebar content goes here */}
-              <Main_Sidebar />
-            </div>
+            <Main_Sidebar />
 
-            <div className="flex-grow">
+            <div className="flex-grow overflow-auto">
               {/* Main content goes here */}
               <Component {...pageProps} />
             </div>
