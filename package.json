@@ -33,6 +33,7 @@
     "react-pro-sidebar": "^1.1.0",
     "react-toastify": "^10.0.4",
     "react-webcam": "^7.2.0",
+    "simplex-noise": "^4.0.1",
     "stripe": "^14.16.0",
     "tailwind-merge": "^2.2.1"
   },

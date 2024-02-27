@@ -61,16 +61,16 @@ export default function RegistrationDialog() {
 
   return (
     <>
-      {/* <IconButton
+      <IconButton
         onClick={handleOpen}
         variant="text"
         className="capitalize flex flex-row gap-3 items-center text-blue-500"
       >
         <CreditCardIcon />
         register
-      </IconButton> */}
+      </IconButton>
 
-      <div
+      {/* <div
         href="/dashboard"
         className="flex flex-row items-center hover:bg-gray-900 p-2 rounded-lg"
       >
@@ -78,7 +78,7 @@ export default function RegistrationDialog() {
         <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
           Register
         </span>
-      </div>
+      </div> */}
       <Dialog open={open} handler={handleOpen} className="bg-black ">
         <DialogHeader className="text-white capitalize">
           how many entries would you like to purchase?
