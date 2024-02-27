@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
     <SessionProvider session={pageProps.session}>
       <RegisterProvider>
         <UserProvider>
-          <div id="app" className="flex h-screen w-screen">
+          <div id="app" className="flex h-screen w-screen bg-black">
             <Main_Sidebar />
 
             <div className="flex-grow overflow-auto">

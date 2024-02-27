@@ -29,7 +29,7 @@ function Main_Sidebar() {
 
   return (
     <div
-      className={`fixed border-r border-gray-900 transition-width duration-200 ease-in-out flex flex-col p-2 h-full ${
+      className={`bg-black z-50 sticky top-0 border-r border-gray-900 transition-width duration-200 ease-in-out flex flex-col p-2 h-full ${
         isCollapsed ? 'w-18 items-center ' : 'w-48 justify-start'
       }`}
     >
@@ -44,6 +44,15 @@ function Main_Sidebar() {
         <HomeOutlinedIcon />
         <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
           Home
+        </span>
+      </Link>
+      <Link
+        href="/login"
+        className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
+      >
+        <HomeOutlinedIcon />
+        <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
+          Login/Signup
         </span>
       </Link>
       <Link
