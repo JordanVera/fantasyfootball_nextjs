@@ -17,6 +17,7 @@ import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import { useSession } from 'next-auth/react';
 import RegistrationDialog from './dialogs/RegistrationDialog';
 import { useRegister } from '@/context/RegisterContext';
+import ThemeSwitcher from './ThemeSwitcher';
 
 function Main_Sidebar() {
   const { data: session, status } = useSession();
@@ -29,7 +30,7 @@ function Main_Sidebar() {
 
   return (
     <div
-      className={`bg-black z-50 sticky top-0 border-r border-gray-900 transition-width duration-200 ease-in-out flex flex-col p-2 h-full ${
+      className={`bg-white dark:bg-black z-50 sticky top-0 border-r border-gray-900 transition-width duration-200 ease-in-out flex flex-col p-2 h-full ${
         isCollapsed ? 'w-18 items-center ' : 'w-48 justify-start'
       }`}
     >
@@ -65,6 +66,8 @@ function Main_Sidebar() {
         </span>
       </Link>
       <RegistrationDialog />
+
+      <ThemeSwitcher />
 
       <div className="mt-auto">
         <Menu>
