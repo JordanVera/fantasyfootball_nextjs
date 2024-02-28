@@ -13,7 +13,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import { signOut } from 'next-auth/react';
 
-
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import { useSession } from 'next-auth/react';

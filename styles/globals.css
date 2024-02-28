@@ -40,3 +40,14 @@ body {
 .ps-menu-button:hover {
   background-color: red !important;
 }
+
+
+@keyframes slideRightToLeft {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
