@@ -1,70 +1,16 @@
 import { useState } from 'react';
 import { Inter } from 'next/font/google';
-import { Hero } from '@/components/heros/Hero';
-import { WavyHero } from '@/components/heros/WavyHero';
+import HomepageHero from '@/components/heros/HomepageHero';
 import TeamSlider from '@/components/homepage/TeamSlider';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
-  const teamLogos1 = [
-    '/images/teamLogos/bears.png',
-    '/images/teamLogos/bengals.png',
-    '/images/teamLogos/bills.png',
-    '/images/teamLogos/broncos.png',
-    '/images/teamLogos/buccs.png',
-    '/images/teamLogos/cardinals.png',
-    '/images/teamLogos/chargers.png',
-    '/images/teamLogos/chiefs.png',
-    '/images/teamLogos/cleveland.png',
-    '/images/teamLogos/colts.png',
-    '/images/teamLogos/dallas.png',
-    '/images/teamLogos/dolphins.png',
-    '/images/teamLogos/eagles.png',
-    '/images/teamLogos/falcons.png',
-    '/images/teamLogos/footballTeam.png',
-    '/images/teamLogos/giants.png',
-    '/images/teamLogos/jaguars.png',
-    '/images/teamLogos/jets.png',
-    '/images/teamLogos/lions.png',
-    '/images/teamLogos/niners.png',
-  ];
-
-  const teamLogos2 = [
-    '/images/teamLogos/giants.png',
-    '/images/teamLogos/jaguars.png',
-    '/images/teamLogos/jets.png',
-    '/images/teamLogos/lions.png',
-    '/images/teamLogos/niners.png',
-    '/images/teamLogos/packers.png',
-    '/images/teamLogos/panthers.png',
-    '/images/teamLogos/patriots.png',
-    '/images/teamLogos/raiders.png',
-    '/images/teamLogos/rams.png',
-    '/images/teamLogos/ravens.png',
-    '/images/teamLogos/saints.png',
-    '/images/teamLogos/seahawks.png',
-    '/images/teamLogos/steelers.png',
-    '/images/teamLogos/texans.png',
-    '/images/teamLogos/titans.png',
-    '/images/teamLogos/vikings.png',
-  ];
-
+ 
   return (
     <main
       className={`flex  flex-col items-center justify-center ${inter.className} `}
     >
-      <div className="flex flex-col items-center justify-center h-screen">
-        <h1 className="text-2xl md:text-4xl lg:text-7xl text-black dark:text-white font-bold inter-var text-center">
-          Welcome to NFL Last Longer
-        </h1>
-        <p className="text-base md:text-lg mt-4 text-black dark:text-white font-normal inter-var text-center">
-          Leverage the power of canvas to create a beautiful hero section
-        </p>
-      </div>
-
-      <TeamSlider direction="left" teamLogos={teamLogos1} />
-      <TeamSlider direction="right" teamLogos={teamLogos2} />
-
+      <HomepageHero />
       <div>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta minima
         dolorum et odit ea delectus consequuntur maxime numquam fugiat cumque?
