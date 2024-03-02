@@ -42,7 +42,7 @@ body {
 }
 
 
-@keyframes slideRightToLeft {
+/* @keyframes slideRightToLeft {
   0% {
     transform: translateX(0%);
   }
@@ -52,7 +52,8 @@ body {
   }
 }
 
-@keyframes slideLeftToRight {
+*/
+/* @keyframes slideLeftToRight {
   0% {
     transform: translateX(-50%);
   }
@@ -60,4 +61,4 @@ body {
   100% {
     transform: translateX(0%);
   }
-}
+} */

@@ -6,6 +6,49 @@ import TeamSlider from '@/components/homepage/TeamSlider';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+  const teamLogos1 = [
+    '/images/teamLogos/bears.png',
+    '/images/teamLogos/bengals.png',
+    '/images/teamLogos/bills.png',
+    '/images/teamLogos/broncos.png',
+    '/images/teamLogos/buccs.png',
+    '/images/teamLogos/cardinals.png',
+    '/images/teamLogos/chargers.png',
+    '/images/teamLogos/chiefs.png',
+    '/images/teamLogos/cleveland.png',
+    '/images/teamLogos/colts.png',
+    '/images/teamLogos/dallas.png',
+    '/images/teamLogos/dolphins.png',
+    '/images/teamLogos/eagles.png',
+    '/images/teamLogos/falcons.png',
+    '/images/teamLogos/footballTeam.png',
+    '/images/teamLogos/giants.png',
+    '/images/teamLogos/jaguars.png',
+    '/images/teamLogos/jets.png',
+    '/images/teamLogos/lions.png',
+    '/images/teamLogos/niners.png',
+  ];
+
+  const teamLogos2 = [
+    '/images/teamLogos/giants.png',
+    '/images/teamLogos/jaguars.png',
+    '/images/teamLogos/jets.png',
+    '/images/teamLogos/lions.png',
+    '/images/teamLogos/niners.png',
+    '/images/teamLogos/packers.png',
+    '/images/teamLogos/panthers.png',
+    '/images/teamLogos/patriots.png',
+    '/images/teamLogos/raiders.png',
+    '/images/teamLogos/rams.png',
+    '/images/teamLogos/ravens.png',
+    '/images/teamLogos/saints.png',
+    '/images/teamLogos/seahawks.png',
+    '/images/teamLogos/steelers.png',
+    '/images/teamLogos/texans.png',
+    '/images/teamLogos/titans.png',
+    '/images/teamLogos/vikings.png',
+  ];
+
   return (
     <main
       className={`flex  flex-col items-center justify-center ${inter.className} `}
@@ -19,8 +62,8 @@ export default function Home() {
         </p>
       </div>
 
-      <TeamSlider direction="left" />
-      <TeamSlider direction="right" />
+      <TeamSlider direction="left" teamLogos={teamLogos1} />
+      <TeamSlider direction="right" teamLogos={teamLogos2} />
 
       <div>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta minima

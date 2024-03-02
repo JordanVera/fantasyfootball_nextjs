@@ -18,11 +18,16 @@ module.exports = withMT({
       },
       animation: {
         slideRightToLeft: 'slideRightToLeft 40s linear infinite',
+        slideLeftToRight: 'slideLeftToRight 40s linear infinite',
       },
       keyframes: {
         slideRightToLeft: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        slideLeftToRight: {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' },
         },
       },
       // animation: {
