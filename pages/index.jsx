@@ -19,7 +19,8 @@ export default function Home() {
         </p>
       </div>
 
-      <TeamSlider />
+      <TeamSlider direction="left" />
+      <TeamSlider direction="right" />
 
       <div>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta minima

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const TeamSlider = () => {
+const TeamSlider = ({ direction }) => {
   const teamLogos = [
     '/images/teamLogos/bears.png',
     '/images/teamLogos/bengals.png',
@@ -24,11 +24,16 @@ const TeamSlider = () => {
     '/images/teamLogos/niners.png',
   ];
 
-  // Duplicate the array
+  const animationClass =
+    direction === 'left'
+      ? 'animate-slideLeftToRight'
+      : 'animate-slideRightToLeft';
 
   return (
     <div className="overflow-hidden w-full">
-      <div className="flex flex-nowrap gap-10 animate-slideRightToLeft animation-linear animation-infinite">
+      <div
+        className={`flex flex-nowrap gap-10 ${animationClass} animation-linear animation-infinite`}
+      >
         {teamLogos.map((teamLogo, index) => (
           <Image
             src={teamLogo}
@@ -43,4 +48,5 @@ const TeamSlider = () => {
     </div>
   );
 };
+
 export default TeamSlider;
