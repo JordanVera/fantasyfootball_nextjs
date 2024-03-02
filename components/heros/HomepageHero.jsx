@@ -1,5 +1,6 @@
 import TeamSlider from '../homepage/TeamSlider';
 import { Button } from '@material-tailwind/react';
+import { HomeIcon } from '@heroicons/react/24/outline';
 
 const HomepageHero = () => {
   const teamLogos1 = [
@@ -48,7 +49,7 @@ const HomepageHero = () => {
   return (
     <div>
       <div className="flex flex-col gap-20 items-center justify-center h-screen">
-        <div className="max-w-[900px]">
+        <div className="max-w-[900px] flex flex-col gap-10">
           <h1 className="text-2xl md:text-4xl lg:text-7xl text-black dark:text-white font-bold inter-var text-center">
             Welcome to NFL Last Longer
           </h1>
@@ -58,7 +59,12 @@ const HomepageHero = () => {
             omnis provident neque voluptatum sed eum. Obcaecati, iusto?
           </p>
 
-          <Button color="blue" variant="gradient" className="capitalize">
+          <Button
+            color="blue"
+            variant="gradient"
+            className="capitalize flex flex-row items-center gap-2 w-56 mx-auto"
+          >
+            <HomeIcon className="h-6 w-6" />
             Create an Account Now
           </Button>
         </div>
