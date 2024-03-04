@@ -19,7 +19,9 @@ module.exports = withMT({
       animation: {
         slideRightToLeft: 'slideRightToLeft 40s linear infinite',
         slideLeftToRight: 'slideLeftToRight 40s linear infinite',
+        shimmer: 'shimmer 2s linear infinite',
       },
+
       keyframes: {
         slideRightToLeft: {
           '0%': { transform: 'translateX(0%)' },
@@ -28,6 +30,14 @@ module.exports = withMT({
         slideLeftToRight: {
           '0%': { transform: 'translateX(-50%)' },
           '100%': { transform: 'translateX(0%)' },
+        },
+        shimmer: {
+          from: {
+            backgroundPosition: '0 0',
+          },
+          to: {
+            backgroundPosition: '-200% 0',
+          },
         },
       },
       // animation: {
