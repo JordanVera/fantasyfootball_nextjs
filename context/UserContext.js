@@ -7,6 +7,7 @@ export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
+  const [registrationOpen, setRegistrationOpen] = useState(false);
 
   useEffect(() => {
     fetchData();

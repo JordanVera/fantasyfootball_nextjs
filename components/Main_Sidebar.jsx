@@ -1,61 +1,93 @@
-import { useState } from 'react';
-import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
-import { Avatar } from '@material-tailwind/react';
-import { useSession } from 'next-auth/react';
+import React, { useState } from 'react';
+import {
+  IconButton,
+  Avatar,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+  Button,
+} from '@material-tailwind/react';
 
+import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
+import { signOut } from 'next-auth/react';
 
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
-import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
-import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
-import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
+import { useSession } from 'next-auth/react';
+import RegistrationDialog from './dialogs/RegistrationDialog';
+import { useRegister } from '@/context/RegisterContext';
+import ThemeSwitcher from './ThemeSwitcher';
 
-export default function Main_Sidebar() {
-  const [collapsed, setCollapsed] = useState(true);
+function Main_Sidebar() {
+  const { data: session, status } = useSession();
 
-  const { data: session } = useSession();
+  const { isCollapsed, setIsCollapsed } = useRegister();
+
+  const toggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
 
   return (
-    <Sidebar
-      collapsed={collapsed}
-      theme="dark"
-      className="bg-black border-none"
-      // collapsedWidth="px"
+    <div
+      className={`bg-white dark:bg-black z-50 sticky top-0 border-r border-gray-900 transition-width duration-200 ease-in-out flex flex-col p-2 h-full ${
+        isCollapsed ? 'w-18 items-center ' : 'w-48 justify-start'
+      }`}
     >
-      <Menu className="  bg-black">
-        <div className="flex flex-col  h-full ustify-between">
-          <MenuItem
-            icon={<MenuOutlinedIcon />}
-            onClick={() => {
-              setCollapsed(!collapsed);
-            }}
-          >
-            op3n
-          </MenuItem>
+      <IconButton onClick={toggleSidebar}>
+        <MenuIcon className="text-white" />
+      </IconButton>
 
-          <Link href="/" className="hover:bg-red-500">
-            <MenuItem className="hover:bg-red-500" icon={<HomeOutlinedIcon />}>
-              Home
-            </MenuItem>
-          </Link>
-          <Link href="/dashboard">
-            <MenuItem icon={<PeopleOutlinedIcon />}>Dashboard</MenuItem>
-          </Link>
-          <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
-          <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
-          <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
-          <MenuItem icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>
+      <Link
+        href="/"
+        className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
+      >
+        <HomeOutlinedIcon />
+        <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
+          Home
+        </span>
+      </Link>
+      <Link
+        href="/login"
+        className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
+      >
+        <HomeOutlinedIcon />
+        <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
+          Login/Signup
+        </span>
+      </Link>
+      <Link
+        href="/dashboard"
+        className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
+      >
+        <SpaceDashboardIcon />
+        <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
+          Dashboard
+        </span>
+      </Link>
+      <RegistrationDialog />
 
-          {/* USER ACCT */}
+      <ThemeSwitcher />
 
-          <div className="mt-auto">
-            <Avatar src={session?.user?.image} className="w-9 h-9" />
-          </div>
-        </div>
-      </Menu>
-    </Sidebar>
+      <div className="mt-auto">
+        <Menu>
+          <MenuHandler>
+            <Button className=" p-0 m-0">
+              <Avatar src={session?.user?.image} className="h-8 w-8" />
+              <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
+                {`${session?.user?.name}`}
+              </span>
+            </Button>
+          </MenuHandler>
+          <MenuList>
+            <MenuItem>Settings</MenuItem>
+            <MenuItem onClick={() => signOut()}>Signout</MenuItem>
+          </MenuList>
+        </Menu>
+      </div>
+    </div>
   );
 }
+
+export default Main_Sidebar;
