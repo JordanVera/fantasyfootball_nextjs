@@ -3,18 +3,20 @@ import Image from 'next/image';
 const WhatWeDo = () => {
   return (
     <div className="mx-auto max-w-[900px] flex flex-col gap-5 my-10">
-      <h2 className="font-bold text-3xl">What Is NFL Last Longer</h2>
+      <h2 className="font-bold text-3xl text-center">
+        What Is NFL Last Longer
+      </h2>
 
       <div className="flex flex-row gap-10">
         <div className="w-1/3">
           <img
-            src="/images/obj.webp"
+            src="/images/logo.png"
             // height={200}
             // width={200}
             alt="odell beckham jr"
           />
         </div>
-        <div className="w-2/3">
+        <div className="w-2/3 flex flex-col gap-5">
           <p>
             NFL Last Longer is the first and only exclusively cryptocurrency
             survivor league style pool for the National Football League. The
