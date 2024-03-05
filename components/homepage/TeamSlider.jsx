@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 const TeamSlider = ({ direction, teamLogos }) => {
-  
+  const duplicateLogos = [...teamLogos, ...teamLogos];
 
   const animationClass =
     direction === 'left'
@@ -11,9 +11,9 @@ const TeamSlider = ({ direction, teamLogos }) => {
   return (
     <div className="overflow-hidden w-full">
       <div
-        className={`flex flex-nowrap gap-10 ${animationClass} animation-linear animation-infinite`}
+        className={`flex flex-nowrap gap-10 ${animationClass} animation-linear animation-infinite slider`}
       >
-        {teamLogos.map((teamLogo, index) => (
+        {duplicateLogos.map((teamLogo, index) => (
           <Image
             src={teamLogo}
             key={index}
