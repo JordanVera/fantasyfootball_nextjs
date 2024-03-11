@@ -9,11 +9,14 @@ import {
   Button,
 } from '@material-tailwind/react';
 
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import { signOut } from 'next-auth/react';
 
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import HomeIcon from '@mui/icons-material/Home';
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import { useSession } from 'next-auth/react';
 import RegistrationDialog from './dialogs/RegistrationDialog';
@@ -43,7 +46,7 @@ function Main_Sidebar() {
         href="/"
         className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
       >
-        <HomeOutlinedIcon />
+        <HomeIcon className="text-black dark:text-white" />
         <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
           Home
         </span>
@@ -52,7 +55,11 @@ function Main_Sidebar() {
         href="/login"
         className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
       >
-        <HomeOutlinedIcon />
+        {session ? (
+          <LogoutIcon className="text-black dark:text-white" />
+        ) : (
+          <LoginIcon className="text-black dark:text-white" />
+        )}
         <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
           Login/Signup
         </span>
@@ -61,7 +68,7 @@ function Main_Sidebar() {
         href="/dashboard"
         className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
       >
-        <SpaceDashboardIcon />
+        <SpaceDashboardIcon className="text-black dark:text-white" />
         <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
           Dashboard
         </span>

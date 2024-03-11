@@ -64,10 +64,9 @@ export default function RegistrationDialog() {
       <IconButton
         onClick={handleOpen}
         variant="text"
-        className="capitalize flex flex-row gap-3 items-center text-blue-500"
+        className="capitalize flex flex-row gap-3 items-center text-black dark:text-white"
       >
         <CreditCardIcon />
-        register
       </IconButton>
 
       {/* <div
