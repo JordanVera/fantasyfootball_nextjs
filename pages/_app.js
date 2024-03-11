@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import Main_Sidebar from '@/components/Main_Sidebar';
 import 'react-toastify/dist/ReactToastify.css';
 import '@/styles/globals.css';
+import { Footer } from '@/components/Footer';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -22,6 +23,7 @@ export default function App({ Component, pageProps }) {
               <div className="flex-grow overflow-auto">
                 {/* Main content goes here */}
                 <Component {...pageProps} />
+                <Footer />
               </div>
             </div>
             {/* <Appbar /> */}

@@ -42,6 +42,15 @@ body {
 }
 
 
+/* SLIDERS */
+.slider::before {
+  content: attr(data-content);
+  position: absolute;
+  top: 0;
+  left: 100%;
+  white-space: nowrap;
+}
+
 /* @keyframes slideRightToLeft {
   0% {
     transform: translateX(0%);
