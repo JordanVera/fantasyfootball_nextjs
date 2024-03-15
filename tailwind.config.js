@@ -40,15 +40,6 @@ module.exports = withMT({
           },
         },
       },
-      // animation: {
-      //   slide: 'slide 40s linear infinite',
-      // },
-      // keyframes: {
-      //   slide: {
-      //     '0%': { transform: 'translateX(0)' },
-      //     '100%': { transform: 'translateX(-100%)' },
-      //   },
-      // },
     },
   },
   plugins: [],

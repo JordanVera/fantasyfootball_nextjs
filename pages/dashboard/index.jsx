@@ -5,13 +5,8 @@ import { useRouter } from 'next/router';
 import { UserContext } from '@/context/UserContext';
 import { Button } from '@material-tailwind/react';
 
-import RegistrationDialog from '@/components/dialogs/RegistrationDialog';
-import PicksDialog from '@/components/dialogs/PicksDialog';
 import UserTable from '@/components/tables/UserTable';
-import RulesDialog from '@/components/dialogs/RulesDialog';
-import DashboardHero from '@/components/DashboardHero';
 import { useRegister } from '@/context/RegisterContext';
-import { ThreeDCard } from '@/components/cards/ThreeDCard';
 import ButtonBar from '@/components/buttons/ButtonBar';
 import MakeYourPicksCard from '@/components/cards/MakeYourPicksCard';
 
@@ -33,8 +28,8 @@ const Dashboard_Protected = () => {
 
   return (
     <div className="mx-auto py-10 flex flex-col justify-center gap-10  p-10">
-      <MakeYourPicksCard user={user} />
       <ButtonBar />
+      <MakeYourPicksCard user={user} />
 
       <UserTable users={users} />
     </div>
