@@ -47,6 +47,7 @@ function Main_Sidebar() {
         className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
       >
         <HomeIcon className="text-black dark:text-white" />
+
         <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
           Home
         </span>
@@ -61,7 +62,7 @@ function Main_Sidebar() {
           <LoginIcon className="text-black dark:text-white" />
         )}
         <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
-          Login/Signup
+          Login
         </span>
       </Link>
       <Link

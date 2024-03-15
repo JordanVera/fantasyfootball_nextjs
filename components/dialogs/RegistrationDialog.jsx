@@ -61,13 +61,17 @@ export default function RegistrationDialog() {
 
   return (
     <>
-      <IconButton
-        onClick={handleOpen}
-        variant="text"
-        className="capitalize flex flex-row gap-3 items-center text-black dark:text-white"
+      <Button
+        href="/dashboard"
+        className="flex items-center hover:bg-gray-900 p-2 rounded-lg bg-transparent shadow-none"
       >
-        <CreditCardIcon />
-      </IconButton>
+        <CreditCardIcon className="text-black dark:text-white" />
+        <span
+          className={`ml-3 capitalize ${isCollapsed ? 'hidden' : 'inline'}`}
+        >
+          Register
+        </span>
+      </Button>
 
       {/* <div
         href="/dashboard"
