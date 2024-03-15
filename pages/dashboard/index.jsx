@@ -33,10 +33,8 @@ const Dashboard_Protected = () => {
 
   return (
     <div className="mx-auto py-10 flex flex-col justify-center gap-10  p-10">
-      <MakeYourPicksCard />
+      <MakeYourPicksCard user={user} />
       <ButtonBar />
-
-      <DashboardHero user={user} />
 
       <UserTable users={users} />
     </div>
