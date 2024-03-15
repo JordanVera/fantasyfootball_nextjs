@@ -2,6 +2,7 @@
 import prisma from '../../../lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]';
+import { getStartingWeek } from '../../../utils/dates';
 import colors from 'colors';
 
 export default async function handle(req, res) {
@@ -25,9 +26,16 @@ async function postPicksForUser(req, res, session) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
+  if (Number(week) < getStartingWeek()) {
+    console.log('picks are too late');
+    return res.status(400).json({ error: 'You are too late bru' });
+  }
+
   try {
     console.log(`REQ`);
     console.log(req.body);
+
+    console.log('starting week', getStartingWeek());
 
     // console.log(session.user);
 
