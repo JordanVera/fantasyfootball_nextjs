@@ -22,10 +22,10 @@ const DashboardHero = ({ user }) => {
             <h2 className="text-orange-500 font-normal">
               ***
               <span className="font-bold">
-                It is currently week {getStartingWeek()}{' '}
+                It is currently week {getStartingWeek() + 1}{' '}
               </span>
               . Please note you must make your picks on Thursday before 6pm CST
-              (7pm EST) for week {getStartingWeek()}.{' '}
+              (7pm EST) for week {getStartingWeek() + 1}.{' '}
               <span className="font-bold">
                 Even if you are not picking the thursday game
               </span>

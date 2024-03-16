@@ -14,7 +14,7 @@ import {
 import SportsFootballIcon from '@mui/icons-material/SportsFootball';
 
 import { UserContext } from '@/context/UserContext';
-import UserService from '@/services/UserService';
+import { getStartingWeek } from '@/utils/dates';
 
 export default function PicksDialog() {
   const { user, updateUserPicks } = useContext(UserContext);
@@ -117,50 +117,55 @@ const WeeksAccordion = ({ user, updateUserPicks }) => {
 
   return (
     <div className="flex flex-col gap-3">
-      {Array.from({ length: 18 }).map((_, weekIndex) => (
-        <Accordion
-          key={weekIndex}
-          open={open === weekIndex}
-          icon={<Icon id={1} open={open} />}
-        >
-          <AccordionHeader
-            onClick={() => {
-              handleOpen(weekIndex);
-              handleWeekChange(weekIndex);
-            }}
+      {Array.from({ length: 18 }).map((_, weekIndex) =>
+        weekIndex < getStartingWeek() ? null : (
+          <Accordion
+            key={weekIndex}
+            open={open === weekIndex}
+            icon={<Icon id={1} open={open} />}
+            disabled={weekIndex < getStartingWeek()}
           >
-            Week {weekIndex + 1}
-          </AccordionHeader>
-          <AccordionBody>
-            <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-              {Array.from({ length: user.bullets }).map((_, j) => (
-                <Select
-                  key={j}
-                  label={`Entry ${j + 1}`}
+            <AccordionHeader
+              onClick={() => {
+                handleOpen(weekIndex);
+                handleWeekChange(weekIndex);
+              }}
+              className="text-primary capitalize hover:text-secondary hover:border-orange-500"
+            >
+              Week {weekIndex + 1}
+            </AccordionHeader>
+            <AccordionBody>
+              <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+                {Array.from({ length: user.bullets }).map((_, j) => (
+                  <Select
+                    variant="standard"
+                    key={j}
+                    label={`Entry ${j + 1}`}
+                    className="capitalize"
+                    color="orange"
+                    onChange={(val) => handlePickChange(j, val)}
+                  >
+                    {teamsArr.map((team, j) => (
+                      <Option key={j} value={team}>
+                        {team}
+                      </Option>
+                    ))}
+                  </Select>
+                ))}
+
+                <Button
+                  type="submit"
                   className="capitalize"
                   color="orange"
-                  onChange={(val) => handlePickChange(j, val)}
+                  size="sm"
                 >
-                  {teamsArr.map((team, j) => (
-                    <Option key={j} value={team}>
-                      {team}
-                    </Option>
-                  ))}
-                </Select>
-              ))}
-
-              <Button
-                type="submit"
-                className="capitalize"
-                color="orange"
-                size="sm"
-              >
-                submit
-              </Button>
-            </form>
-          </AccordionBody>
-        </Accordion>
-      ))}
+                  submit
+                </Button>
+              </form>
+            </AccordionBody>
+          </Accordion>
+        )
+      )}
     </div>
   );
 };
