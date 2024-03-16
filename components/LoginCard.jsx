@@ -11,8 +11,8 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef();
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [firstname, setfirstname] = useState('');
+  const [lastname, setlastname] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,7 +27,7 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
 
     const response = await fetch('/api/signup', {
       method: 'POST',
-      body: JSON.stringify({ firstName, lastName, username, email, password }),
+      body: JSON.stringify({ firstname, lastname, username, email, password }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -67,6 +67,7 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
               className="text-primary"
               placeholder="First Name"
               label="First Name"
+              onChange={(e) => setfirstname(e.target.value)}
             />
             <Input
               color="blue"
@@ -76,6 +77,7 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
               className="text-primary"
               placeholder="Last Name"
               label="Last Name"
+              onChange={(e) => setlastname(e.target.value)}
             />
             <Input
               color="blue"
@@ -85,6 +87,7 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
               size="regular"
               placeholder="Username"
               label="Username"
+              onChange={(e) => setUsername(e.target.value)}
             />
             <Input
               color="blue"
@@ -94,6 +97,7 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
               className="text-primary"
               placeholder="Email"
               label="Email"
+              onChange={(e) => setEmail(e.target.value)}
             />
             <Input
               color="blue"
@@ -103,6 +107,7 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
               className="text-primary"
               placeholder="Password"
               label="Password"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <Input
               color="blue"
@@ -112,6 +117,7 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
               size="regular"
               placeholder="Confirm Password"
               label="Confirm Password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <Button
               color="blue"
