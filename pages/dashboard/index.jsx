@@ -8,7 +8,7 @@ import { Button } from '@material-tailwind/react';
 import UserTable from '@/components/tables/UserTable';
 import { useRegister } from '@/context/RegisterContext';
 import ButtonBar from '@/components/buttons/ButtonBar';
-import MakeYourPicksCard from '@/components/cards/MakeYourPicksCard';
+import DashboardHero from '@/components/heros/DashboardHero';
 
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
@@ -29,7 +29,7 @@ const Dashboard_Protected = () => {
   return (
     <div className="mx-auto py-10 flex flex-col justify-center gap-10  p-10">
       <ButtonBar />
-      <MakeYourPicksCard user={user} />
+      <DashboardHero user={user} />
 
       <UserTable users={users} />
     </div>

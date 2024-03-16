@@ -64,6 +64,7 @@ export default function RegistrationDialog() {
       <Button
         href="/dashboard"
         className="flex items-center hover:bg-gray-900 p-2 rounded-lg bg-transparent shadow-none"
+        onClick={handleOpen}
       >
         <CreditCardIcon className="text-black dark:text-white" />
         <span

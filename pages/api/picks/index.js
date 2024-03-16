@@ -26,7 +26,8 @@ async function postPicksForUser(req, res, session) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  if (Number(week) < getStartingWeek()) {
+  // Makes it impossible to make a pick if week has past
+  if (Number(week + 1) < getStartingWeek()) {
     console.log('picks are too late');
     return res.status(400).json({ error: 'You are too late bru' });
   }

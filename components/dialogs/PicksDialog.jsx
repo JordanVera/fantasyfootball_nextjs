@@ -42,10 +42,10 @@ export default function PicksDialog() {
       <Dialog
         open={open}
         handler={handleOpen}
-        className="bg-blue-gray-900 overflow-y-auto h-96"
-        size="xs"
+        className="bg-white dark:bg-black overflow-y-auto max-h-[80vh] "
+        size="sm"
       >
-        <DialogHeader className="text-white capitalize text-center">
+        <DialogHeader className="text-primary capitalize text-center">
           Please make your selections
         </DialogHeader>
         <DialogBody>
@@ -121,20 +121,17 @@ const WeeksAccordion = ({ user, updateUserPicks }) => {
         <Accordion
           key={weekIndex}
           open={open === weekIndex}
-          className="mb-2 rounded-lg border border-blue-gray-100 px-4"
+          icon={<Icon id={1} open={open} />}
         >
           <AccordionHeader
             onClick={() => {
               handleOpen(weekIndex);
               handleWeekChange(weekIndex);
             }}
-            className={`border-b-0 transition-colors ${
-              open === weekIndex ? 'text-blue-500 hover:!text-blue-700' : ''
-            }`}
           >
             Week {weekIndex + 1}
           </AccordionHeader>
-          <AccordionBody className="font-normal">
+          <AccordionBody>
             <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
               {Array.from({ length: user.bullets }).map((_, j) => (
                 <Select
@@ -167,3 +164,24 @@ const WeeksAccordion = ({ user, updateUserPicks }) => {
     </div>
   );
 };
+
+function Icon({ id, open }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke="currentColor"
+      className={`${
+        id === open ? 'rotate-180' : ''
+      } h-5 w-5 transition-transform`}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+      />
+    </svg>
+  );
+}

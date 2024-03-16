@@ -2,7 +2,7 @@ import moment from 'moment';
 
 // Dates are 1 hour ahead of central time, use eastern time.
 const dates = [
-  moment('2024-03-09T23:16'), // WEEK 1 NFL (Thursday September 9th, 7:20pm CDT)
+  moment('2024-02-09T23:16'), // WEEK 1 NFL (Thursday September 9th, 7:20pm CDT)
   moment('2024-09-12T02:55'), // WEEK 2 NFL (Thursday September 16th, 7:20pm CDT)
   moment('2024-09-18T02:55'), // WEEK 3 NFL (Thursday September 23rd, 7:20pm CDT)
   moment('2024-09-20T02:55'), // WEEK 4 NFL (Thursday September 30th, 7:20pm CDT)
@@ -27,7 +27,7 @@ const getAvailableWeeks = (all) => {
 
   const weeks = new Array(22)
     .fill(0)
-    .map((_, index) => index + 1)
+    // .map((_, index) => index + 1)
     .filter((week) => week >= startingWeek);
   return weeks;
 };
@@ -36,11 +36,10 @@ const getAvailableWeeks = (all) => {
 const getStartingWeek = () => {
   const now = moment();
 
-  const startingWeek =
-    dates.findIndex((date) => {
-      const startInHours = date.diff(now, 'hour');
-      return startInHours > 0;
-    }) + 1;
+  const startingWeek = dates.findIndex((date) => {
+    const startInHours = date.diff(now, 'hour');
+    return startInHours > 0;
+  });
 
   return startingWeek;
 };
