@@ -19,12 +19,26 @@ export default async function handle(req, res) {
 }
 
 async function signupUser(req, res) {
-  const { firstname, lastname, username, email, password } = req.body;
+  const { firstname, lastname, username, email, password, confirmPassword } =
+    req.body;
 
   console.log('signup hit');
-  console.log({ firstname, lastname, username, email, password });
+  console.log({
+    firstname,
+    lastname,
+    username,
+    email,
+    password,
+    confirmPassword,
+  });
 
   // Add validation here (e.g., check if the email is already in use)
+
+  if (password !== confirmPassword) {
+    return res
+      .status(400)
+      .json({ success: false, error: 'Passwords do not match' });
+  }
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -42,18 +56,18 @@ async function signupUser(req, res) {
     // After the user is created, sign them in using NextAuth.js
     // You need to implement this part according to your authentication setup
     // This is just a placeholder
-    const { error } = await session.create({
-      jwt: {
-        user,
-      },
-      session: {
-        expires: '1d',
-      },
-    });
+    // const { error } = await session.create({
+    //   jwt: {
+    //     user,
+    //   },
+    //   session: {
+    //     expires: '1d',
+    //   },
+    // });
 
-    if (error) {
-      throw new Error(error);
-    }
+    // if (error) {
+    //   throw new Error(error);
+    // }
 
     res.status(200).json({ success: true, user });
   } catch (error) {

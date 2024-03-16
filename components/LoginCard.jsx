@@ -5,6 +5,7 @@ import GithubSignupButton from './buttons/GithubSignupButton';
 import FacebookSignupButton from './buttons/FacebookSignupButton';
 import GoogleSignupButton from './buttons/GoogleSignupButton';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
 
 const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -18,27 +19,54 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSignUp = async (event) => {
-    event.preventDefault();
-
+  const handleSignUp = async () => {
     setLoading(true);
 
     // Add validation here (e.g., check if password and confirmPassword are the same)
 
-    const response = await fetch('/api/signup', {
-      method: 'POST',
-      body: JSON.stringify({ firstname, lastname, username, email, password }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    try {
+      const res = await fetch('/api/signup', {
+        method: 'POST',
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          username,
+          email,
+          password,
+          confirmPassword,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-    setLoading(false);
+      if (!res.ok) {
+        toast.error(res.error, {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+        });
+      }
 
-    if (response.ok) {
-      // Sign-up was successful. You can redirect the user to the sign-in page here.
-    } else {
-      // Sign-up failed. You can show an error message here.
+      // Continue processing the response if no error was thrown
+    } catch (error) {
+      toast.error(error.error, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -54,11 +82,7 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
         />
         {isSignUp ? (
           // onSubmit={handleSignUp}
-          <form
-            className="flex flex-col gap-3"
-            onClick={handleSignUp}
-            ref={formRef}
-          >
+          <>
             <Input
               color="blue"
               variant="standard"
@@ -120,6 +144,7 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <Button
+              onClick={handleSignUp}
               color="blue"
               buttonType="filled"
               size="sm"
@@ -132,7 +157,7 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
             >
               Sign Up
             </Button>
-          </form>
+          </>
         ) : (
           <>
             <Button
