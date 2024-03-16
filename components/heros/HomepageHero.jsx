@@ -66,7 +66,7 @@ const HomepageHero = () => {
             </button>
           </Link>
         </div>
-        <div>
+        <div className="w-full overflow-hidden">
           <TeamSlider direction="left" teamLogos={teamLogos1} />
           <TeamSlider direction="right" teamLogos={teamLogos2} />
         </div>

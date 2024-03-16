@@ -9,7 +9,7 @@ const TeamSlider = ({ direction, teamLogos }) => {
       : 'animate-slideRightToLeft';
 
   return (
-    <div className="overflow-hidden w-full">
+    <div>
       <div
         className={`flex flex-nowrap gap-10 ${animationClass} animation-linear animation-infinite slider`}
       >
