@@ -24,38 +24,25 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
 
     // Add validation here (e.g., check if password and confirmPassword are the same)
 
-    try {
-      const res = await fetch('/api/signup', {
-        method: 'POST',
-        body: JSON.stringify({
-          firstname,
-          lastname,
-          username,
-          email,
-          password,
-          confirmPassword,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    const signup = await fetch('/api/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        firstname,
+        lastname,
+        username,
+        email,
+        password,
+        confirmPassword,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-      if (!res.ok) {
-        toast.error(res.error, {
-          position: 'top-right',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'dark',
-        });
-      }
+    const res = await signup.json();
 
-      // Continue processing the response if no error was thrown
-    } catch (error) {
-      toast.error(error.error, {
+    if (!res.ok) {
+      toast.error(res.error, {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -65,9 +52,11 @@ const LoginCard = ({ onBoarding, setOnboarding, setLoginOrSignup }) => {
         progress: undefined,
         theme: 'dark',
       });
-    } finally {
-      setLoading(false);
     }
+
+    // Continue processing the response if no error was thrown
+
+    setLoading(false);
   };
 
   return (
