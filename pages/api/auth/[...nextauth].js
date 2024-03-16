@@ -3,6 +3,7 @@ import NextAuth from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
 import FacebookProvider from 'next-auth/providers/facebook';
 import GoogleProvider from 'next-auth/providers/google';
+import CredentialsProvider from 'next-auth/providers/credentials';
 
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { PrismaClient } from '@prisma/client';
@@ -26,6 +27,29 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    CredentialsProvider({
+      name: 'Credentials',
+      credentials: {
+        username: { label: 'Username or Email', type: 'text' },
+        password: { label: 'Password', type: 'password' },
+      },
+      authorize: async (credentials) => {
+        const user = await prisma.user.findFirst({
+          where: {
+            OR: [
+              { username: credentials.username },
+              { email: credentials.username },
+            ],
+          },
+        });
+
+        if (user) {
+          return Promise.resolve(user);
+        } else {
+          return Promise.resolve(null);
+        }
+      },
     }),
   ],
 

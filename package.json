@@ -21,6 +21,7 @@
     "@stripe/stripe-js": "^3.0.0",
     "@tabler/icons-react": "^2.47.0",
     "axios": "^1.6.5",
+    "bcryptjs": "^2.4.3",
     "clsx": "^2.1.0",
     "colors": "^1.4.0",
     "framer-motion": "^11.0.6",
