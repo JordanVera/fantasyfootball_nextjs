@@ -33,7 +33,7 @@ export default function PicksDialog() {
         onClick={handleOpen}
         variant="gradient"
         className="capitalize flex flex-row gap-3 items-center"
-        color="orange"
+        color="blue"
         size="sm"
       >
         <SportsFootballIcon />
@@ -130,11 +130,11 @@ const WeeksAccordion = ({ user, updateUserPicks }) => {
                 handleOpen(weekIndex);
                 handleWeekChange(weekIndex);
               }}
-              className="text-primary capitalize hover:text-secondary hover:border-orange-500"
+              className="text-primary capitalize hover:text-secondary hover:border-blue-600"
             >
               Week {weekIndex + 1}
             </AccordionHeader>
-            <AccordionBody>
+            <AccordionBody className="p-5">
               <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
                 {Array.from({ length: user.bullets }).map((_, j) => (
                   <Select
@@ -142,7 +142,7 @@ const WeeksAccordion = ({ user, updateUserPicks }) => {
                     key={j}
                     label={`Entry ${j + 1}`}
                     className="capitalize"
-                    color="orange"
+                    color="blue"
                     onChange={(val) => handlePickChange(j, val)}
                   >
                     {teamsArr.map((team, j) => (
@@ -156,7 +156,7 @@ const WeeksAccordion = ({ user, updateUserPicks }) => {
                 <Button
                   type="submit"
                   className="capitalize"
-                  color="orange"
+                  color="blue"
                   size="sm"
                 >
                   submit

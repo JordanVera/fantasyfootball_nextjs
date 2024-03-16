@@ -18,7 +18,9 @@ export default function App({ Component, pageProps }) {
               id="app"
               className="flex h-screen w-screen bg-white dark:bg-black"
             >
-              <Main_Sidebar />
+              <div className="hidden lg:block">
+                <Main_Sidebar />
+              </div>
 
               <div className="flex-grow overflow-auto">
                 {/* Main content goes here */}

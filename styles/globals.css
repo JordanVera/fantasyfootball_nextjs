@@ -12,11 +12,11 @@
   }
 
   .text-secondary {
-    @apply text-orange-500;
+    @apply text-blue-600;
   }
 
   .dark .text-secondary {
-    @apply text-orange-500;
+    @apply text-blue-600;
 
   }
 }
