@@ -54,7 +54,7 @@ const UserTable = ({ users }) => {
                 </td>
 
                 {Array.from({ length: 18 }).map((_, weekIndex) => (
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td key={weekIndex} className="px-6 py-4 whitespace-nowrap">
                     {groupedPicks[index]?.[weekIndex]?.team}
                   </td>
                 ))}

@@ -69,7 +69,9 @@ async function signupUser(req, res) {
     //   throw new Error(error);
     // }
 
-    res.status(200).json({ success: true, user });
+    res
+      .status(200)
+      .json({ success: true, user, message: `User ${username} created` });
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, message: error.message });

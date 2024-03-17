@@ -4,7 +4,7 @@ import GitHubProvider from 'next-auth/providers/github';
 import FacebookProvider from 'next-auth/providers/facebook';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
-
+import bcrypt from 'bcryptjs';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
@@ -38,17 +38,22 @@ export const authOptions = {
         const user = await prisma.user.findFirst({
           where: {
             OR: [
-              { username: credentials.username },
-              { email: credentials.username },
+              { username: credentials.identifier },
+              { email: credentials.identifier },
             ],
           },
         });
 
-        if (user) {
-          return Promise.resolve(user);
-        } else {
-          return Promise.resolve(null);
+        if (
+          user &&
+          (await bcrypt.compare(credentials.password, user.password))
+        ) {
+          return user;
         }
+
+        // else {
+        //   return null;
+        // }
       },
     }),
   ],

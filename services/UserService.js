@@ -96,6 +96,92 @@ class UserService {
       throw error;
     }
   }
+
+  async signupUser(
+    firstname,
+    lastname,
+    username,
+    email,
+    password,
+    confirmPassword
+  ) {
+    const signup = await fetch('/api/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        firstname,
+        lastname,
+        username,
+        email,
+        password,
+        confirmPassword,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const res = await signup.json();
+
+    if (!res.ok) {
+      toast.error(res.error, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
+    }
+
+    toast.success(res.message, {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    });
+  }
+
+  async loginUser(identifier, password) {
+    const login = await fetch('/api/signin', {
+      method: 'POST',
+      body: JSON.stringify({ identifier, password }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const res = await login.json();
+
+    if (!res.ok) {
+      toast.error(res.error, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
+    }
+
+    toast.success(res.message, {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    });
+  }
 }
 
 export default new UserService();
