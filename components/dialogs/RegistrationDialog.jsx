@@ -96,8 +96,9 @@ export default function RegistrationDialog() {
           <div className="w-72 my-10">
             <Select
               label="number of entries"
-              className="capitalize"
-              color="orange"
+              className="capitalize text-primary"
+              color="indigo"
+              variant="standard"
               onChange={(val) => setNumberOfEntries(val)}
             >
               {Array.from({ length: 25 }, (_, index) => (
@@ -109,17 +110,18 @@ export default function RegistrationDialog() {
           </div>
         </DialogBody>
         <DialogFooter className="flex flex-row items-center justify-between">
-          <div>
+          <div className="flex flex-row items-center">
+            <p className="font-bold text-white text-sm">Powered by </p>
             <Image
-              className="mx-auto mb-10"
+              className="mx-auto "
               src={'/images/stripe.png'}
               alt="stripe logo"
-              height={40}
-              width={40}
+              height={60}
+              width={60}
             />
           </div>
 
-          <div>
+          <div className="flex flex-row items-center">
             <Button
               variant="text"
               color="red"
@@ -128,8 +130,20 @@ export default function RegistrationDialog() {
             >
               <span>Cancel</span>
             </Button>
-            <Button variant="gradient" color="orange" onClick={handleCheckout}>
-              Checkout
+            <Button
+              onClick={handleCheckout}
+              size="sm"
+              className="bg-gradient-to-b from-indigo-700 to-indigo-900 group relative flex items-center  overflow-hidden px-3 py-3 capitalize"
+            >
+              <div className="pr-12">Check out with Stripe</div>
+              <span className="absolute right-0 grid h-full w-12 place-items-center bg-indigo-900 transition-colors ">
+                <Image
+                  src={'/images/stripe.png'}
+                  alt="stripe logo"
+                  height={50}
+                  width={50}
+                />
+              </span>
             </Button>
           </div>
         </DialogFooter>
