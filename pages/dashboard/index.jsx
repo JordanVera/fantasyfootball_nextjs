@@ -13,8 +13,7 @@ import DashboardHero from '@/components/heros/DashboardHero';
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const { users, updateUsersData, user, loading } = useContext(UserContext);
-  const { isCollapsed } = useRegister();
+  const { users, user, loading } = useContext(UserContext);
 
   useEffect(() => {
     if (status === 'loading') return;

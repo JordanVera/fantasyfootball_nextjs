@@ -10,13 +10,13 @@ const UserTable = ({ users }) => {
   return (
     <div className="overflow-x-auto rounded-xl">
       <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50 ">
+        <thead className="bg-[#162235] ">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase">
               Name
             </th>
             {Array.from({ length: 18 }).map((_, index) => (
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-2 mx-6 py-3 text-left text-xs font-medium text-white capitalize ">
                 week {index + 1}
               </th>
             ))}
@@ -35,7 +35,7 @@ const UserTable = ({ users }) => {
             console.log(groupedPicks);
 
             return Array.from({ length: user.bullets }).map((_, index) => (
-              <tr key={`${user.id}-${index}`} className="bg-gray-900 w-full">
+              <tr key={`${user.id}-${index}`} className="bg-[#17263e] w-full">
                 <td className="px-6 py-2 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
