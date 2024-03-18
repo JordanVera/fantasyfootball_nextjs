@@ -15,6 +15,7 @@ import Image from 'next/image';
 
 import { UserContext } from '@/context/UserContext';
 import { getStartingWeek } from '@/utils/dates';
+import { TracingBeam } from '../ui/tracing-beam';
 
 export default function PicksDialog() {
   const { user, updateUserPicks } = useContext(UserContext);
@@ -55,7 +56,11 @@ export default function PicksDialog() {
           Please make your selections
         </DialogHeader>
         <DialogBody>
-          <WeeksAccordion user={user} updateUserPicks={updateUserPicks} />
+          <TracingBeam
+            children={
+              <WeeksAccordion user={user} updateUserPicks={updateUserPicks} />
+            }
+          />
         </DialogBody>
       </Dialog>
     </>

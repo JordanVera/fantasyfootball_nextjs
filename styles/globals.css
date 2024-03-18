@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer utilities {
   .text-primary {
     @apply text-black;
@@ -25,6 +27,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --emerald-600: #047857;
+  --emerald-500: #059669;
 }
 
 @media (prefers-color-scheme: dark) {
