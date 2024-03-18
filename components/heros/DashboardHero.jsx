@@ -19,7 +19,7 @@ const DashboardHero = ({ user }) => {
 
             <h2>Please make sure to read the rules!</h2>
 
-            <h2 className="text-orange-500 font-normal">
+            <h2 className="text-blue-500 font-normal">
               ***
               <span className="font-bold">
                 It is currently week {getStartingWeek() + 1}{' '}

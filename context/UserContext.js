@@ -16,17 +16,26 @@ export const UserProvider = ({ children }) => {
 
   async function fetchData() {
     setLoading(true);
-    const Users = await UserService.getAllUsers();
-    const User = await UserService.getCurrentlyLoggedInUser();
+    try {
+      const Users = await UserService.getAllUsers();
+      const User = await UserService.getCurrentlyLoggedInUser();
 
-    setUser(User?.user || {});
-    setUsers(Users);
-    setLoading(false);
+      setUser(User?.user || {});
+      setUsers(Users);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   const updateUserPicks = async (week, picks) => {
-    await UserService.submitPicks(week, picks);
-    fetchData();
+    try {
+      await UserService.submitPicks(week, picks);
+      fetchData();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

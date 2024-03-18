@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 class UserService {
   constructor(apiUrl) {
@@ -6,6 +7,7 @@ class UserService {
   }
 
   async getCurrentlyLoggedInUser() {
+    const router = useRouter();
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user`, {
         // Use process.env.BASE_URL
@@ -17,6 +19,7 @@ class UserService {
 
       if (!response.ok) {
         console.log(response);
+
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
