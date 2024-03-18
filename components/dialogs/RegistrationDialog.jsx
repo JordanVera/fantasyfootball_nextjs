@@ -97,7 +97,7 @@ export default function RegistrationDialog() {
             <Select
               label="number of entries"
               className="capitalize text-primary"
-              color="indigo"
+              color="blue"
               variant="standard"
               onChange={(val) => setNumberOfEntries(val)}
             >
