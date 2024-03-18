@@ -1,8 +1,10 @@
 import { Button } from '@material-tailwind/react';
+import SignoutButton from './buttons/SignoutButton';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import Logo from './Logo';
+import LoginButton from './buttons/LoginButton';
 
 export const Topbar = () => {
   const { data: session } = useSession();
@@ -17,14 +19,16 @@ export const Topbar = () => {
         {!session ? (
           <>
             <Link href={'/login'}>
-              <Button color="blue">Login</Button>
+              <LoginButton />
             </Link>
             <Link href={'/login'}>
-              <Button color="white">Signup</Button>
+              <Button color="white" className="rounded-full">
+                Signup
+              </Button>
             </Link>
           </>
         ) : (
-          <Button onClick={() => signOut({ callbackUrl: '/' })}>Signout</Button>
+          <SignoutButton />
         )}
       </div>
     </div>
