@@ -11,7 +11,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from '@material-tailwind/react';
-import SportsFootballIcon from '@mui/icons-material/SportsFootball';
+import Image from 'next/image';
 
 import { UserContext } from '@/context/UserContext';
 import { getStartingWeek } from '@/utils/dates';
@@ -31,14 +31,20 @@ export default function PicksDialog() {
     <>
       <Button
         onClick={handleOpen}
-        variant="gradient"
-        className="capitalize flex flex-row gap-3 items-center"
-        color="blue"
         size="sm"
+        className="bg-gradient-to-b from-orange-700 to-orange-900 group relative flex items-center  overflow-hidden px-3 py-3 capitalize"
       >
-        <SportsFootballIcon />
-        Make your picks
+        <div className="pr-12">Make your picks</div>
+        <span className="absolute right-0 grid h-full w-12 place-items-center bg-orange-900 transition-colors ">
+          <Image
+            src="/images/logo.png"
+            alt="main logo"
+            height={40}
+            width={40}
+          />
+        </span>
       </Button>
+
       <Dialog
         open={open}
         handler={handleOpen}
