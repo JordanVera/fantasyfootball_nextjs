@@ -5,14 +5,15 @@ import PicksDialog from '..//dialogs/PicksDialog';
 import RegistrationDialog from '..//dialogs/RegistrationDialog';
 import RulesDialog from '..//dialogs/RulesDialog';
 import { Button } from '@material-tailwind/react';
+import CheckoutButton from './CheckoutButton';
 
 const ButtonBar = () => {
   const { users, updateUsersData, user, loading } = useContext(UserContext);
-  const { isCollapsed } = useRegister();
   return (
     <div className="flex flex-row justify-center gap-3 w-full">
       <PicksDialog users={users} user={user} />
-      <RegistrationDialog isCollapsed={isCollapsed} />
+
+      <CheckoutButton />
 
       <RulesDialog />
 

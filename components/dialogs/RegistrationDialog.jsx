@@ -11,13 +11,16 @@ import {
 } from '@material-tailwind/react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useRegister } from '@/context/RegisterContext';
+import { useUser } from '@/context/UserContext';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 
 export default function RegistrationDialog() {
-  const [open, setOpen] = useState(false);
+  const handleOpen = () => setRegistrationOpen(!registrationOpen);
   const [numberOfEntries, setNumberOfEntries] = useState(0);
+
+  const { registrationOpen, setRegistrationOpen } = useUser();
 
   const { isCollapsed, setIsCollapsed } = useRegister();
 
@@ -33,8 +36,6 @@ export default function RegistrationDialog() {
       quantity: numberOfEntries,
     },
   ];
-
-  const handleOpen = () => setOpen(!open);
 
   const handleCheckout = async () => {
     const res = await fetch('/api/create-checkout-session', {
@@ -83,7 +84,11 @@ export default function RegistrationDialog() {
           Register
         </span>
       </div> */}
-      <Dialog open={open} handler={handleOpen} className="bg-black ">
+      <Dialog
+        open={registrationOpen}
+        handler={handleOpen}
+        className="bg-black "
+      >
         <DialogHeader className="text-white capitalize">
           how many entries would you like to purchase?
         </DialogHeader>

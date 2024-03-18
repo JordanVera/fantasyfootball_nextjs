@@ -1,7 +1,8 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import UserService from '@/services/UserService'; // Assuming UserService is in the same directory
 
 export const UserContext = createContext();
+export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
@@ -29,7 +30,16 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ users, updateUserPicks, user, loading }}>
+    <UserContext.Provider
+      value={{
+        users,
+        updateUserPicks,
+        user,
+        loading,
+        registrationOpen,
+        setRegistrationOpen,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
