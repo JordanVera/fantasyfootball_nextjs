@@ -18,6 +18,8 @@ const LoginForm = ({ setIsSignUp }) => {
       // callbackUrl: `/dashboard`,
     });
 
+    console.log({ identifier, password });
+
     if (!result) {
       console.error('Sign in failed');
       return;
@@ -26,6 +28,8 @@ const LoginForm = ({ setIsSignUp }) => {
     if (result.error) {
       console.error(result.error);
     }
+
+    console.log('sucessfully signed in');
   };
 
   return (

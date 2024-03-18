@@ -26,6 +26,7 @@ async function postPicksForUser(req, res, session) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
+  console.log('getStartingWeek()', getStartingWeek());
   // Makes it impossible to make a pick if week has past
   if (Number(week + 1) < getStartingWeek()) {
     console.log('picks are too late');
@@ -40,6 +41,7 @@ async function postPicksForUser(req, res, session) {
 
     // console.log(session.user);
 
+    // makes it impossible to
     for (let pick of picks) {
       const existingPick = await prisma.picks.findFirst({
         where: {

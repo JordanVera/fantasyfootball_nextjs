@@ -45,7 +45,7 @@ const getStartingWeek = () => {
 };
 
 // console.log('dates', dates);
-console.log('getStartingWeek()', getStartingWeek());
+// console.log('getStartingWeek()', getStartingWeek());
 
 module.exports = {
   getAvailableWeeks,

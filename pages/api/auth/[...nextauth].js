@@ -7,6 +7,8 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { PrismaClient } from '@prisma/client';
+import jwt from 'jsonwebtoken';
+
 const prisma = new PrismaClient();
 
 export const authOptions = {
@@ -14,6 +16,10 @@ export const authOptions = {
   adapter: PrismaAdapter(prisma),
   jwt: {
     secret: process.env.NEXTAUTH_SECRET,
+  },
+  session: {
+    jwt: false, // Use database sessions instead of JWT
+    maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   providers: [
     GitHubProvider({
@@ -31,29 +37,62 @@ export const authOptions = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        username: { label: 'Username or Email', type: 'text' },
+        identifier: { label: 'Username or Email', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
       authorize: async (credentials) => {
+        if (!credentials.identifier || !credentials.password) {
+          throw new Error('Invalid Password/Identifier');
+        }
+        const identifier = credentials.identifier.toLowerCase();
+
         const user = await prisma.user.findFirst({
           where: {
-            OR: [
-              { username: credentials.identifier },
-              { email: credentials.identifier },
-            ],
+            OR: [{ email: identifier }, { username: identifier }],
           },
         });
 
-        if (
-          user &&
-          (await bcrypt.compare(credentials.password, user.password))
-        ) {
-          return user;
+        if (!user) {
+          throw new Error('Invalid username/email or password.');
         }
 
-        // else {
-        //   return null;
-        // }
+        const isValid = await bcrypt.compare(
+          credentials.password,
+          user.password
+        );
+
+        if (!isValid) {
+          throw new Error('Invalid username/email or password.');
+        }
+        const userId = user.id;
+
+        // await prisma.user.update({
+        //   where: { id: userId },
+        //   data: { lastLoggedOn: new Date() },
+        // });
+
+        const generateJWT = (payload, expiresIn) => {
+          let expireTime = '30d';
+          if (expiresIn) {
+            expireTime = '45d';
+            console.log('jwt expireTime = true === 45d');
+          }
+
+          return jwt.sign(payload, process.env.NEXTAUTH_SECRET, {
+            expiresIn: expireTime,
+          });
+        };
+
+        const token = generateJWT({
+          email: user.email,
+          username: user.username,
+          id: user.id,
+        });
+
+        return {
+          ...user,
+          token,
+        };
       },
     }),
   ],
