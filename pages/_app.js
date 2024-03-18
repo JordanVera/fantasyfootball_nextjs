@@ -2,11 +2,12 @@ import { SessionProvider } from 'next-auth/react';
 import { UserProvider } from '@/context/UserContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { RegisterProvider } from '@/context/RegisterContext';
+import { Footer } from '@/components/Footer';
+import { Topbar } from '@/components/Topbar';
 import { ToastContainer } from 'react-toastify';
 import Main_Sidebar from '@/components/Main_Sidebar';
 import 'react-toastify/dist/ReactToastify.css';
 import '@/styles/globals.css';
-import { Footer } from '@/components/Footer';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -23,6 +24,7 @@ export default function App({ Component, pageProps }) {
               </div>
 
               <div className="flex-grow overflow-auto">
+                <Topbar />
                 {/* Main content goes here */}
                 <Component {...pageProps} />
                 <Footer />

@@ -90,7 +90,9 @@ function Main_Sidebar() {
           </MenuHandler>
           <MenuList>
             <MenuItem>Settings</MenuItem>
-            <MenuItem onClick={() => signOut()}>Signout</MenuItem>
+            <MenuItem onClick={() => signOut({ callbackUrl: '/' })}>
+              Signout
+            </MenuItem>
           </MenuList>
         </Menu>
       </div>
