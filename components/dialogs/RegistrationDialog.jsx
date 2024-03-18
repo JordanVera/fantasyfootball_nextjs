@@ -12,6 +12,7 @@ import {
 import { loadStripe } from '@stripe/stripe-js';
 import { useRegister } from '@/context/RegisterContext';
 import { useUser } from '@/context/UserContext';
+import Image from 'next/image';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 import CreditCardIcon from '@mui/icons-material/CreditCard';
@@ -75,28 +76,23 @@ export default function RegistrationDialog() {
         </span>
       </Button>
 
-      {/* <div
-        href="/dashboard"
-        className="flex flex-row items-center hover:bg-gray-900 p-2 rounded-lg"
-      >
-        <CreditCardIcon />
-        <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
-          Register
-        </span>
-      </div> */}
       <Dialog
         open={registrationOpen}
         handler={handleOpen}
         className="bg-black "
       >
         <DialogHeader className="text-white capitalize">
-          how many entries would you like to purchase?
+          checkout. How many entries would you like to purchase?
         </DialogHeader>
-        <DialogBody className="text-gray-600">
-          The key to more success is to have a lot of pillows. Put it this way,
-          it took me twenty five years to get these plants, twenty five years of
-          blood sweat and tears, and I&apos;m never giving up, I&apos;m just
-          getting started. I&apos;m up to something. Fan luv.
+
+        <DialogBody>
+          <p className="text-primary">
+            The key to more success is to have a lot of pillows. Put it this
+            way, it took me twenty five years to get these plants, twenty five
+            years of blood sweat and tears, and I&apos;m never giving up,
+            I&apos;m just getting started. I&apos;m up to something. Fan luv.
+          </p>
+
           <div className="w-72 my-10">
             <Select
               label="number of entries"
@@ -112,18 +108,30 @@ export default function RegistrationDialog() {
             </Select>
           </div>
         </DialogBody>
-        <DialogFooter>
-          <Button
-            variant="text"
-            color="red"
-            onClick={handleOpen}
-            className="mr-1"
-          >
-            <span>Cancel</span>
-          </Button>
-          <Button variant="gradient" color="orange" onClick={handleCheckout}>
-            Checkout
-          </Button>
+        <DialogFooter className="flex flex-row items-center justify-between">
+          <div>
+            <Image
+              className="mx-auto mb-10"
+              src={'/images/stripe.png'}
+              alt="stripe logo"
+              height={40}
+              width={40}
+            />
+          </div>
+
+          <div>
+            <Button
+              variant="text"
+              color="red"
+              onClick={handleOpen}
+              className="mr-1"
+            >
+              <span>Cancel</span>
+            </Button>
+            <Button variant="gradient" color="orange" onClick={handleCheckout}>
+              Checkout
+            </Button>
+          </div>
         </DialogFooter>
       </Dialog>
     </>

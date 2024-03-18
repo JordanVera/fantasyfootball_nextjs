@@ -3,10 +3,8 @@ import { useSession, signIn } from 'next-auth/react';
 import { useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { UserContext } from '@/context/UserContext';
-import { Button } from '@material-tailwind/react';
 
 import UserTable from '@/components/tables/UserTable';
-import { useRegister } from '@/context/RegisterContext';
 import ButtonBar from '@/components/buttons/ButtonBar';
 import DashboardHero from '@/components/heros/DashboardHero';
 

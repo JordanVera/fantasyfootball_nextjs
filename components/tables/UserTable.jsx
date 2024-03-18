@@ -9,20 +9,20 @@ const UserTable = ({ users }) => {
 
   return (
     <div className="overflow-x-auto rounded-xl">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-[#162235] ">
+      <table className="min-w-full divide-y divide-gray-700">
+        <thead className="bg-gray-900 ">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase">
+            <th className="px-6 py-3 text-left text-xs font-medium text-primary capitalize tracking-wider ">
               Name
             </th>
             {Array.from({ length: 18 }).map((_, index) => (
-              <th className="px-2 mx-6 py-3 text-left text-xs font-medium text-white capitalize ">
+              <th className="px-2 py-3 text-left text-xs font-medium text-primary capitalize tracking-wider ">
                 week {index + 1}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white divide-y divide-gray-700">
           {users?.map((user) => {
             const groupedPicks = user.Picks.reduce((grouped, pick) => {
               (grouped[pick.entryNumber] = grouped[pick.entryNumber] || {})[
@@ -35,7 +35,7 @@ const UserTable = ({ users }) => {
             console.log(groupedPicks);
 
             return Array.from({ length: user.bullets }).map((_, index) => (
-              <tr key={`${user.id}-${index}`} className="bg-[#17263e] w-full">
+              <tr key={`${user.id}-${index}`} className={` bg-gray-900 w-full`}>
                 <td className="px-6 py-2 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
@@ -54,7 +54,10 @@ const UserTable = ({ users }) => {
                 </td>
 
                 {Array.from({ length: 18 }).map((_, weekIndex) => (
-                  <td key={weekIndex} className="px-6 py-4 whitespace-nowrap">
+                  <td
+                    key={weekIndex}
+                    className={` px-2 py-4 whitespace-nowrap`}
+                  >
                     {groupedPicks[index]?.[weekIndex]?.team}
                   </td>
                 ))}

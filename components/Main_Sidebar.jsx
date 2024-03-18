@@ -34,7 +34,7 @@ function Main_Sidebar() {
 
   return (
     <div
-      className={`bg-white dark:bg-black z-50 sticky top-0 border-r border-gray-900 transition-width duration-200 ease-in-out flex flex-col p-2 h-full ${
+      className={`bg-white dark:bg-black z-50 sticky top-0 border-r border-gray-300 dark:border-gray-900 transition-width duration-200 ease-in-out flex flex-col p-2 h-full ${
         isCollapsed ? 'w-18 items-center ' : 'w-48 justify-start'
       }`}
     >
