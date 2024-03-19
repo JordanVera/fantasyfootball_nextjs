@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Logo from './Logo';
 
 export const Footer = () => {
   return (
@@ -10,12 +11,7 @@ export const Footer = () => {
             href="/"
             className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
           >
-            <Image
-              src="/images/logo.png"
-              height={100}
-              width={100}
-              alt="main Logo"
-            />
+            <Logo height={100} width={100} />
           </Link>
           <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
             <li>

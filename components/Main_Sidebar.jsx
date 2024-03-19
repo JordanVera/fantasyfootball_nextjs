@@ -46,9 +46,11 @@ function Main_Sidebar() {
         href="/"
         className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
       >
-        <HomeIcon className="text-black dark:text-white" />
+        <HomeIcon className="text-gray-600" />
 
-        <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
+        <span
+          className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'} text-gray-600`}
+        >
           Home
         </span>
       </Link>
@@ -57,11 +59,13 @@ function Main_Sidebar() {
         className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
       >
         {session ? (
-          <LogoutIcon className="text-black dark:text-white" />
+          <LogoutIcon className="text-gray-600" />
         ) : (
-          <LoginIcon className="text-black dark:text-white" />
+          <LoginIcon className="text-gray-600" />
         )}
-        <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
+        <span
+          className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'} text-gray-600`}
+        >
           Login
         </span>
       </Link>
@@ -69,8 +73,10 @@ function Main_Sidebar() {
         href="/dashboard"
         className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
       >
-        <SpaceDashboardIcon className="text-black dark:text-white" />
-        <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
+        <SpaceDashboardIcon className="text-gray-600" />
+        <span
+          className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'} text-gray-600`}
+        >
           Dashboard
         </span>
       </Link>

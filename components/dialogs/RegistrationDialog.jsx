@@ -68,9 +68,11 @@ export default function RegistrationDialog() {
         className="flex items-center hover:bg-gray-900 p-2 rounded-lg bg-transparent shadow-none"
         onClick={handleOpen}
       >
-        <CreditCardIcon className="text-black dark:text-white" />
+        <CreditCardIcon className="text-gray-600" />
         <span
-          className={`ml-3 capitalize ${isCollapsed ? 'hidden' : 'inline'}`}
+          className={`ml-3 capitalize ${
+            isCollapsed ? 'hidden' : 'inline'
+          } text-gray-600`}
         >
           Register
         </span>
