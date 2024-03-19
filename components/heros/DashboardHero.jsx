@@ -1,6 +1,9 @@
 import { getStartingWeek } from '@/utils/dates';
+import { useUser } from '@/context/UserContext';
 
 const DashboardHero = ({ user }) => {
+  const { handleOpenRulesDialog } = useUser();
+
   return (
     <div className="rounded-xl border border-gray-700 items-center font-bold flex flex-row bg-[#17263e]">
       <div className=" p-5 w-full">
@@ -17,7 +20,12 @@ const DashboardHero = ({ user }) => {
               Once you buyin you will be able to make your picks{' '}
             </h2>
 
-            <h2>Please make sure to read the rules!</h2>
+            <button
+              onClick={handleOpenRulesDialog}
+              className="text-left hover:text-orange-500 underline"
+            >
+              <h2>Please make sure to read the rules!</h2>
+            </button>
 
             <h2 className="text-blue-500 font-normal">
               ***

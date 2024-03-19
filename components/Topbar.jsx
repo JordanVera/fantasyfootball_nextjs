@@ -10,7 +10,7 @@ export const Topbar = () => {
   const { data: session } = useSession();
 
   return (
-    <div className="w-full border-b border-gray-300 dark:border-gray-900 p-3 flex flex-row justify-between items-center">
+    <div className="w-full border-b border-gray-300 dark:border-gray-900 px-10 flex flex-row justify-between items-center">
       <Link href={'/'}>
         <Logo height={80} width={80} />
       </Link>

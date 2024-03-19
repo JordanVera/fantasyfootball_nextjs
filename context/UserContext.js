@@ -9,6 +9,9 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
   const [registrationOpen, setRegistrationOpen] = useState(false);
+  const [openRulesDialog, setOpenRulesDialog] = useState(false);
+
+  const handleOpenRulesDialog = () => setOpenRulesDialog(!openRulesDialog);
 
   useEffect(() => {
     fetchData();
@@ -47,6 +50,9 @@ export const UserProvider = ({ children }) => {
         loading,
         registrationOpen,
         setRegistrationOpen,
+        openRulesDialog,
+        setOpenRulesDialog,
+        handleOpenRulesDialog,
       }}
     >
       {children}

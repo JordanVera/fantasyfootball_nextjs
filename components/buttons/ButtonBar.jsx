@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
-import { UserContext } from '@/context/UserContext';
-import { useRegister } from '@/context/RegisterContext';
+import React from 'react';
 import PicksDialog from '..//dialogs/PicksDialog';
-import RegistrationDialog from '..//dialogs/RegistrationDialog';
 import RulesDialog from '..//dialogs/RulesDialog';
 import { Button } from '@material-tailwind/react';
 import CheckoutButton from './CheckoutButton';
+import { useUser } from '@/context/UserContext';
 
 const ButtonBar = () => {
-  const { users, updateUsersData, user, loading } = useContext(UserContext);
+  const { users, user } = useUser();
+
   return (
     <div className="flex flex-row justify-center gap-3 w-full">
       <PicksDialog users={users} user={user} />

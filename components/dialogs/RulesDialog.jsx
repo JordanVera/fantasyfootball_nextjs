@@ -5,32 +5,37 @@ import {
   DialogHeader,
   DialogBody,
 } from '@material-tailwind/react';
+import { useUser } from '@/context/UserContext';
+
+import GavelIcon from '@mui/icons-material/Gavel';
 
 export default function RulesDialog() {
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => setOpen(!open);
+  const { handleOpenRulesDialog, openRulesDialog } = useUser();
 
   return (
     <>
       <Button
-        onClick={handleOpen}
-        variant="text"
-        className="capitalize text-blue-500 text-sm font-normal"
+        onClick={handleOpenRulesDialog}
+        size="sm"
+        className="bg-gradient-to-b from-gray-700 to-gray-900 group relative flex items-center  overflow-hidden px-3 py-3 capitalize"
       >
-        Rules
+        <div className="pr-12">Read the Rules</div>
+        <span className="absolute right-0 grid h-full w-12 place-items-center bg-gray-900 transition-colors ">
+          <GavelIcon />
+        </span>
       </Button>
+
       <Dialog
-        open={open}
-        handler={handleOpen}
-        className="bg-black  overflow-y-auto h-96"
-        size="xs"
+        open={openRulesDialog}
+        handler={handleOpenRulesDialog}
+        className="bg-white dark:bg-black  overflow-y-auto h-96"
+        size="sm"
       >
-        <DialogHeader className=" capitalize text-gray-400">
+        <DialogHeader className=" capitalize text-primary">
           Tournament Rules
         </DialogHeader>
-        <DialogBody className="text-gray-600">
-          <ol className="list-decimal list-inside flex flex-col gap-5 text-gray-400">
+        <DialogBody>
+          <ol className="list-decimal list-inside flex flex-col gap-3 text-primary">
             <li>Participation in the last longer is $60 per entry.</li>
             <li>
               The payout percentages are as follows - 90% to the winner and 10%
