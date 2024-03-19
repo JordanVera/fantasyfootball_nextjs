@@ -1,11 +1,12 @@
 import { getStartingWeek } from '@/utils/dates';
 import { useUser } from '@/context/UserContext';
+import ButtonBar from '../buttons/ButtonBar';
 
 const DashboardHero = ({ user }) => {
   const { handleOpenRulesDialog } = useUser();
 
   return (
-    <div className="rounded-xl border border-gray-700 items-center font-bold flex flex-row bg-[#17263e]">
+    <div className="rounded-xl border border-gray-700 items-center font-bold flex flex-col lg:flex-row bg-[#17263e]">
       <div className=" p-5 w-full">
         <div className="max-w-[800px]">
           <h1 className="text-2xl font-bold mb-5">{user.name}'s dashboard</h1>

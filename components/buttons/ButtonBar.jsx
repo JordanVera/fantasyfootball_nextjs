@@ -9,7 +9,7 @@ const ButtonBar = () => {
   const { users, user } = useUser();
 
   return (
-    <div className="flex flex-row justify-center gap-3 w-full">
+    <div className="flex flex-col lg:flex-row justify-center gap-3 w-full">
       <PicksDialog users={users} user={user} />
 
       <CheckoutButton />
