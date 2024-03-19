@@ -18,26 +18,25 @@ const WhatWeDo = () => {
         </div>
         <div className="w-2/3 flex flex-col gap-5">
           <p>
-            NFL Last Longer is the first and only exclusively cryptocurrency
-            survivor league style pool for the National Football League. The
-            objective is to pick one NFL team to win each week, no Vegas points
-            spread, and you cannot pick the same team more than once through out
-            the season. We take pride in being innovators in this field by
-            supporting cryptocurrency EXCLUSIVELY.{' '}
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi,
+            temporibus deserunt? Debitis quibusdam voluptatibus dolore, delectus
+            quo, quia totam cum adipisci aperiam commodi nulla ea necessitatibus
+            dignissimos. Eligendi tenetur eius suscipit perspiciatis iste optio
+            reprehenderit itaque quod cum amet? Temporibus odio velit
+            perspiciatis libero impedit autem distinctio accusantium perferendis
+            accusamus.
           </p>
           <p>
-            Once you make an account you will have access to the dashboard by
-            signing in, this is where you can buy into the last longer and make
-            your weekly picks! Please make sure to pick a solid password. Once
-            you are logged into the account you can reset your password,
-            unfortunately you cannot reset your password while not logged out.{' '}
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+            expedita reprehenderit officiis exercitationem maxime nam ex
+            repudiandae sapiente magni eius ut fuga nobis tempora nulla ipsam
+            est commodi sequi, eveniet qui sed, odit et quidem? Officia corporis
+            quas obcaecati ex?
           </p>
           <p>
-            Each user is allowed up to 20 entries, which should give you plenty
-            of attempts at going long and out lasting the entire pool, good
-            luck! We hope we have created an awesome app for our users but if
-            you have any suggestions you can always contact us and we'd be happy
-            to hear your feedback.{' '}
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+            voluptatibus provident et nesciunt nostrum in pariatur eligendi
+            quam. Saepe, nemo?
           </p>
         </div>
       </div>
