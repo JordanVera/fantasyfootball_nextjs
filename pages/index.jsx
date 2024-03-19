@@ -22,8 +22,6 @@ function Child() {
       <WhatWeDo />
       {/* <Cards /> */}
       <SignupCTA />
-      <SignupCTA />
-      <SignupCTA />
     </div>
   );
 }
