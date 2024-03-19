@@ -87,9 +87,8 @@ function Main_Sidebar() {
       <div className="mt-auto">
         <Menu>
           <MenuHandler>
-            <Button className="bg-transparent flex flex-row justify-between p-2 items-center hover:bg-gray-900">
-              <Avatar src={session?.user?.image} className="h-10 w-10" />
-
+            <Button className=" p-0 m-0 rounded-full">
+              <Avatar src={session?.user?.image} className="h-8 w-8" />
               <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
                 {`${session?.user?.name}`}
               </span>
