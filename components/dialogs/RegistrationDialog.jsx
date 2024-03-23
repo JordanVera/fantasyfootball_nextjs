@@ -88,27 +88,42 @@ export default function RegistrationDialog() {
         </DialogHeader>
 
         <DialogBody>
-          <p className="text-primary">
-            The key to more success is to have a lot of pillows. Put it this
-            way, it took me twenty five years to get these plants, twenty five
-            years of blood sweat and tears, and I&apos;m never giving up,
-            I&apos;m just getting started. I&apos;m up to something. Fan luv.
-          </p>
+          <div>
+            <div className="flex flex-row items-center justify-between">
+              <div className="w-1/2 border border-gray-700 rounded-lg p-5">
+                <Image
+                  src={'/images/stripe.png'}
+                  height={100}
+                  width={100}
+                  alt="stripe logo"
+                />
+                <h3 className="text-primary">checkout with stripe</h3>
+              </div>
+              <div className="w-1/2">crypto</div>
+            </div>
 
-          <div className="w-72 my-10">
-            <Select
-              label="number of entries"
-              className="capitalize text-primary"
-              color="blue"
-              variant="standard"
-              onChange={(val) => setNumberOfEntries(val)}
-            >
-              {Array.from({ length: 25 }, (_, index) => (
-                <Option key={index + 1} value={index + 1}>
-                  {index + 1}
-                </Option>
-              ))}
-            </Select>
+            <p className="text-primary">
+              The key to more success is to have a lot of pillows. Put it this
+              way, it took me twenty five years to get these plants, twenty five
+              years of blood sweat and tears, and I&apos;m never giving up,
+              I&apos;m just getting started. I&apos;m up to something. Fan luv.
+            </p>
+
+            <div className="w-72 my-10">
+              <Select
+                label="number of entries"
+                className="capitalize text-primary"
+                color="blue"
+                variant="standard"
+                onChange={(val) => setNumberOfEntries(val)}
+              >
+                {Array.from({ length: 25 }, (_, index) => (
+                  <Option key={index + 1} value={index + 1}>
+                    {index + 1}
+                  </Option>
+                ))}
+              </Select>
+            </div>
           </div>
         </DialogBody>
         <DialogFooter className="flex flex-row items-center justify-between">
