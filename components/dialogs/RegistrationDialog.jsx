@@ -65,14 +65,14 @@ export default function RegistrationDialog() {
     <>
       <Button
         href="/dashboard"
-        className="flex items-center hover:bg-gray-900 p-2 rounded-lg bg-transparent shadow-none"
+        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg bg-transparent shadow-none"
         onClick={handleOpen}
       >
-        <CreditCardIcon className="text-gray-600" />
+        <CreditCardIcon className="text-black dark:text-white" />
         <span
           className={`ml-3 capitalize ${
             isCollapsed ? 'hidden' : 'inline'
-          } text-gray-600`}
+          } text-black dark:text-white`}
         >
           Register
         </span>
@@ -90,15 +90,16 @@ export default function RegistrationDialog() {
         <DialogBody>
           <div>
             <div className="flex flex-row items-center justify-between">
-              <div className="w-1/2 border border-gray-700 rounded-lg p-5">
+              <button className="w-1/2 border border-gray-700 rounded-lg p-5">
                 <Image
                   src={'/images/stripe.png'}
                   height={100}
                   width={100}
                   alt="stripe logo"
+                  className="mx-auto"
                 />
                 <h3 className="text-primary">checkout with stripe</h3>
-              </div>
+              </button>
               <div className="w-1/2">crypto</div>
             </div>
 

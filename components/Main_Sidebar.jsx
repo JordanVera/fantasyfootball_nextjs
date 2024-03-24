@@ -38,44 +38,53 @@ function Main_Sidebar() {
         isCollapsed ? 'w-18 items-center ' : 'w-48 justify-start'
       }`}
     >
-      <IconButton onClick={toggleSidebar}>
-        <MenuIcon className="text-white" />
+      <IconButton
+        onClick={toggleSidebar}
+        className="bg-transparent shadow-none hover:bg-gray-500 dark:hover:bg-gray-900 "
+      >
+        <MenuIcon className="text-black dark:text-white" />
       </IconButton>
 
       <Link
         href="/"
-        className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
+        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
       >
-        <HomeIcon className="text-gray-600" />
+        <HomeIcon className="text-black dark:text-white" />
 
         <span
-          className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'} text-gray-600`}
+          className={`ml-3 ${
+            isCollapsed ? 'hidden' : 'inline'
+          } text-black dark:text-white`}
         >
           Home
         </span>
       </Link>
       <Link
         href="/login"
-        className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
+        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
       >
         {session ? (
-          <LogoutIcon className="text-gray-600" />
+          <LogoutIcon className="text-black dark:text-white" />
         ) : (
-          <LoginIcon className="text-gray-600" />
+          <LoginIcon className="text-black dark:text-white" />
         )}
         <span
-          className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'} text-gray-600`}
+          className={`ml-3 ${
+            isCollapsed ? 'hidden' : 'inline'
+          } text-black dark:text-white`}
         >
           Login
         </span>
       </Link>
       <Link
         href="/dashboard"
-        className="flex items-center hover:bg-gray-900 p-2 rounded-lg"
+        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
       >
-        <SpaceDashboardIcon className="text-gray-600" />
+        <SpaceDashboardIcon className="text-black dark:text-white" />
         <span
-          className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'} text-gray-600`}
+          className={`ml-3 ${
+            isCollapsed ? 'hidden' : 'inline'
+          } text-black dark:text-white`}
         >
           Dashboard
         </span>

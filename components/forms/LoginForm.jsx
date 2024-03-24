@@ -58,12 +58,7 @@ const LoginForm = ({ setIsSignUp }) => {
 
       <Button
         color="blue"
-        buttonType="filled"
         size="sm"
-        rounded={false}
-        block={false}
-        iconOnly={false}
-        ripple="light"
         className="capitalize"
         onClick={handleSignIn}
       >
@@ -71,12 +66,7 @@ const LoginForm = ({ setIsSignUp }) => {
       </Button>
       <Button
         color="orange"
-        buttonType="filled"
         size="sm"
-        rounded={false}
-        block={false}
-        iconOnly={false}
-        ripple="light"
         className="capitalize"
         onClick={() => setIsSignUp(true)}
       >
