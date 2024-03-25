@@ -19,24 +19,89 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 
 export default function RegistrationDialog() {
   const handleOpen = () => setRegistrationOpen(!registrationOpen);
-  const [numberOfEntries, setNumberOfEntries] = useState(0);
 
   const { registrationOpen, setRegistrationOpen } = useUser();
-
   const { isCollapsed, setIsCollapsed } = useRegister();
+  const [stripeOrCrypto, setStripeOrCrypto] = useState(0);
 
-  const items = [
-    {
-      price_data: {
-        currency: 'usd',
-        product_data: {
-          name: 'T-shirt',
-        },
-        unit_amount: 2000,
-      },
-      quantity: numberOfEntries,
-    },
-  ];
+  return (
+    <>
+      <Button
+        href="/dashboard"
+        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg bg-transparent shadow-none"
+        onClick={handleOpen}
+      >
+        <CreditCardIcon className="text-black dark:text-white" />
+        <span
+          className={`ml-3 capitalize ${
+            isCollapsed ? 'hidden' : 'inline'
+          } text-black dark:text-white`}
+        >
+          Register
+        </span>
+      </Button>
+
+      <Dialog
+        open={registrationOpen}
+        handler={handleOpen}
+        className="bg-black "
+      >
+        <DialogHeader className="text-white capitalize flex flex-row gap-5 items-center">
+          {stripeOrCrypto !== 0 && (
+            <button
+              className="text-sm font-normal bg-gray-800 p-2 rounded-md"
+              onClick={() => setStripeOrCrypto(0)}
+            >
+              Back
+            </button>
+          )}
+          How many entries would you like to purchase?
+        </DialogHeader>
+
+        <DialogBody>
+          <div>
+            {stripeOrCrypto === 0 && (
+              <div className="flex flex-row items-center justify-between">
+                <button
+                  onClick={() => setStripeOrCrypto(1)}
+                  className="w-1/2 border border-gray-700 rounded-lg p-5"
+                >
+                  <Image
+                    src={'/images/stripe.png'}
+                    height={100}
+                    width={100}
+                    alt="stripe logo"
+                    className="mx-auto"
+                  />
+                  <h3 className="text-primary">checkout with stripe</h3>
+                </button>
+                <button
+                  onClick={() => setStripeOrCrypto(2)}
+                  className="w-1/2 border border-gray-700 rounded-lg p-5"
+                >
+                  <Image
+                    src={'/images/stripe.png'}
+                    height={100}
+                    width={100}
+                    alt="stripe logo"
+                    className="mx-auto"
+                  />
+                  <h3 className="text-primary">checkout with crypto</h3>
+                </button>
+              </div>
+            )}
+
+            {stripeOrCrypto === 1 && <StripeCheckout handleOpen={handleOpen} />}
+            {stripeOrCrypto === 2 && <CryptoCheckout handleOpen={handleOpen} />}
+          </div>
+        </DialogBody>
+      </Dialog>
+    </>
+  );
+}
+
+const StripeCheckout = ({ handleOpen }) => {
+  const [numberOfEntries, setNumberOfEntries] = useState(0);
 
   const handleCheckout = async () => {
     const res = await fetch('/api/create-checkout-session', {
@@ -61,111 +126,135 @@ export default function RegistrationDialog() {
     }
   };
 
+  const items = [
+    {
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 2000,
+      },
+      quantity: numberOfEntries,
+    },
+  ];
+
   return (
     <>
-      <Button
-        href="/dashboard"
-        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg bg-transparent shadow-none"
-        onClick={handleOpen}
-      >
-        <CreditCardIcon className="text-black dark:text-white" />
-        <span
-          className={`ml-3 capitalize ${
-            isCollapsed ? 'hidden' : 'inline'
-          } text-black dark:text-white`}
+      <p className="text-primary">
+        The key to more success is to have a lot of pillows. Put it this way, it
+        took me twenty five years to get these plants, twenty five years of
+        blood sweat and tears, and I&apos;m never giving up, I&apos;m just
+        getting started. I&apos;m up to something. Fan luv.
+      </p>
+
+      <div className="w-72 my-10">
+        <Select
+          label="number of entries"
+          className="capitalize text-primary"
+          color="blue"
+          variant="standard"
+          onChange={(val) => setNumberOfEntries(val)}
         >
-          Register
-        </span>
-      </Button>
+          {Array.from({ length: 25 }, (_, index) => (
+            <Option key={index + 1} value={index + 1}>
+              {index + 1}
+            </Option>
+          ))}
+        </Select>
+      </div>
 
-      <Dialog
-        open={registrationOpen}
-        handler={handleOpen}
-        className="bg-black "
-      >
-        <DialogHeader className="text-white capitalize">
-          checkout. How many entries would you like to purchase?
-        </DialogHeader>
+      <footer className="flex flex-row justify-between items-center">
+        <div className="flex flex-row items-center">
+          <p className="font-bold text-white text-sm">Powered by </p>
+          <Image
+            className="mx-auto "
+            src={'/images/stripe.png'}
+            alt="stripe logo"
+            height={60}
+            width={60}
+          />
+        </div>
 
-        <DialogBody>
-          <div>
-            <div className="flex flex-row items-center justify-between">
-              <button className="w-1/2 border border-gray-700 rounded-lg p-5">
-                <Image
-                  src={'/images/stripe.png'}
-                  height={100}
-                  width={100}
-                  alt="stripe logo"
-                  className="mx-auto"
-                />
-                <h3 className="text-primary">checkout with stripe</h3>
-              </button>
-              <div className="w-1/2">crypto</div>
-            </div>
-
-            <p className="text-primary">
-              The key to more success is to have a lot of pillows. Put it this
-              way, it took me twenty five years to get these plants, twenty five
-              years of blood sweat and tears, and I&apos;m never giving up,
-              I&apos;m just getting started. I&apos;m up to something. Fan luv.
-            </p>
-
-            <div className="w-72 my-10">
-              <Select
-                label="number of entries"
-                className="capitalize text-primary"
-                color="blue"
-                variant="standard"
-                onChange={(val) => setNumberOfEntries(val)}
-              >
-                {Array.from({ length: 25 }, (_, index) => (
-                  <Option key={index + 1} value={index + 1}>
-                    {index + 1}
-                  </Option>
-                ))}
-              </Select>
-            </div>
-          </div>
-        </DialogBody>
-        <DialogFooter className="flex flex-row items-center justify-between">
-          <div className="flex flex-row items-center">
-            <p className="font-bold text-white text-sm">Powered by </p>
-            <Image
-              className="mx-auto "
-              src={'/images/stripe.png'}
-              alt="stripe logo"
-              height={60}
-              width={60}
-            />
-          </div>
-
-          <div className="flex flex-row items-center">
-            <Button
-              variant="text"
-              color="red"
-              onClick={handleOpen}
-              className="mr-1"
-            >
-              <span>Cancel</span>
-            </Button>
-            <Button
-              onClick={handleCheckout}
-              size="sm"
-              className="bg-gradient-to-b from-indigo-700 to-indigo-900 group relative flex items-center  overflow-hidden px-3 py-3 capitalize"
-            >
-              <div className="pr-12">Check out with Stripe</div>
-              <span className="absolute right-0 grid h-full w-12 place-items-center bg-indigo-900 transition-colors ">
-                <Image
-                  src={'/images/stripe.png'}
-                  alt="stripe logo"
-                  height={50}
-                  width={50}
-                />
-              </span>
-            </Button>
-          </div>
-        </DialogFooter>
-      </Dialog>
+        <div className="flex flex-row items-center justify-end">
+          <Button
+            variant="text"
+            color="red"
+            onClick={handleOpen}
+            className="mr-1"
+          >
+            <span>Cancel</span>
+          </Button>
+          <Button
+            onClick={handleCheckout}
+            size="sm"
+            className="bg-gradient-to-b from-indigo-700 to-indigo-900 group relative flex items-center  overflow-hidden px-3 py-3 capitalize"
+          >
+            <div className="pr-12">Check out with Stripe</div>
+            <span className="absolute right-0 grid h-full w-12 place-items-center bg-indigo-900 transition-colors ">
+              <Image
+                src={'/images/stripe.png'}
+                alt="stripe logo"
+                height={50}
+                width={50}
+              />
+            </span>
+          </Button>
+        </div>
+      </footer>
     </>
   );
-}
+};
+
+const CryptoCheckout = ({ handleOpen }) => {
+  const [numberOfEntries, setNumberOfEntries] = useState(0);
+
+  const handleCheckout = async () => {
+    const res = await fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ items }),
+    });
+
+    console.log('RESPONSE');
+    console.log(res);
+
+    const { sessionId } = await res.json();
+    console.log('Session ID:', sessionId); // Add this line to debug
+    const stripe = await stripePromise;
+    const { error } = await stripe.redirectToCheckout({
+      sessionId,
+    });
+    if (error) {
+      console.error(error);
+    }
+  };
+
+  const items = [
+    {
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 2000,
+      },
+      quantity: numberOfEntries,
+    },
+  ];
+
+  return (
+    <>
+      <p className="text-primary">
+        The key to more success is to have a lot of pillows. Put it this way, it
+        took me twenty five years to get these plants, twenty five years of
+        blood sweat and tears, and I&apos;m never giving up, I&apos;m just
+        getting started. I&apos;m up to something. Fan luv.
+      </p>
+
+      <div className="w-72 my-10">CRYPTOOOO</div>
+    </>
+  );
+};

@@ -9,8 +9,8 @@ const UserTable = ({ users }) => {
 
   return (
     <div className="overflow-x-auto rounded-xl">
-      <table className="min-w-full divide-y divide-gray-700">
-        <thead className="bg-gray-900 ">
+      <table className="min-w-full divide-y divide-gray-700  border border-gray-700 rounded-xl">
+        <thead className="bg-white dark:bg-gray-900">
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-primary capitalize tracking-wider ">
               Name
@@ -35,7 +35,10 @@ const UserTable = ({ users }) => {
             console.log(groupedPicks);
 
             return Array.from({ length: user.bullets }).map((_, index) => (
-              <tr key={`${user.id}-${index}`} className={` bg-gray-900 w-full`}>
+              <tr
+                key={`${user.id}-${index}`}
+                className={` bg-white dark:bg-gray-900 w-full`}
+              >
                 <td className="px-6 py-2 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
@@ -46,7 +49,7 @@ const UserTable = ({ users }) => {
                       />
                     </div>
                     <div className="ml-4">
-                      <p className="text-sm font-medium text-white">
+                      <p className="text-sm font-medium text-black dark:text-white">
                         {user.name} {`(${index + 1})`}
                       </p>
                     </div>
@@ -56,7 +59,7 @@ const UserTable = ({ users }) => {
                 {Array.from({ length: 18 }).map((_, weekIndex) => (
                   <td
                     key={weekIndex}
-                    className={` px-2 py-4 whitespace-nowrap`}
+                    className={` px-2 py-4 whitespace-nowrap text-black dark:text-white`}
                   >
                     {groupedPicks[index]?.[weekIndex]?.team}
                   </td>
