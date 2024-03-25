@@ -206,44 +206,51 @@ const StripeCheckout = ({ handleOpen }) => {
   );
 };
 
-const CryptoCheckout = ({ handleOpen }) => {
+const CryptoCheckout = () => {
   const [numberOfEntries, setNumberOfEntries] = useState(0);
 
-  const handleCheckout = async () => {
-    const res = await fetch('/api/create-checkout-session', {
+  const chargeObj = {
+    charge: {
+      // customerId: req.body.customerId,
+      currency: 'USD',
+      lineItems: [
+        {
+          description: 'NFL Last Longer Entry',
+          netAmount: process.env.BUYIN,
+          quantity: numberOfEntries,
+        },
+      ],
+    },
+    webhook: `localhost:3000/api/webhook/crypto`,
+    links: {
+      returnUrl: `localhost:3000/dashboard`,
+      cancelUrl: `localhost:3000/dashboard`,
+    },
+    pageSettings: {
+      displaySellerInfo: false,
+      shopName: 'NFL Last Longer',
+    },
+    settlementCurrency: 'USD',
+  };
+
+  const handleSubmit = async () => {
+    const response = await fetch('/api/crypto-checkout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ items }),
+      body: JSON.stringify({ chargeObj }),
     });
 
-    console.log('RESPONSE');
-    console.log(res);
-
-    const { sessionId } = await res.json();
-    console.log('Session ID:', sessionId); // Add this line to debug
-    const stripe = await stripePromise;
-    const { error } = await stripe.redirectToCheckout({
-      sessionId,
-    });
-    if (error) {
-      console.error(error);
+    if (!response.ok) {
+      console.error('Error:', response.statusText);
+      return;
     }
-  };
 
-  const items = [
-    {
-      price_data: {
-        currency: 'usd',
-        product_data: {
-          name: 'T-shirt',
-        },
-        unit_amount: 2000,
-      },
-      quantity: numberOfEntries,
-    },
-  ];
+    const data = await response.json();
+    // Handle success
+    console.log('Success:', data);
+  };
 
   return (
     <>
@@ -254,7 +261,23 @@ const CryptoCheckout = ({ handleOpen }) => {
         getting started. I&apos;m up to something. Fan luv.
       </p>
 
-      <div className="w-72 my-10">CRYPTOOOO</div>
+      <div className="w-72 my-10">
+        <Select
+          label="number of entries"
+          className="capitalize text-primary"
+          color="blue"
+          variant="standard"
+          onChange={(val) => setNumberOfEntries(val)}
+        >
+          {Array.from({ length: 25 }, (_, index) => (
+            <Option key={index + 1} value={index + 1}>
+              {index + 1}
+            </Option>
+          ))}
+        </Select>
+      </div>
+
+      <button onClick={handleSubmit}>Submit</button>
     </>
   );
 };
