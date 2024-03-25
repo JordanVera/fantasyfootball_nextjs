@@ -13,6 +13,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useRegister } from '@/context/RegisterContext';
 import { useUser } from '@/context/UserContext';
 import Image from 'next/image';
+import UserService from '@/services/UserService';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 import CreditCardIcon from '@mui/icons-material/CreditCard';
@@ -216,16 +217,17 @@ const CryptoCheckout = () => {
       lineItems: [
         {
           description: 'NFL Last Longer Entry',
-          netAmount: process.env.BUYIN,
+          netAmount: 60,
+          // netAmount: process.env.BUYIN,
           quantity: numberOfEntries,
         },
       ],
     },
-    webhook: `localhost:3000/api/webhook/crypto`,
-    links: {
-      returnUrl: `localhost:3000/dashboard`,
-      cancelUrl: `localhost:3000/dashboard`,
-    },
+    // webhook: `http://localhost:3000/api/webhook/crypto`,
+    // links: {
+    //   returnUrl: `http://localhost:3000/dashboard`,
+    //   cancelUrl: `http://localhost:3000/dashboard`,
+    // },
     pageSettings: {
       displaySellerInfo: false,
       shopName: 'NFL Last Longer',
@@ -233,21 +235,16 @@ const CryptoCheckout = () => {
     settlementCurrency: 'USD',
   };
 
-  const handleSubmit = async () => {
-    const response = await fetch('/api/crypto-checkout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ chargeObj }),
-    });
+  // Create an instance of UserService
 
-    if (!response.ok) {
-      console.error('Error:', response.statusText);
+  const handleSubmit = async () => {
+    const data = await UserService.checkoutWithCrypto(chargeObj);
+
+    if (!data) {
+      console.error('Error: Checkout with crypto failed');
       return;
     }
 
-    const data = await response.json();
     // Handle success
     console.log('Success:', data);
   };
