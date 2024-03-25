@@ -245,8 +245,11 @@ const CryptoCheckout = () => {
       return;
     }
 
+    // console.log('Success:', data);
+    const { url } = data;
+    window.location.href = url;
+
     // Handle success
-    console.log('Success:', data);
   };
 
   return (
