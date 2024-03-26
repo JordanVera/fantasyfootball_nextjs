@@ -4,11 +4,10 @@ import {
   Dialog,
   DialogHeader,
   DialogBody,
-  DialogFooter,
   Option,
   Select,
-  IconButton,
 } from '@material-tailwind/react';
+
 import { loadStripe } from '@stripe/stripe-js';
 import { useRegister } from '@/context/RegisterContext';
 import { useUser } from '@/context/UserContext';
@@ -68,7 +67,7 @@ export default function RegistrationDialog() {
               <div className="flex flex-row gap-5 items-stretch justify-between">
                 <button
                   onClick={() => setStripeOrCrypto(1)}
-                  className="w-1/2 border border-gray-700 rounded-lg p-5"
+                  className="flex flex-col gap-5 w-1/2 border border-gray-700 rounded-lg p-5  justify-between"
                 >
                   <Image
                     src={'/images/stripe.png'}
@@ -77,12 +76,14 @@ export default function RegistrationDialog() {
                     alt="stripe logo"
                     className="mx-auto"
                   />
-                  <h3 className="text-primary">checkout with stripe</h3>
+                  <h3 className="text-primary text-lg font-bold capitalize">
+                    checkout with stripe
+                  </h3>
                 </button>
 
                 <button
                   onClick={() => setStripeOrCrypto(2)}
-                  className="w-1/2 border border-gray-700 rounded-lg p-5"
+                  className="flex flex-col gap-5 w-1/2 border border-gray-700 rounded-lg p-5 justify-between"
                 >
                   <div className="flex flex-row gap-3 items-center">
                     <Image
@@ -114,7 +115,9 @@ export default function RegistrationDialog() {
                       className="mx-auto"
                     />
                   </div>
-                  <h3 className="text-primary">checkout with crypto</h3>
+                  <h3 className="text-primary text-lg font-bold capitalize">
+                    checkout with crypto
+                  </h3>
                 </button>
               </div>
             )}
