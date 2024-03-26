@@ -64,10 +64,10 @@ export default function RegistrationDialog() {
         <DialogBody>
           <div>
             {stripeOrCrypto === 0 && (
-              <div className="flex flex-row gap-5 items-stretch justify-between">
+              <div className="flex flex-col md:flex-row gap-5 items-stretch justify-between">
                 <button
                   onClick={() => setStripeOrCrypto(1)}
-                  className="flex flex-col gap-5 w-1/2 border border-gray-700 rounded-lg p-5  justify-between"
+                  className="flex flex-col gap-5   w-full md:w-1/2 border border-gray-700 rounded-lg p-5  justify-between"
                 >
                   <Image
                     src={'/images/stripe.png'}
@@ -83,7 +83,7 @@ export default function RegistrationDialog() {
 
                 <button
                   onClick={() => setStripeOrCrypto(2)}
-                  className="flex flex-col gap-5 w-1/2 border border-gray-700 rounded-lg p-5 justify-between"
+                  className="flex flex-col gap-5 w-full md:w-1/2 border border-gray-700 rounded-lg p-5 justify-between"
                 >
                   <div className="flex flex-row gap-3 items-center">
                     <Image
