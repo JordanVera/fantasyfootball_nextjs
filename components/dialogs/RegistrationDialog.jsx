@@ -56,13 +56,16 @@ export default function RegistrationDialog() {
               Back
             </button>
           )}
-          How many entries would you like to purchase?
+
+          {stripeOrCrypto === 0
+            ? 'Please choose checkout method'
+            : 'How many entries would you like to purchase?'}
         </DialogHeader>
 
         <DialogBody>
           <div>
             {stripeOrCrypto === 0 && (
-              <div className="flex flex-row items-center justify-between">
+              <div className="flex flex-row gap-5 items-stretch justify-between">
                 <button
                   onClick={() => setStripeOrCrypto(1)}
                   className="w-1/2 border border-gray-700 rounded-lg p-5"
@@ -76,17 +79,41 @@ export default function RegistrationDialog() {
                   />
                   <h3 className="text-primary">checkout with stripe</h3>
                 </button>
+
                 <button
                   onClick={() => setStripeOrCrypto(2)}
                   className="w-1/2 border border-gray-700 rounded-lg p-5"
                 >
-                  <Image
-                    src={'/images/stripe.png'}
-                    height={100}
-                    width={100}
-                    alt="stripe logo"
-                    className="mx-auto"
-                  />
+                  <div className="flex flex-row gap-3 items-center">
+                    <Image
+                      src={'/images/bitcoinLogo.png'}
+                      height={40}
+                      width={40}
+                      alt="stripe logo"
+                      className="mx-auto"
+                    />
+                    <Image
+                      src={'/images/litecoinLogo.png'}
+                      height={40}
+                      width={40}
+                      alt="stripe logo"
+                      className="mx-auto"
+                    />
+                    <Image
+                      src={'/images/stellarLumensLogo.png'}
+                      height={40}
+                      width={40}
+                      alt="stripe logo"
+                      className="mx-auto"
+                    />
+                    <Image
+                      src={'/images/rippleLogo.png'}
+                      height={40}
+                      width={40}
+                      alt="stripe logo"
+                      className="mx-auto"
+                    />
+                  </div>
                   <h3 className="text-primary">checkout with crypto</h3>
                 </button>
               </div>
