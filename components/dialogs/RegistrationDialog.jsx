@@ -45,9 +45,9 @@ export default function RegistrationDialog() {
       <Dialog
         open={registrationOpen}
         handler={handleOpen}
-        className="bg-black "
+        className="bg-white dark:bg-black "
       >
-        <DialogHeader className="text-white capitalize flex flex-row gap-5 items-center">
+        <DialogHeader className="text-primary capitalize flex flex-row gap-5 items-center">
           {stripeOrCrypto !== 0 && (
             <button
               className="text-sm font-normal bg-gray-800 p-2 rounded-md"
@@ -194,7 +194,7 @@ const StripeCheckout = ({ handleOpen }) => {
 
       <footer className="flex flex-row justify-between items-center">
         <div className="flex flex-row items-center">
-          <p className="font-bold text-white text-sm">Powered by </p>
+          <p className="font-bold text-primary text-sm">Powered by </p>
           <Image
             className="mx-auto "
             src={'/images/stripe.png'}
