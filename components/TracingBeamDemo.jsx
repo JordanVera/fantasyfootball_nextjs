@@ -3,7 +3,7 @@ import React from 'react';
 
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
-import { TracingBeam } from './ui/tracing-beam';
+// import { TracingBeam } from './ui/tracing-beam';
 
 export function TracingBeamDemo() {
   return (
