@@ -48,52 +48,54 @@ export function HeroHighlightDemo() {
   ];
 
   return (
-    <HeroHighlight>
-      <div className="flex flex-col gap-32">
-        <div>
-          <motion.h1
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            animate={{
-              opacity: 1,
-              y: [20, -5, 0],
-            }}
-            transition={{
-              duration: 0.5,
-              ease: [0.4, 0.0, 0.2, 1],
-            }}
-            className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-black dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
-          >
-            Welcome to NFL Last Longer
-          </motion.h1>
-          <motion.h2
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            animate={{
-              opacity: 1,
-              y: [20, -5, 0],
-            }}
-            transition={{
-              duration: 0.5,
-              ease: [0.4, 0.0, 0.2, 1],
-            }}
-            className="text-2xl px-4 md:text-3xl lg:text-3xl font-bold max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
-          >
-            <Highlight className="text-black dark:text-white">
-              The best NFL Survivor application
-            </Highlight>
-          </motion.h2>
-        </div>
+    <div>
+      <HeroHighlight>
+        <div className="flex flex-col gap-32">
+          <div>
+            <motion.h1
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              animate={{
+                opacity: 1,
+                y: [20, -5, 0],
+              }}
+              transition={{
+                duration: 0.5,
+                ease: [0.4, 0.0, 0.2, 1],
+              }}
+              className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-black dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+            >
+              Welcome to NFL Last Longer
+            </motion.h1>
+            <motion.h2
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              animate={{
+                opacity: 1,
+                y: [20, -5, 0],
+              }}
+              transition={{
+                duration: 0.5,
+                ease: [0.4, 0.0, 0.2, 1],
+              }}
+              className="text-2xl px-4 md:text-3xl lg:text-3xl font-bold max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+            >
+              <Highlight className="text-black dark:text-white">
+                The best NFL Survivor application
+              </Highlight>
+            </motion.h2>
+          </div>
 
-        <div className="w-full overflow-hidden">
-          <TeamSlider direction="left" teamLogos={teamLogos1} />
-          <TeamSlider direction="right" teamLogos={teamLogos2} />
+          {/* <div className="w-full overflow-hidden">
+            <TeamSlider direction="left" teamLogos={teamLogos1} />
+            <TeamSlider direction="right" teamLogos={teamLogos2} />
+          </div> */}
         </div>
-      </div>
-    </HeroHighlight>
+      </HeroHighlight>
+    </div>
   );
 }
