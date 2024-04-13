@@ -4,11 +4,13 @@ import SignupCTA from '@/components/homepage/SignupCTA';
 import WhatWeDo from '@/components/homepage/WhatWeDo';
 import { TracingBeamDemo } from '@/components/TracingBeamDemo';
 import { TracingBeam } from '@/components/ui/tracing-beam';
+import { HeroHighlightDemo } from '@/components/heros/HeroHighlightDemo';
 
 export default function Home() {
   return (
     <main>
-      <HomepageHero />
+      <HeroHighlightDemo />
+      {/* <HomepageHero /> */}
       {/* <TracingBeamDemo /> */}
 
       <TracingBeam children={<Child />} />
