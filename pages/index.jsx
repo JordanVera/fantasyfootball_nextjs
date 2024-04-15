@@ -14,8 +14,8 @@ export default function Home() {
     <main>
       <HeroHighlightDemo />
 
-      <div className=" flex flex-row  m-5">
-        <div className="flex flex-col gap-5 p-10 rounded-l-lg w-1/4 bg-[#ff4d00]">
+      <div className=" flex flex-col-reverse md:flex-row  m-5">
+        <div className="flex flex-col gap-5 p-10 rounded-l-lg w-full lg:w-1/4 bg-[#ff4d00]">
           <div className="flex flex-row justify-center border bg-white text-black rounded-full w-[60px] px-2 py-1">
             <p>Hello</p>
           </div>
@@ -39,12 +39,15 @@ export default function Home() {
         </div>
 
         <div
-          className="rounded-r-lg w-3/4 bg-white bg-center bg-cover bg-opacity-50"
-          style={{
-            backgroundImage: "url('/images/billsStadium.jpg')",
-            opacity: 0.7,
-          }}
-        ></div>
+          className="rounded-r-lg w-full lg:w-3/4 bg-[#d7d7d7] bg-center bg-cover "
+          // bg-opacity-50
+          // style={{
+          //   backgroundImage: "url('/images/billsStadium.jpg')",
+          //   opacity: 0.7,
+          // }}
+        >
+          <p>asdasds</p>
+        </div>
       </div>
       {/* <HomepageHero /> */}
       {/* <TracingBeamDemo /> */}
