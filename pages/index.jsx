@@ -15,18 +15,22 @@ export default function Home() {
       <HeroHighlightDemo />
 
       <div className=" flex flex-row  m-5">
-        <div className="flex flex-col gap-5 p-5 rounded-l-lg w-1/4 bg-orange-700">
+        <div className="flex flex-col gap-5 p-10 rounded-l-lg w-1/4 bg-[#ff4d00]">
           <div className="flex flex-row justify-center border bg-white text-black rounded-full w-[60px] px-2 py-1">
             <p>Hello</p>
           </div>
 
-          <div>
+          <div className="mb-20">
             <h2 className="text-3xl text-black font-bold">Entry</h2>
             <p className="text-black">$60</p>
           </div>
 
+          <p className="text-black">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam,
+            eligendi?
+          </p>
           <Button
-            className="flex flex-row items-center justify-center gap-3 border border-black rounded-full capitalize"
+            className="flex flex-row items-center justify-center gap-3 border border-black rounded-full capitalize w-32"
             variant="outlined"
           >
             <p>Signup</p>
