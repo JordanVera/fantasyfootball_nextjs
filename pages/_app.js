@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { SessionProvider } from 'next-auth/react';
 import { UserProvider } from '@/context/UserContext';
 import { ThemeProvider } from '@/context/ThemeContext';
@@ -8,8 +9,17 @@ import { ToastContainer } from 'react-toastify';
 import Main_Sidebar from '@/components/Main_Sidebar';
 import 'react-toastify/dist/ReactToastify.css';
 import '@/styles/globals.css';
+import useDetectScroll from '@smakss/react-scroll-direction';
 
 export default function App({ Component, pageProps }) {
+  const { scrollDir, scrollPosition } = useDetectScroll();
+
+  useEffect(() => {
+    // console.log('sda');
+    console.log({ scrollDir });
+    console.log({ scrollPosition });
+  }, [scrollDir, scrollPosition]);
+
   return (
     <SessionProvider session={pageProps.session}>
       <RegisterProvider>
