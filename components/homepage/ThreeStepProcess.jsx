@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import Link from 'next/link';
 
 const ThreeStepProcess = () => {
   return (
@@ -19,14 +20,18 @@ const StepOne = () => {
     threshold: 0.1,
   });
   return (
-    <div ref={ref}>
+    <Link
+      ref={ref}
+      href={'/login'}
+      className="hover:scale-105 duration-300 cursor-pointer"
+    >
       <motion.div
-        className="flex flex-col-reverse xl:flex-row w-full h-full"
+        className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full "
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, ease: 'easeIn' }}
       >
-        <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#5551ff] p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
+        <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#5551ff] p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none ">
           <div className=" bg-black text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 1</p>
           </div>
@@ -55,7 +60,7 @@ const StepOne = () => {
           {' '}
         </div>
       </motion.div>
-    </div>
+    </Link>
   );
 };
 
@@ -67,7 +72,7 @@ const StepTwo = () => {
   return (
     <div ref={ref}>
       <motion.div
-        className="flex flex-col-reverse xl:flex-row w-full h-full"
+        className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full"
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, ease: 'easeIn' }}
@@ -109,7 +114,7 @@ const StepThree = () => {
   return (
     <div ref={ref}>
       <motion.div
-        className="flex flex-col-reverse xl:flex-row w-full h-full"
+        className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full"
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, ease: 'easeIn' }}
@@ -153,7 +158,7 @@ const StepFour = () => {
   return (
     <div ref={ref}>
       <motion.div
-        className="flex flex-col-reverse xl:flex-row w-full h-full"
+        className="bg-black rounded-lg flex flex-col-reverse xl:flex-row w-full h-full"
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, ease: 'easeIn' }}
@@ -179,7 +184,7 @@ const StepFour = () => {
           className="min-h-[300px] flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none"
           // bg-opacity-50
           style={{
-            backgroundImage: "url('/images/3.jpg')",
+            backgroundImage: "url('/images/4.jpg')",
             backgroundSize: 'cover',
             opacity: 0.7,
           }}

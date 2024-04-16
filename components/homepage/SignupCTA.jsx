@@ -29,7 +29,7 @@ const SignupCTA = () => {
   return (
     <div ref={ref}>
       <motion.div
-        className="flex flex-col-reverse md:flex-row m-5"
+        className="bg-black rounded-lg flex flex-col-reverse md:flex-row m-5"
         initial={animationVariants.initial}
         animate={animationVariants.animate}
         transition={{ duration: 0.7, ease: 'easeIn' }}
@@ -59,7 +59,7 @@ const SignupCTA = () => {
         </div>
 
         <div
-          className="min-h-[200px] rounded-t-lg lg:rounded-tl-none lg:rounded-r-lg w-full lg:w-3/4 bg-[#d7d7d7] bg-center bg-cover "
+          className="bg-black min-h-[200px] rounded-t-lg lg:rounded-tl-none lg:rounded-r-lg w-full lg:w-3/4 bg-center bg-cover "
           // bg-opacity-50
           style={{
             backgroundImage: "url('/images/billsStadium.jpg')",
