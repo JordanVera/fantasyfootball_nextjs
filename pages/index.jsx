@@ -50,18 +50,30 @@ export default function Home() {
         ></div>
       </div>
 
-      <div className="flex flex-col lg:flex-row m-5">
-        <div className="flex flex-col md:flex-row">
-          <div className="bg-[#5551ff]">
-            <h2 className="text-3xl text-black font-bold">Step 1</h2>
+      <div className="flex flex-col lg:flex-row m-5 gap-10">
+        {/* STEP ONE */}
+        <div className="flex flex-col xl:flex-row w-full lg:w-1/3">
+          <div className="flex flex-col gap-8 bg-[#5551ff] p-10 w-full xl:w-1/2 rounded-t-lg xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
+            <div className="flex flex-row justify-center border bg-white text-black rounded-full w-[80px] px-2 py-1">
+              <p>Step 1</p>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <h2 className="text-3xl text-black font-bold">Sign Up</h2>
+
+              <p className="text-sm">
+                Sign Up When the game opens, create an account by visiting our
+                sign in page.
+              </p>
+            </div>
           </div>
 
-          <div>
+          <div className="flex flex-col justify-center items-center bg-[#d7d7d7] p-10 w-full xl:w-1/2 rounded-b-lg xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none">
             {' '}
             <Image
               src="/players/obj.png"
-              height={250}
-              width={250}
+              height={200}
+              width={200}
               alt="odell beckham jr"
             />
           </div>

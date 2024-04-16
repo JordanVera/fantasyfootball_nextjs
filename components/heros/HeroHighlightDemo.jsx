@@ -89,10 +89,10 @@ export function HeroHighlightDemo() {
           </motion.h2>
         </div>
 
-        <div className="w-full overflow-hidden">
+        {/* <div className="w-full overflow-hidden">
           <TeamSlider direction="left" teamLogos={teamLogos1} />
           <TeamSlider direction="right" teamLogos={teamLogos2} />
-        </div>
+        </div> */}
       </div>
     </HeroHighlight>
   );
