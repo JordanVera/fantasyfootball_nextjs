@@ -34,7 +34,7 @@ const SignupCTA = () => {
         animate={animationVariants.animate}
         transition={{ duration: 0.7, ease: 'easeIn' }}
       >
-        <div className="flex flex-col gap-5 p-10 rounded-b-lg lg:rounded-l-lg md:rounded-br-none w-full lg:w-1/4 bg-[#fe5f55]">
+        <div className="flex flex-col gap-5 p-10 rounded-b-lg lg:rounded-l-lg md:rounded-br-none w-full lg:w-1/4 bg-[#ffff3f]">
           <div className="flex flex-row justify-center border bg-white text-black rounded-full w-[60px] px-2 py-1">
             <p>Hello</p>
           </div>

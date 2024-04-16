@@ -72,7 +72,7 @@ const StepTwo = () => {
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, ease: 'easeIn' }}
       >
-        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
+        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#00cc66] p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
           <div className=" bg-black text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 2</p>
           </div>
@@ -114,7 +114,7 @@ const StepThree = () => {
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, ease: 'easeIn' }}
       >
-        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
+        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#fe5f55] p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
           <div className=" bg-black text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 3</p>
           </div>
@@ -132,7 +132,7 @@ const StepThree = () => {
         </div>
 
         <div
-          className="min-h-[300px] flex flex-col justify-center items-center p-5 lg:p-8 w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none"
+          className="min-h-[300px] flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none"
           // bg-opacity-50
           style={{
             backgroundImage: "url('/images/3.jpg')",
@@ -158,7 +158,7 @@ const StepFour = () => {
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, ease: 'easeIn' }}
       >
-        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
+        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#6930c3] p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
           <div className=" bg-black text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 4</p>
           </div>
