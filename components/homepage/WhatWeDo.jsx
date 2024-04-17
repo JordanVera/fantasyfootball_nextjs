@@ -3,7 +3,7 @@ import Image from 'next/image';
 const WhatWeDo = () => {
   return (
     <div className="mx-auto max-w-[900px] flex flex-col gap-16 mb-10">
-      <div className="flex flex-row items-center gap-10 text-primary">
+      <div className="flex flex-col md:flex-row items-center gap-10 text-primary">
         <div className="w-1/3">
           <Image
             src="/players/obj.png"
@@ -12,7 +12,7 @@ const WhatWeDo = () => {
             alt="odell beckham jr"
           />
         </div>
-        <div className="w-2/3 flex flex-col gap-5">
+        <div className="w-full md:w-2/3 flex flex-col gap-5">
           <h2 className="font-bold text-3xl text-left">
             What Is NFL Last Longer
           </h2>
@@ -34,8 +34,8 @@ const WhatWeDo = () => {
         </div>
       </div>
 
-      <div className="flex flex-row items-center gap-10 text-primary">
-        <div className="w-2/3 flex flex-col gap-5">
+      <div className="flex flex-col-reverse md:flex-row items-center gap-10 text-primary">
+        <div className="w-full md:w-2/3 flex flex-col gap-5">
           <h2 className="font-bold text-3xl text-left">How to Play</h2>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi,
@@ -64,7 +64,7 @@ const WhatWeDo = () => {
         </div>
       </div>
 
-      <div className="flex flex-row items-center gap-10">
+      <div className="flex flex-col md:flex-row items-center gap-10">
         <div className="w-1/3">
           <Image
             src="/players/baker.png"
@@ -73,7 +73,7 @@ const WhatWeDo = () => {
             alt="odell beckham jr"
           />
         </div>
-        <div className="w-2/3 flex flex-col gap-5 text-primary">
+        <div className="w-full md:w-2/3 flex flex-col gap-5 text-primary">
           <h2 className="font-bold text-3xl text-left">
             Get in The Game and Win
           </h2>

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useScrollDirection } from '@/hooks/useScrollDirection';
 import useDetectScroll from '@smakss/react-scroll-direction';
+import Link from 'next/link';
 const SignupCTA = () => {
   const { scrollDir, scrollPosition } = useDetectScroll();
 
@@ -15,23 +16,16 @@ const SignupCTA = () => {
 
   const scrollDirection = useScrollDirection();
 
-  const animationVariants = {
-    initial: {
-      opacity: 0,
-      y: scrollDirection === 'down' ? '100%' : '-100%', // Slide from bottom if scrolling up, from top if scrolling down
-    },
-    animate: {
-      y: inView ? '0%' : scrollDirection === 'down' ? '100%' : '-100%',
-      opacity: inView ? 1 : 0,
-    },
-  };
-
   return (
-    <div ref={ref}>
+    <Link
+      ref={ref}
+      href={'/login'}
+      className="hover:scale-105 duration-300 cursor-pointer"
+    >
       <motion.div
         className="bg-black rounded-lg flex flex-col-reverse md:flex-row m-5"
-        initial={animationVariants.initial}
-        animate={animationVariants.animate}
+        initial={{ y: '100%', opacity: 0 }}
+        animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, ease: 'easeIn' }}
       >
         <div className="flex flex-col gap-5 p-10 rounded-b-lg lg:rounded-l-lg md:rounded-br-none w-full lg:w-1/4 bg-[#ffff3f]">
@@ -67,7 +61,7 @@ const SignupCTA = () => {
           }}
         ></div>
       </motion.div>
-    </div>
+    </Link>
   );
 };
 export default SignupCTA;
