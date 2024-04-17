@@ -13,6 +13,7 @@ import { useRegister } from '@/context/RegisterContext';
 import { useUser } from '@/context/UserContext';
 import Image from 'next/image';
 import UserService from '@/services/UserService';
+import { motion } from 'framer-motion';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 import CreditCardIcon from '@mui/icons-material/CreditCard';
@@ -32,13 +33,15 @@ export default function RegistrationDialog() {
         onClick={handleOpen}
       >
         <CreditCardIcon className="text-black dark:text-white" />
-        <span
+        <motion.span
+          animate={{ opacity: isCollapsed ? 0 : 1 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
           className={`ml-3 capitalize ${
             isCollapsed ? 'hidden' : 'inline'
           } text-black dark:text-white`}
         >
           Register
-        </span>
+        </motion.span>
       </Button>
 
       <Dialog

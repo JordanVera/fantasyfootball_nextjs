@@ -21,7 +21,8 @@ import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import { useSession } from 'next-auth/react';
 import RegistrationDialog from './dialogs/RegistrationDialog';
 import { useRegister } from '@/context/RegisterContext';
-import ThemeSwitcher from './ThemeSwitcher';
+import { motion } from 'framer-motion';
+// import ThemeSwitcher from './ThemeSwitcher';
 
 function Main_Sidebar() {
   const { data: session, status } = useSession();
@@ -33,10 +34,10 @@ function Main_Sidebar() {
   };
 
   return (
-    <div
-      className={`bg-white dark:bg-black z-50 sticky top-0 border-r border-gray-300 dark:border-gray-900 transition-width duration-200 ease-in-out flex flex-col p-2 h-full ${
-        isCollapsed ? 'w-18 items-center ' : 'w-48 justify-start'
-      }`}
+    <motion.div
+      animate={{ width: isCollapsed ? '3.5rem' : '12rem' }}
+      transition={{ duration: 0.2, ease: 'easeInOut' }}
+      className={`bg-white dark:bg-black z-50 sticky top-0 border-r border-gray-300 dark:border-gray-900 transition-width duration-200 ease-in-out flex flex-col p-2 h-full justify-start`}
     >
       <IconButton
         onClick={toggleSidebar}
@@ -51,13 +52,15 @@ function Main_Sidebar() {
       >
         <HomeIcon className="text-black dark:text-white" />
 
-        <span
+        <motion.span
+          animate={{ opacity: isCollapsed ? 0 : 1 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
           className={`ml-3 ${
             isCollapsed ? 'hidden' : 'inline'
           } text-black dark:text-white`}
         >
           Home
-        </span>
+        </motion.span>
       </Link>
       <Link
         href="/login"
@@ -68,30 +71,34 @@ function Main_Sidebar() {
         ) : (
           <LoginIcon className="text-black dark:text-white" />
         )}
-        <span
+        <motion.span
+          animate={{ opacity: isCollapsed ? 0 : 1 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
           className={`ml-3 ${
             isCollapsed ? 'hidden' : 'inline'
           } text-black dark:text-white`}
         >
           Login
-        </span>
+        </motion.span>
       </Link>
       <Link
         href="/dashboard"
         className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
       >
         <SpaceDashboardIcon className="text-black dark:text-white" />
-        <span
+        <motion.span
+          animate={{ opacity: isCollapsed ? 0 : 1 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
           className={`ml-3 ${
             isCollapsed ? 'hidden' : 'inline'
           } text-black dark:text-white`}
         >
           Dashboard
-        </span>
+        </motion.span>
       </Link>
       <RegistrationDialog />
 
-      <ThemeSwitcher />
+      {/* <ThemeSwitcher /> */}
 
       <div className="mt-auto">
         <Menu>
@@ -111,7 +118,8 @@ function Main_Sidebar() {
           </MenuList>
         </Menu>
       </div>
-    </div>
+    </motion.div>
+    // </div>
   );
 }
 
