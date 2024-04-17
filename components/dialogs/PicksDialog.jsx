@@ -18,52 +18,35 @@ import { getStartingWeek } from '@/utils/dates';
 import { TracingBeam } from '../ui/tracing-beam';
 
 export default function PicksDialog() {
-  const { user, updateUserPicks } = useContext(UserContext);
-  const [open, setOpen] = useState(false);
+  const { user, updateUserPicks, openPicksDialog, setOpenPicksDialog } =
+    useContext(UserContext);
+  // const [open, setOpen] = useState(false);
 
   // useEffect(() => {
   //   console.log(`USR`);
   //   console.log(user);
   // }, [user]);
 
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = () => setOpenPicksDialog(!openPicksDialog);
 
   return (
-    <>
-      <Button
-        onClick={handleOpen}
-        size="sm"
-        className="bg-gradient-to-b from-orange-700 to-orange-900 group relative flex items-center  overflow-hidden px-3 py-3 capitalize"
-      >
-        <div className="pr-12">Make your picks</div>
-        <span className="absolute right-0 grid h-full w-12 place-items-center bg-orange-900 transition-colors ">
-          <Image
-            src="/images/logo.png"
-            alt="main logo"
-            height={40}
-            width={40}
-          />
-        </span>
-      </Button>
-
-      <Dialog
-        open={open}
-        handler={handleOpen}
-        className="bg-white dark:bg-black overflow-y-auto max-h-[80vh] "
-        size="sm"
-      >
-        <DialogHeader className="text-primary capitalize text-center">
-          Please make your selections
-        </DialogHeader>
-        <DialogBody>
-          <TracingBeam
-            children={
-              <WeeksAccordion user={user} updateUserPicks={updateUserPicks} />
-            }
-          />
-        </DialogBody>
-      </Dialog>
-    </>
+    <Dialog
+      open={openPicksDialog}
+      handler={handleOpen}
+      className="bg-white dark:bg-black overflow-y-auto max-h-[80vh] "
+      size="sm"
+    >
+      <DialogHeader className="text-primary capitalize text-center">
+        Please make your selections
+      </DialogHeader>
+      <DialogBody>
+        <TracingBeam
+          children={
+            <WeeksAccordion user={user} updateUserPicks={updateUserPicks} />
+          }
+        />
+      </DialogBody>
+    </Dialog>
   );
 }
 
