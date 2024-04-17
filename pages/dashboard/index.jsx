@@ -10,6 +10,8 @@ import ButtonBar from '@/components/buttons/ButtonBar';
 import DashboardHero from '@/components/heros/DashboardHero';
 import Router from 'next/router';
 import { toast } from 'react-toastify';
+import PicksDialog from '@/components/dialogs/PicksDialog';
+import RegistrationDialog from '@/components/dialogs/RegistrationDialog';
 
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
@@ -49,11 +51,14 @@ const Dashboard_Protected = () => {
   }
 
   return (
-    <div className="mx-auto py-10 flex flex-col justify-center gap-10  p-10">
+    <div className="mx-auto flex flex-col justify-center gap-5  p-5">
       <ButtonBar />
       <DashboardHero user={user} />
 
       <UserTable users={users} />
+
+      <PicksDialog user={user} users={users} />
+      <RegistrationDialog />
     </div>
   );
 };

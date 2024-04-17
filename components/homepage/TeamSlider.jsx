@@ -9,21 +9,19 @@ const TeamSlider = ({ direction, teamLogos }) => {
       : 'animate-slideRightToLeft';
 
   return (
-    <div>
-      <div
-        className={`flex flex-nowrap gap-10 ${animationClass} animation-linear animation-infinite slider`}
-      >
-        {duplicateLogos.map((teamLogo, index) => (
-          <Image
-            src={teamLogo}
-            key={index}
-            alt="team logo"
-            width={80}
-            height={80}
-            unoptimized={true}
-          />
-        ))}
-      </div>
+    <div
+      className={`flex flex-nowrap gap-10 ${animationClass} animation-linear animation-infinite slider`}
+    >
+      {duplicateLogos.map((teamLogo, index) => (
+        <Image
+          src={teamLogo}
+          key={index}
+          alt="team logo"
+          width={80}
+          height={80}
+          unoptimized={true}
+        />
+      ))}
     </div>
   );
 };

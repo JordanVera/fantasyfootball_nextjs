@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [registrationOpen, setRegistrationOpen] = useState(false);
   const [openRulesDialog, setOpenRulesDialog] = useState(false);
+  const [openPicksDialog, setOpenPicksDialog] = useState(false);
 
   const handleOpenRulesDialog = () => setOpenRulesDialog(!openRulesDialog);
 
@@ -53,6 +54,8 @@ export const UserProvider = ({ children }) => {
         openRulesDialog,
         setOpenRulesDialog,
         handleOpenRulesDialog,
+        openPicksDialog,
+        setOpenPicksDialog,
       }}
     >
       {children}

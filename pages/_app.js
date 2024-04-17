@@ -34,7 +34,9 @@ export default function App({ Component, pageProps }) {
               </div>
 
               <div className="flex-grow overflow-auto">
-                <Topbar />
+                <div className="sticky top-0 z-50">
+                  <Topbar />
+                </div>
                 {/* Main content goes here */}
                 <Component {...pageProps} />
                 <Footer />

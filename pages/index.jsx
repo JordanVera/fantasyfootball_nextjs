@@ -1,14 +1,14 @@
 import SignupCTA from '@/components/homepage/SignupCTA';
 import WhatWeDo from '@/components/homepage/WhatWeDo';
 import { TracingBeam } from '@/components/ui/tracing-beam';
-import { HeroHighlightDemo } from '@/components/heros/HeroHighlightDemo';
+import { HomepageHero } from '@/components/heros/HomepageHero';
 import FourStepProcess from '@/components/homepage/FourStepProcess';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
   return (
     <main>
-      <HeroHighlightDemo />
+      <HomepageHero />
 
       <FourStepProcess />
       <SignupCTA />

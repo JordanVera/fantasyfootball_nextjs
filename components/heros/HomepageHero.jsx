@@ -1,8 +1,10 @@
-import Link from 'next/link';
+'use client';
+import { motion } from 'framer-motion';
+import { HeroHighlight, Highlight } from '../ui/hero-highlight';
 import TeamSlider from '../homepage/TeamSlider';
-import { HomeIcon } from '@heroicons/react/24/outline';
+import { useRegister } from '@/context/RegisterContext';
 
-const HomepageHero = () => {
+export function HomepageHero() {
   const teamLogos1 = [
     '/images/teamLogos/bears.png',
     '/images/teamLogos/bengals.png',
@@ -46,32 +48,58 @@ const HomepageHero = () => {
     '/images/teamLogos/vikings.png',
   ];
 
-  return (
-    <div>
-      <div className="flex flex-col gap-20 items-center justify-center h-screen">
-        <div className="max-w-[900px] flex flex-col gap-10">
-          <h1 className="text-2xl md:text-4xl lg:text-7xl text-black dark:text-white font-bold inter-var text-center">
-            Welcome to NFL Last Longer
-          </h1>
-          <p className="text-base md:text-lg mt-4 text-black dark:text-white font-normal inter-var text-center">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio
-            nemo repellendus eius quod! Molestiae, possimus? Quisquam, fuga
-            omnis provident neque voluptatum sed eum. Obcaecati, iusto?
-          </p>
+  const { isCollapsed } = useRegister();
 
-          <Link href="/login">
-            <button className=" w-72  h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 flex flex-row gap-5 mx-auto">
-              <HomeIcon className="h-6 w-6" />
-              Create an Account Now
-            </button>
-          </Link>
+  return (
+    <HeroHighlight>
+      <div className="flex flex-col gap-32">
+        <div>
+          <motion.h1
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: [20, -5, 0],
+            }}
+            transition={{
+              duration: 0.5,
+              ease: [0.4, 0.0, 0.2, 1],
+            }}
+            className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-black dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+          >
+            Welcome to NFL Last Longer
+          </motion.h1>
+          <motion.h2
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: [20, -5, 0],
+            }}
+            transition={{
+              duration: 0.5,
+              ease: [0.4, 0.0, 0.2, 1],
+            }}
+            className="text-2xl px-4 md:text-3xl lg:text-3xl font-bold max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+          >
+            <Highlight className="text-black dark:text-white">
+              The best NFL Survivor application
+            </Highlight>
+          </motion.h2>
         </div>
-        <div className="w-full overflow-hidden">
+        <div
+          className={`${
+            !isCollapsed ? 'w-[calc(100vw-192px)]' : 'w-[calc(100vw-56px)]'
+          } overflow-hidden`}
+        >
           <TeamSlider direction="left" teamLogos={teamLogos1} />
           <TeamSlider direction="right" teamLogos={teamLogos2} />
         </div>
       </div>
-    </div>
+    </HeroHighlight>
   );
-};
-export default HomepageHero;
+}
