@@ -14,7 +14,7 @@ export default function RulesDialog() {
 
   return (
     <>
-      <Button
+      {/* <Button
         onClick={handleOpenRulesDialog}
         size="sm"
         className="bg-gradient-to-b from-gray-700 to-gray-900 group relative flex items-center  overflow-hidden px-3 py-3 capitalize"
@@ -23,7 +23,7 @@ export default function RulesDialog() {
         <span className="absolute right-0 grid h-full w-12 place-items-center bg-gray-900 transition-colors ">
           <GavelIcon />
         </span>
-      </Button>
+      </Button> */}
 
       <Dialog
         open={openRulesDialog}
