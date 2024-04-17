@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
 
-const ThreeStepProcess = () => {
+const FourStepProcess = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 m-5 gap-5 h-full">
       <StepOne />
@@ -13,6 +13,11 @@ const ThreeStepProcess = () => {
     </div>
   );
 };
+
+// bg-[#5551ff]
+// bg-[#00cc66]
+// bg-[#fe5f55]
+// bg-[#6930c3]
 
 const StepOne = () => {
   const { ref, inView } = useInView({
@@ -31,7 +36,7 @@ const StepOne = () => {
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, ease: 'easeIn' }}
       >
-        <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#5551ff] p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none ">
+        <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#5551ff]  p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none ">
           <div className=" bg-black text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 1</p>
           </div>
@@ -77,7 +82,7 @@ const StepTwo = () => {
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, ease: 'easeIn' }}
       >
-        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#00cc66] p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
+        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
           <div className=" bg-black text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 2</p>
           </div>
@@ -119,7 +124,7 @@ const StepThree = () => {
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, ease: 'easeIn' }}
       >
-        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#fe5f55] p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
+        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
           <div className=" bg-black text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 3</p>
           </div>
@@ -163,7 +168,7 @@ const StepFour = () => {
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, ease: 'easeIn' }}
       >
-        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#6930c3] p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
+        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
           <div className=" bg-black text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 4</p>
           </div>
@@ -194,4 +199,4 @@ const StepFour = () => {
   );
 };
 
-export default ThreeStepProcess;
+export default FourStepProcess;
