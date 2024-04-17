@@ -16,34 +16,15 @@ import UserService from '@/services/UserService';
 import { motion } from 'framer-motion';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
-import CreditCardIcon from '@mui/icons-material/CreditCard';
 
 export default function RegistrationDialog() {
   const handleOpen = () => setRegistrationOpen(!registrationOpen);
-
   const { registrationOpen, setRegistrationOpen } = useUser();
   const { isCollapsed, setIsCollapsed } = useRegister();
   const [stripeOrCrypto, setStripeOrCrypto] = useState(0);
 
   return (
     <>
-      <Button
-        href="/dashboard"
-        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg bg-transparent shadow-none"
-        onClick={handleOpen}
-      >
-        <CreditCardIcon className="text-black dark:text-white" />
-        <motion.span
-          animate={{ opacity: isCollapsed ? 0 : 1 }}
-          transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 capitalize ${
-            isCollapsed ? 'hidden' : 'inline'
-          } text-black dark:text-white`}
-        >
-          Register
-        </motion.span>
-      </Button>
-
       <Dialog
         open={registrationOpen}
         handler={handleOpen}

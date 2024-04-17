@@ -22,12 +22,17 @@ import { useSession } from 'next-auth/react';
 import RegistrationDialog from './dialogs/RegistrationDialog';
 import { useRegister } from '@/context/RegisterContext';
 import { motion } from 'framer-motion';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import { useUser } from '@/context/UserContext';
 // import ThemeSwitcher from './ThemeSwitcher';
 
 function Main_Sidebar() {
   const { data: session, status } = useSession();
-
   const { isCollapsed, setIsCollapsed } = useRegister();
+
+  const handleOpen = () => setRegistrationOpen(!registrationOpen);
+
+  const { registrationOpen, setRegistrationOpen } = useUser();
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -96,7 +101,22 @@ function Main_Sidebar() {
           Dashboard
         </motion.span>
       </Link>
-      <RegistrationDialog />
+      <Button
+        href="/dashboard"
+        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg bg-transparent shadow-none"
+        onClick={handleOpen}
+      >
+        <CreditCardIcon className="text-black dark:text-white" />
+        <motion.span
+          animate={{ opacity: isCollapsed ? 0 : 1 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
+          className={`ml-3 capitalize ${
+            isCollapsed ? 'hidden' : 'inline'
+          } text-black dark:text-white`}
+        >
+          Register
+        </motion.span>
+      </Button>
 
       {/* <ThemeSwitcher /> */}
 

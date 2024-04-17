@@ -11,6 +11,7 @@ import DashboardHero from '@/components/heros/DashboardHero';
 import Router from 'next/router';
 import { toast } from 'react-toastify';
 import PicksDialog from '@/components/dialogs/PicksDialog';
+import RegistrationDialog from '@/components/dialogs/RegistrationDialog';
 
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
@@ -57,6 +58,7 @@ const Dashboard_Protected = () => {
       <UserTable users={users} />
 
       <PicksDialog user={user} users={users} />
+      <RegistrationDialog />
     </div>
   );
 };
