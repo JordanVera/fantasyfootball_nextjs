@@ -11,14 +11,30 @@ import 'react-toastify/dist/ReactToastify.css';
 import '@/styles/globals.css';
 import useDetectScroll from '@smakss/react-scroll-direction';
 
+import { useRouter } from 'next/router';
+
 export default function App({ Component, pageProps }) {
   const { scrollDir, scrollPosition } = useDetectScroll();
+  const router = useRouter();
 
   useEffect(() => {
     // console.log('sda');
     console.log({ scrollDir });
     console.log({ scrollPosition });
   }, [scrollDir, scrollPosition]);
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      document.querySelector('#main').scrollTop = 0;
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    // Cleanup function to remove the event listener
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <SessionProvider session={pageProps.session}>
@@ -33,7 +49,7 @@ export default function App({ Component, pageProps }) {
                 <Main_Sidebar />
               </div>
 
-              <div className="flex-grow overflow-auto">
+              <div id="main" className="flex-grow overflow-auto">
                 <div className="sticky top-0 z-50">
                   <Topbar />
                 </div>
