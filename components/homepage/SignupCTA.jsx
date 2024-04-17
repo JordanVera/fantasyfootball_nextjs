@@ -8,13 +8,12 @@ import useDetectScroll from '@smakss/react-scroll-direction';
 import Link from 'next/link';
 const SignupCTA = () => {
   const { scrollDir, scrollPosition } = useDetectScroll();
+  const scrollDirection = useScrollDirection();
 
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.15,
   });
-
-  const scrollDirection = useScrollDirection();
 
   return (
     <Link
