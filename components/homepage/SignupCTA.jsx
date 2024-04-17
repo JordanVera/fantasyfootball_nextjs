@@ -16,7 +16,7 @@ const SignupCTA = () => {
   });
 
   return (
-    <Link
+    <div
       ref={ref}
       href={'/login'}
       className="hover:scale-105 duration-300 cursor-pointer"
@@ -60,7 +60,7 @@ const SignupCTA = () => {
           }}
         ></div>
       </motion.div>
-    </Link>
+    </div>
   );
 };
 export default SignupCTA;
