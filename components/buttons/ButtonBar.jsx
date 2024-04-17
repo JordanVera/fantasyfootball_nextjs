@@ -23,7 +23,7 @@ const ButtonBar = () => {
         onClick={() => setOpenPicksDialog(true)}
         ref={ref}
         href={'/login'}
-        className="group text-left cursor-pointer"
+        className="group text-left cursor-pointer "
       >
         <motion.div
           className=" bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full "
@@ -67,7 +67,7 @@ const ButtonBar = () => {
         onClick={() => setRegistrationOpen(!registrationOpen)}
         ref={ref}
         href={'/login'}
-        className="group text-left cursor-pointer"
+        className="group text-left cursor-pointer "
       >
         <motion.div
           className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full "

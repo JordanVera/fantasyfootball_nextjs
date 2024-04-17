@@ -17,13 +17,13 @@ const UserTable = ({ users }) => {
   return (
     <div ref={ref} className="w-full">
       <motion.div
-        className="overflow-x-auto rounded-xl"
+        className="overflow-x-auto rounded-xl drop-shadow-xl  "
         initial={{ opacity: 0 }}
         animate={{ opacity: inView ? 1 : 0 }}
         transition={{ duration: 1, ease: 'easeIn' }}
       >
-        <table className="min-w-full divide-y divide-gray-700  border border-gray-700 rounded-xl">
-          <thead className="bg-[#d7d7d7] dark:bg-gray-900">
+        <table className="min-w-full divide-y divide-gray-700 rounded-xl">
+          <thead className="bg-white dark:bg-gray-900">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-primary capitalize tracking-wider ">
                 Name
@@ -35,7 +35,7 @@ const UserTable = ({ users }) => {
               ))}
             </tr>
           </thead>
-          <tbody className="bg-[#d7d7d7] divide-y divide-gray-700">
+          <tbody className="bg-white divide-y divide-gray-700">
             {users?.map((user) => {
               const groupedPicks = user.Picks.reduce((grouped, pick) => {
                 (grouped[pick.entryNumber] = grouped[pick.entryNumber] || {})[
@@ -50,7 +50,7 @@ const UserTable = ({ users }) => {
               return Array.from({ length: user.bullets }).map((_, index) => (
                 <tr
                   key={`${user.id}-${index}`}
-                  className={` bg-[#d7d7d7] dark:bg-gray-900 w-full`}
+                  className={` bg-white dark:bg-gray-900 w-full`}
                 >
                   <td className="px-6 py-2 whitespace-nowrap">
                     <div className="flex items-center">

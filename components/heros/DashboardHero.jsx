@@ -13,7 +13,7 @@ const DashboardHero = () => {
   });
 
   return (
-    <div ref={ref} className="w-full">
+    <div ref={ref} className="w-full ">
       <motion.div
         className="bg-black rounded-lg flex flex-col-reverse md:flex-row"
         initial={{ opacity: 0 }}
