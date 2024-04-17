@@ -10,7 +10,7 @@ const ThemeSwitcher = () => {
   return (
     <button
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900 p-2 rounded-lg"
+      className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900 rounded-full p-2"
     >
       {theme === 'light' ? (
         <DarkModeIcon className="w-6 h-6 text-black dark:text-white" />
@@ -18,13 +18,13 @@ const ThemeSwitcher = () => {
         <LightModeIcon className="w-6 h-6 text-black dark:text-white" />
       )}
 
-      <span
+      {/* <span
         className={`ml-3 ${
           isCollapsed ? 'hidden' : 'inline'
         } text-black dark:text-white`}
       >
         Theme
-      </span>
+      </span> */}
     </button>
   );
 };
