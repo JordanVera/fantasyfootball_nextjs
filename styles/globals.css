@@ -74,6 +74,65 @@ body {
   white-space: nowrap;
 }
 
+
+/* GLOW ON HOVER EFFECT */
+
+/* Text */
+.glow-on-hover {
+  border: none;
+  outline: none;
+  color: #f2f2f2;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+}
+
+.glow-on-hover:before {
+  content: '';
+  border-radius: 8px;
+  background: linear-gradient(45deg, #ff0000, #ff7300, #f2f2f2, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.glow-on-hover:active {
+  color: #000
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* background: #d7d7d7; */
+  border-radius: 8px;
+  /* actual button bachround col0r */
+  left: 0;
+  top: 0;
+}
+
+/* END  GLOW ON HOVER EFFECT */
+
+
 /* @keyframes slideRightToLeft {
   0% {
     transform: translateX(0%);
