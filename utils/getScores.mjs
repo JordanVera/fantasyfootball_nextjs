@@ -102,8 +102,8 @@ function getSchedule() {
 
           // console.log(chalk.green('WINNERS OBJECT'));
           // console.log(winners);
-          // console.log(chalk.red('LOSERS OBJECT'));
-          // console.log(losers);
+          console.log(chalk.red('LOSERS OBJECT'));
+          console.log(losers);
 
           console.log(Object.entries(losers));
 
@@ -122,8 +122,27 @@ function getSchedule() {
 getSchedule();
 
 async function createLosers(losers) {
-  Object.entries(losers).map(([week, teams], i) => {
-    // console.log({ week, teams });
+  Object.entries(losers).map((nflWeek, i) => {
+    const weekNumber = parseInt(nflWeek[0].replace('week', ''), 10);
+    const teams = nflWeek[1];
+
+    teams.forEach(async (team) => {
+      console.log('l data for week: ', weekNumber);
+      console.log({ team });
+
+      const loserData = await prisma.loser.create({
+        data: {
+          week: weekNumber,
+          team: team,
+        },
+      });
+
+      // console.log(loserData);
+    });
+
+    console.log();
+
+    console.log({ weekNumber, i, teams });
     // return (async () => {})
   });
 
