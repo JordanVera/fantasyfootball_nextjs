@@ -42,7 +42,11 @@ export default function PicksDialog() {
       <DialogBody>
         <TracingBeam
           children={
-            <WeeksAccordion user={user} updateUserPicks={updateUserPicks} />
+            <WeeksAccordion
+              user={user}
+              updateUserPicks={updateUserPicks}
+              setOpenPicksDialog={setOpenPicksDialog}
+            />
           }
         />
       </DialogBody>
@@ -50,7 +54,8 @@ export default function PicksDialog() {
   );
 }
 
-const WeeksAccordion = ({ user, updateUserPicks }) => {
+const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
+  useContext(UserContext);
   const [open, setOpen] = useState(-1);
   const [picks, setPicks] = useState([]);
   const [week, setWeek] = useState('');
@@ -95,6 +100,8 @@ const WeeksAccordion = ({ user, updateUserPicks }) => {
   // Function to handle the form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    setOpenPicksDialog(false);
 
     await updateUserPicks(week, picks);
   };
