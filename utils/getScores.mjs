@@ -3,6 +3,7 @@
 import chalk from 'chalk';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import prisma from '../lib/prisma.mjs';
 
 dotenv.config();
 
@@ -53,12 +54,14 @@ const losers = {
 };
 
 function getSchedule() {
-  console.log(process.env.API_KEY);
-  console.log(process.env.SEASON);
+  // console.log(process.env.API_KEY);
+  // console.log(process.env.SEASON);
 
   return new Promise((resolve, reject) => {
     const requests = [];
+
     for (let week = 1; week <= 21; week++) {
+      // 21 = weeks in the NFL season including POST SEASON
       requests.push(
         get(
           `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/${week}?key=${process.env.API_KEY}`
@@ -97,8 +100,8 @@ function getSchedule() {
             });
           }
 
-          console.log(chalk.green('WINNERS OBJECT'));
-          console.log(winners);
+          // console.log(chalk.green('WINNERS OBJECT'));
+          // console.log(winners);
           console.log(chalk.red('LOSERS OBJECT'));
           console.log(losers);
 
@@ -113,6 +116,37 @@ function getSchedule() {
 }
 
 getSchedule();
+
+async function createLosers(losers) {
+  for (const week in losers) {
+    const weekNumber = parseInt(week.replace('week', ''), 10);
+    console.log({ weekNumber });
+    for (const team of losers[week]) {
+      const loserData = await prisma.loser.create({
+        data: {
+          week: weekNumber,
+          team: team,
+        },
+      });
+
+      console.log('l data for week: ', weekNumber);
+      console.log(loserData);
+    }
+  }
+}
+
+async function seedDB() {
+  try {
+    await createLosers(losers);
+  } catch (e) {
+    console.error(e);
+  } finally {
+    console.log(chalk.green('Successfully seeded losers data to database'));
+    await prisma.$disconnect();
+  }
+}
+
+seedDB();
 
 function getWinnnersLosers() {
   return {

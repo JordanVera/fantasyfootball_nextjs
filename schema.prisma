@@ -88,6 +88,14 @@ model Picks {
   @@unique([userId, week, entryNumber], name: "userId_week_entryNumber")
 }
 
+model Loser {
+  id        Int      @id @default(autoincrement())
+  week      Int
+  team      String
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+}
+
 model VerificationToken {
   id         Int      @id @default(autoincrement())
   identifier String   @unique @map("identifier")

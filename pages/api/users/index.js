@@ -1,5 +1,5 @@
 // File: /api/student/index.js
-import prisma from '../../../lib/prisma';
+import prisma from '../../../lib/prisma.mjs';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]';
 
