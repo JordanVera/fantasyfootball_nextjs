@@ -1,8 +1,10 @@
 // import { all, get } from 'axios';
 // const { MongoClient } = require('mongodb');
 import chalk from 'chalk';
-
 import axios from 'axios';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const { all, get } = axios;
 
@@ -51,71 +53,74 @@ const losers = {
 };
 
 function getSchedule() {
+  console.log(process.env.API_KEY);
+  console.log(process.env.SEASON);
+
   // eslint-disable-next-line no-unused-vars
   return new Promise((resolve, reject) => {
     all([
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/1?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/1?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/2?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/2?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/3?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/3?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/4?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/4?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/5?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/5?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/6?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/6?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/7?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/7?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/8?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/8?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/9?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/9?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/10?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/10?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/11?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/11?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/12?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/12?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/13?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/13?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/14?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/14?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/15?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/15?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/16?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/16?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/17?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/17?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/18?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/18?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/19?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/19?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/20?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/20?key=${process.env.API_KEY}`
       ),
       get(
-        `https://fly.sportsdata.io/api/nfl/odds/json/ScoresByWeek/${process.env.SEASON}/21?key=${process.env.API_KEY}`
+        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/21?key=${process.env.API_KEY}`
       ),
     ])
       .then((responseArr) => {
@@ -150,7 +155,12 @@ function getSchedule() {
 
         resolve({ winners, losers });
       })
-      .catch((err) => console.log(err.response.data.message));
+      .catch((err) => {
+        // console.log(err);
+
+        console.log(chalk.red(err.response.data.message));
+        console.log(chalk.red(err.response.statusText));
+      });
   });
 }
 
