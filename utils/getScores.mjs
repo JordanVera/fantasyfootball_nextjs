@@ -102,8 +102,12 @@ function getSchedule() {
 
           // console.log(chalk.green('WINNERS OBJECT'));
           // console.log(winners);
-          console.log(chalk.red('LOSERS OBJECT'));
-          console.log(losers);
+          // console.log(chalk.red('LOSERS OBJECT'));
+          // console.log(losers);
+
+          console.log(Object.entries(losers));
+
+          seedDB(losers);
 
           resolve({ winners, losers });
         })
@@ -118,24 +122,31 @@ function getSchedule() {
 getSchedule();
 
 async function createLosers(losers) {
-  for (const week in losers) {
-    const weekNumber = parseInt(week.replace('week', ''), 10);
-    console.log({ weekNumber });
-    for (const team of losers[week]) {
-      const loserData = await prisma.loser.create({
-        data: {
-          week: weekNumber,
-          team: team,
-        },
-      });
+  Object.entries(losers).map(([week, teams], i) => {
+    // console.log({ week, teams });
+    // return (async () => {})
+  });
 
-      console.log('l data for week: ', weekNumber);
-      console.log(loserData);
-    }
-  }
+  // for (const [week, teams] of ) {
+  //   const weekNumber = parseInt(week.replace('week', ''), 10);
+  //   console.log({ weekNumber });
+  //   for (const team of teams) {
+  //     console.log('l data for week: ', weekNumber);
+  //     console.log({ team });
+
+  //     // const loserData = await prisma.loser.create({
+  //     //   data: {
+  //     //     week: weekNumber,
+  //     //     team: team,
+  //     //   },
+  //     // });
+
+  //     // console.log(loserData);
+  //   }
+  // }
 }
 
-async function seedDB() {
+async function seedDB(losers) {
   try {
     await createLosers(losers);
   } catch (e) {
@@ -145,8 +156,6 @@ async function seedDB() {
     await prisma.$disconnect();
   }
 }
-
-seedDB();
 
 function getWinnnersLosers() {
   return {
