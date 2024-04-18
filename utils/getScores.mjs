@@ -56,108 +56,56 @@ function getSchedule() {
   console.log(process.env.API_KEY);
   console.log(process.env.SEASON);
 
-  // eslint-disable-next-line no-unused-vars
   return new Promise((resolve, reject) => {
-    all([
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/1?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/2?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/3?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/4?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/5?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/6?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/7?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/8?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/9?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/10?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/11?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/12?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/13?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/14?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/15?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/16?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/17?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/18?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/19?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/20?key=${process.env.API_KEY}`
-      ),
-      get(
-        `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/21?key=${process.env.API_KEY}`
-      ),
-    ])
-      .then((responseArr) => {
-        for (let i = 0; i < 18; i++) {
-          const weekN = `week${i + 1}`;
-          const winnerWeek = winners[weekN];
-          const loserWeek = losers[weekN];
+    const requests = [];
+    for (let week = 1; week <= 21; week++) {
+      requests.push(
+        get(
+          `https://api.sportsdata.io/v3/nfl/scores/json/ScoresBasic/${process.env.SEASON}/${week}?key=${process.env.API_KEY}`
+        )
+      );
+    }
 
-          responseArr[i].data.forEach((element) => {
-            console.log(element);
+    all(requests)
+      .then(
+        axios.spread((...responses) => {
+          // handle responses here
 
-            if (element.AwayScore > element.HomeScore) {
-              // console.log(chalk.red('Away team won'));
-              winnerWeek.push(element.AwayTeam);
-              loserWeek.push(element.HomeTeam);
-            } else if (element.AwayScore === element.HomeScore) {
-              // console.log(chalk.blue('Game was a tie, both teams lost'));
-              loserWeek.push(element.HomeTeam);
-              loserWeek.push(element.AwayTeam);
-            } else {
-              // console.log(chalk.green('Home Team won'));
-              winnerWeek.push(element.HomeTeam);
-              loserWeek.push(element.AwayTeam);
-            }
-          });
-        }
+          for (let i = 0; i < 18; i++) {
+            const weekN = `week${i + 1}`;
+            const winnerWeek = winners[weekN];
+            const loserWeek = losers[weekN];
 
-        console.log(chalk.green('WINNERS OBJECT'));
-        console.log(winners);
-        console.log(chalk.red('LOSERS OBJECT'));
-        console.log(losers);
+            responses[i].data.forEach((footballGameData) => {
+              // console.log(footballGameData);
 
-        resolve({ winners, losers });
-      })
+              if (footballGameData.AwayScore > footballGameData.HomeScore) {
+                // console.log(chalk.red('Away team won'));
+                winnerWeek.push(footballGameData.AwayTeam);
+                loserWeek.push(footballGameData.HomeTeam);
+              } else if (
+                footballGameData.AwayScore === footballGameData.HomeScore
+              ) {
+                // console.log(chalk.blue('Game was a tie, both teams lost'));
+                loserWeek.push(footballGameData.HomeTeam);
+                loserWeek.push(footballGameData.AwayTeam);
+              } else {
+                // console.log(chalk.green('Home Team won'));
+                winnerWeek.push(footballGameData.HomeTeam);
+                loserWeek.push(footballGameData.AwayTeam);
+              }
+            });
+          }
+
+          console.log(chalk.green('WINNERS OBJECT'));
+          console.log(winners);
+          console.log(chalk.red('LOSERS OBJECT'));
+          console.log(losers);
+
+          resolve({ winners, losers });
+        })
+      )
       .catch((err) => {
-        // console.log(err);
-
         console.log(chalk.red(err.response.data.message));
         console.log(chalk.red(err.response.statusText));
       });
