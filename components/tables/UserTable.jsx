@@ -63,27 +63,27 @@ const UserTable = ({ users }) => {
               console.log('groupedPicks for user ', user.name);
               console.log(groupedPicks);
 
-              for (let entryNumber in groupedPicks) {
-                for (let week in groupedPicks[entryNumber]) {
-                  const pick = groupedPicks[entryNumber][week];
+              // for (let entryNumber in groupedPicks) {
+              //   for (let week in groupedPicks[entryNumber]) {
+              //     const pick = groupedPicks[entryNumber][week];
 
-                  // Check if the pick is in the losers array
-                  const isLoser = losers.some(
-                    (loser) =>
-                      loser.week === pick.week && loser.team === pick.team
-                  );
+              //     // Check if the pick is in the losers array
+              //     const isLoser = losers.some(
+              //       (loser) =>
+              //         loser.week === pick.week && loser.team === pick.team
+              //     );
 
-                  if (isLoser) {
-                    console.log(
-                      `User ${user.name}'s pick for week ${week} and team ${pick.team} is a loser.`
-                    );
-                  } else {
-                    console.log(
-                      `User ${user.name}'s pick for week ${week} and team ${pick.team} is a winner.`
-                    );
-                  }
-                }
-              }
+              //     if (isLoser) {
+              //       console.log(
+              //         `User ${user.name}'s pick for week ${week} and team ${pick.team} is a loser.`
+              //       );
+              //     } else {
+              //       console.log(
+              //         `User ${user.name}'s pick for week ${week} and team ${pick.team} is a winner.`
+              //       );
+              //     }
+              //   }
+              // }
 
               return Array.from({ length: user.bullets }).map((_, index) => (
                 <tr
@@ -106,15 +106,30 @@ const UserTable = ({ users }) => {
                       </div>
                     </div>
                   </td>
+                  {/* console.log({weekIndex});
+                  console.log(groupedPicks[index]?.[weekIndex]?.team); */}
+                  {Array.from({ length: 18 }).map((_, weekIndex) => {
+                    const pick = groupedPicks[index]?.[weekIndex]?.team || '';
+                    console.log({ pick });
 
-                  {Array.from({ length: 18 }).map((_, weekIndex) => (
-                    <td
-                      key={weekIndex}
-                      className={` px-2 py-4 whitespace-nowrap text-black dark:text-white`}
-                    >
-                      {groupedPicks[index]?.[weekIndex]?.team}
-                    </td>
-                  ))}
+                    // Check if the pick is in the losers array
+                    // const isLoser = losers.some(
+                    //   (loser) =>
+                    //     loser.week === pick.week && loser.team === pick.team
+                    // );
+
+                    // let message;
+                    // if (isLoser) {
+                    //   message = `User ${user.name}'s pick for week ${weekIndex} and team ${pick.team} is a loser.`;
+                    //   console.log(message);
+                    // } else {
+                    //   message = `User ${user.name}'s pick for week ${weekIndex} and team ${pick.team} is a winner.`;
+                    //   console.log(message);
+                    // }
+
+                    // Return a td with the message and color based on isLoser
+                    return <td>{pick}</td>;
+                  })}
                 </tr>
               ));
             })}

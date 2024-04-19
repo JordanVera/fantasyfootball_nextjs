@@ -30,6 +30,13 @@ module.exports = withMT({
         shimmer: 'shimmer 2s linear infinite',
       },
 
+      extend: {
+        backgroundSize: {
+          100: '100%',
+          110: '110%',
+        },
+      },
+
       keyframes: {
         slideRightToLeft: {
           '0%': { transform: 'translateX(0%)' },
@@ -48,6 +55,11 @@ module.exports = withMT({
           },
         },
       },
+    },
+  },
+  variants: {
+    extend: {
+      backgroundSize: ['hover', 'focus', 'group-hover'],
     },
   },
   plugins: [
