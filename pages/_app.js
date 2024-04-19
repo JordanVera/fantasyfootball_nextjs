@@ -14,14 +14,13 @@ import useDetectScroll from '@smakss/react-scroll-direction';
 import { useRouter } from 'next/router';
 
 export default function App({ Component, pageProps }) {
-  const { scrollDir, scrollPosition } = useDetectScroll();
+  // const { scrollDir, scrollPosition } = useDetectScroll();
+  // useEffect(() => {
+  //   // console.log('sda');
+  //   console.log({ scrollDir });
+  //   console.log({ scrollPosition });
+  // }, [scrollDir, scrollPosition]);
   const router = useRouter();
-
-  useEffect(() => {
-    // console.log('sda');
-    console.log({ scrollDir });
-    console.log({ scrollPosition });
-  }, [scrollDir, scrollPosition]);
 
   useEffect(() => {
     const handleRouteChange = () => {

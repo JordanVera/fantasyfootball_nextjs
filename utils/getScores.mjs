@@ -145,24 +145,6 @@ async function createLosers(losers) {
     console.log({ weekNumber, i, teams });
     // return (async () => {})
   });
-
-  // for (const [week, teams] of ) {
-  //   const weekNumber = parseInt(week.replace('week', ''), 10);
-  //   console.log({ weekNumber });
-  //   for (const team of teams) {
-  //     console.log('l data for week: ', weekNumber);
-  //     console.log({ team });
-
-  //     // const loserData = await prisma.loser.create({
-  //     //   data: {
-  //     //     week: weekNumber,
-  //     //     team: team,
-  //     //   },
-  //     // });
-
-  //     // console.log(loserData);
-  //   }
-  // }
 }
 
 async function seedDB(losers) {
@@ -176,16 +158,8 @@ async function seedDB(losers) {
   }
 }
 
-function getWinnnersLosers() {
-  return {
-    winners,
-    losers,
-  };
-}
-
 // getSchedule();
 
 export default {
   getSchedule,
-  getWinnnersLosers,
 };

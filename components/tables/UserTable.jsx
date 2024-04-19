@@ -1,13 +1,29 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Avatar } from '@material-tailwind/react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import UserService from '@/services/UserService';
 
 const UserTable = ({ users }) => {
+  const [losers, setLosers] = useState([]);
+
   useEffect(() => {
     console.log('UZRZ');
     console.log(users);
   }, [users]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { losers } = await UserService.getLoserData();
+
+      console.log({ losers });
+
+      setLosers(losers);
+      return losers;
+    };
+
+    fetchData();
+  }, []);
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -46,6 +62,28 @@ const UserTable = ({ users }) => {
 
               console.log('groupedPicks for user ', user.name);
               console.log(groupedPicks);
+
+              for (let entryNumber in groupedPicks) {
+                for (let week in groupedPicks[entryNumber]) {
+                  const pick = groupedPicks[entryNumber][week];
+
+                  // Check if the pick is in the losers array
+                  const isLoser = losers.some(
+                    (loser) =>
+                      loser.week === pick.week && loser.team === pick.team
+                  );
+
+                  if (isLoser) {
+                    console.log(
+                      `User ${user.name}'s pick for week ${week} and team ${pick.team} is a loser.`
+                    );
+                  } else {
+                    console.log(
+                      `User ${user.name}'s pick for week ${week} and team ${pick.team} is a winner.`
+                    );
+                  }
+                }
+              }
 
               return Array.from({ length: user.bullets }).map((_, index) => (
                 <tr
