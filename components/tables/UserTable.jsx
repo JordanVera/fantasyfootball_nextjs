@@ -113,22 +113,33 @@ const UserTable = ({ users }) => {
                     console.log({ pick });
 
                     // Check if the pick is in the losers array
-                    // const isLoser = losers.some(
-                    //   (loser) =>
-                    //     loser.week === pick.week && loser.team === pick.team
-                    // );
+                    const isLoser = losers.some(
+                      (loser) =>
+                        loser.week === weekIndex + 1 && loser.team === pick
+                    );
 
-                    // let message;
-                    // if (isLoser) {
-                    //   message = `User ${user.name}'s pick for week ${weekIndex} and team ${pick.team} is a loser.`;
-                    //   console.log(message);
-                    // } else {
-                    //   message = `User ${user.name}'s pick for week ${weekIndex} and team ${pick.team} is a winner.`;
-                    //   console.log(message);
+                    let message;
+
+                    // if (pick === '') {
+                    //   return <td> </td>;
                     // }
 
+                    if (isLoser) {
+                      message = `User ${user.name}'s pick for week ${weekIndex} and team ${pick} is a loser.`;
+                      console.log(message);
+                    } else {
+                      message = `User ${user.name}'s pick for week ${weekIndex} and team ${pick} is a winner.`;
+                      console.log(message);
+                    }
+
                     // Return a td with the message and color based on isLoser
-                    return <td>{pick}</td>;
+                    return (
+                      <td
+                        className={`${isLoser ? 'text-red-500' : 'text-white'}`}
+                      >
+                        {pick}
+                      </td>
+                    );
                   })}
                 </tr>
               ));

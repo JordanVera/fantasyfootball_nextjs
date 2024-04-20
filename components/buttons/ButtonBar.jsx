@@ -93,7 +93,7 @@ const ButtonBar = () => {
           </div>
 
           <div
-            className="min-h-[120px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none"
+            className="min-h-[120px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none group-hover:grayscale"
             // bg-opacity-50
             style={{
               backgroundImage: "url('/images/register.jpg')",

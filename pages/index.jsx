@@ -14,7 +14,7 @@ export default function Home() {
       <SignupCTA />
       <div className="mt-20 m-5">
         <WhatWeDo />
-      <TracingBeam children={<Child />} />
+        {/* <TracingBeam children={<Child />} /> */}
       </div>
 
       {/* <HomepageHero /> */}
