@@ -1,5 +1,5 @@
 // File: /api/student/index.js
-import prisma from '../../../lib/prisma';
+import prisma from '../../../lib/prisma.mjs';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]';
 import { getStartingWeek } from '../../../utils/dates';
@@ -22,6 +22,8 @@ export default async function handle(req, res) {
 async function postPicksForUser(req, res, session) {
   const { picks, week } = req.body;
 
+  const filteredPicks = picks.filter((item) => item != null);
+
   if (!session) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
@@ -36,13 +38,14 @@ async function postPicksForUser(req, res, session) {
   try {
     console.log(`REQ`);
     console.log(req.body);
+    console.log(filteredPicks);
 
     console.log('starting week', getStartingWeek());
 
     // console.log(session.user);
 
     // makes it impossible to
-    for (let pick of picks) {
+    for (let pick of filteredPicks) {
       const existingPick = await prisma.picks.findFirst({
         where: {
           userId: session.user.id,
@@ -55,12 +58,14 @@ async function postPicksForUser(req, res, session) {
       });
 
       if (existingPick) {
-        return res.status(400).json({ error: 'Pick already exists' });
+        return res.status(400).json({
+          error: `Pick ${pick.pick} already exists in entry ${pick.entry + 1}`,
+        });
       }
     }
 
     // If no existing picks were found, proceed with creating or updating the picks
-    for (let pick of picks) {
+    for (let pick of filteredPicks) {
       const newPick = await prisma.picks.upsert({
         where: {
           userId_week_entryNumber: {

@@ -13,13 +13,13 @@ import {
 } from '@material-tailwind/react';
 import Image from 'next/image';
 
-import { UserContext } from '@/context/UserContext';
 import { getStartingWeek } from '@/utils/dates';
 import { TracingBeam } from '../ui/tracing-beam';
+import { useUser } from '@/context/UserContext';
 
 export default function PicksDialog() {
   const { user, updateUserPicks, openPicksDialog, setOpenPicksDialog } =
-    useContext(UserContext);
+    useUser();
   // const [open, setOpen] = useState(false);
 
   // useEffect(() => {
@@ -42,7 +42,11 @@ export default function PicksDialog() {
       <DialogBody>
         <TracingBeam
           children={
-            <WeeksAccordion user={user} updateUserPicks={updateUserPicks} />
+            <WeeksAccordion
+              user={user}
+              updateUserPicks={updateUserPicks}
+              setOpenPicksDialog={setOpenPicksDialog}
+            />
           }
         />
       </DialogBody>
@@ -50,7 +54,8 @@ export default function PicksDialog() {
   );
 }
 
-const WeeksAccordion = ({ user, updateUserPicks }) => {
+const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
+  const { userLoserEntries } = useUser();
   const [open, setOpen] = useState(-1);
   const [picks, setPicks] = useState([]);
   const [week, setWeek] = useState('');
@@ -96,6 +101,8 @@ const WeeksAccordion = ({ user, updateUserPicks }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    setOpenPicksDialog(false);
+
     await updateUserPicks(week, picks);
   };
 
@@ -109,10 +116,46 @@ const WeeksAccordion = ({ user, updateUserPicks }) => {
     setPicks(newPicks);
   };
 
+  const groupedPicks = user.Picks.reduce((grouped, pick) => {
+    (grouped[pick.entryNumber] = grouped[pick.entryNumber] || {})[pick.week] =
+      pick;
+    return grouped;
+  }, {});
+
+  useEffect(() => {
+    console.log('hro');
+    console.log(groupedPicks);
+  }, [groupedPicks]);
+
+  // const hasLosingPickInPreviousWeeks = (entryNumber, currentWeek) => {
+  //   for (let week = 1; week < currentWeek; week++) {
+  //     // Check if the entry exists in groupedPicks
+  //     if (groupedPicks[entryNumber]) {
+  //       const pick = groupedPicks[entryNumber][week];
+
+  //       // console.log('pick');
+  //       // console.log({ pick });
+
+  //       // Check if the pick exists and is in the losers array
+  //       if (pick) {
+  //         const isLoser = losers.some(
+  //           (loser) => loser.week === pick.week && loser.team === pick.team
+  //         );
+
+  //         if (isLoser) {
+  //           return true;
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   return false;
+  // };
+
   return (
     <div className="flex flex-col gap-3">
-      {Array.from({ length: 18 }).map((_, weekIndex) =>
-        weekIndex < getStartingWeek() ? null : (
+      {Array.from({ length: 18 }).map((_, weekIndex) => {
+        return weekIndex < getStartingWeek() ? null : (
           <Accordion
             key={weekIndex}
             open={open === weekIndex}
@@ -130,22 +173,32 @@ const WeeksAccordion = ({ user, updateUserPicks }) => {
             </AccordionHeader>
             <AccordionBody className="p-5">
               <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-                {Array.from({ length: user.bullets }).map((_, j) => (
-                  <Select
-                    variant="standard"
-                    key={j}
-                    label={`Entry ${j + 1}`}
-                    className="capitalize"
-                    color="blue"
-                    onChange={(val) => handlePickChange(j, val)}
-                  >
-                    {teamsArr.map((team, j) => (
-                      <Option key={j} value={team}>
-                        {team}
-                      </Option>
-                    ))}
-                  </Select>
-                ))}
+                {Array.from({ length: user.bullets }).map((_, j) => {
+                  // console.log({ j, weekIndex });
+                  // console.log(hasLosingPickInPreviousWeeks(j, weekIndex + 1));
+
+                  // const isLoser = losers.some(
+                  //   (loser) =>
+                  //     loser.week === weekIndex + 1 && loser.team === pick
+                  // );
+                  return (
+                    <Select
+                      variant="standard"
+                      key={j}
+                      label={`Entry ${j + 1}`}
+                      className="capitalize"
+                      color="blue"
+                      onChange={(val) => handlePickChange(j, val)}
+                      disabled={userLoserEntries.includes(j)}
+                    >
+                      {teamsArr.map((team, j) => (
+                        <Option key={j} value={team}>
+                          {team}
+                        </Option>
+                      ))}
+                    </Select>
+                  );
+                })}
 
                 <Button
                   type="submit"
@@ -158,8 +211,8 @@ const WeeksAccordion = ({ user, updateUserPicks }) => {
               </form>
             </AccordionBody>
           </Accordion>
-        )
-      )}
+        );
+      })}
     </div>
   );
 };

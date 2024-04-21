@@ -1,10 +1,5 @@
 import React from 'react';
-import PicksDialog from '..//dialogs/PicksDialog';
-import RulesDialog from '..//dialogs/RulesDialog';
-import { Button } from '@material-tailwind/react';
-import CheckoutButton from './CheckoutButton';
 import { useUser } from '@/context/UserContext';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -23,12 +18,12 @@ const ButtonBar = () => {
   });
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
       <button
         onClick={() => setOpenPicksDialog(true)}
         ref={ref}
         href={'/login'}
-        className="group text-left cursor-pointer"
+        className="group text-left cursor-pointer "
       >
         <motion.div
           className=" bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full "
@@ -36,7 +31,7 @@ const ButtonBar = () => {
           animate={{ opacity: 1 }} // Fade in when in view
           transition={{ duration: 1, ease: 'easeIn' }}
         >
-          <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#d7d7d7] dark:bg-gray-900 dark:group-hover:bg-[#d7d7d7] duration-300 ease-in p-5  w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none ">
+          <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#d7d7d7] dark:bg-gray-900 dark:group-hover:bg-[#d7d7d7] group-hover:bg-gray-900 duration-300 ease-in p-5  w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none ">
             <div className=" bg-[#5551ff] text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
               <p className="mx-auto text-center">Selections</p>
             </div>
@@ -55,7 +50,7 @@ const ButtonBar = () => {
           </div>
 
           <div
-            className="min-h-[120px] flex flex-col justify-center items-center bg-gray-900 p-5  w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none"
+            className="min-h-[120px] h-full flex flex-col justify-center items-center bg-gray-900 p-5  w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none group-hover:grayscale  duration-300 ease-in "
             // bg-opacity-50
             style={{
               backgroundImage: "url('/images/1.jpg')",
@@ -72,7 +67,7 @@ const ButtonBar = () => {
         onClick={() => setRegistrationOpen(!registrationOpen)}
         ref={ref}
         href={'/login'}
-        className="group text-left cursor-pointer"
+        className="group text-left cursor-pointer "
       >
         <motion.div
           className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full "
@@ -80,7 +75,7 @@ const ButtonBar = () => {
           animate={{ opacity: 1 }} // Fade in when in view
           transition={{ duration: 1, ease: 'easeIn' }}
         >
-          <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#d7d7d7] dark:bg-gray-900  p-5 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none dark:group-hover:bg-[#d7d7d7] duration-300 ease-in">
+          <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#d7d7d7] dark:bg-gray-900  p-5 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none dark:group-hover:bg-[#d7d7d7] group-hover:bg-gray-900 duration-300 ease-in">
             <div className=" bg-[#00cc66] text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
               <p className="mx-auto text-center">Checkout</p>
             </div>
@@ -98,7 +93,7 @@ const ButtonBar = () => {
           </div>
 
           <div
-            className="min-h-[120px] flex flex-col justify-center items-center bg-gray-900 p-5 w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none"
+            className="min-h-[120px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none group-hover:grayscale"
             // bg-opacity-50
             style={{
               backgroundImage: "url('/images/register.jpg')",
@@ -113,20 +108,5 @@ const ButtonBar = () => {
     </div>
   );
 };
-// <div className="flex flex-col lg:flex-row justify-center gap-3 w-full">
-//   <PicksDialog users={users} user={user} />
 
-//   <CheckoutButton />
-
-//   <RulesDialog />
-
-//   <Button
-//     variant="text"
-//     className="capitalize text-blue-500 text-sm font-normal"
-//   >
-//     <a href="https://www.nfl.com/schedules/" target="_blank">
-//       Schedule
-//     </a>
-//   </Button>
-// </div>
 export default ButtonBar;

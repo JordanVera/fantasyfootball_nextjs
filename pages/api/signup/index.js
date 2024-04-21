@@ -2,7 +2,7 @@
 
 import { session } from 'next-auth/react';
 import bcrypt from 'bcryptjs';
-import prisma from '@/lib/prisma';
+import prisma from '@/lib/prisma.mjs';
 
 export default async function handle(req, res) {
   switch (req.method) {

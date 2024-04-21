@@ -50,6 +50,30 @@ class UserService {
     }
   }
 
+  async getLoserData() {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/losers`,
+        {
+          // Use process.env.BASE_URL
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (!response.ok) {
+        console.log(response);
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async submitPicks(week, picks) {
     try {
       const response = await fetch(

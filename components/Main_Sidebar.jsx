@@ -68,6 +68,21 @@ function Main_Sidebar() {
         </motion.span>
       </Link>
       <Link
+        href="/dashboard"
+        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
+      >
+        <SpaceDashboardIcon className="text-black dark:text-white" />
+        <motion.span
+          animate={{ opacity: isCollapsed ? 0 : 1 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
+          className={`ml-3 ${
+            isCollapsed ? 'hidden' : 'inline'
+          } text-black dark:text-white`}
+        >
+          Dashboard
+        </motion.span>
+      </Link>
+      <Link
         href="/login"
         className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
       >
@@ -86,21 +101,7 @@ function Main_Sidebar() {
           Login
         </motion.span>
       </Link>
-      <Link
-        href="/dashboard"
-        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
-      >
-        <SpaceDashboardIcon className="text-black dark:text-white" />
-        <motion.span
-          animate={{ opacity: isCollapsed ? 0 : 1 }}
-          transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 ${
-            isCollapsed ? 'hidden' : 'inline'
-          } text-black dark:text-white`}
-        >
-          Dashboard
-        </motion.span>
-      </Link>
+
       <Button
         href="/dashboard"
         className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg bg-transparent shadow-none"

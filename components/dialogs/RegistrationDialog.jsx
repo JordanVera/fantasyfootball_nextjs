@@ -148,7 +148,7 @@ const StripeCheckout = ({ handleOpen }) => {
         product_data: {
           name: 'T-shirt',
         },
-        unit_amount: 2000,
+        unit_amount: 6000,
       },
       quantity: numberOfEntries,
     },
