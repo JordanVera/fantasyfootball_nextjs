@@ -106,6 +106,7 @@ export const UserProvider = ({ children }) => {
         setOpenPicksDialog,
         losers,
         userPicks,
+        userLoserEntries,
       }}
     >
       {children}

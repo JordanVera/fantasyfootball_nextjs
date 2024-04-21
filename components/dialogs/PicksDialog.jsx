@@ -55,7 +55,7 @@ export default function PicksDialog() {
 }
 
 const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
-  const { losers } = useUser();
+  const { userLoserEntries } = useUser();
   const [open, setOpen] = useState(-1);
   const [picks, setPicks] = useState([]);
   const [week, setWeek] = useState('');
@@ -189,7 +189,7 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
                       className="capitalize"
                       color="blue"
                       onChange={(val) => handlePickChange(j, val)}
-                      // disabled={isLoser}
+                      disabled={userLoserEntries.includes(j)}
                     >
                       {teamsArr.map((team, j) => (
                         <Option key={j} value={team}>
