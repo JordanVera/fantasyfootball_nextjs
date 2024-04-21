@@ -99,7 +99,11 @@ const UserTable = ({ users }) => {
                     return (
                       <td
                         key={`${user.id}-${index}-${weekIndex}`}
-                        className={`${isLoser ? 'text-red-500' : 'text-white'}`}
+                        className={`${
+                          isLoser
+                            ? 'text-red-500'
+                            : 'text-black dark:text-white'
+                        }`}
                       >
                         {pick}
                       </td>
