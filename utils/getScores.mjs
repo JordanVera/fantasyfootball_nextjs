@@ -53,7 +53,7 @@ const losers = {
   week18: [],
 };
 
-function getSchedule() {
+function getScoresFromExternalApi() {
   // console.log(process.env.API_KEY);
   // console.log(process.env.SEASON);
 
@@ -126,7 +126,7 @@ function getSchedule() {
   });
 }
 
-getSchedule();
+getScoresFromExternalApi();
 
 async function createLosers(losers) {
   Object.entries(losers).map((nflWeek, i) => {
@@ -168,5 +168,5 @@ async function seedDB(losers) {
 // getSchedule();
 
 export default {
-  getSchedule,
+  getScoresFromExternalApi,
 };
