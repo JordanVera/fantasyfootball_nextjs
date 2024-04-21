@@ -12,7 +12,7 @@ export default function Home() {
 
       <FourStepProcess />
       <SignupCTA />
-      <div className="mt-20 m-5">
+      <div className=" m-5">
         <WhatWeDo />
         {/* <TracingBeam children={<Child />} /> */}
       </div>
