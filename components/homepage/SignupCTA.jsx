@@ -27,7 +27,7 @@ const SignupCTA = () => {
           animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
           transition={{ duration: 0.7, bounce: 0.7 }}
         >
-          <div className="flex flex-col gap-5 p-10 rounded-b-lg lg:rounded-l-lg md:rounded-br-none w-full lg:w-1/4 bg-[#ffff3f]">
+          <div className="flex flex-col gap-5 p-5 rounded-b-lg lg:rounded-l-lg md:rounded-br-none w-full lg:w-1/4 bg-[#ffff3f]">
             <div className="flex flex-row justify-center border bg-white text-black rounded-full w-[60px] px-2 py-1">
               <p>Hello</p>
             </div>
