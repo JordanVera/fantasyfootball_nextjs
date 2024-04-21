@@ -10,6 +10,7 @@ import Main_Sidebar from '@/components/Main_Sidebar';
 import 'react-toastify/dist/ReactToastify.css';
 import '@/styles/globals.css';
 import useDetectScroll from '@smakss/react-scroll-direction';
+import RegistrationDialog from '@/components/dialogs/RegistrationDialog';
 
 import { useRouter } from 'next/router';
 
@@ -54,6 +55,9 @@ export default function App({ Component, pageProps }) {
                 </div>
                 {/* Main content goes here */}
                 <Component {...pageProps} />
+
+                <RegistrationDialog />
+
                 <Footer />
               </div>
             </div>

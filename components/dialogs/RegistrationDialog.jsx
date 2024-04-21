@@ -33,7 +33,7 @@ export default function RegistrationDialog() {
         <DialogHeader className="text-primary capitalize flex flex-row gap-5 items-center">
           {stripeOrCrypto !== 0 && (
             <button
-              className="text-sm font-normal bg-gray-800 p-2 rounded-md"
+              className="text-sm font-normal bg-gray-300 dark:bg-gray-800 p-2 rounded-md"
               onClick={() => setStripeOrCrypto(0)}
             >
               Back

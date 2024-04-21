@@ -15,7 +15,7 @@ const WhatWeDo = () => {
 const One = (_) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.3,
+    threshold: 0.1,
   });
 
   return (
@@ -64,7 +64,7 @@ const One = (_) => {
 const Two = (_) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.3,
+    threshold: 0.1,
   });
 
   return (
