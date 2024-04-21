@@ -122,17 +122,24 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
     return grouped;
   }, {});
 
+  useEffect(() => {
+    console.log('hro');
+    console.log(groupedPicks);
+  }, [groupedPicks]);
+
   const hasLosingPickInPreviousWeeks = (entryNumber, currentWeek) => {
     for (let week = 1; week < currentWeek; week++) {
       const pick = groupedPicks[entryNumber][week];
 
-      // Check if the pick is in the losers array
-      const isLoser = losers.some(
-        (loser) => loser.week === pick.week && loser.team === pick.team
-      );
+      // Check if the pick exists and is in the losers array
+      if (pick) {
+        const isLoser = losers.some(
+          (loser) => loser.week === pick.week && loser.team === pick.team
+        );
 
-      if (isLoser) {
-        return true;
+        if (isLoser) {
+          return true;
+        }
       }
     }
 
@@ -141,8 +148,8 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
 
   return (
     <div className="flex flex-col gap-3">
-      {Array.from({ length: 18 }).map((_, weekIndex) =>
-        weekIndex < getStartingWeek() ? null : (
+      {Array.from({ length: 18 }).map((_, weekIndex) => {
+        return weekIndex < getStartingWeek() ? null : (
           <Accordion
             key={weekIndex}
             open={open === weekIndex}
@@ -160,23 +167,26 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
             </AccordionHeader>
             <AccordionBody className="p-5">
               <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-                {Array.from({ length: user.bullets }).map((_, j) => (
-                  <Select
-                    variant="standard"
-                    key={j}
-                    label={`Entry ${j + 1}`}
-                    className="capitalize"
-                    color="blue"
-                    onChange={(val) => handlePickChange(j, val)}
-                    disabled-={hasLosingPickInPreviousWeeks(j, weekIndex + 1)}
-                  >
-                    {teamsArr.map((team, j) => (
-                      <Option key={j} value={team}>
-                        {team}
-                      </Option>
-                    ))}
-                  </Select>
-                ))}
+                {Array.from({ length: user.bullets }).map((_, j) => {
+                  console.log(hasLosingPickInPreviousWeeks(j, weekIndex + 1));
+                  return (
+                    <Select
+                      variant="standard"
+                      key={j}
+                      label={`Entry ${j + 1}`}
+                      className="capitalize"
+                      color="blue"
+                      onChange={(val) => handlePickChange(j, val)}
+                      disabled={hasLosingPickInPreviousWeeks(j, weekIndex + 1)}
+                    >
+                      {teamsArr.map((team, j) => (
+                        <Option key={j} value={team}>
+                          {team}
+                        </Option>
+                      ))}
+                    </Select>
+                  );
+                })}
 
                 <Button
                   type="submit"
@@ -189,8 +199,8 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
               </form>
             </AccordionBody>
           </Accordion>
-        )
-      )}
+        );
+      })}
     </div>
   );
 };
