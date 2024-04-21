@@ -26,7 +26,7 @@ const One = (_) => {
         animate={{ opacity: inView ? 1 : 0 }} // Fade in when in view
         transition={{ duration: 1, ease: 'easeIn' }}
       >
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row bg-black rounded-lg">
           <div
             className="w-full lg:w-1/3 hidden  bg-gray-900 rounded-l-lg lg:flex items-center justify-center p-5"
             style={{
@@ -38,10 +38,10 @@ const One = (_) => {
           ></div>
 
           <div className="w-full lg:w-2/3 flex flex-col justify-center gap-5 bg-[#ff4d00] rounded-lg lg:rounded-l-none p-5">
-            <h2 className="font-bold text-3xl text-left">
+            <h2 className="font-bold text-3xl text-left text-white">
               What Is NFL Last Longer
             </h2>
-            <p>
+            <p className="text-white">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi,
               temporibus deserunt? Debitis quibusdam voluptatibus dolore,
               delectus quo, quia totam cum adipisci aperiam commodi nulla ea
@@ -51,7 +51,7 @@ const One = (_) => {
               accusantium perferendis accusamus.
             </p>
 
-            <p>
+            <p className="text-white">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
               voluptatibus provident et nesciunt nostrum in pariatur eligendi
               quam. Saepe, nemo?
@@ -77,10 +77,12 @@ const Two = (_) => {
         animate={{ opacity: inView ? 1 : 0 }} // Fade in when in view
         transition={{ duration: 1, ease: 'easeIn' }}
       >
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row bg-black rounded-lg">
           <div className="w-full lg:w-2/3 flex flex-col justify-center gap-5 bg-[#5551ff] rounded-lg lg:rounded-r-none p-5">
-            <h2 className="font-bold text-3xl text-left">How to Play</h2>
-            <p>
+            <h2 className="font-bold text-3xl text-left text-white">
+              How to Play
+            </h2>
+            <p className="text-white">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi,
               temporibus deserunt? Debitis quibusdam voluptatibus dolore,
               delectus quo, quia totam cum adipisci aperiam commodi nulla ea
@@ -90,7 +92,7 @@ const Two = (_) => {
               accusantium perferendis accusamus.
             </p>
 
-            <p>
+            <p className="text-white">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
               voluptatibus provident et nesciunt nostrum in pariatur eligendi
               quam. Saepe, nemo?
