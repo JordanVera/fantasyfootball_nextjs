@@ -54,11 +54,16 @@ export default function PaymentSuccess() {
           animate={{ opacity: inView ? 1 : 0 }} // Fade in when in view
           transition={{ duration: 1, ease: 'easeIn' }}
         > */}
-        <div className="flex flex-col lg:flex-row bg-black rounded-lg">
-          <div className="w-full lg:w-4/5 flex flex-col justify-center gap-5 bg-[#5551ff] rounded-lg lg:rounded-r-none p-5">
+        <div className="flex flex-col lg:flex-row bg-black rounded-lg gap-5 lg:gap-0">
+          <div className="w-full xl:w-4/5 flex flex-col justify-center gap-5 bg-[#5551ff] rounded-lg lg:rounded-r-none p-5">
             <h1 className="capitalize text-xl lg:text-3xl font-bold">
               You have successfully completed the checkout process
             </h1>
+            <p className="text-white text-md">
+              *** You have successfully checked out, your purchase of{' '}
+              {checkoutSession?.metadata?.quantity} entries was successful and
+              should be in your account. ***
+            </p>
             <p className="text-black dark:text-white">
               Getting started in NFL Last Longer is simple. First, register and
               create your entry. Each week, before the designated cutoff time,
@@ -74,7 +79,7 @@ export default function PaymentSuccess() {
             </p>
           </div>
 
-          <div className="w-full lg:w-1/5 hidden  bg-gray-900 rounded-r-lg lg:flex items-center justify-center">
+          <div className="w-full xl:w-1/5 bg-gray-900 lg:flex items-center justify-center">
             <div className="w-full h-full">
               <div
                 style={{
@@ -90,7 +95,7 @@ export default function PaymentSuccess() {
                   height="100%"
                   style={{ position: 'absolute' }}
                   frameBorder="0"
-                  className="giphy-embed  rounded-r-lg"
+                  className="giphy-embed  rounded-lg lg:rounded-l-none"
                   allowFullScreen
                 ></iframe>
               </div>
@@ -98,23 +103,6 @@ export default function PaymentSuccess() {
           </div>
         </div>
         {/* </motion.div> */}
-      </div>
-
-      <div>
-        <div className="my-5">
-          <iframe
-            style={{ height: '300px', width: '300px' }}
-            src="https://giphy.com/embed/MpOsBzds5IuFS5sUu0"
-            className="giphy-embed"
-            allowFullScreen
-          ></iframe>
-        </div>
-
-        <p className="text-green-500 text-md">
-          *** You have successfully checked out, your purchase of{' '}
-          {checkoutSession?.metadata?.quantity} entries was successful and
-          should be in your account. ***
-        </p>
       </div>
     </main>
   );
