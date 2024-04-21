@@ -189,8 +189,9 @@ const StepFour = () => {
           className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none"
           // bg-opacity-50
           style={{
-            backgroundImage: "url('/images/4.jpg')",
+            backgroundImage: "url('/images/megatron.jpg')",
             backgroundSize: 'cover',
+
             opacity: 0.7,
           }}
         ></div>
