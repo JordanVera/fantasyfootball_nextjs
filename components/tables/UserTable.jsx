@@ -3,27 +3,15 @@ import { Avatar } from '@material-tailwind/react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import UserService from '@/services/UserService';
+import { useUser } from '@/context/UserContext';
 
 const UserTable = ({ users }) => {
-  const [losers, setLosers] = useState([]);
+  const { losers } = useUser();
 
-  useEffect(() => {
-    console.log('UZRZ');
-    console.log(users);
-  }, [users]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const { losers } = await UserService.getLoserData();
-
-      console.log({ losers });
-
-      setLosers(losers);
-      return losers;
-    };
-
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   console.log('UZRZ');
+  //   console.log(users);
+  // }, [users]);
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -45,7 +33,10 @@ const UserTable = ({ users }) => {
                 Name
               </th>
               {Array.from({ length: 18 }).map((_, index) => (
-                <th className="px-2 py-3 text-left text-xs font-medium text-primary capitalize tracking-wider ">
+                <th
+                  key={index}
+                  className="px-2 py-3 text-left text-xs font-medium text-primary capitalize tracking-wider "
+                >
                   week {index + 1}
                 </th>
               ))}
@@ -60,30 +51,8 @@ const UserTable = ({ users }) => {
                 return grouped;
               }, {});
 
-              console.log('groupedPicks for user ', user.name);
-              console.log(groupedPicks);
-
-              // for (let entryNumber in groupedPicks) {
-              //   for (let week in groupedPicks[entryNumber]) {
-              //     const pick = groupedPicks[entryNumber][week];
-
-              //     // Check if the pick is in the losers array
-              //     const isLoser = losers.some(
-              //       (loser) =>
-              //         loser.week === pick.week && loser.team === pick.team
-              //     );
-
-              //     if (isLoser) {
-              //       console.log(
-              //         `User ${user.name}'s pick for week ${week} and team ${pick.team} is a loser.`
-              //       );
-              //     } else {
-              //       console.log(
-              //         `User ${user.name}'s pick for week ${week} and team ${pick.team} is a winner.`
-              //       );
-              //     }
-              //   }
-              // }
+              // console.log('groupedPicks for user ', user.name);
+              // console.log(groupedPicks);
 
               return Array.from({ length: user.bullets }).map((_, index) => (
                 <tr
@@ -110,7 +79,7 @@ const UserTable = ({ users }) => {
                   console.log(groupedPicks[index]?.[weekIndex]?.team); */}
                   {Array.from({ length: 18 }).map((_, weekIndex) => {
                     const pick = groupedPicks[index]?.[weekIndex]?.team || '';
-                    console.log({ pick });
+                    // console.log({ pick });
 
                     // Check if the pick is in the losers array
                     const isLoser = losers.some(
@@ -120,21 +89,17 @@ const UserTable = ({ users }) => {
 
                     let message;
 
-                    // if (pick === '') {
-                    //   return <td> </td>;
+                    // if (isLoser) {
+                    //   message = `User ${user.name}'s pick for week ${weekIndex} and team ${pick} is a loser.`;
+                    //   console.log(message);
+                    // } else {
+                    //   message = `User ${user.name}'s pick for week ${weekIndex} and team ${pick} is a winner.`;
+                    //   console.log(message);
                     // }
 
-                    if (isLoser) {
-                      message = `User ${user.name}'s pick for week ${weekIndex} and team ${pick} is a loser.`;
-                      console.log(message);
-                    } else {
-                      message = `User ${user.name}'s pick for week ${weekIndex} and team ${pick} is a winner.`;
-                      console.log(message);
-                    }
-
-                    // Return a td with the message and color based on isLoser
                     return (
                       <td
+                        key={`${user.id}-${index}-${weekIndex}`}
                         className={`${isLoser ? 'text-red-500' : 'text-white'}`}
                       >
                         {pick}

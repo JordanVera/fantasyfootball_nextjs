@@ -13,13 +13,13 @@ import {
 } from '@material-tailwind/react';
 import Image from 'next/image';
 
-import { UserContext } from '@/context/UserContext';
 import { getStartingWeek } from '@/utils/dates';
 import { TracingBeam } from '../ui/tracing-beam';
+import { useUser } from '@/context/UserContext';
 
 export default function PicksDialog() {
   const { user, updateUserPicks, openPicksDialog, setOpenPicksDialog } =
-    useContext(UserContext);
+    useUser();
   // const [open, setOpen] = useState(false);
 
   // useEffect(() => {
@@ -55,7 +55,7 @@ export default function PicksDialog() {
 }
 
 const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
-  useContext(UserContext);
+  const { losers } = useUser();
   const [open, setOpen] = useState(-1);
   const [picks, setPicks] = useState([]);
   const [week, setWeek] = useState('');
@@ -116,6 +116,29 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
     setPicks(newPicks);
   };
 
+  const groupedPicks = user.Picks.reduce((grouped, pick) => {
+    (grouped[pick.entryNumber] = grouped[pick.entryNumber] || {})[pick.week] =
+      pick;
+    return grouped;
+  }, {});
+
+  const hasLosingPickInPreviousWeeks = (entryNumber, currentWeek) => {
+    for (let week = 1; week < currentWeek; week++) {
+      const pick = groupedPicks[entryNumber][week];
+
+      // Check if the pick is in the losers array
+      const isLoser = losers.some(
+        (loser) => loser.week === pick.week && loser.team === pick.team
+      );
+
+      if (isLoser) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
   return (
     <div className="flex flex-col gap-3">
       {Array.from({ length: 18 }).map((_, weekIndex) =>
@@ -145,6 +168,7 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
                     className="capitalize"
                     color="blue"
                     onChange={(val) => handlePickChange(j, val)}
+                    disabled-={hasLosingPickInPreviousWeeks(j, weekIndex + 1)}
                   >
                     {teamsArr.map((team, j) => (
                       <Option key={j} value={team}>

@@ -12,10 +12,13 @@ export const UserProvider = ({ children }) => {
   const [openRulesDialog, setOpenRulesDialog] = useState(false);
   const [openPicksDialog, setOpenPicksDialog] = useState(false);
 
+  const [losers, setLosers] = useState([]);
+
   const handleOpenRulesDialog = () => setOpenRulesDialog(!openRulesDialog);
 
   useEffect(() => {
     fetchData();
+    fetchLoserData();
   }, []);
 
   async function fetchData() {
@@ -42,6 +45,18 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const fetchLoserData = async () => {
+    try {
+      const { losers } = await UserService.getLoserData();
+      // console.log({ losers });
+
+      setLosers(losers);
+      return losers;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -56,6 +71,7 @@ export const UserProvider = ({ children }) => {
         handleOpenRulesDialog,
         openPicksDialog,
         setOpenPicksDialog,
+        losers,
       }}
     >
       {children}
