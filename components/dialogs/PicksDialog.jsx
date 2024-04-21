@@ -129,16 +129,19 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
 
   const hasLosingPickInPreviousWeeks = (entryNumber, currentWeek) => {
     for (let week = 1; week < currentWeek; week++) {
-      const pick = groupedPicks[entryNumber][week];
+      // Check if the entry exists in groupedPicks
+      if (groupedPicks[entryNumber]) {
+        const pick = groupedPicks[entryNumber][week];
 
-      // Check if the pick exists and is in the losers array
-      if (pick) {
-        const isLoser = losers.some(
-          (loser) => loser.week === pick.week && loser.team === pick.team
-        );
+        // Check if the pick exists and is in the losers array
+        if (pick) {
+          const isLoser = losers.some(
+            (loser) => loser.week === pick.week && loser.team === pick.team
+          );
 
-        if (isLoser) {
-          return true;
+          if (isLoser) {
+            return true;
+          }
         }
       }
     }
@@ -168,6 +171,7 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
             <AccordionBody className="p-5">
               <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
                 {Array.from({ length: user.bullets }).map((_, j) => {
+                  console.log({ j, weekIndex });
                   console.log(hasLosingPickInPreviousWeeks(j, weekIndex + 1));
                   return (
                     <Select
