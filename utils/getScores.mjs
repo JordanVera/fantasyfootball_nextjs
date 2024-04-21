@@ -79,6 +79,12 @@ function getSchedule() {
             const winnerWeek = winners[weekN];
             const loserWeek = losers[weekN];
 
+            // Check if winnerWeek and loserWeek are defined
+            if (!winnerWeek || !loserWeek) {
+              console.error(`Week ${i} is not defined in winners or losers`);
+              continue;
+            }
+
             responses[i].data.forEach((footballGameData) => {
               // console.log(footballGameData);
 
@@ -124,7 +130,7 @@ getSchedule();
 
 async function createLosers(losers) {
   Object.entries(losers).map((nflWeek, i) => {
-    const weekNumber = parseInt(nflWeek[0].replace('week', ''), 10);
+    const weekNumber = parseInt(nflWeek[0].replace('week', ''), 10) - 1; // Subtract 1 to get the correct week number, starts from a 0 index
     const teams = nflWeek[1];
 
     teams.forEach(async (team) => {
