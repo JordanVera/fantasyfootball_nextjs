@@ -175,12 +175,12 @@ const StepFour = () => {
 
           <div className="flex flex-col gap-2 w-full">
             <h2 className="text-xl lg:text-2xl text-black dark:text-white font-bold">
-              Advance
+              Do it Again
             </h2>
 
             <p className="text-xs lg:text-sm text-black dark:text-white">
-              Get it right and advance to the next week. Get it wrong and you're
-              out.
+              Repeat this until only one person remains or the season ends with
+              multiple players.
             </p>
           </div>
         </div>

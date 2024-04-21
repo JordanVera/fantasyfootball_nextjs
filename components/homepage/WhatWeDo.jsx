@@ -38,18 +38,18 @@ const One = (_) => {
           ></div>
 
           <div className="w-full lg:w-2/3 flex flex-col justify-center gap-5 bg-[#ff4d00] rounded-lg lg:rounded-l-none p-5">
-            <h2 className="font-bold text-3xl text-left text-white">
+            <h2 className="font-bold text-3xl text-left text-black dark:text-white">
               What Is NFL Last Longer
             </h2>
-            <p className="text-white">
+            <p className="text-black dark:text-white">
               NFL Last Longer is a thrilling survivor league that tests your
-              predictive prowess in the world of professional football. Each
-              week, you're tasked with selecting a team that you believe will
-              win its game, straight-up, no points spread involved. But choose
-              wisely because once you pick a team, you cannot use them again for
-              the remainder of the season.
+              predictiveness in the world of professional football. Each week,
+              you're tasked with selecting a team that you believe will win its
+              game, straight-up, no points spread involved. But choose wisely
+              because once you pick a team, you cannot use them again for the
+              remainder of the season.
             </p>
-            <p className="text-white">
+            <p className="text-black dark:text-white">
               This unique challenge requires strategic foresight and a deep
               understanding of each team’s weekly matchups. Can you outlast
               other competitors and emerge as the Last Longer champion?
@@ -77,17 +77,17 @@ const Two = (_) => {
       >
         <div className="flex flex-col lg:flex-row bg-black rounded-lg">
           <div className="w-full lg:w-2/3 flex flex-col justify-center gap-5 bg-[#5551ff] rounded-lg lg:rounded-r-none p-5">
-            <h2 className="font-bold text-3xl text-left text-white">
+            <h2 className="font-bold text-3xl text-left text-black dark:text-white">
               How to Play
             </h2>
-            <p className="text-white">
+            <p className="text-black dark:text-white">
               Getting started in NFL Last Longer is simple. First, register and
               create your entry. Each week, before the designated cutoff time,
               select one NFL team to win their game outright. The key to victory
               is not just choosing correctly but planning ahead. Once a team is
               selected, it’s off your board for the season.
             </p>
-            <p className="text-white">
+            <p className="text-black dark:text-white">
               Make your picks carefully: a wrong choice and you're out of the
               competition! Stay sharp, watch the games, and prepare your
               strategies to survive until the end. Are you ready to take on the
