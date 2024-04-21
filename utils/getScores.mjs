@@ -75,7 +75,7 @@ function getSchedule() {
           // handle responses here
 
           for (let i = 0; i < 18; i++) {
-            const weekN = `week${i + 1}`;
+            const weekN = `week${i}`;
             const winnerWeek = winners[weekN];
             const loserWeek = losers[weekN];
 
@@ -113,8 +113,9 @@ function getSchedule() {
         })
       )
       .catch((err) => {
-        console.log(chalk.red(err.response.data.message));
-        console.log(chalk.red(err.response.statusText));
+        console.log(err);
+        // console.log(chalk.red(err.response.data.message || err));
+        // console.log(chalk.red(err.response.statusText));
       });
   });
 }

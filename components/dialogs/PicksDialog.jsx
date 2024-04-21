@@ -127,27 +127,30 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
     console.log(groupedPicks);
   }, [groupedPicks]);
 
-  const hasLosingPickInPreviousWeeks = (entryNumber, currentWeek) => {
-    for (let week = 1; week < currentWeek; week++) {
-      // Check if the entry exists in groupedPicks
-      if (groupedPicks[entryNumber]) {
-        const pick = groupedPicks[entryNumber][week];
+  // const hasLosingPickInPreviousWeeks = (entryNumber, currentWeek) => {
+  //   for (let week = 1; week < currentWeek; week++) {
+  //     // Check if the entry exists in groupedPicks
+  //     if (groupedPicks[entryNumber]) {
+  //       const pick = groupedPicks[entryNumber][week];
 
-        // Check if the pick exists and is in the losers array
-        if (pick) {
-          const isLoser = losers.some(
-            (loser) => loser.week === pick.week && loser.team === pick.team
-          );
+  //       // console.log('pick');
+  //       // console.log({ pick });
 
-          if (isLoser) {
-            return true;
-          }
-        }
-      }
-    }
+  //       // Check if the pick exists and is in the losers array
+  //       if (pick) {
+  //         const isLoser = losers.some(
+  //           (loser) => loser.week === pick.week && loser.team === pick.team
+  //         );
 
-    return false;
-  };
+  //         if (isLoser) {
+  //           return true;
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   return false;
+  // };
 
   return (
     <div className="flex flex-col gap-3">
@@ -171,8 +174,13 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
             <AccordionBody className="p-5">
               <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
                 {Array.from({ length: user.bullets }).map((_, j) => {
-                  console.log({ j, weekIndex });
-                  console.log(hasLosingPickInPreviousWeeks(j, weekIndex + 1));
+                  // console.log({ j, weekIndex });
+                  // console.log(hasLosingPickInPreviousWeeks(j, weekIndex + 1));
+
+                  // const isLoser = losers.some(
+                  //   (loser) =>
+                  //     loser.week === weekIndex + 1 && loser.team === pick
+                  // );
                   return (
                     <Select
                       variant="standard"
@@ -181,7 +189,7 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
                       className="capitalize"
                       color="blue"
                       onChange={(val) => handlePickChange(j, val)}
-                      disabled={hasLosingPickInPreviousWeeks(j, weekIndex + 1)}
+                      // disabled={isLoser}
                     >
                       {teamsArr.map((team, j) => (
                         <Option key={j} value={team}>
