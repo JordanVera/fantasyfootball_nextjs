@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "getScores": "node ./utils/getScores.mjs"
+    "getScores": "node ./utils/getScores.mjs",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
