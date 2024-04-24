@@ -117,6 +117,18 @@ export default function RegistrationDialog() {
 
 const StripeCheckout = ({ handleOpen }) => {
   const [numberOfEntries, setNumberOfEntries] = useState(0);
+  const lineItems = [
+    {
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 6000,
+      },
+      quantity: numberOfEntries,
+    },
+  ];
 
   const handleCheckout = async () => {
     const res = await fetch('/api/create-checkout-session', {
@@ -133,26 +145,16 @@ const StripeCheckout = ({ handleOpen }) => {
     const { sessionId } = await res.json();
     console.log('Session ID:', sessionId); // Add this line to debug
     const stripe = await stripePromise;
-    const { error } = await stripe.redirectToCheckout({
-      sessionId,
-    });
-    if (error) {
-      console.error(error);
+
+    if (sessionId) {
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+      if (error) {
+        console.log(error);
+      }
+    } else {
+      console.error('Session ID is not generated');
     }
   };
-
-  const lineItems = [
-    {
-      price_data: {
-        currency: 'usd',
-        product_data: {
-          name: 'T-shirt',
-        },
-        unit_amount: 6000,
-      },
-      quantity: numberOfEntries,
-    },
-  ];
 
   return (
     <>

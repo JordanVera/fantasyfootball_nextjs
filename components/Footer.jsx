@@ -8,7 +8,7 @@ export const Footer = () => {
     triggerOnce: true,
     threshold: 0.7,
   });
-  return (
+return (
     <footer
       ref={ref}
       className="bg-white shadow dark:bg-black border-t border-gray-300 dark:border-gray-900"
