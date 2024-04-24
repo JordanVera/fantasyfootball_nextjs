@@ -124,7 +124,7 @@ const StripeCheckout = ({ handleOpen }) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ items }),
+      body: JSON.stringify({ lineItems }),
     });
 
     console.log('RESPONSE');
@@ -141,7 +141,7 @@ const StripeCheckout = ({ handleOpen }) => {
     }
   };
 
-  const items = [
+  const lineItems = [
     {
       price_data: {
         currency: 'usd',

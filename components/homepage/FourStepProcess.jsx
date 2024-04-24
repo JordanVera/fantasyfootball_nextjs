@@ -34,7 +34,7 @@ const StepOne = () => {
         className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full "
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
-        transition={{ duration: 0.7, bounce: 0.3 }}
+        transition={{ duration: 0.7, slideIn: 0.3 }}
       >
         <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#d7d7d7] dark:bg-gray-900  p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none ">
           <div className=" bg-[#5551ff] text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
@@ -80,7 +80,7 @@ const StepTwo = () => {
         className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full"
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
-        transition={{ duration: 0.7, bounce: 0.3 }}
+        transition={{ duration: 0.7, slideIn: 0.3 }}
       >
         <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
           <div className=" bg-[#00cc66] text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
@@ -122,7 +122,7 @@ const StepThree = () => {
         className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full"
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
-        transition={{ duration: 0.7, bounce: 0.3 }}
+        transition={{ duration: 0.7, slideIn: 0.3 }}
       >
         <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
           <div className="  bg-[#fe5f55] text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
@@ -166,7 +166,7 @@ const StepFour = () => {
         className="bg-black rounded-lg flex flex-col-reverse xl:flex-row w-full h-full"
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
-        transition={{ duration: 0.7, bounce: 0.3 }}
+        transition={{ duration: 0.7, slideIn: 0.3 }}
       >
         <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
           <div className=" bg-[#6930c3] text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
