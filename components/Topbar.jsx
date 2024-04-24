@@ -11,7 +11,7 @@ export const Topbar = () => {
   const { data: session } = useSession();
 
   return (
-    <div className="z-50 w-full bg-white dark:bg-black border-b border-gray-300 dark:border-gray-900 px-10 flex flex-row justify-between items-center">
+    <div className="z-50 w-full bg-white dark:bg-black border-b border-gray-300 dark:border-gray-900 px-5 flex flex-row justify-between items-center">
       <Link href={'/'}>
         <Logo height={60} width={60} />
       </Link>

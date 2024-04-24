@@ -20,24 +20,24 @@ const DashboardHero = () => {
         animate={{ opacity: inView ? 1 : 0 }}
         transition={{ duration: 1, ease: 'easeIn' }}
       >
-        <div className="flex flex-col gap-5 p-5 rounded-b-lg lg:rounded-l-lg md:rounded-br-none w-full lg:w-1/2 bg-[#d7d7d7] dark:bg-gray-900">
-          <div className="max-w-[800px]  w-full">
-            <h1 className="text-2xl font-bold mb-5 text-black dark:text-white">
+        <div className="flex flex-col gap-5 p-5 rounded-lg lg:rounded-l-lg lg:rounded-r-none  w-full lg:w-1/2 bg-gray-900 ">
+          <div className="max-w-[800px]  w-full ">
+            <h1 className="text-2xl font-bold mb-5 text-white">
               {user?.name}'s dashboard
             </h1>
 
             <div className="flex flex-col gap-2">
-              <h2 className=" text-black dark:text-white">
+              <h2 className=" text-white">
                 There is a total of 9 users with 19 entries which makes the
                 prize pool $950
               </h2>
 
-              <h2 className=" text-black dark:text-white">
+              <h2 className=" text-white">
                 Once you buyin you will be able to make your picks{' '}
               </h2>
 
               <button onClick={handleOpenRulesDialog} className="text-left ">
-                <h2 className="font-bold text-black dark:text-white hover:text-orange-500">
+                <h2 className="font-bold text-white hover:text-orange-500">
                   Please make sure to read the rules!
                 </h2>
               </button>
@@ -59,7 +59,7 @@ const DashboardHero = () => {
         </div>
 
         <div
-          className="bg-black min-h-[200px] rounded-t-lg lg:rounded-tl-none lg:rounded-r-lg w-full lg:w-1/2 bg-center bg-cover "
+          className="hidden lg:block lg:bg-black min-h-[200px] rounded-t-lg lg:rounded-tl-none lg:rounded-r-lg w-full lg:w-1/2 bg-center bg-cover "
           // bg-opacity-50
           style={{
             backgroundImage: "url('/images/billsStadium.jpg')",

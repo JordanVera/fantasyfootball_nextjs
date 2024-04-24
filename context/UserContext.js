@@ -22,11 +22,11 @@ export const UserProvider = ({ children }) => {
     fetchLoserData();
   }, []);
 
-  useEffect(() => {
-    console.log({ losers });
-    console.log({ userPicks });
-    console.log({ userLoserEntries });
-  }, [losers, userPicks, userLoserEntries]);
+  // useEffect(() => {
+  //   console.log({ losers });
+  //   console.log({ userPicks });
+  //   console.log({ userLoserEntries });
+  // }, [losers, userPicks, userLoserEntries]);
 
   useEffect(() => {
     const findLoserEntries = () => {

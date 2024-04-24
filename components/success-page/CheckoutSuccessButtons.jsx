@@ -1,9 +1,10 @@
 import React from 'react';
 import { useUser } from '@/context/UserContext';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 
-const ButtonBar = () => {
+const CheckoutSuccessButtons = () => {
   const {
     users,
     user,
@@ -19,10 +20,9 @@ const ButtonBar = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
-      <button
-        onClick={() => setOpenPicksDialog(true)}
+      <Link
         ref={ref}
-        href={'/login'}
+        href={'/dashboard'}
         className="group text-left cursor-pointer "
       >
         <motion.div
@@ -38,13 +38,12 @@ const ButtonBar = () => {
 
             <div className="flex flex-col gap-2 w-full">
               <h2 className="text-xl lg:text-2xl text-white group-hover:text-white duration-300 ease-in font-bold">
-                Make Picks
+                Back to Dashboard
               </h2>
 
               <p className="text-xs lg:text-sm text-white group-hover:text-white duration-300 ease-in">
-                Click here to make your picks for the week. Please note your
-                picks must be made before the TNF game begins, EVEN IF YOU ARE
-                NOT PICKING THE TNF GAME.
+                Thank you for purchasing entries into the tournament. You can
+                make picks by clicking here to visit your dashboard.
               </p>
             </div>
           </div>
@@ -61,12 +60,11 @@ const ButtonBar = () => {
             {' '}
           </div>
         </motion.div>
-      </button>
+      </Link>
 
       <button
         onClick={() => setRegistrationOpen(!registrationOpen)}
         ref={ref}
-        href={'/login'}
         className="group text-left cursor-pointer "
       >
         <motion.div
@@ -109,4 +107,4 @@ const ButtonBar = () => {
   );
 };
 
-export default ButtonBar;
+export default CheckoutSuccessButtons;

@@ -33,7 +33,7 @@ export default function RegistrationDialog() {
         <DialogHeader className="text-primary capitalize flex flex-row gap-5 items-center">
           {stripeOrCrypto !== 0 && (
             <button
-              className="text-sm font-normal bg-gray-800 p-2 rounded-md"
+              className="text-sm font-normal bg-gray-300 dark:bg-gray-800 p-2 rounded-md"
               onClick={() => setStripeOrCrypto(0)}
             >
               Back
@@ -117,31 +117,7 @@ export default function RegistrationDialog() {
 
 const StripeCheckout = ({ handleOpen }) => {
   const [numberOfEntries, setNumberOfEntries] = useState(0);
-
-  const handleCheckout = async () => {
-    const res = await fetch('/api/create-checkout-session', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ items }),
-    });
-
-    console.log('RESPONSE');
-    console.log(res);
-
-    const { sessionId } = await res.json();
-    console.log('Session ID:', sessionId); // Add this line to debug
-    const stripe = await stripePromise;
-    const { error } = await stripe.redirectToCheckout({
-      sessionId,
-    });
-    if (error) {
-      console.error(error);
-    }
-  };
-
-  const items = [
+  const lineItems = [
     {
       price_data: {
         currency: 'usd',
@@ -153,6 +129,32 @@ const StripeCheckout = ({ handleOpen }) => {
       quantity: numberOfEntries,
     },
   ];
+
+  const handleCheckout = async () => {
+    const res = await fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ lineItems }),
+    });
+
+    console.log('RESPONSE');
+    console.log(res);
+
+    const { sessionId } = await res.json();
+    console.log('Session ID:', sessionId); // Add this line to debug
+    const stripe = await stripePromise;
+
+    if (sessionId) {
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+      if (error) {
+        console.log(error);
+      }
+    } else {
+      console.error('Session ID is not generated');
+    }
+  };
 
   return (
     <>

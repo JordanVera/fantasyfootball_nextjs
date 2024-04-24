@@ -1,10 +1,24 @@
 import Link from 'next/link';
 import Logo from './Logo';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 export const Footer = () => {
-  return (
-    <footer className="bg-white shadow dark:bg-black border-t border-gray-300 dark:border-gray-900">
-      <div className="w-full  mx-auto p-10 md:py-8">
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.7,
+  });
+return (
+    <footer
+      ref={ref}
+      className="bg-white shadow dark:bg-black border-t border-gray-300 dark:border-gray-900"
+    >
+      <motion.div
+        className="w-full  mx-auto p-10 md:py-8"
+        initial={{ opacity: 0 }} // Start from transparent
+        animate={{ opacity: inView ? 1 : 0 }} // Fade in when in view
+        transition={{ duration: 1, ease: 'easeIn' }}
+      >
         <div className="sm:flex sm:items-center sm:justify-between">
           <Link
             href="/"
@@ -39,7 +53,7 @@ export const Footer = () => {
         <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © {new Date().getFullYear()} NFL Last Longer™ . All Rights Reserved.
         </span>
-      </div>
+      </motion.div>
     </footer>
   );
 };
