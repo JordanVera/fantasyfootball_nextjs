@@ -8,7 +8,7 @@ const SuccessHero = ({ checkoutSession }) => {
       transition={{ duration: 1, ease: 'easeIn' }}
     > */}
       <div className="flex flex-col lg:flex-row bg-black rounded-lg gap-5 lg:gap-0">
-        <div className="w-full xl:w-4/5 flex flex-col justify-center gap-5 bg-[#5551ff] rounded-lg lg:rounded-r-none p-5">
+        <div className="w-full xl:w-4/5 flex flex-col justify-center gap-5 bg-gray-900 rounded-lg lg:rounded-r-none p-5">
           <h1 className="capitalize text-xl lg:text-3xl font-bold">
             You have successfully completed the checkout process
           </h1>

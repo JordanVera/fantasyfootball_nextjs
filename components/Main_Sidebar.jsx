@@ -7,6 +7,7 @@ import {
   MenuList,
   MenuItem,
   Button,
+  Tooltip,
 } from '@material-tailwind/react';
 
 import LoginIcon from '@mui/icons-material/Login';
@@ -55,7 +56,9 @@ function Main_Sidebar() {
         href="/"
         className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
       >
-        <HomeIcon className="text-black dark:text-white" />
+        <Tooltip placement="right-end" content="home">
+          <HomeIcon className="text-black dark:text-white" />
+        </Tooltip>
 
         <motion.span
           animate={{ opacity: isCollapsed ? 0 : 1 }}
@@ -71,7 +74,9 @@ function Main_Sidebar() {
         href="/dashboard"
         className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
       >
-        <SpaceDashboardIcon className="text-black dark:text-white" />
+        <Tooltip placement="right-end" content="dashboard">
+          <SpaceDashboardIcon className="text-black dark:text-white" />
+        </Tooltip>
         <motion.span
           animate={{ opacity: isCollapsed ? 0 : 1 }}
           transition={{ duration: 0.2, delay: 0.2 }}
@@ -82,32 +87,14 @@ function Main_Sidebar() {
           Dashboard
         </motion.span>
       </Link>
-      <Link
-        href="/login"
-        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
-      >
-        {session ? (
-          <LogoutIcon className="text-black dark:text-white" />
-        ) : (
-          <LoginIcon className="text-black dark:text-white" />
-        )}
-        <motion.span
-          animate={{ opacity: isCollapsed ? 0 : 1 }}
-          transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 ${
-            isCollapsed ? 'hidden' : 'inline'
-          } text-black dark:text-white`}
-        >
-          Login
-        </motion.span>
-      </Link>
-
       <Button
         href="/dashboard"
         className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg bg-transparent shadow-none"
         onClick={handleOpen}
       >
-        <CreditCardIcon className="text-black dark:text-white" />
+        <Tooltip placement="right-end" content="register">
+          <CreditCardIcon className="text-black dark:text-white" />
+        </Tooltip>
         <motion.span
           animate={{ opacity: isCollapsed ? 0 : 1 }}
           transition={{ duration: 0.2, delay: 0.2 }}
@@ -118,6 +105,27 @@ function Main_Sidebar() {
           Register
         </motion.span>
       </Button>
+      <Link
+        href="/login"
+        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
+      >
+        <Tooltip placement="right-end" content={session ? 'logout' : 'login'}>
+          {session ? (
+            <LogoutIcon className="text-black dark:text-white" />
+          ) : (
+            <LoginIcon className="text-black dark:text-white" />
+          )}
+        </Tooltip>
+        <motion.span
+          animate={{ opacity: isCollapsed ? 0 : 1 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
+          className={`ml-3 ${
+            isCollapsed ? 'hidden' : 'inline'
+          } text-black dark:text-white`}
+        >
+          Login
+        </motion.span>
+      </Link>
 
       {/* <ThemeSwitcher /> */}
 
