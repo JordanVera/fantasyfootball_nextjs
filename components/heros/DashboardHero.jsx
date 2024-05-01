@@ -20,24 +20,24 @@ const DashboardHero = () => {
         animate={{ opacity: inView ? 1 : 0 }}
         transition={{ duration: 1, ease: 'easeIn' }}
       >
-        <div className="flex flex-col gap-5 p-5 rounded-lg lg:rounded-l-lg lg:rounded-r-none  w-full lg:w-1/2 bg-gray-900 ">
+        <div className="flex flex-col gap-5 p-5 rounded-lg lg:rounded-l-lg lg:rounded-r-none  w-full lg:w-1/2 bg-white border border-gray-300 dark:border-none dark:bg-gray-900 drop-shadow-xl ">
           <div className="max-w-[800px]  w-full ">
-            <h1 className="text-2xl font-bold mb-5 text-white">
+            <h1 className="text-2xl font-bold mb-5 text-primary">
               {user?.name}'s dashboard
             </h1>
 
             <div className="flex flex-col gap-2">
-              <h2 className=" text-white">
+              <h2 className=" text-primary">
                 There is a total of 9 users with 19 entries which makes the
                 prize pool $950
               </h2>
 
-              <h2 className=" text-white">
+              <h2 className=" text-primary">
                 Once you buyin you will be able to make your picks{' '}
               </h2>
 
               <button onClick={handleOpenRulesDialog} className="text-left ">
-                <h2 className="font-bold text-white hover:text-orange-500">
+                <h2 className="font-bold text-primary hover:text-orange-500">
                   Please make sure to read the rules!
                 </h2>
               </button>
