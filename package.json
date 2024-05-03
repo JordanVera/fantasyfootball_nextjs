@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "getScores": "node ./utils/getScores.mjs",
-    "postinstall": "prisma generate"
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
