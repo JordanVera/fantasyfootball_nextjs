@@ -111,9 +111,17 @@ export const authOptions = {
       return session;
     },
 
-    // async redirect(url, baseUrl) {
-    //   return url.startsWith(baseUrl) ? url : baseUrl;
-    // },
+    async redirect({ url, baseUrl }) {
+      // console.log("REDIREDCC");
+      // console.log({ url, baseUrl });
+
+      // Check if the URL is relative and if it's the same origin
+      if (url.startsWith('/') || new URL(url).origin === baseUrl) {
+        return url;
+      }
+
+      return baseUrl;
+    },
     // ...other callbacks
   },
 
