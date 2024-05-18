@@ -110,6 +110,10 @@ export const authOptions = {
       session.user.id = user.id;
       return session;
     },
+
+    // async redirect(url, baseUrl) {
+    //   return url.startsWith(baseUrl) ? url : baseUrl;
+    // },
     // ...other callbacks
   },
 
