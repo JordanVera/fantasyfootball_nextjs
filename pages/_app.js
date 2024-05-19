@@ -14,7 +14,10 @@ import RegistrationDialog from '@/components/dialogs/RegistrationDialog';
 
 import { useRouter } from 'next/router';
 
-export default function App({ Component, pageProps }) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   // const { scrollDir, scrollPosition } = useDetectScroll();
   // useEffect(() => {
   //   // console.log('sda');
@@ -36,8 +39,12 @@ export default function App({ Component, pageProps }) {
     };
   }, [router.events]);
 
+  // useEffect(() => {
+  //   console.log('Session in _app.js:', session);
+  // }, [session]);
+
   return (
-    <SessionProvider session={pageProps.session}>
+    <SessionProvider session={session}>
       <RegisterProvider>
         <UserProvider>
           <ThemeProvider>

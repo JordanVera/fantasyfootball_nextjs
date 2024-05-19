@@ -61,16 +61,20 @@ const UserTable = ({ users }) => {
                 >
                   <td className="px-6 py-2 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <Avatar
+                      <div className="rounded-full bg-gray-700 flex items-center justify-center h-8 w-8">
+                        {/* <Avatar
                           className="h-10 w-10 rounded-full"
                           src={user.image}
-                          alt={user.name.split('')[0]}
-                        />
+                          alt={user.username}
+                        /> */}
+
+                        <p className="uppercase text-xs">
+                          {user.firstname.charAt(0) + user.lastname.charAt(0)}
+                        </p>
                       </div>
                       <div className="ml-4">
                         <p className="text-sm font-medium text-black dark:text-white">
-                          {user.name} {`(${index + 1})`}
+                          {user.username} {`(${index + 1})`}
                         </p>
                       </div>
                     </div>
