@@ -1,11 +1,10 @@
 import { Button } from '@material-tailwind/react';
 import SignoutButton from './buttons/SignoutButton';
-import Image from 'next/image';
 import Link from 'next/link';
-import { useSession, signOut } from 'next-auth/react';
-import Logo from './Logo';
+import { useSession } from 'next-auth/react';
 import LoginButton from './buttons/LoginButton';
 import ThemeSwitcher from './ThemeSwitcher';
+import Logo from './Logo';
 
 export const Topbar = () => {
   const { data: session } = useSession();

@@ -84,15 +84,16 @@ const LoginForm = ({ setIsSignUp }) => {
       >
         Sign Up
       </Button>
-      <div className="flex items-center">
+      {/* <div className="flex items-center">
         <hr className="flex-grow border-gray-800" />
         <span className="px-2 text-gray-800">or</span>
         <hr className="flex-grow border-gray-800" />
       </div>
       <GithubSignupButton />
       <FacebookSignupButton />
-      <GoogleSignupButton />
+      <GoogleSignupButton /> */}
     </>
   );
 };
+
 export default LoginForm;
