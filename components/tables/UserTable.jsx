@@ -93,13 +93,13 @@ const UserTable = ({ users }) => {
 
                     let message;
 
-                    if (isLoser) {
-                      message = `User ${user.username}'s pick for week ${weekIndex} and team ${pick} is a loser.`;
-                      console.log(message);
-                    } else {
-                      message = `User ${user.username}'s pick for week ${weekIndex} and team ${pick} is a winner.`;
-                      console.log(message);
-                    }
+                    // if (isLoser) {
+                    //   message = `User ${user.username}'s pick for week ${weekIndex} and team ${pick} is a loser.`;
+                    //   console.log(message);
+                    // } else {
+                    //   message = `User ${user.username}'s pick for week ${weekIndex} and team ${pick} is a winner.`;
+                    //   console.log(message);
+                    // }
 
                     return (
                       <td

@@ -30,7 +30,7 @@ const SignupForm = ({ setIsSignUp }) => {
 
   return (
     <div>
-      <div className="flex flex-col space-y-5">
+      <div className="flex flex-col gap-5">
         <div className="flex flex-col md:flex-row gap-5">
           <input
             className={`${inputClass}`}
@@ -69,14 +69,14 @@ const SignupForm = ({ setIsSignUp }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
-          className={`${inputClass} mb-10`}
+          className={`${inputClass} `}
           type="password"
           placeholder="Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
         <div className="w-full">
-          <div className="mt-5 w-full relative inline-flex  group ">
+          <div className="my-5 w-full relative inline-flex  group ">
             <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
             <button
               onClick={handleSignUp}
@@ -91,7 +91,7 @@ const SignupForm = ({ setIsSignUp }) => {
         </div>
       </div>
 
-      <hr className="border-b dark:border-gray-900 border-gray-300 my-10" />
+      <hr className="border-b dark:border-gray-900 border-gray-300 mb-8" />
 
       <p className="text-xs text-primary font-xs text-center">
         Already have an NFL Last Longer account?{' '}

@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import UserService from '@/services/UserService'; // Assuming UserService is in the same directory
+import { useSession } from 'next-auth/react';
 
 export const UserContext = createContext();
 export const useUser = () => useContext(UserContext);
@@ -14,13 +15,14 @@ export const UserProvider = ({ children }) => {
   const [openPicksDialog, setOpenPicksDialog] = useState(false);
   const [losers, setLosers] = useState([]);
   const [userLoserEntries, setUserLoserEntries] = useState([]);
+  const { session } = useSession(); // Get the session from NextAuth
 
   const handleOpenRulesDialog = () => setOpenRulesDialog(!openRulesDialog);
 
-  useEffect(() => {
-    fetchData();
-    fetchLoserData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  //   fetchLoserData();
+  // }, []);
 
   // useEffect(() => {
   //   console.log({ losers });

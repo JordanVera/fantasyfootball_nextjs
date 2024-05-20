@@ -1,6 +1,7 @@
-// Example of a protected page
-import { useSession, signIn } from 'next-auth/react';
-import { useEffect, useContext } from 'react';
+'use client';
+
+import { useSession } from 'next-auth/react';
+import { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { UserContext } from '@/context/UserContext';
 import { Skeleton } from '@mui/material';
@@ -12,11 +13,18 @@ import Router from 'next/router';
 import { toast } from 'react-toastify';
 import PicksDialog from '@/components/dialogs/PicksDialog';
 import RulesDialog from '@/components/dialogs/RulesDialog';
+import UserService from '@/services/UserService';
 
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const { users, user, loading } = useContext(UserContext);
+  // const { loading } = useContext(UserContext);
+
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({});
+  const [userPicks, setUserPicks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [losers, setLosers] = useState([]);
 
   useEffect(() => {
     if (status === 'loading') return;
@@ -36,27 +44,55 @@ const Dashboard_Protected = () => {
     }
   }, [session, status, router]);
 
+  useEffect(() => {
+    fetchData();
+    fetchLoserData();
+  }, []);
+
+  async function fetchData() {
+    setLoading(true);
+    try {
+      const Users = await UserService.getAllUsers();
+      const User = await UserService.getCurrentlyLoggedInUser();
+
+      console.log({ User });
+
+      setUser(User?.user || {});
+      setUserPicks(User?.user?.Picks || []);
+      setUsers(Users);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const fetchLoserData = async () => {
+    try {
+      const { losers } = await UserService.getLoserData();
+      setLosers(losers);
+      return losers;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   if (loading || status === 'loading') {
     return (
-      <div>
-        {' '}
-        <div className="flex flex-row justify-center gap-3 w-full">
-          <Skeleton variant="rectangular" width={100} height={40} />
-          <Skeleton variant="rectangular" width={100} height={40} />
-          <Skeleton variant="rectangular" width={100} height={40} />
-          <Skeleton variant="rectangular" width={100} height={40} />
-        </div>
+      <div className="flex flex-row justify-center gap-3 w-full">
+        <Skeleton variant="rectangular" width={100} height={40} />
+        <Skeleton variant="rectangular" width={100} height={40} />
+        <Skeleton variant="rectangular" width={100} height={40} />
+        <Skeleton variant="rectangular" width={100} height={40} />
       </div>
     );
   }
 
   return (
-    <div className="mx-auto flex flex-col justify-center gap-5  p-5">
+    <div className="mx-auto flex flex-col justify-center gap-5 p-5">
       <ButtonBar />
       <DashboardHero user={user} />
-
       <UserTable users={users} />
-
       <PicksDialog user={user} users={users} />
       <RulesDialog />
     </div>
