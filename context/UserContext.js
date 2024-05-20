@@ -15,14 +15,9 @@ export const UserProvider = ({ children }) => {
   const [openPicksDialog, setOpenPicksDialog] = useState(false);
   const [losers, setLosers] = useState([]);
   const [userLoserEntries, setUserLoserEntries] = useState([]);
-  const { session } = useSession(); // Get the session from NextAuth
+  const [isSignUp, setIsSignUp] = useState(false);
 
   const handleOpenRulesDialog = () => setOpenRulesDialog(!openRulesDialog);
-
-  // useEffect(() => {
-  //   fetchData();
-  //   fetchLoserData();
-  // }, []);
 
   // useEffect(() => {
   //   console.log({ losers });
@@ -38,7 +33,7 @@ export const UserProvider = ({ children }) => {
       for (const pick of userPicks) {
         // Check if the pick is in the losers array
         const isLoser = losers.some(
-          (loser) => loser.week === pick.week && loser.team === pick.team
+          (loser) => loser.week === pick.week + 1 && loser.team === pick.team
         );
 
         if (isLoser) {
@@ -109,6 +104,10 @@ export const UserProvider = ({ children }) => {
         losers,
         userPicks,
         userLoserEntries,
+        fetchData,
+        fetchLoserData,
+        isSignUp,
+        setIsSignUp,
       }}
     >
       {children}

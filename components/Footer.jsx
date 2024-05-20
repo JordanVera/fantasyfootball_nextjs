@@ -2,13 +2,17 @@ import Link from 'next/link';
 import Logo from './Logo';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useUser } from '@/context/UserContext';
 
 export const Footer = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.7,
   });
-return (
+
+  const { setIsSignup } = useUser();
+
+  return (
     <footer
       ref={ref}
       className="bg-white shadow dark:bg-black border-t border-gray-300 dark:border-gray-900"

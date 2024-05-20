@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useUser } from '@/context/UserContext';
 
 import SignupForm from './forms/SignupForm';
 import LoginForm from './forms/LoginForm';
 import Logo from './Logo';
 
 const LoginCard = () => {
-  const [isSignUp, setIsSignUp] = useState(false);
+  const router = useRouter();
+  const { isSignUp, setIsSignUp } = useUser();
 
   return (
     <div className="w-96 rounded-xl p-5 border-2 border-gray-300 dark:border-gray-900 ">

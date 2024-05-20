@@ -1,25 +1,23 @@
 import { useState, useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react';
-import GithubSignupButton from '../buttons/GithubSignupButton';
-import FacebookSignupButton from '../buttons/FacebookSignupButton';
-import GoogleSignupButton from '../buttons/GoogleSignupButton';
-import { Button } from '@material-tailwind/react';
-
+import { useRouter } from 'next/router';
 const LoginForm = ({ setIsSignUp }) => {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const { data: session, status } = useSession();
 
+  const router = useRouter();
+
   useEffect(() => {
-    console.log('Session status:', status);
-    console.log('Session data:', session);
+    // console.log('Session status:', status);
+    // console.log('Session data:', session);
     if (status === 'authenticated') {
-      console.log('User is authenticated:', session);
+      // console.log('User is authenticated:', session);
       // Redirect to dashboard or any other page
-      window.location.href = '/dashboard';
+      router.push('/dashboard');
     } else {
-      console.log('User is not authenticated');
+      // console.log('User is not authenticated');
     }
   }, [status, session]);
 

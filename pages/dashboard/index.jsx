@@ -18,13 +18,8 @@ import UserService from '@/services/UserService';
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  // const { loading } = useContext(UserContext);
-
-  const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({});
-  const [userPicks, setUserPicks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [losers, setLosers] = useState([]);
+  const { users, user, loading, fetchData, fetchLoserData } =
+    useContext(UserContext);
 
   useEffect(() => {
     if (status === 'loading') return;
@@ -48,34 +43,6 @@ const Dashboard_Protected = () => {
     fetchData();
     fetchLoserData();
   }, []);
-
-  async function fetchData() {
-    setLoading(true);
-    try {
-      const Users = await UserService.getAllUsers();
-      const User = await UserService.getCurrentlyLoggedInUser();
-
-      console.log({ User });
-
-      setUser(User?.user || {});
-      setUserPicks(User?.user?.Picks || []);
-      setUsers(Users);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  const fetchLoserData = async () => {
-    try {
-      const { losers } = await UserService.getLoserData();
-      setLosers(losers);
-      return losers;
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   if (loading || status === 'loading') {
     return (

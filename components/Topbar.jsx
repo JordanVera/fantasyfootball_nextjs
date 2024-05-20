@@ -5,9 +5,11 @@ import { useSession } from 'next-auth/react';
 import LoginButton from './buttons/LoginButton';
 import ThemeSwitcher from './ThemeSwitcher';
 import Logo from './Logo';
+import { useUser } from '@/context/UserContext';
 
 export const Topbar = () => {
   const { data: session } = useSession();
+  const { setIsSignUp } = useUser();
 
   return (
     <div className="z-50 w-full bg-white dark:bg-black border-b border-gray-300 dark:border-gray-900 px-5 flex flex-row justify-between items-center">
@@ -24,7 +26,11 @@ export const Topbar = () => {
               <LoginButton />
             </Link>
             <Link href={'/login'}>
-              <Button color="white" className="rounded-full">
+              <Button
+                onClick={() => setIsSignUp(true)}
+                color="white"
+                className="rounded-xl bg-gray-900 text-primary capitalize"
+              >
                 Signup
               </Button>
             </Link>
