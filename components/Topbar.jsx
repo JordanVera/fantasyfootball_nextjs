@@ -29,7 +29,7 @@ export const Topbar = () => {
               <Button
                 onClick={() => setIsSignUp(true)}
                 color="white"
-                className="rounded-xl bg-gray-900 text-primary capitalize"
+                className="rounded-xl bg-gray-900 text-white capitalize"
               >
                 Signup
               </Button>
