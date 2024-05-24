@@ -6,10 +6,10 @@ import FourStepProcess from '@/components/homepage/FourStepProcess';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
-  useEffect(() => {
-    console.log('bi');
-    console.log(process.env.NEXT_PUBLIC_BUYIN);
-  }, []);
+  // useEffect(() => {
+  //   console.log('bi');
+  //   console.log(process.env.NEXT_PUBLIC_BUYIN);
+  // }, []);
 
   return (
     <main>

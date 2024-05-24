@@ -87,16 +87,17 @@ const UserTable = ({ users }) => {
 
                     // Check if the pick is in the losers array
                     const isLoser = losers.some(
-                      (loser) => loser.week === weekIndex && loser.team === pick
+                      (loser) =>
+                        loser.week === weekIndex + 1 && loser.team === pick
                     );
 
                     let message;
 
                     // if (isLoser) {
-                    //   message = `User ${user.name}'s pick for week ${weekIndex} and team ${pick} is a loser.`;
+                    //   message = `User ${user.username}'s pick for week ${weekIndex} and team ${pick} is a loser.`;
                     //   console.log(message);
                     // } else {
-                    //   message = `User ${user.name}'s pick for week ${weekIndex} and team ${pick} is a winner.`;
+                    //   message = `User ${user.username}'s pick for week ${weekIndex} and team ${pick} is a winner.`;
                     //   console.log(message);
                     // }
 

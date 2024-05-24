@@ -1,9 +1,10 @@
-// Example of a protected page
-import { useSession, signIn } from 'next-auth/react';
-import { useEffect, useContext } from 'react';
+'use client';
+
+import { useSession } from 'next-auth/react';
+import { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { UserContext } from '@/context/UserContext';
-import { Skeleton } from '@mui/material';
+import Skeleton from '@mui/material/Skeleton';
 
 import UserTable from '@/components/tables/UserTable';
 import ButtonBar from '@/components/buttons/ButtonBar';
@@ -12,11 +13,14 @@ import Router from 'next/router';
 import { toast } from 'react-toastify';
 import PicksDialog from '@/components/dialogs/PicksDialog';
 import RulesDialog from '@/components/dialogs/RulesDialog';
+import UserService from '@/services/UserService';
+import { useUser } from '@/context/UserContext';
 
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const { users, user, loading } = useContext(UserContext);
+  const { users, user, loading, loadingLosers, fetchData, fetchLoserData } =
+    useUser();
 
   useEffect(() => {
     if (status === 'loading') return;
@@ -36,27 +40,51 @@ const Dashboard_Protected = () => {
     }
   }, [session, status, router]);
 
-  if (loading || status === 'loading') {
+  useEffect(() => {
+    fetchData();
+    fetchLoserData();
+  }, []);
+
+  if (loading || loadingLosers) {
     return (
-      <div>
-        {' '}
-        <div className="flex flex-row justify-center gap-3 w-full">
-          <Skeleton variant="rectangular" width={100} height={40} />
-          <Skeleton variant="rectangular" width={100} height={40} />
-          <Skeleton variant="rectangular" width={100} height={40} />
-          <Skeleton variant="rectangular" width={100} height={40} />
+      <div className="flex flex-col gap-5 w-full  p-5">
+        <div className="flex flex-col md:flex-row gap-5 w-full">
+          <Skeleton
+            variant="rectangular"
+            sx={{ bgcolor: 'grey.900' }}
+            // width={}
+            className="w-1/2 rounded-lg"
+            height={200}
+          />
+          <Skeleton
+            variant="rectangular"
+            sx={{ bgcolor: 'grey.900' }}
+            // width={}
+            className="w-1/2 rounded-lg"
+            height={200}
+          />
         </div>
+        <Skeleton
+          variant="rectangular"
+          sx={{ bgcolor: 'grey.900' }}
+          className="w-full rounded-lg"
+          height={240}
+        />
+        <Skeleton
+          variant="rectangular"
+          sx={{ bgcolor: 'grey.900' }}
+          className="w-full rounded-lg"
+          height={350}
+        />
       </div>
     );
   }
 
   return (
-    <div className="mx-auto flex flex-col justify-center gap-5  p-5">
+    <div className="mx-auto flex flex-col justify-center gap-5 p-5">
       <ButtonBar />
       <DashboardHero user={user} />
-
       <UserTable users={users} />
-
       <PicksDialog user={user} users={users} />
       <RulesDialog />
     </div>
