@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { UserContext } from '@/context/UserContext';
-import { Skeleton } from '@mui/material';
+import Skeleton from '@mui/material/Skeleton';
 
 import UserTable from '@/components/tables/UserTable';
 import ButtonBar from '@/components/buttons/ButtonBar';
@@ -14,12 +14,13 @@ import { toast } from 'react-toastify';
 import PicksDialog from '@/components/dialogs/PicksDialog';
 import RulesDialog from '@/components/dialogs/RulesDialog';
 import UserService from '@/services/UserService';
+import { useUser } from '@/context/UserContext';
 
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const { users, user, loading, fetchData, fetchLoserData } =
-    useContext(UserContext);
+  const { users, user, loading, loadingLosers, fetchData, fetchLoserData } =
+    useUser();
 
   useEffect(() => {
     if (status === 'loading') return;
@@ -44,13 +45,37 @@ const Dashboard_Protected = () => {
     fetchLoserData();
   }, []);
 
-  if (loading || status === 'loading') {
+  if (loading || loadingLosers) {
     return (
-      <div className="flex flex-row justify-center gap-3 w-full">
-        <Skeleton variant="rectangular" width={100} height={40} />
-        <Skeleton variant="rectangular" width={100} height={40} />
-        <Skeleton variant="rectangular" width={100} height={40} />
-        <Skeleton variant="rectangular" width={100} height={40} />
+      <div className="flex flex-col gap-5 w-full  p-5">
+        <div className="flex flex-col md:flex-row gap-5 w-full">
+          <Skeleton
+            variant="rectangular"
+            sx={{ bgcolor: 'grey.900' }}
+            // width={}
+            className="w-1/2 rounded-lg"
+            height={200}
+          />
+          <Skeleton
+            variant="rectangular"
+            sx={{ bgcolor: 'grey.900' }}
+            // width={}
+            className="w-1/2 rounded-lg"
+            height={200}
+          />
+        </div>
+        <Skeleton
+          variant="rectangular"
+          sx={{ bgcolor: 'grey.900' }}
+          className="w-full rounded-lg"
+          height={240}
+        />
+        <Skeleton
+          variant="rectangular"
+          sx={{ bgcolor: 'grey.900' }}
+          className="w-full rounded-lg"
+          height={350}
+        />
       </div>
     );
   }

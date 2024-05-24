@@ -9,7 +9,8 @@ export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
   const [userPicks, setUserPicks] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [loadingLosers, setLoadingLosers] = useState(false);
   const [registrationOpen, setRegistrationOpen] = useState(false);
   const [openRulesDialog, setOpenRulesDialog] = useState(false);
   const [openPicksDialog, setOpenPicksDialog] = useState(false);
@@ -68,6 +69,7 @@ export const UserProvider = ({ children }) => {
 
   const fetchLoserData = async () => {
     try {
+      setLoadingLosers(true);
       const { losers } = await UserService.getLoserData();
       // console.log({ losers });
 
@@ -75,6 +77,8 @@ export const UserProvider = ({ children }) => {
       return losers;
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoadingLosers(false);
     }
   };
 
