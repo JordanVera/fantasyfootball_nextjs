@@ -45,25 +45,38 @@ const LoginForm = ({ setIsSignUp }) => {
   };
 
   const inputClass =
-    'text-primary bg-gray-300 dark:bg-gray-900 focus:outline-none focus:shadow-outline dark:focus:border-blue-800 focus:border-blue-500  border border-gray-500 dark:border-gray-800 rounded-lg py-2 px-4 block w-full appearance-none leading-normal';
+    'text-primary bg-gray-300 dark:bg-gray-900 focus:outline-none focus:shadow-outline dark:focus:border-blue-800 focus:border-blue-500  border border-gray-500 dark:border-gray-800 rounded-lg p-2 block w-full appearance-none leading-normal';
 
   return (
     <>
       <form onSubmit={handleSignIn} className="flex flex-col gap-5">
-        <input
-          className={`text-primary ${inputClass}`}
-          type="text"
-          placeholder="Email or Username"
-          value={identifier}
-          onChange={(e) => setIdentifier(e.target.value)}
-        />
-        <input
-          className={`text-primary ${inputClass}`}
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="flex flex-col gap-2">
+          <label htmlFor="email" className="text-primary text-xs font-bold">
+            Email or Username
+          </label>
+          <input
+            id="email"
+            className={`text-primary ${inputClass}`}
+            type="text"
+            placeholder="Email or Username"
+            value={identifier}
+            onChange={(e) => setIdentifier(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="password" className="text-primary text-xs font-bold">
+            Password
+          </label>
+          <input
+            id="password"
+            className={`text-primary ${inputClass}`}
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
         {error && <p className="text-red-500">{error}</p>}
 

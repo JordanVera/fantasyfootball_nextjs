@@ -26,55 +26,80 @@ const SignupForm = ({ setIsSignUp }) => {
   };
 
   const inputClass =
-    'text-primary bg-gray-300 dark:bg-gray-900 focus:outline-none focus:shadow-outline dark:focus:border-blue-800 focus:border-blue-500  border border-gray-500 dark:border-gray-800 rounded-lg py-2 px-4 block w-full appearance-none leading-normal';
+    'text-primary bg-gray-300 dark:bg-gray-900 focus:outline-none focus:shadow-outline dark:focus:border-blue-800 focus:border-blue-500  border border-gray-500 dark:border-gray-800 rounded-lg p-2 block w-full appearance-none leading-normal';
 
   return (
     <div>
       <div className="flex flex-col gap-5">
         <div className="flex flex-col md:flex-row gap-5">
-          <input
-            className={`${inputClass}`}
-            type="text"
-            placeholder="First Name"
-            value={firstname}
-            onChange={(e) => setfirstname(e.target.value)}
-          />
-          <input
-            className={`${inputClass}`}
-            type="text"
-            placeholder="Last Name"
-            value={lastname}
-            onChange={(e) => setlastname(e.target.value)}
-          />
+          <label className="text-xs font-bold">
+            First Name
+            <input
+              className={`${inputClass} mt-1.5 `}
+              required
+              type="text"
+              placeholder="John"
+              value={firstname}
+              onChange={(e) => setfirstname(e.target.value)}
+            />
+          </label>
+          <label className="text-xs font-bold">
+            Last Name
+            <input
+              className={`${inputClass} mt-1.5 `}
+              required
+              type="text"
+              placeholder="Doe"
+              value={lastname}
+              onChange={(e) => setlastname(e.target.value)}
+            />
+          </label>
         </div>
-        <input
-          className={`${inputClass}`}
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          className={`${inputClass}`}
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          className={`${inputClass}`}
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          className={`${inputClass} `}
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
+        <label className="text-xs font-bold">
+          Username
+          <input
+            className={`${inputClass} mt-1.5 `}
+            required
+            type="text"
+            placeholder="johndoe123"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+        <label className="text-xs font-bold">
+          Email
+          <input
+            className={`${inputClass} mt-1.5 `}
+            required
+            type="text"
+            placeholder="johndoe@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label className="text-xs font-bold">
+          Password
+          <input
+            className={`${inputClass} mt-1.5 `}
+            required
+            type="password"
+            placeholder="Password123"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <label className="text-xs font-bold">
+          Confirm Password
+          <input
+            className={`${inputClass} mt-1.5 `}
+            required
+            type="password"
+            placeholder="Password123"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </label>
+
         <div className="w-full">
           <div className="my-5 w-full relative inline-flex  group ">
             <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
