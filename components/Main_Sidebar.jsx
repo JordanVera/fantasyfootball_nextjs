@@ -33,7 +33,7 @@ function Main_Sidebar() {
 
   const handleOpen = () => setRegistrationOpen(!registrationOpen);
 
-  const { registrationOpen, setRegistrationOpen } = useUser();
+  const { registrationOpen, setRegistrationOpen, user } = useUser();
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -51,7 +51,27 @@ function Main_Sidebar() {
       >
         <MenuIcon className="text-black dark:text-white" />
       </IconButton>
-
+      <Link
+        href="/login"
+        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
+      >
+        <Tooltip placement="right-end" content={session ? 'logout' : 'login'}>
+          {session ? (
+            <LogoutIcon className="text-black dark:text-white" />
+          ) : (
+            <LoginIcon className="text-black dark:text-white" />
+          )}
+        </Tooltip>
+        <motion.span
+          animate={{ opacity: isCollapsed ? 0 : 1 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
+          className={`ml-3 ${
+            isCollapsed ? 'hidden' : 'inline'
+          } text-black dark:text-white`}
+        >
+          Login
+        </motion.span>
+      </Link>
       <Link
         href="/"
         className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
@@ -105,27 +125,6 @@ function Main_Sidebar() {
           Register
         </motion.span>
       </Button>
-      <Link
-        href="/login"
-        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
-      >
-        <Tooltip placement="right-end" content={session ? 'logout' : 'login'}>
-          {session ? (
-            <LogoutIcon className="text-black dark:text-white" />
-          ) : (
-            <LoginIcon className="text-black dark:text-white" />
-          )}
-        </Tooltip>
-        <motion.span
-          animate={{ opacity: isCollapsed ? 0 : 1 }}
-          transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 ${
-            isCollapsed ? 'hidden' : 'inline'
-          } text-black dark:text-white`}
-        >
-          Login
-        </motion.span>
-      </Link>
 
       {/* <ThemeSwitcher /> */}
 
@@ -133,10 +132,11 @@ function Main_Sidebar() {
         <Menu>
           <MenuHandler>
             <Button className=" p-0 m-0 rounded-full">
-              <Avatar src={session?.user?.image} className="h-8 w-8" />
-              <span className={`ml-3 ${isCollapsed ? 'hidden' : 'inline'}`}>
-                {`${session?.user?.name}`}
-              </span>
+              <div className="rounded-full bg-gray-700 flex items-center justify-center h-8 w-8">
+                <p className="uppercase text-xs">
+                  {user?.firstname?.charAt(0) + user?.lastname?.charAt(0)}
+                </p>
+              </div>
             </Button>
           </MenuHandler>
           <MenuList>
