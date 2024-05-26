@@ -28,7 +28,7 @@ const StepOne = () => {
     <Link
       ref={ref}
       href={'/login'}
-      // className="hover:scale-105 duration-300 cursor-pointer"
+      className="border border-gray-800 rounded-lg cursor-pointer"
     >
       <motion.div
         className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full "
@@ -75,7 +75,11 @@ const StepTwo = () => {
     threshold: 0.1,
   });
   return (
-    <div ref={ref}>
+    <Link
+      ref={ref}
+      href={'/login'}
+      className="border border-gray-800 rounded-lg cursor-pointer"
+    >
       <motion.div
         className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full"
         initial={{ y: '100%', opacity: 0 }}
@@ -107,7 +111,7 @@ const StepTwo = () => {
           }}
         ></div>
       </motion.div>
-    </div>
+    </Link>
   );
 };
 
@@ -117,7 +121,11 @@ const StepThree = () => {
     threshold: 0.1,
   });
   return (
-    <div ref={ref}>
+    <Link
+      ref={ref}
+      href={'/login'}
+      className="border border-gray-800 rounded-lg cursor-pointer"
+    >
       <motion.div
         className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full"
         initial={{ y: '100%', opacity: 0 }}
@@ -151,7 +159,7 @@ const StepThree = () => {
           }}
         ></div>
       </motion.div>
-    </div>
+    </Link>
   );
 };
 
@@ -161,7 +169,11 @@ const StepFour = () => {
     threshold: 0.1,
   });
   return (
-    <div ref={ref}>
+    <Link
+      ref={ref}
+      href={'/login'}
+      className="border border-gray-800 rounded-lg cursor-pointer"
+    >
       <motion.div
         className="bg-black rounded-lg flex flex-col-reverse xl:flex-row w-full h-full"
         initial={{ y: '100%', opacity: 0 }}
@@ -196,7 +208,7 @@ const StepFour = () => {
           }}
         ></div>
       </motion.div>
-    </div>
+    </Link>
   );
 };
 
