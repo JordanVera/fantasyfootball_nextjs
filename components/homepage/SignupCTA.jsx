@@ -22,7 +22,7 @@ const SignupCTA = () => {
         className="hover:scale-105 duration-300 cursor-pointer"
       >
         <motion.div
-          className="bg-black rounded-lg flex flex-col-reverse md:flex-row m-5"
+          className="bg-black rounded-lg flex flex-col-reverse md:flex-row m-5 border dark:border-gray-800 border-gray-500 "
           initial={{ y: '100%', opacity: 0 }}
           animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
           transition={{ duration: 0.7, slideIn: 0.7 }}

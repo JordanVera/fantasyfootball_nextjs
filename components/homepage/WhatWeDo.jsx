@@ -21,7 +21,7 @@ const One = (_) => {
   return (
     <div ref={ref}>
       <motion.div
-        className="flex flex-col md:flex-row items-center gap-10 text-primary"
+        className="flex flex-col md:flex-row items-center gap-10 text-primary border dark:border-gray-800 border-gray-500 rounded-lg"
         initial={{ opacity: 0 }} // Start from transparent
         animate={{ opacity: inView ? 1 : 0 }} // Fade in when in view
         transition={{ duration: 1, ease: 'easeIn' }}
@@ -70,7 +70,7 @@ const Two = (_) => {
   return (
     <div ref={ref}>
       <motion.div
-        className="flex flex-col-reverse md:flex-row items-center gap-10 text-primary"
+        className="flex flex-col-reverse md:flex-row items-center gap-10 text-primary border dark:border-gray-800 border-gray-500 rounded-lg"
         initial={{ opacity: 0 }} // Start from transparent
         animate={{ opacity: inView ? 1 : 0 }} // Fade in when in view
         transition={{ duration: 1, ease: 'easeIn' }}

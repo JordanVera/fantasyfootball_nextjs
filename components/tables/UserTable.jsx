@@ -21,7 +21,7 @@ const UserTable = ({ users }) => {
   return (
     <div ref={ref} className="w-full">
       <motion.div
-        className="overflow-x-auto rounded-xl drop-shadow-xl  "
+        className="overflow-x-auto rounded-xl drop-shadow-xl  border dark:border-gray-800 border-gray-500 "
         initial={{ opacity: 0 }}
         animate={{ opacity: inView ? 1 : 0 }}
         transition={{ duration: 1, ease: 'easeIn' }}
