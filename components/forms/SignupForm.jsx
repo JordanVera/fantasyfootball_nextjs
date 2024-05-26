@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import UserService from '@/services/UserService';
+import { toast } from 'react-toastify';
 
 const SignupForm = ({ setIsSignUp }) => {
   const [loading, setLoading] = useState(false);
@@ -13,6 +14,27 @@ const SignupForm = ({ setIsSignUp }) => {
 
   const handleSignUp = async () => {
     setLoading(true);
+
+    if (
+      !username ||
+      !firstname ||
+      !lastname ||
+      !email ||
+      !password ||
+      !confirmPassword
+    ) {
+      return toast.error('missing required fields.', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
+    }
+
     await UserService.signupUser(
       firstname,
       lastname,
