@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { getStartingWeek } from '@/utils/dates';
 import { useUser } from '@/context/UserContext';
 
@@ -5,12 +6,28 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const DashboardHero = () => {
-  const { handleOpenRulesDialog, user } = useUser();
+  const { handleOpenRulesDialog, user, users } = useUser();
 
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.15,
   });
+
+  useEffect(() => {
+    console.log({ users });
+  }, [users]);
+
+  const totalUserBullets = users?.reduce(
+    (total, user) => total + user.bullets,
+    0
+  );
+
+  const totalActiveUsers = users?.reduce((total, user) => {
+    if (user.bullets > 0) {
+      return total + 1;
+    }
+    return total;
+  }, 0);
 
   return (
     <div ref={ref} className="w-full ">
@@ -28,8 +45,9 @@ const DashboardHero = () => {
 
             <div className="flex flex-col gap-2">
               <h2 className=" text-primary">
-                There is a total of 9 users with 19 entries which makes the
-                prize pool $950
+                There is a total of {totalActiveUsers} active users with{' '}
+                {totalUserBullets} entries which makes the prize pool{' '}
+                {totalUserBullets * process.env.NEXT_PUBLIC_BUYIN}
               </h2>
 
               <h2 className=" text-primary">
@@ -59,7 +77,9 @@ const DashboardHero = () => {
         </div>
 
         <div
-          className="hidden lg:block lg:bg-black min-h-[200px] rounded-t-xl lg:rounded-tl-none lg:rounded-r-xl w-full lg:w-1/2 bg-center bg-cover "
+          className="hidden lg:block lg:bg-black min-h-[200px] rounded-t-xl
+           lg:rounded-tl-none lg:rounded-r-xl
+           w-full lg:w-1/2 bg-center bg-cover "
           // bg-opacity-50
           style={{
             backgroundImage: "url('/images/billsStadium.jpg')",

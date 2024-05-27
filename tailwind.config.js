@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const withMT = require('@material-tailwind/react/utils/withMT');
 
-const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
-
 const svgToDataUri = require('mini-svg-data-uri');
 const {
   default: flattenColorPalette,

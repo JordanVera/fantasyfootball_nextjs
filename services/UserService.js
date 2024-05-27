@@ -91,7 +91,7 @@ class UserService {
 
       if (!response.ok) {
         toast.error(res.error, {
-          position: 'top-right',
+          position: 'bottom-right',
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -104,7 +104,7 @@ class UserService {
       }
 
       toast.success(res.message, {
-        position: 'top-right',
+        position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -148,7 +148,7 @@ class UserService {
 
     if (!res.ok) {
       toast.error(res.error, {
-        position: 'top-right',
+        position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -160,7 +160,7 @@ class UserService {
     }
 
     toast.success(res.message, {
-      position: 'top-right',
+      position: 'bottom-right',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -184,7 +184,7 @@ class UserService {
 
     if (!res.ok) {
       toast.error(res.error, {
-        position: 'top-right',
+        position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -196,7 +196,7 @@ class UserService {
     }
 
     toast.success(res.message, {
-      position: 'top-right',
+      position: 'bottom-right',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,

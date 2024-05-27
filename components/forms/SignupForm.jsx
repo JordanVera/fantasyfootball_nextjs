@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import UserService from '@/services/UserService';
 import { toast } from 'react-toastify';
+import { useTheme } from '@/context/ThemeContext';
 
 const SignupForm = ({ setIsSignUp }) => {
   const [loading, setLoading] = useState(false);
@@ -11,6 +12,7 @@ const SignupForm = ({ setIsSignUp }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const { theme } = useTheme();
 
   const handleSignUp = async () => {
     setLoading(true);
@@ -24,14 +26,14 @@ const SignupForm = ({ setIsSignUp }) => {
       !confirmPassword
     ) {
       return toast.error('missing required fields.', {
-        position: 'top-right',
+        position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'dark',
+        theme: theme === 'dark' ? 'dark' : 'light',
       });
     }
 
@@ -126,7 +128,7 @@ const SignupForm = ({ setIsSignUp }) => {
           <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
           <button
             onClick={handleSignUp}
-            className="relative px-7 py-4 bg-white dark:bg-black text-primary rounded-xl leading-none flex items-center divide-x divide-gray-600 w-full  justify-center text-sm font-bold"
+            className="relative px-7 py-4 bg-white dark:bg-black text-primary rounded-xl leading-none flex items-center divide-x divide-gray-600 w-full  justify-center text-xs font-bold"
           >
             Sign up
           </button>

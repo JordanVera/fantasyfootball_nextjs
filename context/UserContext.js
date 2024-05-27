@@ -52,8 +52,8 @@ export const UserProvider = ({ children }) => {
   async function fetchData() {
     setLoading(true);
     try {
-      const Users = await UserService.getAllUsers();
       const User = await UserService.getCurrentlyLoggedInUser();
+      const Users = await UserService.getAllUsers();
 
       console.log({ User });
 
