@@ -32,7 +32,7 @@ export default function PicksDialog() {
     <Dialog
       open={openPicksDialog}
       handler={handleOpen}
-      className="bg-white dark:bg-black overflow-y-auto max-h-[80vh] "
+      className="bg-white dark:bg-black overflow-y-auto max-h-[80vh] border dark:border-gray-800 border-gray-500"
       size="sm"
     >
       <DialogHeader className="text-primary capitalize text-center">
