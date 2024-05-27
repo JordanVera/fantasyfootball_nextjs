@@ -22,6 +22,13 @@ const DashboardHero = () => {
     0
   );
 
+  const totalActiveUsers = users?.reduce((total, user) => {
+    if (user.bullets > 0) {
+      return total + 1;
+    }
+    return total;
+  }, 0);
+
   return (
     <div ref={ref} className="w-full ">
       <motion.div
@@ -38,8 +45,8 @@ const DashboardHero = () => {
 
             <div className="flex flex-col gap-2">
               <h2 className=" text-primary">
-                There is a total of {users.length} users with {totalUserBullets}{' '}
-                entries which makes the prize pool{' '}
+                There is a total of {totalActiveUsers} users with{' '}
+                {totalUserBullets} entries which makes the prize pool{' '}
                 {totalUserBullets * process.env.NEXT_PUBLIC_BUYIN}
               </h2>
 
