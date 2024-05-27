@@ -177,21 +177,22 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
                   //     loser.week === weekIndex + 1 && loser.team === pick
                   // );
                   return (
-                    <Select
-                      variant="standard"
+                    <select
                       key={j}
-                      label={`Entry ${j + 1}`}
-                      className="capitalize"
-                      color="blue"
-                      onChange={(val) => handlePickChange(j, val)}
+                      className="capitalize text-primary bg-gray-300 dark:bg-gray-900 border border-gray-400 dark:border-gray-800 p-2 rounded-md"
+                      onChange={(e) => handlePickChange(j, e.target.value)}
                       disabled={userLoserEntries.includes(j)}
                     >
-                      {teamsArr.map((team, j) => (
-                        <Option key={j} value={team}>
+                      {teamsArr.map((team, index) => (
+                        <option
+                          key={index}
+                          value={team}
+                          className="text-primary"
+                        >
                           {team}
-                        </Option>
+                        </option>
                       ))}
-                    </Select>
+                    </select>
                   );
                 })}
 
