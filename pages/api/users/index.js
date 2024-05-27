@@ -24,10 +24,19 @@ async function getAllUsers(req, res, session) {
 
   try {
     const users = await prisma.user.findMany({
-      include: {
+      select: {
+        id: true,
+        username: true,
+        firstname: true,
+        lastname: true,
+        email: true,
+        createdAt: true,
+        updatedAt: true,
         Picks: true,
+        bullets: true,
       },
     });
+
     return res.status(200).json(users);
   } catch (error) {
     console.error(error);
