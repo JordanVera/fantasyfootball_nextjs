@@ -6,6 +6,7 @@ import LoginButton from './buttons/LoginButton';
 import ThemeSwitcher from './ThemeSwitcher';
 import Logo from './Logo';
 import { useUser } from '@/context/UserContext';
+import { signOut } from 'next-auth/react';
 
 export const Topbar = () => {
   const { data: session } = useSession();
@@ -23,7 +24,12 @@ export const Topbar = () => {
         {!session ? (
           <>
             <Link href={'/login'}>
-              <LoginButton />
+              <div className="relative group w-full">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                <button className="relative px-7 py-3 bg-black rounded-xl leading-none flex items-center divide-x divide-gray-600 w-full  justify-center text-sm font-bold">
+                  Log in
+                </button>
+              </div>
             </Link>
             <Link href={'/login'}>
               <Button
@@ -36,7 +42,15 @@ export const Topbar = () => {
             </Link>
           </>
         ) : (
-          <SignoutButton />
+          <div className="relative group w-full">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+            <button
+              onClick={() => signOut({ callbackUrl: '/' })}
+              className="relative px-7 py-3 bg-black rounded-xl leading-none flex items-center divide-x divide-gray-600 w-full  justify-center text-sm font-bold"
+            >
+              Sign out
+            </button>
+          </div>
         )}
       </div>
     </div>
