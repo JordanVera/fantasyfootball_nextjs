@@ -166,7 +166,7 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
             >
               Week {weekIndex + 1}
             </AccordionHeader>
-            <AccordionBody className="p-5">
+            <AccordionBody>
               <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
                 {Array.from({ length: user.bullets }).map((_, j) => {
                   // console.log({ j, weekIndex });
