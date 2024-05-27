@@ -24,94 +24,92 @@ export default function RegistrationDialog() {
   const [stripeOrCrypto, setStripeOrCrypto] = useState(0);
 
   return (
-    <>
-      <Dialog
-        open={registrationOpen}
-        handler={handleOpen}
-        className="bg-white dark:bg-black "
-      >
-        <DialogHeader className="text-primary capitalize flex flex-row gap-5 items-center">
-          {stripeOrCrypto !== 0 && (
-            <button
-              className="text-sm font-normal bg-gray-300 dark:bg-gray-800 p-2 rounded-md"
-              onClick={() => setStripeOrCrypto(0)}
-            >
-              Back
-            </button>
-          )}
+    <Dialog
+      open={registrationOpen}
+      handler={handleOpen}
+      className="bg-white dark:bg-black border border-gray-500 dark:border-gray-800"
+    >
+      <DialogHeader className="text-primary capitalize flex flex-row gap-5 items-center">
+        {stripeOrCrypto !== 0 && (
+          <button
+            className="text-sm font-normal bg-gray-300 dark:bg-gray-800 p-2 rounded-md"
+            onClick={() => setStripeOrCrypto(0)}
+          >
+            Back
+          </button>
+        )}
 
-          {stripeOrCrypto === 0
-            ? 'Please choose checkout method'
-            : 'How many entries would you like to purchase?'}
-        </DialogHeader>
+        {stripeOrCrypto === 0
+          ? 'Please choose checkout method'
+          : 'How many entries would you like to purchase?'}
+      </DialogHeader>
 
-        <DialogBody>
-          <div>
-            {stripeOrCrypto === 0 && (
-              <div className="flex flex-col md:flex-row gap-5 items-stretch justify-between">
-                <button
-                  onClick={() => setStripeOrCrypto(1)}
-                  className="flex flex-col gap-5   w-full md:w-1/2 border border-gray-700 rounded-lg p-5  justify-between"
-                >
+      <DialogBody>
+        <div>
+          {stripeOrCrypto === 0 && (
+            <div className="flex flex-col md:flex-row gap-5 items-stretch justify-between">
+              <button
+                onClick={() => setStripeOrCrypto(1)}
+                className="flex flex-col gap-5   w-full md:w-1/2 border  border-gray-500 dark:border-gray-800 rounded-lg p-5  justify-between"
+              >
+                <Image
+                  src={'/images/stripe.png'}
+                  height={100}
+                  width={100}
+                  alt="stripe logo"
+                  className="mx-auto"
+                />
+                <h3 className="text-primary text-lg font-bold capitalize">
+                  checkout with stripe
+                </h3>
+              </button>
+
+              <button
+                onClick={() => setStripeOrCrypto(2)}
+                className="flex flex-col gap-5 w-full md:w-1/2 border border-gray-500 dark:border-gray-800 rounded-lg p-5 justify-between"
+              >
+                <div className="flex flex-row gap-3 items-center">
                   <Image
-                    src={'/images/stripe.png'}
-                    height={100}
-                    width={100}
+                    src={'/images/bitcoinLogo.png'}
+                    height={40}
+                    width={40}
                     alt="stripe logo"
                     className="mx-auto"
                   />
-                  <h3 className="text-primary text-lg font-bold capitalize">
-                    checkout with stripe
-                  </h3>
-                </button>
+                  <Image
+                    src={'/images/litecoinLogo.png'}
+                    height={40}
+                    width={40}
+                    alt="stripe logo"
+                    className="mx-auto"
+                  />
+                  <Image
+                    src={'/images/stellarLumensLogo.png'}
+                    height={40}
+                    width={40}
+                    alt="stripe logo"
+                    className="mx-auto"
+                  />
+                  <Image
+                    src={'/images/rippleLogo.png'}
+                    height={40}
+                    width={40}
+                    alt="stripe logo"
+                    className="mx-auto"
+                  />
+                </div>
+                <h3 className="text-primary text-lg font-bold capitalize">
+                  checkout with crypto
+                </h3>
+              </button>
+            </div>
+          )}
 
-                <button
-                  onClick={() => setStripeOrCrypto(2)}
-                  className="flex flex-col gap-5 w-full md:w-1/2 border border-gray-700 rounded-lg p-5 justify-between"
-                >
-                  <div className="flex flex-row gap-3 items-center">
-                    <Image
-                      src={'/images/bitcoinLogo.png'}
-                      height={40}
-                      width={40}
-                      alt="stripe logo"
-                      className="mx-auto"
-                    />
-                    <Image
-                      src={'/images/litecoinLogo.png'}
-                      height={40}
-                      width={40}
-                      alt="stripe logo"
-                      className="mx-auto"
-                    />
-                    <Image
-                      src={'/images/stellarLumensLogo.png'}
-                      height={40}
-                      width={40}
-                      alt="stripe logo"
-                      className="mx-auto"
-                    />
-                    <Image
-                      src={'/images/rippleLogo.png'}
-                      height={40}
-                      width={40}
-                      alt="stripe logo"
-                      className="mx-auto"
-                    />
-                  </div>
-                  <h3 className="text-primary text-lg font-bold capitalize">
-                    checkout with crypto
-                  </h3>
-                </button>
-              </div>
-            )}
-
-            {stripeOrCrypto === 1 && <StripeCheckout handleOpen={handleOpen} />}
-            {stripeOrCrypto === 2 && <CryptoCheckout handleOpen={handleOpen} />}
-          </div>
-        </DialogBody>
-      </Dialog>
-    </>
+          {stripeOrCrypto === 1 && <StripeCheckout handleOpen={handleOpen} />}
+          {stripeOrCrypto === 2 && <CryptoCheckout handleOpen={handleOpen} />}
+        </div>
+      </DialogBody>
+    </Dialog>
   );
 }
 
