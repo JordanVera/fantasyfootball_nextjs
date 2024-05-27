@@ -1,8 +1,6 @@
 import { Button } from '@material-tailwind/react';
-import SignoutButton from './buttons/SignoutButton';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-import LoginButton from './buttons/LoginButton';
 import ThemeSwitcher from './ThemeSwitcher';
 import Logo from './Logo';
 import { useUser } from '@/context/UserContext';
