@@ -46,7 +46,7 @@ const DashboardHero = () => {
             <div className="flex flex-col gap-2">
               <h2 className=" text-primary">
                 There is a total of {totalActiveUsers} active users with{' '}
-                {totalUserBullets} entries which makes the prize pool{' '}
+                {totalUserBullets} entries which makes the prize pool $
                 {totalUserBullets * process.env.NEXT_PUBLIC_BUYIN}
               </h2>
 

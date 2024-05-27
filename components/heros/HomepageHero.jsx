@@ -86,14 +86,16 @@ export function HomepageHero() {
             }}
             className="text-2xl px-4 md:text-3xl lg:text-3xl font-bold max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
           >
-            <Highlight className="text-black dark:text-white">
+            <Highlight className="text-lg md:text-3xl text-black dark:text-white">
               The best NFL Survivor application
             </Highlight>
           </motion.h2>
         </div>
         <div
           className={`${
-            !isCollapsed ? 'w-[calc(100vw-192px)]' : 'w-[calc(100vw-56px)]'
+            !isCollapsed
+              ? 'w-full lg:w-[calc(100vw-192px)]'
+              : 'w-full lg:w-[calc(100vw-56px)]'
           } overflow-hidden`}
         >
           <TeamSlider direction="left" teamLogos={teamLogos1} />
