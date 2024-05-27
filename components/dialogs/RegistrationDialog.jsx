@@ -153,16 +153,16 @@ const StripeCheckout = ({ handleOpen }) => {
 
   return (
     <>
-      <div className="w-72 my-10">
-        <input
-          type="number"
-          min="1"
-          max="100"
-          placeholder="number of entries"
-          className="capitalize text-primary bg-gray-300 dark:bg-gray-900 border border-gray-400 dark:border-gray-800  p-2 rounded-md outline-none"
-          onChange={(e) => setNumberOfEntries(e.target.value)}
-        />
-      </div>
+      <input
+        type="number"
+        min="1"
+        max="100"
+        placeholder="number of entries"
+        className="capitalize text-primary w-72 my-7 bg-gray-300 dark:bg-gray-900 border border-gray-400 dark:border-gray-800 p-2 rounded-md outline-none"
+        onChange={(e) => setNumberOfEntries(e.target.value)}
+        pattern="[0-9]*"
+        inputMode="numeric"
+      />
 
       <footer className="flex flex-col-reverse lg:flex-row justify-between items-end lg:items-center gap-3">
         <div className="flex flex-row items-center">

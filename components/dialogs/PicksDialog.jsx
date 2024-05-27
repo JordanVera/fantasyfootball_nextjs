@@ -179,7 +179,7 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
                   return (
                     <select
                       key={j}
-                      className="capitalize text-primary bg-gray-300 dark:bg-gray-900 border border-gray-400 dark:border-gray-800 p-2 rounded-md"
+                      className="capitalize text-primary bg-gray-300 dark:bg-gray-900 border border-gray-400 dark:border-gray-800 px-2 py-3 rounded-md"
                       onChange={(e) => handlePickChange(j, e.target.value)}
                       disabled={userLoserEntries.includes(j)}
                     >
