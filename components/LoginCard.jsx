@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useUser } from '@/context/UserContext';
+import Link from 'next/link';
 
 import SignupForm from './forms/SignupForm';
 import LoginForm from './forms/LoginForm';
@@ -12,9 +12,10 @@ const LoginCard = () => {
 
   return (
     <div className="w-96 rounded-xl p-5 border-2 border-gray-300 dark:border-gray-900 ">
-      <div className="flex flex-col items-center w-full">
+      <Link href={'/'} className="flex flex-col items-center w-full">
         <Logo height={150} width={150} />
-      </div>
+      </Link>
+
       {isSignUp ? (
         // onSubmit={handleSignUp}
         <SignupForm setIsSignUp={setIsSignUp} />

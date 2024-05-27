@@ -126,7 +126,7 @@ const SignupForm = ({ setIsSignUp }) => {
           <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
           <button
             onClick={handleSignUp}
-            className="relative px-7 py-4 bg-white dark:bg-black text-primary rounded-xl leading-none flex items-center divide-x divide-gray-600 w-full  justify-center text-sm font-bold"
+            className="relative px-7 py-4 bg-white dark:bg-black text-primary rounded-xl leading-none flex items-center divide-x divide-gray-600 w-full  justify-center text-xs font-bold"
           >
             Sign up
           </button>

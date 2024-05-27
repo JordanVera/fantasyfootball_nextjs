@@ -24,7 +24,7 @@ export const Topbar = () => {
             <Link href={'/login'}>
               <div className="relative group w-full">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-                <button className="relative px-7 py-3 bg-white dark:bg-black text-primary rounded-xl leading-none flex items-center divide-x divide-gray-600 w-full  justify-center text-sm font-bold">
+                <button className="relative px-7 py-3 bg-white dark:bg-black text-primary rounded-xl leading-none flex items-center divide-x divide-gray-600 w-full  justify-center text-xs font-bold">
                   Log in
                 </button>
               </div>
@@ -33,7 +33,7 @@ export const Topbar = () => {
               <Button
                 onClick={() => setIsSignUp(true)}
                 color="white"
-                className="rounded-xl bg-gray-900 text-white capitalize"
+                className="rounded-xl bg-gray-900 text-white capitalize text-xs"
               >
                 Signup
               </Button>
@@ -44,7 +44,7 @@ export const Topbar = () => {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
             <button
               onClick={() => signOut({ callbackUrl: '/' })}
-              className="relative px-7 py-3 bg-black rounded-xl leading-none flex items-center divide-x divide-gray-600 w-full  justify-center text-sm font-bold"
+              className="relative px-7 py-3 bg-black rounded-xl leading-none flex items-center divide-x divide-gray-600 w-full  justify-center text-xs font-bold"
             >
               Sign out
             </button>
