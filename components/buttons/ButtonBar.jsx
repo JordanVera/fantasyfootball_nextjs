@@ -32,8 +32,10 @@ const ButtonBar = () => {
           transition={{ duration: 1, ease: 'easeIn' }}
         >
           <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#ff4d00]  group-hover:bg-gray-900 duration-300 ease-in p-5  w-full xl:w-1/2 rounded-b-xl  xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none ">
-            <div className=" bg-white text-black  rounded-full h-8 px-2 py-1 min-w-[80px]">
-              <p className="mx-auto text-center">Selections</p>
+            <div className="flex items-center bg-white text-black  rounded-full h-8 px-2 py-1 min-w-[80px] ">
+              <p className="mx-auto text-center text-xs lg:text-md">
+                Selections
+              </p>
             </div>
 
             <div className="flex flex-col gap-2 w-full">
@@ -76,8 +78,8 @@ const ButtonBar = () => {
           transition={{ duration: 1, ease: 'easeIn' }}
         >
           <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#5551ff]   p-5 w-full xl:w-1/2 rounded-b-xl  xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none group-hover:bg-gray-900 duration-300 ease-in">
-            <div className=" bg-white text-black rounded-full h-8 px-2 py-1 min-w-[80px]">
-              <p className="mx-auto text-center">Checkout</p>
+            <div className="flex items-center bg-white text-black rounded-full h-8 px-2 py-1 min-w-[80px]">
+              <p className="mx-auto text-center text-xs lg:text-md">Checkout</p>
             </div>
 
             <div className="flex flex-col gap-2 w-full">
@@ -86,8 +88,8 @@ const ButtonBar = () => {
               </h2>
 
               <p className="text-xs lg:text-sm text-white group-hover:text-white duration-300 ease-in">
-                Checkout and buy entries into the tournament. You will be
-                redirected to the payment page.
+                Checkout and buy entries into the tournament. After clicking
+                here, You will be redirected to the payment process.
               </p>
             </div>
           </div>

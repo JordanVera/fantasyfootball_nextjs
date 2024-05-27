@@ -15,6 +15,7 @@ import PicksDialog from '@/components/dialogs/PicksDialog';
 import RulesDialog from '@/components/dialogs/RulesDialog';
 import UserService from '@/services/UserService';
 import { useUser } from '@/context/UserContext';
+import { useTheme } from '@/context/ThemeContext';
 
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
@@ -22,19 +23,21 @@ const Dashboard_Protected = () => {
   const { users, user, loading, loadingLosers, fetchData, fetchLoserData } =
     useUser();
 
+  const { theme } = useTheme();
+
   useEffect(() => {
     if (status === 'loading') return;
 
     if (!session) {
       toast.error('You must be logged in to view this page', {
-        position: 'top-right',
+        position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'dark',
+        theme: theme === 'dark' ? 'dark' : 'light',
       });
       Router.push('/login');
     }

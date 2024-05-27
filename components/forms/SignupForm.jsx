@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import UserService from '@/services/UserService';
 import { toast } from 'react-toastify';
+import { useTheme } from '@/context/ThemeContext';
 
 const SignupForm = ({ setIsSignUp }) => {
   const [loading, setLoading] = useState(false);
@@ -11,6 +12,7 @@ const SignupForm = ({ setIsSignUp }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const { theme } = useTheme();
 
   const handleSignUp = async () => {
     setLoading(true);
@@ -24,14 +26,14 @@ const SignupForm = ({ setIsSignUp }) => {
       !confirmPassword
     ) {
       return toast.error('missing required fields.', {
-        position: 'top-right',
+        position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'dark',
+        theme: theme === 'dark' ? 'dark' : 'light',
       });
     }
 
