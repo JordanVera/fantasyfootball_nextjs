@@ -25,18 +25,14 @@ const StepOne = () => {
     threshold: 0.1,
   });
   return (
-    <Link
-      ref={ref}
-      href={'/login'}
-      // className="hover:scale-105 duration-300 cursor-pointer"
-    >
+    <Link ref={ref} href={'/login'} className=" cursor-pointer">
       <motion.div
-        className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full "
+        className="bg-black rounded-xl  flex flex-col-reverse xl:flex-row w-full h-full border border-gray-500 dark:border-gray-800"
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, slideIn: 0.3 }}
       >
-        <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#d7d7d7] dark:bg-gray-900  p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none ">
+        <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#d7d7d7] dark:bg-gray-900  p-5 lg:p-8 w-full xl:w-1/2 rounded-b-xl  xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none ">
           <div className=" bg-[#5551ff] text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 1</p>
           </div>
@@ -54,7 +50,7 @@ const StepOne = () => {
         </div>
 
         <div
-          className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none"
+          className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none"
           // bg-opacity-50
           style={{
             backgroundImage: "url('/images/1.jpg')",
@@ -75,14 +71,14 @@ const StepTwo = () => {
     threshold: 0.1,
   });
   return (
-    <div ref={ref}>
+    <Link ref={ref} href={'/login'} className="cursor-pointer">
       <motion.div
-        className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full"
+        className="bg-black rounded-xl  flex flex-col-reverse xl:flex-row w-full h-full border border-gray-500 dark:border-gray-800"
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, slideIn: 0.3 }}
       >
-        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
+        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-xl  xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none">
           <div className=" bg-[#00cc66] text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 2</p>
           </div>
@@ -99,7 +95,7 @@ const StepTwo = () => {
         </div>
 
         <div
-          className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none"
+          className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none"
           style={{
             backgroundImage: "url('/images/2.jpg')",
             backgroundSize: 'cover',
@@ -107,7 +103,7 @@ const StepTwo = () => {
           }}
         ></div>
       </motion.div>
-    </div>
+    </Link>
   );
 };
 
@@ -117,14 +113,14 @@ const StepThree = () => {
     threshold: 0.1,
   });
   return (
-    <div ref={ref}>
+    <Link ref={ref} href={'/login'} className="cursor-pointer">
       <motion.div
-        className="bg-black rounded-lg  flex flex-col-reverse xl:flex-row w-full h-full"
+        className="bg-black rounded-xl  flex flex-col-reverse xl:flex-row w-full h-full border border-gray-500 dark:border-gray-800"
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, slideIn: 0.3 }}
       >
-        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
+        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-xl  xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none">
           <div className="  bg-[#fe5f55] text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 3</p>
           </div>
@@ -142,7 +138,7 @@ const StepThree = () => {
         </div>
 
         <div
-          className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none"
+          className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none"
           // bg-opacity-50
           style={{
             backgroundImage: "url('/images/3.jpg')",
@@ -151,7 +147,7 @@ const StepThree = () => {
           }}
         ></div>
       </motion.div>
-    </div>
+    </Link>
   );
 };
 
@@ -161,14 +157,14 @@ const StepFour = () => {
     threshold: 0.1,
   });
   return (
-    <div ref={ref}>
+    <Link ref={ref} href={'/login'} className=" cursor-pointer">
       <motion.div
-        className="bg-black rounded-lg flex flex-col-reverse xl:flex-row w-full h-full"
+        className="bg-black rounded-xl flex flex-col-reverse xl:flex-row w-full h-full border border-gray-500 dark:border-gray-800"
         initial={{ y: '100%', opacity: 0 }}
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, slideIn: 0.3 }}
       >
-        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-lg  xl:rounded-tl-lg xl:rounded-bl-lg xl:rounded-r-none">
+        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-xl  xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none">
           <div className=" bg-[#6930c3] text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 4</p>
           </div>
@@ -186,7 +182,7 @@ const StepFour = () => {
         </div>
 
         <div
-          className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-lg  xl:rounded-tr-lg xl:rounded-br-lg xl:rounded-l-none"
+          className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none"
           // bg-opacity-50
           style={{
             backgroundImage: "url('/images/megatron.jpg')",
@@ -196,7 +192,7 @@ const StepFour = () => {
           }}
         ></div>
       </motion.div>
-    </div>
+    </Link>
   );
 };
 

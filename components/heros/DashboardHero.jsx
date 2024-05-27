@@ -15,12 +15,12 @@ const DashboardHero = () => {
   return (
     <div ref={ref} className="w-full ">
       <motion.div
-        className="bg-black rounded-lg flex flex-col-reverse md:flex-row"
+        className="bg-black rounded-xl flex flex-col-reverse md:flex-row border dark:border-gray-800 border-gray-500"
         initial={{ opacity: 0 }}
         animate={{ opacity: inView ? 1 : 0 }}
         transition={{ duration: 1, ease: 'easeIn' }}
       >
-        <div className="flex flex-col gap-5 p-5 rounded-lg lg:rounded-l-lg lg:rounded-r-none  w-full lg:w-1/2 bg-white border-t border-b border-l border-gray-300 dark:border-gray-800 dark:bg-gray-900 drop-shadow-xl ">
+        <div className="flex flex-col gap-5 p-5 rounded-xl lg:rounded-l-xl lg:rounded-r-none  w-full lg:w-1/2 bg-white  dark:bg-gray-900 drop-shadow-xl ">
           <div className="max-w-[800px]  w-full ">
             <h1 className="text-2xl font-bold mb-5 text-primary">
               {user?.name || user.username}'s dashboard
@@ -59,7 +59,7 @@ const DashboardHero = () => {
         </div>
 
         <div
-          className="hidden lg:block lg:bg-black min-h-[200px] rounded-t-lg lg:rounded-tl-none lg:rounded-r-lg w-full lg:w-1/2 bg-center bg-cover "
+          className="hidden lg:block lg:bg-black min-h-[200px] rounded-t-xl lg:rounded-tl-none lg:rounded-r-xl w-full lg:w-1/2 bg-center bg-cover "
           // bg-opacity-50
           style={{
             backgroundImage: "url('/images/billsStadium.jpg')",

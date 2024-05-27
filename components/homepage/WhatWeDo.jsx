@@ -21,14 +21,14 @@ const One = (_) => {
   return (
     <div ref={ref}>
       <motion.div
-        className="flex flex-col md:flex-row items-center gap-10 text-primary"
+        className="flex flex-col md:flex-row items-center gap-10 text-primary border dark:border-gray-800 border-gray-500 rounded-xl"
         initial={{ opacity: 0 }} // Start from transparent
         animate={{ opacity: inView ? 1 : 0 }} // Fade in when in view
         transition={{ duration: 1, ease: 'easeIn' }}
       >
-        <div className="flex flex-col lg:flex-row bg-black rounded-lg">
+        <div className="flex flex-col lg:flex-row bg-black rounded-xl">
           <div
-            className="w-full lg:w-1/3 hidden  bg-gray-900 rounded-l-lg lg:flex items-center justify-center p-5"
+            className="w-full lg:w-1/3 hidden  bg-gray-900 rounded-l-xl lg:flex items-center justify-center p-5"
             style={{
               backgroundImage: "url('/images/mahomes.jpg')",
               backgroundSize: 'cover',
@@ -37,7 +37,7 @@ const One = (_) => {
             }}
           ></div>
 
-          <div className="w-full lg:w-2/3 flex flex-col justify-center gap-5 bg-[#ff4d00] rounded-lg lg:rounded-l-none p-5">
+          <div className="w-full lg:w-2/3 flex flex-col justify-center gap-5 bg-[#ff4d00] rounded-xl lg:rounded-l-none p-5">
             <h2 className="font-bold text-3xl text-left text-black dark:text-white">
               What Is NFL Last Longer
             </h2>
@@ -70,13 +70,13 @@ const Two = (_) => {
   return (
     <div ref={ref}>
       <motion.div
-        className="flex flex-col-reverse md:flex-row items-center gap-10 text-primary"
+        className="flex flex-col-reverse md:flex-row items-center gap-10 text-primary border dark:border-gray-800 border-gray-500 rounded-xl"
         initial={{ opacity: 0 }} // Start from transparent
         animate={{ opacity: inView ? 1 : 0 }} // Fade in when in view
         transition={{ duration: 1, ease: 'easeIn' }}
       >
-        <div className="flex flex-col lg:flex-row bg-black rounded-lg">
-          <div className="w-full lg:w-2/3 flex flex-col justify-center gap-5 bg-[#5551ff] rounded-lg lg:rounded-r-none p-5">
+        <div className="flex flex-col lg:flex-row bg-black rounded-xl">
+          <div className="w-full lg:w-2/3 flex flex-col justify-center gap-5 bg-[#5551ff] rounded-xl lg:rounded-r-none p-5">
             <h2 className="font-bold text-3xl text-left text-black dark:text-white">
               How to Play
             </h2>
@@ -96,7 +96,7 @@ const Two = (_) => {
           </div>
 
           <div
-            className="w-full lg:w-1/3 hidden  bg-gray-900 rounded-r-lg lg:flex items-center justify-center p-5"
+            className="w-full lg:w-1/3 hidden  bg-gray-900 rounded-r-xl lg:flex items-center justify-center p-5"
             style={{
               backgroundImage: "url('/images/green.jpg')",
               backgroundSize: 'cover',
