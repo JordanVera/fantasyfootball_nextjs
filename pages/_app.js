@@ -57,7 +57,7 @@ export default function App({
               </div>
 
               <div id="main" className="flex-grow overflow-auto">
-                <div className="sticky top-0 z-50">
+                <div className="sticky top-0 z-50 ">
                   <Topbar />
                 </div>
                 {/* Main content goes here */}

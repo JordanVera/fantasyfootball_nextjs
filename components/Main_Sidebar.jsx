@@ -31,9 +31,9 @@ function Main_Sidebar() {
   const { data: session, status } = useSession();
   const { isCollapsed, setIsCollapsed } = useRegister();
 
-  const handleOpen = () => setRegistrationOpen(!registrationOpen);
-
+  
   const { registrationOpen, setRegistrationOpen, user } = useUser();
+  const handleOpen = () => setRegistrationOpen(!registrationOpen);
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -108,7 +108,6 @@ function Main_Sidebar() {
         </motion.span>
       </Link>
       <Button
-        href="/dashboard"
         className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg bg-transparent shadow-none"
         onClick={handleOpen}
       >

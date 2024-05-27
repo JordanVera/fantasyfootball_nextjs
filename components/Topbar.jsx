@@ -7,7 +7,7 @@ export const Topbar = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 900);
+      setIsSmallScreen(window.innerWidth < 960);
     };
 
     checkScreenSize();

@@ -56,14 +56,14 @@ const Dashboard_Protected = () => {
             variant="rectangular"
             sx={{ bgcolor: 'grey.900' }}
             // width={}
-            className="w-1/2 rounded-lg"
+            className="w-full lg:w-1/2 rounded-lg"
             height={200}
           />
           <Skeleton
             variant="rectangular"
             sx={{ bgcolor: 'grey.900' }}
             // width={}
-            className="w-1/2 rounded-lg"
+            className="w-full lg:w-1/2 rounded-lg"
             height={200}
           />
         </div>

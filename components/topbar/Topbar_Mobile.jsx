@@ -7,23 +7,25 @@ import {
   IconButton,
 } from '@material-tailwind/react';
 import { useRegister } from '@/context/RegisterContext';
+import { useUser } from '@/context/UserContext';
+import { signOut } from 'next-auth/react';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
-import LoginIcon from '@mui/icons-material/Login';
-import LogoutIcon from '@mui/icons-material/Logout';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
 import HomeIcon from '@mui/icons-material/Home';
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 
 export const Topbar_Mobile = () => {
+  const { data: session } = useSession();
   const { isCollapsed, setIsCollapsed } = useRegister();
 
-  const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
-  };
+  const { registrationOpen, setRegistrationOpen, user } = useUser();
+  const handleOpen = () => setRegistrationOpen(!registrationOpen);
 
   return (
-    <div>
+    <div className="bg-white dark:bg-black  border-b border-gray-300 dark:border-gray-900 flex flex-row justify-between items-center p-2.5 ">
       {' '}
       <Menu>
         <MenuHandler>
@@ -31,7 +33,7 @@ export const Topbar_Mobile = () => {
             <MenuIcon className="text-black dark:text-white" />
           </IconButton>
         </MenuHandler>
-        <MenuList className="bg-gray-900 border border-gray-800">
+        <MenuList className="bg-gray-900 border border-gray-800 ml-2">
           <Link
             href={'/'}
             className="flex flex-row items-center gap-2 text-primary hover:bg-gray-800 p-2 rounded-lg outline-none"
@@ -39,90 +41,48 @@ export const Topbar_Mobile = () => {
             <HomeIcon className="text-black dark:text-white" />
             <p>Home</p>
           </Link>
-          <MenuItem>Menu Item 2</MenuItem>
-          <MenuItem>Menu Item 3</MenuItem>
+          <Link
+            href={'/dashboard'}
+            className="flex flex-row items-center gap-2 text-primary hover:bg-gray-800 p-2 rounded-lg outline-none"
+          >
+            <SpaceDashboardIcon className="text-black dark:text-white" />
+            <p>Dashboard</p>
+          </Link>
+
+          <Button
+            className="flex flex-row items-center gap-2 text-primary hover:bg-gray-800 p-2 rounded-lg outline-none capitalize w-full"
+            onClick={handleOpen}
+          >
+            <CreditCardIcon className="text-black dark:text-white" />
+            Register
+          </Button>
         </MenuList>
       </Menu>
-      {/* 
-      <IconButton
-        onClick={toggleSidebar}
-        className="bg-transparent shadow-none hover:bg-gray-500 dark:hover:bg-gray-900 "
-      >
-        <MenuIcon className="text-black dark:text-white" />
-      </IconButton>
-      <Link
-        href="/login"
-        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
-      >
-        <Tooltip placement="right-end" content={session ? 'logout' : 'login'}>
-          {session ? (
-            <LogoutIcon className="text-black dark:text-white" />
-          ) : (
-            <LoginIcon className="text-black dark:text-white" />
-          )}
-        </Tooltip>
-        <motion.span
-          animate={{ opacity: isCollapsed ? 0 : 1 }}
-          transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 ${
-            isCollapsed ? 'hidden' : 'inline'
-          } text-black dark:text-white`}
-        >
-          Login
-        </motion.span>
-      </Link>
-      <Link
-        href="/"
-        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
-      >
-        <Tooltip placement="right-end" content="home">
-          <HomeIcon className="text-black dark:text-white" />
-        </Tooltip>
-
-        <motion.span
-          animate={{ opacity: isCollapsed ? 0 : 1 }}
-          transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 ${
-            isCollapsed ? 'hidden' : 'inline'
-          } text-black dark:text-white`}
-        >
-          Home
-        </motion.span>
-      </Link>
-      <Link
-        href="/dashboard"
-        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
-      >
-        <Tooltip placement="right-end" content="dashboard">
-          <SpaceDashboardIcon className="text-black dark:text-white" />
-        </Tooltip>
-        <motion.span
-          animate={{ opacity: isCollapsed ? 0 : 1 }}
-          transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 ${
-            isCollapsed ? 'hidden' : 'inline'
-          } text-black dark:text-white`}
-        >
-          Dashboard
-        </motion.span>
-      </Link>
-      <Button
-        href="/dashboard"
-        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg bg-transparent shadow-none"
-        onClick={handleOpen}
-      >
-        <Tooltip placement="right-end" content="register">
-          <CreditCardIcon className="text-black dark:text-white" />
-        </Tooltip>
-        <motion.span
-          animate={{ opacity: isCollapsed ? 0 : 1 }}
-          transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 capitalize ${
-            isCollapsed ? 'hidden' : 'inline'
-          } text-black dark:text-white`}
-        >
-          Register
-        </motion.span> */}
+      {/* <Link href={'/'}>
+        <Logo height={50} width={50} />
+      </Link> */}
+      <div>
+        {session ? (
+          <button
+            onClick={() => signOut({ callbackUrl: '/' })}
+            className="relative group w-full"
+          >
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+            <button className="relative px-7 py-3 bg-white dark:bg-black text-primary rounded-xl leading-none flex items-center divide-x divide-gray-600 justify-center text-xs font-bold">
+              Logout
+            </button>
+          </button>
+        ) : (
+          <Link href={'/login'}>
+            <div className="relative group w-full">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+              <button className="relative px-7 py-3 bg-white dark:bg-black text-primary rounded-xl leading-none flex items-center divide-x divide-gray-600 justify-center text-xs font-bold">
+                Log in
+              </button>
+            </div>
+          </Link>
+        )}
+      </div>
     </div>
   );
 };
