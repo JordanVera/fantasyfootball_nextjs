@@ -94,8 +94,8 @@ export function HomepageHero() {
         <div
           className={`${
             !isCollapsed
-              ? 'w-full lg:w-[calc(100vw-192px)]'
-              : 'w-full lg:w-[calc(100vw-56px)]'
+              ? 'w-screen lg:w-[calc(100vw-192px)]'
+              : 'w-screen lg:w-[calc(100vw-56px)]'
           } overflow-hidden`}
         >
           <TeamSlider direction="left" teamLogos={teamLogos1} />
