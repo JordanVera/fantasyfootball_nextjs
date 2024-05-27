@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useUser } from '@/context/UserContext';
 import Link from 'next/link';
 
 const FourStepProcess = () => {
@@ -25,8 +26,15 @@ const StepOne = () => {
     threshold: 0.1,
   });
 
+  const { setIsSignUp } = useUser();
+
   return (
-    <Link ref={ref} href={'/login'} className="cursor-pointer">
+    <Link
+      ref={ref}
+      href={'/login'}
+      className="cursor-pointer"
+      onClick={() => setIsSignUp(true)}
+    >
       <motion.div
         className="bg-black rounded-xl flex flex-col-reverse xl:flex-row w-full h-full border border-gray-500 dark:border-gray-800 group overflow-hidden"
         initial={{ y: '100%', opacity: 0 }}

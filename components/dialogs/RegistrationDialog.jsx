@@ -9,18 +9,15 @@ import {
 } from '@material-tailwind/react';
 
 import { loadStripe } from '@stripe/stripe-js';
-import { useRegister } from '@/context/RegisterContext';
 import { useUser } from '@/context/UserContext';
 import Image from 'next/image';
 import UserService from '@/services/UserService';
-import { motion } from 'framer-motion';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 export default function RegistrationDialog() {
   const handleOpen = () => setRegistrationOpen(!registrationOpen);
   const { registrationOpen, setRegistrationOpen } = useUser();
-  const { isCollapsed, setIsCollapsed } = useRegister();
   const [stripeOrCrypto, setStripeOrCrypto] = useState(0);
 
   return (
@@ -29,7 +26,7 @@ export default function RegistrationDialog() {
       handler={handleOpen}
       className="bg-white dark:bg-black border border-gray-500 dark:border-gray-800"
     >
-      <DialogHeader className="text-primary capitalize flex flex-row gap-5 items-center">
+      <DialogHeader className="text-primary capitalize flex flex-row gap-5 items-center text-md md:text-xl lg:text-2xl">
         {stripeOrCrypto !== 0 && (
           <button
             className="text-sm font-normal bg-gray-300 dark:bg-gray-800 p-2 rounded-md"
@@ -156,13 +153,6 @@ const StripeCheckout = ({ handleOpen }) => {
 
   return (
     <>
-      <p className="text-primary">
-        The key to more success is to have a lot of pillows. Put it this way, it
-        took me twenty five years to get these plants, twenty five years of
-        blood sweat and tears, and I&apos;m never giving up, I&apos;m just
-        getting started. I&apos;m up to something. Fan luv.
-      </p>
-
       <div className="w-72 my-10">
         <Select
           label="number of entries"
@@ -179,7 +169,7 @@ const StripeCheckout = ({ handleOpen }) => {
         </Select>
       </div>
 
-      <footer className="flex flex-row justify-between items-center">
+      <footer className="flex flex-col-reverse lg:flex-row justify-between items-end lg:items-center gap-3">
         <div className="flex flex-row items-center">
           <p className="font-bold text-primary text-sm">Powered by </p>
           <Image
