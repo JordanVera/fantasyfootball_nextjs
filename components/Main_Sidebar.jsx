@@ -31,7 +31,6 @@ function Main_Sidebar() {
   const { data: session, status } = useSession();
   const { isCollapsed, setIsCollapsed } = useRegister();
 
-  
   const { registrationOpen, setRegistrationOpen, user } = useUser();
   const handleOpen = () => setRegistrationOpen(!registrationOpen);
 
@@ -65,7 +64,7 @@ function Main_Sidebar() {
         <motion.span
           animate={{ opacity: isCollapsed ? 0 : 1 }}
           transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 ${
+          className={`ml-3 text-xs font-bold ${
             isCollapsed ? 'hidden' : 'inline'
           } text-black dark:text-white`}
         >
@@ -83,7 +82,7 @@ function Main_Sidebar() {
         <motion.span
           animate={{ opacity: isCollapsed ? 0 : 1 }}
           transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 ${
+          className={`ml-3 text-xs font-bold ${
             isCollapsed ? 'hidden' : 'inline'
           } text-black dark:text-white`}
         >
@@ -100,7 +99,7 @@ function Main_Sidebar() {
         <motion.span
           animate={{ opacity: isCollapsed ? 0 : 1 }}
           transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 ${
+          className={`ml-3 text-xs font-bold ${
             isCollapsed ? 'hidden' : 'inline'
           } text-black dark:text-white`}
         >
@@ -117,7 +116,7 @@ function Main_Sidebar() {
         <motion.span
           animate={{ opacity: isCollapsed ? 0 : 1 }}
           transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 capitalize ${
+          className={`ml-3 capitalize text-xs ${
             isCollapsed ? 'hidden' : 'inline'
           } text-black dark:text-white`}
         >
