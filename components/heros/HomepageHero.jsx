@@ -51,7 +51,7 @@ export function HomepageHero() {
   const { isCollapsed } = useRegister();
 
   return (
-    <div className="relative flex flex-col gap-32 h-[calc(100vh-101px)] items-center justify-center bg-black dark:bg-white rounded-xl m-5 overflow-hidden">
+    <div className="relative flex flex-col gap-14 md:gap-16 lg:gap-32 h-[calc(100vh-101px)] items-center justify-center bg-black dark:bg-white rounded-xl m-5 overflow-hidden">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
         src="https://www.dropbox.com/s/cb19o9iy8ossfdk/bannerVideo%20copy.mp4?raw=1"
