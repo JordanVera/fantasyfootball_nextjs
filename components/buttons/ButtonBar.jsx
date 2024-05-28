@@ -32,7 +32,7 @@ const ButtonBar = () => {
           transition={{ duration: 1, ease: 'easeIn' }}
         >
           <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-gradient-to-br from-red-500 to-orange-600 group-hover:bg-gray-900 duration-300 ease-in p-5 w-full xl:w-1/2 rounded-b-xl xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none">
-            <div className="flex items-center bg-white text-black  rounded-full h-8 px-2 py-1 min-w-[80px] ">
+            <div className="flex items-center bg-black text-white  rounded-full h-8 px-2 py-1 min-w-[80px] ">
               <p className="mx-auto text-center text-xs lg:text-md">
                 Selections
               </p>
@@ -78,7 +78,7 @@ const ButtonBar = () => {
           transition={{ duration: 1, ease: 'easeIn' }}
         >
           <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-gradient-to-br from-purple-400 to-purple-800 p-5 w-full xl:w-1/2 rounded-b-xl xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none group-hover:bg-gray-900 ">
-            <div className="flex items-center bg-white text-black rounded-full h-8 px-2 py-1 min-w-[80px]">
+            <div className="flex items-center bg-black text-white rounded-full h-8 px-2 py-1 min-w-[80px]">
               <p className="mx-auto text-center text-xs lg:text-md">Checkout</p>
             </div>
 
