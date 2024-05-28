@@ -50,27 +50,7 @@ function Main_Sidebar() {
       >
         <MenuIcon className="text-black dark:text-white" />
       </IconButton>
-      <Link
-        href="/login"
-        className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
-      >
-        <Tooltip placement="right-end" content={session ? 'logout' : 'login'}>
-          {session ? (
-            <LogoutIcon className="text-black dark:text-white" />
-          ) : (
-            <LoginIcon className="text-black dark:text-white" />
-          )}
-        </Tooltip>
-        <motion.span
-          animate={{ opacity: isCollapsed ? 0 : 1 }}
-          transition={{ duration: 0.2, delay: 0.2 }}
-          className={`ml-3 text-xs font-bold ${
-            isCollapsed ? 'hidden' : 'inline'
-          } text-black dark:text-white`}
-        >
-          Login
-        </motion.span>
-      </Link>
+
       <Link
         href="/"
         className="flex items-center hover:bg-gray-500 dark:hover:bg-gray-900  p-2 rounded-lg"
