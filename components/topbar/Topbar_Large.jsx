@@ -21,21 +21,21 @@ export const Topbar_Large = () => {
 
         {!session ? (
           <>
-            <Link href={'/login'} onClick={() => setIsSignUp(false)}>
+            <Link href={'/login'} onClick={() => setIsSignUp(true)}>
               <div className="relative group w-full">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                 <button className="relative px-7 py-3 bg-white dark:bg-black text-primary rounded-xl leading-none flex items-center divide-x divide-gray-600 w-full  justify-center text-xs font-bold">
-                  Log in
+                  Sign up
                 </button>
               </div>
             </Link>
             <Link href={'/login'}>
               <Button
-                onClick={() => setIsSignUp(true)}
+                onClick={() => setIsSignUp(false)}
                 color="white"
                 className="rounded-xl bg-gray-900 text-white capitalize text-xs"
               >
-                Signup
+                Log in
               </Button>
             </Link>
           </>
