@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import UserService from '@/services/UserService'; // Assuming UserService is in the same directory
-import { useSession } from 'next-auth/react';
 
 export const UserContext = createContext();
 export const useUser = () => useContext(UserContext);
