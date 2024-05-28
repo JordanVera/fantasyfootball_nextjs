@@ -20,23 +20,23 @@ const One = (_) => {
   return (
     <div ref={ref}>
       <motion.div
-        className="flex flex-col md:flex-row items-center gap-10 text-primary border dark:border-gray-800 border-gray-500 rounded-xl"
+        className="flex flex-col md:flex-row items-center gap-10 text-primary  rounded-xl"
         initial={{ opacity: 0 }} // Start from transparent
         animate={{ opacity: inView ? 1 : 0 }} // Fade in when in view
         transition={{ duration: 1, ease: 'easeIn' }}
       >
-        <div className="flex flex-col lg:flex-row bg-black rounded-xl">
+        <div className="flex flex-row gap-5 lg:flex-row  rounded-xl">
           <div
-            className="w-full lg:w-1/3 hidden  bg-gray-900 rounded-l-xl lg:flex items-center justify-center p-5"
+            className="relative w-full lg:w-1/3 hidden rounded-xl lg:flex items-center justify-center p-5 border dark:border-gray-800 border-gray-500"
             style={{
               backgroundImage: "url('/images/mahomes.jpg')",
               backgroundSize: 'cover',
-
-              opacity: 0.7,
             }}
-          ></div>
+          >
+            <div className="absolute inset-0 bg-black opacity-40 rounded-xl z-10"></div>
+          </div>
 
-          <div className="w-full lg:w-2/3 flex flex-col justify-center gap-5 bg-gradient-to-tr from-red-500 to-orange-600 rounded-xl lg:rounded-l-none p-5">
+          <div className="w-full lg:w-2/3 flex flex-col justify-center gap-5 bg-gradient-to-tr from-red-500 to-orange-600 rounded-xl p-5 border dark:border-gray-800 border-gray-500">
             <h2 className="font-bold text-3xl text-left text-white">
               What Is NFL Last Longer
             </h2>
@@ -69,13 +69,13 @@ const Two = (_) => {
   return (
     <div ref={ref}>
       <motion.div
-        className="flex flex-col-reverse md:flex-row items-center gap-10 text-primary border dark:border-gray-800 border-gray-500 rounded-xl"
+        className="flex flex-col-reverse md:flex-row items-center gap-10 text-primary  rounded-xl"
         initial={{ opacity: 0 }} // Start from transparent
         animate={{ opacity: inView ? 1 : 0 }} // Fade in when in view
         transition={{ duration: 1, ease: 'easeIn' }}
       >
-        <div className="flex flex-col lg:flex-row bg-black rounded-xl">
-          <div className="w-full lg:w-2/3 flex flex-col justify-center gap-5 bg-gradient-to-bl from-purple-500 to-purple-900 rounded-xl lg:rounded-r-none p-5">
+        <div className="flex flex-row gap-5  lg:flex-row rounded-xl">
+          <div className="w-full lg:w-2/3 flex flex-col justify-center gap-5 bg-gradient-to-bl from-purple-500 to-purple-900 rounded-xl p-5 border dark:border-gray-800 border-gray-500">
             <h2 className="font-bold text-3xl text-left text-white">
               How to Play
             </h2>
@@ -95,14 +95,14 @@ const Two = (_) => {
           </div>
 
           <div
-            className="w-full lg:w-1/3 hidden  bg-gray-900 rounded-r-xl lg:flex items-center justify-center p-5"
+            className="relative w-full lg:w-1/3 hidden rounded-xl lg:flex items-center justify-center p-5 border dark:border-gray-800 border-gray-500"
             style={{
               backgroundImage: "url('/images/bigTruss.jpg')",
               backgroundSize: 'cover',
-
-              opacity: 0.7,
             }}
-          ></div>
+          >
+            <div className="absolute inset-0 bg-black opacity-40 rounded-xl z-10"></div>
+          </div>
         </div>
       </motion.div>
     </div>
