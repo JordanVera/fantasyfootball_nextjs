@@ -40,22 +40,22 @@ const DashboardHero = () => {
       >
         <div className="flex flex-col gap-5 p-5 rounded-xl lg:rounded-l-xl lg:rounded-r-none  w-full lg:w-1/2  bg-gradient-to-bl from-blue-500 to-blue-900 drop-shadow-xl ">
           <div className="max-w-[800px] ">
-            <h1 className="text-2xl font-bold mb-5 text-primary">
+            <h1 className="text-2xl font-bold mb-5 text-white">
               {user?.name || user.username}'s dashboard
             </h1>
 
             <div className="flex flex-col gap-2">
-              <h2 className=" text-primary">
+              <h2 className=" text-white">
                 There is a total of {totalActiveUsers} active users with{' '}
                 {totalUserBullets} entries which makes the prize pool $
                 {totalUserBullets * process.env.NEXT_PUBLIC_BUYIN}
               </h2>
 
-              <h2 className=" text-primary">
+              <h2 className=" text-white">
                 Once you buyin you will be able to make your picks{' '}
               </h2>
 
-              <h2 className="text-red-600  ">
+              <h2 className="text-orange-700  ">
                 ***
                 <span className="font-bold">
                   It is currently week {getStartingWeek() + 1}{' '}
