@@ -177,22 +177,25 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
                   //     loser.week === weekIndex + 1 && loser.team === pick
                   // );
                   return (
-                    <select
-                      key={j}
-                      className="capitalize text-primary bg-gray-300 dark:bg-gray-900 border border-gray-400 dark:border-gray-800 px-2 py-3 rounded-md"
-                      onChange={(e) => handlePickChange(j, e.target.value)}
-                      disabled={userLoserEntries.includes(j)}
-                    >
-                      {teamsArr.map((team, index) => (
-                        <option
-                          key={index}
-                          value={team}
-                          className="text-primary"
-                        >
-                          {team}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="flex flex-col gap-1">
+                      <label className="text-primary">Entry {j + 1}</label>
+                      <select
+                        key={j}
+                        className="capitalize text-primary bg-gray-300 dark:bg-gray-900 border border-gray-400 dark:border-gray-800 px-2 py-3 rounded-md"
+                        onChange={(e) => handlePickChange(j, e.target.value)}
+                        disabled={userLoserEntries.includes(j)}
+                      >
+                        {teamsArr.map((team, index) => (
+                          <option
+                            key={index}
+                            value={team}
+                            className="text-primary"
+                          >
+                            {team}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   );
                 })}
 
