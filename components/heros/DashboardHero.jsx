@@ -4,6 +4,7 @@ import { useUser } from '@/context/UserContext';
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const DashboardHero = () => {
   const { handleOpenRulesDialog, user, users } = useUser();
@@ -37,8 +38,8 @@ const DashboardHero = () => {
         animate={{ opacity: inView ? 1 : 0 }}
         transition={{ duration: 1, ease: 'easeIn' }}
       >
-        <div className="flex flex-col gap-5 p-5 rounded-xl lg:rounded-l-xl lg:rounded-r-none  w-full lg:w-1/2 bg-white  dark:bg-gray-900 drop-shadow-xl ">
-          <div className="max-w-[800px]  w-full ">
+        <div className="flex flex-col gap-5 p-5 rounded-xl lg:rounded-l-xl lg:rounded-r-none  w-full lg:w-1/2  bg-gradient-to-bl from-blue-500 to-blue-900 drop-shadow-xl ">
+          <div className="max-w-[800px] ">
             <h1 className="text-2xl font-bold mb-5 text-primary">
               {user?.name || user.username}'s dashboard
             </h1>
@@ -54,12 +55,6 @@ const DashboardHero = () => {
                 Once you buyin you will be able to make your picks{' '}
               </h2>
 
-              <button onClick={handleOpenRulesDialog} className="text-left ">
-                <h2 className="font-bold text-primary hover:text-orange-500">
-                  Please make sure to read the rules!
-                </h2>
-              </button>
-
               <h2 className="text-red-600  ">
                 ***
                 <span className="font-bold">
@@ -73,6 +68,13 @@ const DashboardHero = () => {
                 .***
               </h2>
             </div>
+            <button
+              onClick={handleOpenRulesDialog}
+              className="flex flex-row gap-2 mt-5 text-left rounded-full border border-white   text-white py-2 px-5"
+            >
+              <p>Please make sure to read the rules!</p>
+              <ArrowForwardIcon />
+            </button>
           </div>
         </div>
 

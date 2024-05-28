@@ -41,17 +41,17 @@ const StepOne = () => {
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, slideIn: 0.3 }}
       >
-        <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-xl xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none z-50">
-          <div className="bg-[#5551ff] text-white rounded-full h-8 px-2 py-1 min-w-[80px]">
+        <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8  bg-gradient-to-br from-red-500 to-orange-600 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-xl xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none z-50">
+          <div className="bg-black text-white rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 1</p>
           </div>
 
           <div className="flex flex-col gap-2 w-full">
-            <h2 className="text-xl lg:text-2xl text-black dark:text-white font-bold">
+            <h2 className="text-xl lg:text-2xl text-white font-bold">
               Sign Up
             </h2>
 
-            <p className="text-xs lg:text-sm text-black dark:text-white">
+            <p className="text-xs lg:text-sm text-white">
               Sign up when the game opens, create an account by visiting our
               sign in page.
             </p>
@@ -83,17 +83,17 @@ const StepTwo = () => {
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, slideIn: 0.3 }}
       >
-        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-xl xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none z-50">
-          <div className="bg-[#00cc66] text-white rounded-full h-8 px-2 py-1 min-w-[80px]">
+        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8  bg-gradient-to-br from-purple-500 to-purple-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-xl xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none z-50">
+          <div className="bg-black text-white rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 2</p>
           </div>
 
           <div className="flex flex-col gap-2 w-full">
-            <h2 className="text-xl lg:text-2xl text-black dark:text-white font-bold">
+            <h2 className="text-xl lg:text-2xl text-white font-bold">
               Make Picks
             </h2>
 
-            <p className="text-xs lg:text-sm text-black dark:text-white">
+            <p className="text-xs lg:text-sm text-white">
               Pick one NFL team to win each week, no points spread.
             </p>
           </div>
@@ -102,7 +102,7 @@ const StepTwo = () => {
         <div
           className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-xl xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none bg-cover bg-center transition-transform duration-300 ease-in-out transform group-hover:scale-105"
           style={{
-            backgroundImage: "url('/images/2.jpg')",
+            backgroundImage: "url('/images/jettas.jpeg')",
             opacity: 0.7,
           }}
         ></div>
@@ -124,17 +124,17 @@ const StepThree = () => {
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, slideIn: 0.3 }}
       >
-        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-xl xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none z-50">
-          <div className="bg-[#fe5f55] text-white rounded-full h-8 px-2 py-1 min-w-[80px]">
+        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8  bg-gradient-to-br from-blue-500 to-blue-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-xl xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none z-50">
+          <div className="bg-black text-white rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 3</p>
           </div>
 
           <div className="flex flex-col gap-2 w-full">
-            <h2 className="text-xl lg:text-2xl text-black dark:text-white font-bold">
+            <h2 className="text-xl lg:text-2xl text-white font-bold">
               Advance
             </h2>
 
-            <p className="text-xs lg:text-sm text-black dark:text-white">
+            <p className="text-xs lg:text-sm text-white">
               Get it right and advance to the next week. Get it wrong and you're
               out.
             </p>
@@ -166,17 +166,17 @@ const StepFour = () => {
         animate={{ y: inView ? '0%' : '100%', opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.7, slideIn: 0.3 }}
       >
-        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8 bg-[#d7d7d7] dark:bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-xl  xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none z-50">
-          <div className=" bg-[#6930c3] text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
+        <div className="flex flex-row-reverse lg:flex-col items-end lg:items-start justify-center gap-8  bg-gradient-to-br from-green-500 to-green-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-b-xl  xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none z-50">
+          <div className=" bg-black text-white  rounded-full h-8 px-2 py-1 min-w-[80px]">
             <p className="mx-auto text-center">Step 4</p>
           </div>
 
           <div className="flex flex-col gap-2 w-full">
-            <h2 className="text-xl lg:text-2xl text-black dark:text-white font-bold">
+            <h2 className="text-xl lg:text-2xl text-white font-bold">
               Do it Again
             </h2>
 
-            <p className="text-xs lg:text-sm text-black dark:text-white">
+            <p className="text-xs lg:text-sm text-white">
               Repeat this until only one person remains or the season ends with
               multiple players.
             </p>
@@ -187,7 +187,7 @@ const StepFour = () => {
           className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none transition-transform duration-300 ease-in-out transform group-hover:scale-105"
           // bg-opacity-50
           style={{
-            backgroundImage: "url('/images/megatron.jpg')",
+            backgroundImage: "url('/images/ar12.jpg')",
             backgroundSize: 'cover',
 
             opacity: 0.7,

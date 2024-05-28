@@ -23,7 +23,7 @@ const ButtonBar = () => {
         onClick={() => setOpenPicksDialog(true)}
         ref={ref}
         href={'/login'}
-        className="group text-left cursor-pointer  rounded-xl"
+        className="group text-left cursor-pointer rounded-xl  hover:scale-105 duration-300 ease-in-out"
       >
         <motion.div
           className=" bg-black rounded-xl  flex flex-col-reverse xl:flex-row w-full h-full border dark:border-gray-800 border-gray-500"
@@ -31,7 +31,7 @@ const ButtonBar = () => {
           animate={{ opacity: 1 }} // Fade in when in view
           transition={{ duration: 1, ease: 'easeIn' }}
         >
-          <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#ff4d00]  group-hover:bg-gray-900 duration-300 ease-in p-5  w-full xl:w-1/2 rounded-b-xl  xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none ">
+          <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-gradient-to-br from-red-500 to-orange-600 group-hover:bg-gray-900 duration-300 ease-in p-5 w-full xl:w-1/2 rounded-b-xl xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none">
             <div className="flex items-center bg-white text-black  rounded-full h-8 px-2 py-1 min-w-[80px] ">
               <p className="mx-auto text-center text-xs lg:text-md">
                 Selections
@@ -52,7 +52,7 @@ const ButtonBar = () => {
           </div>
 
           <div
-            className="min-h-[120px] h-full flex flex-col justify-center items-center bg-gray-900 p-5  w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none group-hover:grayscale  duration-300 ease-in "
+            className="min-h-[120px] h-full flex flex-col justify-center items-center bg-gray-900 p-5  w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none "
             // bg-opacity-50
             style={{
               backgroundImage: "url('/images/1.jpg')",
@@ -69,7 +69,7 @@ const ButtonBar = () => {
         onClick={() => setRegistrationOpen(!registrationOpen)}
         ref={ref}
         href={'/login'}
-        className="group text-left cursor-pointer  rounded-xl"
+        className="group text-left cursor-pointer  rounded-xl  hover:scale-105 duration-300 ease-in-out"
       >
         <motion.div
           className="bg-black rounded-xl  flex flex-col-reverse xl:flex-row w-full h-full border dark:border-gray-800 border-gray-500"
@@ -77,7 +77,7 @@ const ButtonBar = () => {
           animate={{ opacity: 1 }} // Fade in when in view
           transition={{ duration: 1, ease: 'easeIn' }}
         >
-          <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-[#5551ff]   p-5 w-full xl:w-1/2 rounded-b-xl  xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none group-hover:bg-gray-900 duration-300 ease-in">
+          <div className="flex flex-row-reverse lg:flex-col justify-center items-end lg:items-start gap-8 bg-gradient-to-br from-purple-400 to-purple-800 p-5 w-full xl:w-1/2 rounded-b-xl xl:rounded-tl-xl xl:rounded-bl-xl xl:rounded-r-none group-hover:bg-gray-900 ">
             <div className="flex items-center bg-white text-black rounded-full h-8 px-2 py-1 min-w-[80px]">
               <p className="mx-auto text-center text-xs lg:text-md">Checkout</p>
             </div>
@@ -95,7 +95,7 @@ const ButtonBar = () => {
           </div>
 
           <div
-            className="min-h-[120px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none group-hover:grayscale"
+            className="min-h-[120px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none"
             // bg-opacity-50
             style={{
               backgroundImage: "url('/images/register.jpg')",
