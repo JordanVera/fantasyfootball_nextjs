@@ -6,7 +6,8 @@ import {
   Button,
   IconButton,
 } from '@material-tailwind/react';
-import { useRegister } from '@/context/RegisterContext';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { useUser } from '@/context/UserContext';
 import { signOut } from 'next-auth/react';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -19,9 +20,8 @@ import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 
 export const Topbar_Mobile = () => {
   const { data: session } = useSession();
-  const { isCollapsed, setIsCollapsed } = useRegister();
 
-  const { registrationOpen, setRegistrationOpen, user, setIsSignup } =
+  const { registrationOpen, setRegistrationOpen, user, setIsSignUp } =
     useUser();
   const handleOpen = () => setRegistrationOpen(!registrationOpen);
 
@@ -35,19 +35,34 @@ export const Topbar_Mobile = () => {
           </IconButton>
         </MenuHandler>
         <MenuList className="bg-gray-900 border border-gray-800 ml-2">
+          {session ? (
+            <button className="flex flex-row items-center gap-2 text-primary hover:bg-gray-800 p-2 rounded-lg outline-none w-full">
+              <LogoutIcon className="text-black dark:text-white" />
+              <p className="text-xs font-bold">Logout</p>
+            </button>
+          ) : (
+            <Link
+              href={'/login'}
+              onClick={() => setIsSignUp(false)}
+              className="flex flex-row items-center gap-2 text-primary hover:bg-gray-800 p-2 rounded-lg outline-none w-full"
+            >
+              <LoginIcon className="text-black dark:text-white" />
+              <p className="text-xs font-bold">Login</p>
+            </Link>
+          )}
           <Link
             href={'/'}
             className="flex flex-row items-center gap-2 text-primary hover:bg-gray-800 p-2 rounded-lg outline-none"
           >
             <HomeIcon className="text-black dark:text-white" />
-            <p>Home</p>
+            <p className="text-xs font-bold">Home</p>
           </Link>
           <Link
             href={'/dashboard'}
             className="flex flex-row items-center gap-2 text-primary hover:bg-gray-800 p-2 rounded-lg outline-none"
           >
             <SpaceDashboardIcon className="text-black dark:text-white" />
-            <p>Dashboard</p>
+            <p className="text-xs font-bold">Dashboard</p>
           </Link>
 
           <Button
@@ -55,7 +70,7 @@ export const Topbar_Mobile = () => {
             onClick={handleOpen}
           >
             <CreditCardIcon className="text-black dark:text-white" />
-            Register
+            <p className="text-xs font-bold">Register</p>
           </Button>
         </MenuList>
       </Menu>
@@ -74,11 +89,11 @@ export const Topbar_Mobile = () => {
             </button>
           </button>
         ) : (
-          <Link href={'/login'} onClick={() => setIsSignup(false)}>
+          <Link href={'/login'} onClick={() => setIsSignUp(true)}>
             <div className="relative group w-full">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
               <button className="relative px-7 py-3 bg-white dark:bg-black text-primary rounded-xl leading-none flex items-center divide-x divide-gray-600 justify-center text-xs font-bold">
-                Log in
+                Sign up
               </button>
             </div>
           </Link>
