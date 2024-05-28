@@ -184,7 +184,7 @@ const StepFour = () => {
         </div>
 
         <div
-          className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+          className="min-h-[300px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 lg:p-8 w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none transition-transform duration-300 ease-in-out  group-hover:scale-105"
           // bg-opacity-50
           style={{
             backgroundImage: "url('/images/ar12.jpg')",
