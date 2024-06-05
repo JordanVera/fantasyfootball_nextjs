@@ -11,6 +11,7 @@ const SignupForm = ({ setIsSignUp }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const { theme } = useTheme();
@@ -43,6 +44,19 @@ const SignupForm = ({ setIsSignUp }) => {
 
     if (!phoneRegex.test(phoneNumber)) {
       return toast.error('Please enter a valid phone number.', {
+        position: 'bottom-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: theme === 'dark' ? 'dark' : 'light',
+      });
+    }
+
+    if (password !== confirmPassword) {
+      return toast.error('Your passwords dont match.', {
         position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,

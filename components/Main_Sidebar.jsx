@@ -32,7 +32,12 @@ function Main_Sidebar() {
   const { data: session, status } = useSession();
   const { isCollapsed, setIsCollapsed } = useRegister();
 
-  const { registrationOpen, setRegistrationOpen, user } = useUser();
+  const {
+    registrationOpen,
+    setRegistrationOpen,
+    user,
+    handleOpenSettingsDialog,
+  } = useUser();
   const handleOpen = () => setRegistrationOpen(!registrationOpen);
 
   const toggleSidebar = () => {
@@ -125,7 +130,9 @@ function Main_Sidebar() {
           <MenuList className="dark:bg-gray-900 text-white border dark:border-gray-800">
             {session ? (
               <>
-                <MenuItem>Settings</MenuItem>
+                <MenuItem>
+                  <button onClick={handleOpenSettingsDialog}>Settings</button>
+                </MenuItem>
                 <MenuItem onClick={() => signOut({ callbackUrl: '/' })}>
                   Signout
                 </MenuItem>
