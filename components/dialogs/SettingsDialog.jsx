@@ -81,11 +81,11 @@ export default function RulesDialog() {
     <Dialog
       open={openSettingsDialog}
       handler={handleOpenSettingsDialog}
-      className="bg-white dark:bg-black  overflow-y-auto h-96 border dark:border-gray-800 border-gray-500"
+      className="bg-white dark:bg-black  overflow-y-auto  border dark:border-gray-800 border-gray-500"
       size="sm"
     >
       <DialogHeader className=" capitalize text-primary">
-        Seeeettttings
+        User Settings
       </DialogHeader>
       <DialogBody className="flex flex-col gap-5">
         <label className="text-xs font-bold text-white">
