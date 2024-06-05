@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+
 const LoginForm = ({ setIsSignUp }) => {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
@@ -90,12 +92,20 @@ const LoginForm = ({ setIsSignUp }) => {
 
       <hr className="border-b dark:border-gray-900 border-gray-300 my-8" />
 
-      <p className="text-xs text-primary font-xs text-center">
-        Don't have an NFL Last Longer account?{' '}
-        <button onClick={() => setIsSignUp(true)} className="text-blue-500">
-          Sign up now
-        </button>
-      </p>
+      <div className="flex flex-col gap-5">
+        <p className="text-xs text-primary font-xs text-center">
+          Don't have an NFL Last Longer account?{' '}
+          <button onClick={() => setIsSignUp(true)} className="text-blue-500">
+            Sign up now
+          </button>
+        </p>
+
+        <p className="text-xs text-primary font-xs text-center">
+          <Link href={'/forgotPassword'} className="text-blue-500 text-xs ">
+            Forgot Password?
+          </Link>
+        </p>
+      </div>
     </>
   );
 };
