@@ -12,6 +12,7 @@ import {
   AccordionBody,
 } from '@material-tailwind/react';
 import Image from 'next/image';
+import NoBulletsAlert from '@/components/alerts/NoBulletsAlert';
 
 import { getStartingWeek } from '@/utils/dates';
 import { useUser } from '@/context/UserContext';
@@ -39,6 +40,8 @@ export default function PicksDialog() {
         Please make your selections
       </DialogHeader>
       <DialogBody>
+        {user.bullets === 0 && <NoBulletsAlert />}
+
         <WeeksAccordion
           user={user}
           updateUserPicks={updateUserPicks}

@@ -25,13 +25,19 @@ import { useRegister } from '@/context/RegisterContext';
 import { motion } from 'framer-motion';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import { useUser } from '@/context/UserContext';
+import Logo from './Logo';
 // import ThemeSwitcher from './ThemeSwitcher';
 
 function Main_Sidebar() {
   const { data: session, status } = useSession();
   const { isCollapsed, setIsCollapsed } = useRegister();
 
-  const { registrationOpen, setRegistrationOpen, user } = useUser();
+  const {
+    registrationOpen,
+    setRegistrationOpen,
+    user,
+    handleOpenSettingsDialog,
+  } = useUser();
   const handleOpen = () => setRegistrationOpen(!registrationOpen);
 
   const toggleSidebar = () => {
@@ -107,21 +113,35 @@ function Main_Sidebar() {
       {/* <ThemeSwitcher /> */}
 
       <div className="mt-auto">
-        <Menu>
+        <Menu placement="right">
           <MenuHandler>
             <Button className=" p-0 m-0 rounded-full">
               <div className="rounded-full bg-gray-700 flex items-center justify-center h-8 w-8">
-                <p className="uppercase text-xs">
-                  {user?.firstname?.charAt(0) + user?.lastname?.charAt(0)}
-                </p>
+                {session ? (
+                  <p className="uppercase text-xs">
+                    {user?.firstname?.charAt(0) + user?.lastname?.charAt(0)}
+                  </p>
+                ) : (
+                  <Logo height={40} width={40} />
+                )}
               </div>
             </Button>
           </MenuHandler>
-          <MenuList>
-            <MenuItem>Settings</MenuItem>
-            <MenuItem onClick={() => signOut({ callbackUrl: '/' })}>
-              Signout
-            </MenuItem>
+          <MenuList className="dark:bg-gray-900 text-white border dark:border-gray-800">
+            {session ? (
+              <>
+                <MenuItem>
+                  <button onClick={handleOpenSettingsDialog}>Settings</button>
+                </MenuItem>
+                <MenuItem onClick={() => signOut({ callbackUrl: '/' })}>
+                  Signout
+                </MenuItem>
+              </>
+            ) : (
+              <MenuItem>
+                <Link href={'/login'}>Login</Link>
+              </MenuItem>
+            )}
           </MenuList>
         </Menu>
       </div>

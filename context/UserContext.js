@@ -13,11 +13,15 @@ export const UserProvider = ({ children }) => {
   const [registrationOpen, setRegistrationOpen] = useState(false);
   const [openRulesDialog, setOpenRulesDialog] = useState(false);
   const [openPicksDialog, setOpenPicksDialog] = useState(false);
+  const [openSettingsDialog, setOpenSettingsDialog] = useState(false);
+
   const [losers, setLosers] = useState([]);
   const [userLoserEntries, setUserLoserEntries] = useState([]);
   const [isSignUp, setIsSignUp] = useState(false);
 
   const handleOpenRulesDialog = () => setOpenRulesDialog(!openRulesDialog);
+  const handleOpenSettingsDialog = () =>
+    setOpenSettingsDialog(!openSettingsDialog);
 
   // useEffect(() => {
   //   console.log({ losers });
@@ -104,6 +108,9 @@ export const UserProvider = ({ children }) => {
         handleOpenRulesDialog,
         openPicksDialog,
         setOpenPicksDialog,
+        openSettingsDialog,
+        setOpenSettingsDialog,
+        handleOpenSettingsDialog,
         losers,
         userPicks,
         userLoserEntries,

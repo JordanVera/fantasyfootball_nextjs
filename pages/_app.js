@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import '@/styles/globals.css';
 import useDetectScroll from '@smakss/react-scroll-direction';
 import RegistrationDialog from '@/components/dialogs/RegistrationDialog';
+import SettingsDialog from '@/components/dialogs/SettingsDialog';
 
 import { useRouter } from 'next/router';
 
@@ -64,6 +65,7 @@ export default function App({
                 <Component {...pageProps} />
 
                 <RegistrationDialog />
+                <SettingsDialog />
 
                 <Footer />
               </div>
