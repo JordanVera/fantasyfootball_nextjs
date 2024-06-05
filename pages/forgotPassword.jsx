@@ -59,17 +59,17 @@ const ForgotPassword = () => {
     <div className="h-full m-5  w-[500px] mx-auto flex flex-col gap-10 mt-24">
       {step === 0 && (
         <div>
-          <header className="flex flex-col gap-2">
-            <h1 className="font-bold text-2xl">
+          <header className="flex flex-col gap-2 mb-10">
+            <h1 className="font-bold text-2xl text-primary">
               Getting back into your NFL Last Longer account
             </h1>
-            <h2 className="text-lg">
+            <h2 className="text-lg text-primary">
               Tell us some information about your account.
             </h2>
           </header>
 
           <div className="flex flex-col gap-2">
-            <label className="text-xs font-bold">
+            <label className="text-xs font-bold text-primary">
               Enter your phone number
               <input
                 className={`${inputClass} mt-1.5 `}
