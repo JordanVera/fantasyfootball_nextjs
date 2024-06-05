@@ -19,8 +19,15 @@ export default async function handle(req, res) {
 }
 
 async function signupUser(req, res) {
-  const { firstname, lastname, username, email, password, confirmPassword } =
-    req.body;
+  const {
+    firstname,
+    lastname,
+    username,
+    email,
+    password,
+    confirmPassword,
+    phoneNumber,
+  } = req.body;
 
   console.log('signup hit');
   console.log({
@@ -30,6 +37,7 @@ async function signupUser(req, res) {
     email,
     password,
     confirmPassword,
+    phoneNumber,
   });
 
   // Add validation here (e.g., check if the email is already in use)
@@ -50,6 +58,7 @@ async function signupUser(req, res) {
         username,
         email,
         password: hashedPassword,
+        phoneNumber,
       },
     });
 

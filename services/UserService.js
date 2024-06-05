@@ -127,7 +127,8 @@ class UserService {
     username,
     email,
     password,
-    confirmPassword
+    confirmPassword,
+    phoneNumber
   ) {
     const signup = await fetch('/api/signup', {
       method: 'POST',
@@ -138,6 +139,7 @@ class UserService {
         email,
         password,
         confirmPassword,
+        phoneNumber,
       }),
       headers: {
         'Content-Type': 'application/json',
