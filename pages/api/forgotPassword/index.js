@@ -4,10 +4,12 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]';
 import twilio from 'twilio';
 import crypto from 'crypto';
+import dotenv from 'dotenv';
 
-const accountSid = 'AC6503dc09d2f80335ffccf9d4712ba94c';
-const authToken = 'e905b10439bd1f8a0fa5eebe239f58e7';
-const client = require('twilio')(accountSid, authToken);
+const client = require('twilio')(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
+);
 
 export default async function handle(req, res) {
   const session = await getServerSession(req, res, authOptions);
