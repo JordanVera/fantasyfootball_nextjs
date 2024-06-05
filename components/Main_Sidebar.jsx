@@ -108,7 +108,7 @@ function Main_Sidebar() {
       {/* <ThemeSwitcher /> */}
 
       <div className="mt-auto">
-        <Menu>
+        <Menu placement="right">
           <MenuHandler>
             <Button className=" p-0 m-0 rounded-full">
               <div className="rounded-full bg-gray-700 flex items-center justify-center h-8 w-8">
@@ -122,7 +122,7 @@ function Main_Sidebar() {
               </div>
             </Button>
           </MenuHandler>
-          <MenuList>
+          <MenuList className="dark:bg-gray-900 text-white border dark:border-gray-800">
             {session ? (
               <>
                 <MenuItem>Settings</MenuItem>
