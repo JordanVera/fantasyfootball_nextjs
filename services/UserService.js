@@ -232,6 +232,30 @@ class UserService {
       throw error;
     }
   }
+
+  async updatePassword(password) {
+    try {
+      const response = await fetch(`/api/updatePassword`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ chargeObj }),
+      });
+
+      if (!response.ok) {
+        console.error('Error:', response.statusText);
+        return null;
+      }
+
+      const data = await response.json();
+      console.log('Success:', data);
+      return data;
+    } catch (error) {
+      console.error('Failed to checkout with crypto', error);
+      throw error;
+    }
+  }
 }
 
 export default new UserService();
