@@ -9,15 +9,15 @@ generator client {
 
 model User {
   id            Int        @id @default(autoincrement())
-  name          String?
-  firstname     String?
-  lastname      String?
-  username      String?    @unique
-  password      String?
-  email         String?    @unique
+  firstname     String
+  lastname      String
+  username      String     @unique
+  password      String
+  email         String     @unique
   image         String?
   bullets       Int        @default(0) @map("bullets")
   emailVerified DateTime?  @map("emailVerified")
+  phoneNumber   String     @map("phoneNumber")
   createdAt     DateTime   @default(now()) @map("createdAt")
   updatedAt     DateTime   @updatedAt @map("updatedAt")
   Account       Account[]

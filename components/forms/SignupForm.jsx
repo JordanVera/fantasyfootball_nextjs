@@ -10,6 +10,7 @@ const SignupForm = ({ setIsSignUp }) => {
   const [lastname, setlastname] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const { theme } = useTheme();
@@ -17,15 +18,18 @@ const SignupForm = ({ setIsSignUp }) => {
   const handleSignUp = async () => {
     setLoading(true);
 
+    const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+
     if (
       !username ||
       !firstname ||
       !lastname ||
       !email ||
       !password ||
-      !confirmPassword
+      !confirmPassword ||
+      !phoneNumber
     ) {
-      return toast.error('missing required fields.', {
+      return toast.error('missing or invalid required fields.', {
         position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -37,16 +41,35 @@ const SignupForm = ({ setIsSignUp }) => {
       });
     }
 
-    await UserService.signupUser(
-      firstname,
-      lastname,
-      username,
-      email,
-      password,
-      confirmPassword
-    );
-    setLoading(false);
-    setIsSignUp(false);
+    if (!phoneRegex.test(phoneNumber)) {
+      return toast.error('Please enter a valid phone number.', {
+        position: 'bottom-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: theme === 'dark' ? 'dark' : 'light',
+      });
+    }
+
+    try {
+      await UserService.signupUser(
+        firstname,
+        lastname,
+        username,
+        email,
+        password,
+        confirmPassword,
+        phoneNumber
+      );
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+      setIsSignUp(false);
+    }
   };
 
   const inputClass =
@@ -99,6 +122,17 @@ const SignupForm = ({ setIsSignUp }) => {
             placeholder="johndoe@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label className="text-xs font-bold">
+          Phone Number
+          <input
+            className={`${inputClass} mt-1.5 `}
+            required
+            type="tel"
+            placeholder="1234567890"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
         </label>
         <label className="text-xs font-bold">
