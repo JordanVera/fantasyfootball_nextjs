@@ -240,7 +240,7 @@ class UserService {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ chargeObj }),
+        body: JSON.stringify({ password }),
       });
 
       if (!response.ok) {

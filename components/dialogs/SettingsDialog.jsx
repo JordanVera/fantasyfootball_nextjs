@@ -51,7 +51,25 @@ export default function RulesDialog() {
     }
 
     try {
-      await UserService.updatePassword(password, confirmPassword);
+      const response = await UserService.updatePassword(
+        password,
+        confirmPassword
+      );
+
+      if (response.success) {
+        handleOpenSettingsDialog();
+
+        return toast.success(response.message, {
+          position: 'bottom-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: theme === 'dark' ? 'dark' : 'light',
+        });
+      }
     } catch (error) {
       console.log(error);
     } finally {

@@ -2,8 +2,7 @@
 import prisma from '../../../lib/prisma.mjs';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]';
-import { getStartingWeek } from '../../../utils/dates';
-import colors from 'colors';
+import bcrypt from 'bcryptjs';
 
 export default async function handle(req, res) {
   const session = await getServerSession(req, res, authOptions);
@@ -19,17 +18,22 @@ export default async function handle(req, res) {
   }
 }
 
-async function postPicksForUser(req, res, session) {
+async function updatePassword(req, res, session) {
   const { password } = req.body;
+  const userId = session.user.id;
 
   if (!session) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  console.log('getStartingWeek()', password);
-  // Makes it impossible to make a pick if week has past
-
   try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: { password: hashedPassword },
+    });
+
     return res.status(200).json({
       success: true,
       message: `successfully updated password`,
