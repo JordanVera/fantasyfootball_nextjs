@@ -48,6 +48,28 @@ async function signupUser(req, res) {
       .json({ success: false, error: 'Passwords do not match' });
   }
 
+  if (await prisma.user.findUnique({ where: { phoneNumber } })) {
+    try {
+      return res
+        .status(400)
+        .json({ success: false, error: 'Phone number already in use' });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ success: false, message: error.message });
+    }
+  }
+
+  if (await prisma.user.findUnique({ where: { email } })) {
+    try {
+      return res
+        .status(400)
+        .json({ success: false, error: 'Email already in use' });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ success: false, message: error.message });
+    }
+  }
+
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
 

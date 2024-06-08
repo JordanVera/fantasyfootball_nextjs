@@ -256,6 +256,7 @@ class UserService {
       throw error;
     }
   }
+
   async forgotPassword(phoneNumber) {
     try {
       const response = await fetch(`/api/forgotPassword`, {
