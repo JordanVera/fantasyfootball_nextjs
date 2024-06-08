@@ -70,6 +70,17 @@ async function signupUser(req, res) {
     }
   }
 
+  if (await prisma.user.findUnique({ where: { username } })) {
+    try {
+      return res
+        .status(400)
+        .json({ success: false, error: 'Username already in use' });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ success: false, message: error.message });
+    }
+  }
+
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
 

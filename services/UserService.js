@@ -171,6 +171,8 @@ class UserService {
       progress: undefined,
       theme: 'dark',
     });
+
+    return res;
   }
 
   async loginUser(identifier, password) {
