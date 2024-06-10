@@ -1,3 +1,4 @@
+'use client';
 import SignupCTA from '@/components/homepage/SignupCTA';
 import WhatWeDo from '@/components/homepage/WhatWeDo';
 import { HomepageHero } from '@/components/heros/HomepageHero';

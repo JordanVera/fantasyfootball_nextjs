@@ -171,6 +171,8 @@ class UserService {
       progress: undefined,
       theme: 'dark',
     });
+
+    return res;
   }
 
   async loginUser(identifier, password) {
@@ -241,6 +243,30 @@ class UserService {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ password }),
+      });
+
+      if (!response.ok) {
+        console.error('Error:', response.statusText);
+        return null;
+      }
+
+      const data = await response.json();
+      console.log('Success:', data);
+      return data;
+    } catch (error) {
+      console.error('Failed to checkout with crypto', error);
+      throw error;
+    }
+  }
+
+  async forgotPassword(phoneNumber) {
+    try {
+      const response = await fetch(`/api/forgotPassword`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phoneNumber }),
       });
 
       if (!response.ok) {

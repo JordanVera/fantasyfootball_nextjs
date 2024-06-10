@@ -69,7 +69,7 @@ const SignupForm = ({ setIsSignUp }) => {
     }
 
     try {
-      await UserService.signupUser(
+      const response = await UserService.signupUser(
         firstname,
         lastname,
         username,
@@ -78,11 +78,16 @@ const SignupForm = ({ setIsSignUp }) => {
         confirmPassword,
         phoneNumber
       );
+
+      if (response.success) {
+        setIsSignUp(false);
+      } else {
+        setIsSignUp(true);
+      }
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
-      setIsSignUp(false);
     }
   };
 
