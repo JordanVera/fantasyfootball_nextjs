@@ -51,7 +51,7 @@ export default function App({
           <ThemeProvider>
             <div
               id="app"
-              className="flex h-screen w-screen bg-white dark:bg-black"
+              className="flex w-screen h-screen bg-white dark:bg-black"
             >
               <div className="hidden lg:block">
                 <Main_Sidebar />
@@ -70,7 +70,6 @@ export default function App({
                 <Footer />
               </div>
             </div>
-            {/* <Appbar /> */}
 
             <ToastContainer />
           </ThemeProvider>
