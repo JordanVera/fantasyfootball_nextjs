@@ -39,8 +39,6 @@ const RulesPage = () => {
             <div className="absolute inset-0 bg-black/50" />{' '} */}
 
             <div className="relative z-10">
-              {' '}
-              {/* This ensures content appears above the overlay */}
               <h1 className="text-3xl font-bold text-center text-white">
                 NFL Last Longer Rules
               </h1>
@@ -54,7 +52,7 @@ const RulesPage = () => {
               {rules.map((rule, index) => (
                 <li key={index} className="flex items-start">
                   <svg
-                    className="flex-shrink-0 w-6 h-6 mt-1 mr-2 text-green-500 dark:text-green-400"
+                    className="flex-shrink-0 w-6 h-6 mt-1 mr-2 text-red-500 dark:text-red-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
