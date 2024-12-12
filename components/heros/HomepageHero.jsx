@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Highlight } from '../ui/hero-highlight';
 import TeamSlider from '../homepage/TeamSlider';
@@ -50,10 +51,32 @@ export function HomepageHero() {
 
   const { isCollapsed } = useRegister();
 
+  // const [isLoading, setIsLoading] = useState(true);
+
+  // const handleLoadStart = () => {
+  //   console.log('Video load started');
+  //   setIsLoading(true);
+  // };
+
+  // const handleLoadedData = () => {
+  //   console.log('Video loaded');
+  //   setIsLoading(false);
+  // };
+
+  // if (isLoading) {
+  //   return (
+  //     <div className="relative flex items-center justify-center h-[calc(100vh-101px)] bg-black rounded-xl m-5">
+  //       <div className="w-12 h-12 border-4 border-white rounded-full border-t-transparent animate-spin"></div>
+  //     </div>
+  //   );
+  // }
+
   return (
     <div className="relative flex flex-col gap-14 md:gap-16 lg:gap-32 h-[calc(100vh-101px)] items-center justify-center bg-black dark:bg-white rounded-xl m-5 overflow-hidden">
       <video
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        // onLoadStart={handleLoadStart}
+        // onLoadedData={handleLoadedData}
+        className="absolute top-0 left-0 z-0 object-cover w-full h-full"
         src="https://www.dropbox.com/s/cb19o9iy8ossfdk/bannerVideo%20copy.mp4?raw=1"
         type="video/mp4"
         autoPlay={true}
@@ -62,7 +85,7 @@ export function HomepageHero() {
         playsInline={true}
       />
 
-      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>
+      <div className="absolute top-0 left-0 z-10 w-full h-full bg-black opacity-50"></div>
 
       <div className="z-20">
         <motion.h1
@@ -78,7 +101,7 @@ export function HomepageHero() {
             duration: 0.5,
             ease: [0.4, 0.0, 0.2, 1],
           }}
-          className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+          className="max-w-4xl px-4 mx-auto text-2xl font-bold leading-relaxed text-center text-white md:text-4xl lg:text-5xl lg:leading-snug "
         >
           Welcome to NFL Last Longer
         </motion.h1>
@@ -95,9 +118,9 @@ export function HomepageHero() {
             duration: 0.5,
             ease: [0.4, 0.0, 0.2, 1],
           }}
-          className="text-2xl px-4 md:text-3xl lg:text-3xl font-bold max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+          className="max-w-4xl px-4 mx-auto text-2xl font-bold leading-relaxed text-center md:text-3xl lg:text-3xl lg:leading-snug "
         >
-          <Highlight className="text-lg md:text-3xl text-white">
+          <Highlight className="text-lg text-white md:text-3xl">
             The Best NFL Survivor Application
           </Highlight>
         </motion.h2>

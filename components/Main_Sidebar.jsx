@@ -133,7 +133,9 @@ function Main_Sidebar() {
               <div className="flex items-center justify-center w-8 h-8 bg-gray-700 rounded-full">
                 {session ? (
                   <p className="text-xs uppercase">
-                    {user?.firstname?.charAt(0) + user?.lastname?.charAt(0)}
+                    {user?.firstname && user?.lastname
+                      ? `${user.firstname.charAt(0)}${user.lastname.charAt(0)}`
+                      : ''}
                   </p>
                 ) : (
                   <Logo height={40} width={40} />

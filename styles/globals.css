@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 
-
 @layer utilities {
   .text-primary {
     @apply text-black;
@@ -21,8 +20,6 @@
     @apply text-blue-600;
 
   }
-
-
 }
 
 :root {
@@ -49,24 +46,6 @@ body {
 }
 
 
-.neu-container {
-  box-shadow: 20px 20px 60px #489dcf,
-    -20px -20px 60px #62d5ff;
-}
-
-
-/* SIDEBAR */
-
-.ps-sidebar-root,
-.ps-menu-root {
-  height: 100%;
-}
-
-.ps-menu-button:hover {
-  background-color: red !important;
-}
-
-
 /* SLIDERS */
 .slider::before {
   content: attr(data-content);
@@ -77,8 +56,8 @@ body {
 }
 
 
-/* GLOW ON HOVER EFFECT */
 
+/* GLOW ON HOVER EFFECT */
 /* Text */
 .glow-on-hover {
   border: none;
@@ -131,104 +110,3 @@ body {
   left: 0;
   top: 0;
 }
-
-/* Morphic button */
-
-.btn-shine {
-
-
-
-
-  background: linear-gradient(to right, #9f9f9f 0, #fff 10%, #868686 20%);
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 3s infinite linear;
-  animation-fill-mode: forwards;
-  -webkit-text-size-adjust: none;
-  text-decoration: none;
-  white-space: nowrap;
-  font-family: "Poppins", sans-serif;
-}
-
-@-moz-keyframes shine {
-  0% {
-    background-position: 0;
-  }
-
-  60% {
-    background-position: 180px;
-  }
-
-  100% {
-    background-position: 180px;
-  }
-}
-
-@-webkit-keyframes shine {
-  0% {
-    background-position: 0;
-  }
-
-  60% {
-    background-position: 180px;
-  }
-
-  100% {
-    background-position: 180px;
-  }
-}
-
-@-o-keyframes shine {
-  0% {
-    background-position: 0;
-  }
-
-  60% {
-    background-position: 180px;
-  }
-
-  100% {
-    background-position: 180px;
-  }
-}
-
-@keyframes shine {
-  0% {
-    background-position: 0;
-  }
-
-  60% {
-    background-position: 180px;
-  }
-
-  100% {
-    background-position: 180px;
-  }
-}
-
-
-
-/* END  GLOW ON HOVER EFFECT */
-
-
-/* @keyframes slideRightToLeft {
-  0% {
-    transform: translateX(0%);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-*/
-/* @keyframes slideLeftToRight {
-  0% {
-    transform: translateX(-50%);
-  }
-
-  100% {
-    transform: translateX(0%);
-  }
-} */

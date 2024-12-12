@@ -69,13 +69,16 @@ const DashboardHero = () => {
                 .***
               </h2>
             </div>
-            <Link
-              href="/rules"
-              className="flex flex-row gap-2 px-5 py-2 mt-5 text-left text-white border border-white rounded-full"
-            >
-              <p>Please make sure to read the rules!</p>
-              <ArrowForwardIcon />
-            </Link>
+
+            <div className="relative mt-5 w-fit group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+              <Link
+                href="/rules"
+                className="relative flex items-center justify-center w-full py-3 text-xs font-bold leading-none bg-black divide-x divide-gray-600 px-7 rounded-xl"
+              >
+                Please make sure to read the rules!
+              </Link>
+            </div>
           </div>
         </div>
 
