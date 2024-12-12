@@ -8,7 +8,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Link from 'next/link';
 
 const DashboardHero = () => {
-  const { handleOpenRulesDialog, user, users } = useUser();
+  const { user, users } = useUser();
 
   const { ref, inView } = useInView({
     triggerOnce: true,

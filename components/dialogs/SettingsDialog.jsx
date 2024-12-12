@@ -13,7 +13,7 @@ import UserService from '@/services/UserService';
 const inputClass =
   'text-primary bg-gray-300 dark:bg-gray-900 focus:outline-none focus:shadow-outline dark:focus:border-blue-800 focus:border-blue-500  border border-gray-500 dark:border-gray-800 rounded-lg p-2 block w-full appearance-none leading-normal';
 
-export default function RulesDialog() {
+export default function SettingsDialog() {
   const { openSettingsDialog, handleOpenSettingsDialog } = useUser();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -81,10 +81,10 @@ export default function RulesDialog() {
     <Dialog
       open={openSettingsDialog}
       handler={handleOpenSettingsDialog}
-      className="bg-white dark:bg-black  overflow-y-auto  border dark:border-gray-800 border-gray-500"
+      className="overflow-y-auto bg-white border border-gray-500 dark:bg-black dark:border-gray-800"
       size="sm"
     >
-      <DialogHeader className=" capitalize text-primary">
+      <DialogHeader className="capitalize  text-primary">
         User Settings
       </DialogHeader>
       <DialogBody className="flex flex-col gap-5">
@@ -113,7 +113,7 @@ export default function RulesDialog() {
 
         <button
           onClick={handleUpdatePassword}
-          className="font-bold bg-gradient-to-r from-green-500 via-blue-500 to-purple-600 hover:from-purple-600 hover:via-blue-500 hover:to-green-500 text-white w-full p-2 rounded-lg text-sm"
+          className="w-full p-2 text-sm font-bold text-white rounded-lg bg-gradient-to-r from-green-500 via-blue-500 to-purple-600 hover:from-purple-600 hover:via-blue-500 hover:to-green-500"
         >
           Update Password
         </button>
