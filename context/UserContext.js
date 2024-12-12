@@ -18,7 +18,7 @@ export const UserProvider = ({ children }) => {
   const [userLoserEntries, setUserLoserEntries] = useState([]);
   const [isSignUp, setIsSignUp] = useState(false);
 
-  const handleOpenSettingsDialog = () =>
+  const handleOpenSettingsDialog = (_) =>
     setOpenSettingsDialog(!openSettingsDialog);
 
   // useEffect(() => {
@@ -28,29 +28,29 @@ export const UserProvider = ({ children }) => {
   // }, [losers, userPicks, userLoserEntries]);
 
   useEffect(() => {
-    const findLoserEntries = () => {
-      const loserEntries = [];
-
-      // Iterate over each pick
-      for (const pick of userPicks) {
-        // Check if the pick is in the losers array
-        const isLoser = losers.some(
-          (loser) => loser.week === pick.week + 1 && loser.team === pick.team
-        );
-
-        if (isLoser) {
-          loserEntries.push(pick.entryNumber);
-        }
-      }
-
-      // Update the state with the loser entries
-      setUserLoserEntries(loserEntries);
-    };
-
     findLoserEntries();
   }, [userPicks, losers]);
 
-  async function fetchData() {
+  const findLoserEntries = (_) => {
+    const loserEntries = [];
+
+    // Iterate over each pick
+    for (const pick of userPicks) {
+      // Check if the pick is in the losers array
+      const isLoser = losers.some(
+        (loser) => loser.week === pick.week + 1 && loser.team === pick.team
+      );
+
+      if (isLoser) {
+        loserEntries.push(pick.entryNumber);
+      }
+    }
+
+    // Update the state with the loser entries
+    setUserLoserEntries(loserEntries);
+  };
+
+  const fetchData = async (_) => {
     setLoading(true);
     try {
       const User = await UserService.getCurrentlyLoggedInUser();
@@ -66,9 +66,9 @@ export const UserProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  const fetchLoserData = async () => {
+  const fetchLoserData = async (_) => {
     try {
       setLoadingLosers(true);
       const { losers } = await UserService.getLoserData();

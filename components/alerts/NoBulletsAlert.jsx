@@ -7,7 +7,7 @@ function IconSolid() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
-      className="h-6 w-6"
+      className="w-6 h-6"
     >
       <path
         fillRule="evenodd"
@@ -22,29 +22,54 @@ export default function NoBulletsAlert() {
   const { setRegistrationOpen, setOpenPicksDialog } = useUser();
 
   return (
-    <Alert
-      icon={<IconSolid />}
-      className="bg-gradient-to-tl from-orange-600 to-red-500 mb-5"
-    >
-      <h3 className="text-md font-bold">
-        You currently do not have any entries.
-      </h3>
-      <ul className="mt-2 ml-2 list-inside list-disc">
-        <li className="text-sm ">
-          <button
-            onClick={() => {
-              setRegistrationOpen(true);
-              setOpenPicksDialog(false);
-            }}
-            className="underline"
-          >
-            Buy-in to the tournament by clicking here.
-          </button>
-        </li>
-        <li className="text-sm">
-          Once you buy-in come back to this modal to make your selections.
-        </li>
-      </ul>
-    </Alert>
+    <div className="flex items-start justify-between gap-5 p-4 mb-4 text-xs font-medium text-red-500 border-l-4 border-red-500 rounded-r-lg bg-red-500/20">
+      <IconSolid />
+      <div className="flex flex-col">
+        <h3 className="text-xl font-bold">
+          You currently do not have any entries.
+        </h3>
+        <ul className="mt-2 ml-2 list-disc list-inside">
+          <li className="text-sm ">
+            <button
+              onClick={() => {
+                setRegistrationOpen(true);
+                setOpenPicksDialog(false);
+              }}
+              className="underline"
+            >
+              Buy-in to the tournament by clicking here.
+            </button>
+          </li>
+          <li className="text-sm">
+            Once you buy-in come back to this modal to make your selections.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    // <Alert
+    //   icon={<IconSolid />}
+    //   className="mb-5 bg-gradient-to-tl from-orange-600 to-red-500"
+    // >
+    //   <h3 className="font-bold text-md">
+    //     You currently do not have any entries.
+    //   </h3>
+    //   <ul className="mt-2 ml-2 list-disc list-inside">
+    //     <li className="text-sm ">
+    //       <button
+    //         onClick={() => {
+    //           setRegistrationOpen(true);
+    //           setOpenPicksDialog(false);
+    //         }}
+    //         className="underline"
+    //       >
+    //         Buy-in to the tournament by clicking here.
+    //       </button>
+    //     </li>
+    //     <li className="text-sm">
+    //       Once you buy-in come back to this modal to make your selections.
+    //     </li>
+    //   </ul>
+    // </Alert>
   );
 }
