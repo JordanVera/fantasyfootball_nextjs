@@ -86,11 +86,13 @@ export const UserProvider = ({ children }) => {
   const updateUserPicks = async (week, picks) => {
     try {
       const response = await UserService.submitPicks(week, picks);
-      fetchData();
-
+      if (!response.error) {
+        await fetchData();
+      }
       return response;
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      return { error: 'Failed to update picks' };
     }
   };
 

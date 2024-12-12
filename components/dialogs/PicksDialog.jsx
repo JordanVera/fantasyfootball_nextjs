@@ -117,19 +117,17 @@ const WeeksAccordion = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // setOpenPicksDialog(false);
+    try {
+      const res = await updateUserPicks(week, picks);
 
-    const res = await updateUserPicks(week, picks);
-
-    console.log('HANDLE SUBMIT RES');
-    console.log(res.error);
-
-    if (res.error) {
-      setAssignmentError(res.error);
-      return;
+      if (res.error) {
+        setAssignmentError(res.error);
+      } else {
+        setOpenPicksDialog(false);
+      }
+    } catch (error) {
+      setAssignmentError('An unexpected error occurred');
     }
-
-    setOpenPicksDialog(false);
   };
 
   const handleWeekChange = (week) => {
