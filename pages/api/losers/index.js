@@ -23,9 +23,9 @@ export default async function handle(req, res) {
 async function getLoserData(req, res, session) {
   // const { picks, week } = req.body;
 
-  if (!session) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
+  // if (!session) {
+  //   return res.status(401).json({ error: 'Unauthorized' });
+  // }
 
   try {
     const losers = await prisma.loser.findMany({});

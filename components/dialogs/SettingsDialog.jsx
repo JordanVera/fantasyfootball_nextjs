@@ -89,7 +89,7 @@ export default function RulesDialog() {
       </DialogHeader>
       <DialogBody className="flex flex-col gap-5">
         <label className="text-xs font-bold text-white">
-          Password
+          Update Password
           <input
             className={`${inputClass} mt-1.5 `}
             required
@@ -100,7 +100,7 @@ export default function RulesDialog() {
           />
         </label>
         <label className="text-xs font-bold text-white">
-          Confirm Password
+          Confirm Updated Password
           <input
             className={`${inputClass} mt-1.5 `}
             required
