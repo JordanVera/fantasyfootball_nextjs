@@ -12,8 +12,7 @@ import DashboardHero from '@/components/heros/DashboardHero';
 import Router from 'next/router';
 import { toast } from 'react-toastify';
 import PicksDialog from '@/components/dialogs/PicksDialog';
-import RulesDialog from '@/components/dialogs/RulesDialog';
-import UserService from '@/services/UserService';
+
 import { useUser } from '@/context/UserContext';
 import { useTheme } from '@/context/ThemeContext';
 
@@ -50,20 +49,20 @@ const Dashboard_Protected = () => {
 
   if (loading || loadingLosers) {
     return (
-      <div className="flex flex-col gap-5 w-full  p-5">
-        <div className="flex flex-col md:flex-row gap-5 w-full">
+      <div className="flex flex-col w-full gap-5 p-5">
+        <div className="flex flex-col w-full gap-5 md:flex-row">
           <Skeleton
             variant="rectangular"
             sx={{ bgcolor: 'grey.900' }}
             // width={}
-            className="w-full lg:w-1/2 rounded-lg"
+            className="w-full rounded-lg lg:w-1/2"
             height={200}
           />
           <Skeleton
             variant="rectangular"
             sx={{ bgcolor: 'grey.900' }}
             // width={}
-            className="w-full lg:w-1/2 rounded-lg"
+            className="w-full rounded-lg lg:w-1/2"
             height={200}
           />
         </div>
@@ -84,12 +83,11 @@ const Dashboard_Protected = () => {
   }
 
   return (
-    <div className="mx-auto flex flex-col justify-center gap-5 p-5">
+    <div className="flex flex-col justify-center gap-5 p-5 mx-auto">
       <ButtonBar />
       <DashboardHero user={user} />
       <UserTable users={users} />
       <PicksDialog user={user} users={users} />
-      <RulesDialog />
     </div>
   );
 };

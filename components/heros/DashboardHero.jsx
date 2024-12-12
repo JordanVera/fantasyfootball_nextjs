@@ -5,9 +5,10 @@ import { useUser } from '@/context/UserContext';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Link from 'next/link';
 
 const DashboardHero = () => {
-  const { handleOpenRulesDialog, user, users } = useUser();
+  const { user, users } = useUser();
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -33,29 +34,29 @@ const DashboardHero = () => {
   return (
     <div ref={ref} className="w-full ">
       <motion.div
-        className="bg-black rounded-xl flex flex-col-reverse md:flex-row border dark:border-gray-800 border-gray-500"
+        className="flex flex-col-reverse bg-black border border-gray-500 rounded-xl md:flex-row dark:border-gray-800"
         initial={{ opacity: 0 }}
         animate={{ opacity: inView ? 1 : 0 }}
         transition={{ duration: 1, ease: 'easeIn' }}
       >
-        <div className="flex flex-col gap-5 p-5 rounded-xl lg:rounded-l-xl lg:rounded-r-none  w-full lg:w-1/2  bg-gradient-to-bl from-blue-500 to-blue-900 drop-shadow-xl ">
+        <div className="flex flex-col w-full gap-5 p-5 rounded-xl lg:rounded-l-xl lg:rounded-r-none lg:w-1/2 bg-gradient-to-bl from-blue-500 to-blue-900 drop-shadow-xl ">
           <div className="max-w-[800px] ">
-            <h1 className="text-2xl font-bold mb-5 text-white">
+            <h1 className="mb-5 text-2xl font-bold text-white">
               {user?.name || user.username}'s dashboard
             </h1>
 
             <div className="flex flex-col gap-2">
-              <h2 className=" text-white">
+              <h2 className="text-white ">
                 There is a total of {totalActiveUsers} active users with{' '}
                 {totalUserBullets} entries which makes the prize pool $
                 {totalUserBullets * process.env.NEXT_PUBLIC_BUYIN}
               </h2>
 
-              <h2 className=" text-white">
+              <h2 className="text-white ">
                 Once you buyin you will be able to make your picks{' '}
               </h2>
 
-              <h2 className="text-orange-700  ">
+              <h2 className="text-orange-700 ">
                 ***
                 <span className="font-bold">
                   It is currently week {getStartingWeek() + 1}{' '}
@@ -68,13 +69,13 @@ const DashboardHero = () => {
                 .***
               </h2>
             </div>
-            <button
-              onClick={handleOpenRulesDialog}
-              className="flex flex-row gap-2 mt-5 text-left rounded-full border border-white   text-white py-2 px-5"
+            <Link
+              href="/rules"
+              className="flex flex-row gap-2 px-5 py-2 mt-5 text-left text-white border border-white rounded-full"
             >
               <p>Please make sure to read the rules!</p>
               <ArrowForwardIcon />
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -95,9 +96,9 @@ const DashboardHero = () => {
 export default DashboardHero;
 
 // <div className="rounded-xl border border-gray-700 items-center font-bold flex flex-col lg:flex-row bg-[#17263e]">
-// <div className=" p-5 w-full">
+// <div className="w-full p-5 ">
 //   <div className="max-w-[800px]">
-//     <h1 className="text-2xl font-bold mb-5">{user.name}'s dashboard</h1>
+//     <h1 className="mb-5 text-2xl font-bold">{user.name}'s dashboard</h1>
 
 //     <div className="flex flex-col gap-2">
 //       <h2 className="font-normal">
@@ -111,12 +112,12 @@ export default DashboardHero;
 
 //       <button
 //         onClick={handleOpenRulesDialog}
-//         className="text-left hover:text-orange-500 underline"
+//         className="text-left underline hover:text-orange-500"
 //       >
 //         <h2>Please make sure to read the rules!</h2>
 //       </button>
 
-//       <h2 className="text-blue-500 font-normal">
+//       <h2 className="font-normal text-blue-500">
 //         ***
 //         <span className="font-bold">
 //           It is currently week {getStartingWeek() + 1}{' '}

@@ -11,7 +11,6 @@ export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [loadingLosers, setLoadingLosers] = useState(false);
   const [registrationOpen, setRegistrationOpen] = useState(false);
-  const [openRulesDialog, setOpenRulesDialog] = useState(false);
   const [openPicksDialog, setOpenPicksDialog] = useState(false);
   const [openSettingsDialog, setOpenSettingsDialog] = useState(false);
 
@@ -19,7 +18,6 @@ export const UserProvider = ({ children }) => {
   const [userLoserEntries, setUserLoserEntries] = useState([]);
   const [isSignUp, setIsSignUp] = useState(false);
 
-  const handleOpenRulesDialog = () => setOpenRulesDialog(!openRulesDialog);
   const handleOpenSettingsDialog = () =>
     setOpenSettingsDialog(!openSettingsDialog);
 
@@ -103,9 +101,6 @@ export const UserProvider = ({ children }) => {
         loading,
         registrationOpen,
         setRegistrationOpen,
-        openRulesDialog,
-        setOpenRulesDialog,
-        handleOpenRulesDialog,
         openPicksDialog,
         setOpenPicksDialog,
         openSettingsDialog,

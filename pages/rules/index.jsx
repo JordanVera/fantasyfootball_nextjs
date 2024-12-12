@@ -1,17 +1,10 @@
-import { useState } from 'react';
-import {
-  Button,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-} from '@material-tailwind/react';
-import { useUser } from '@/context/UserContext';
+'use client';
 
-import GavelIcon from '@mui/icons-material/Gavel';
+import React from 'react';
+import Image from 'next/image';
+import Logo from '@/components/Logo';
 
-export default function RulesDialog() {
-  const { handleOpenRulesDialog, openRulesDialog } = useUser();
-
+const RulesPage = () => {
   const rules = [
     'Participation in the last longer is $60 per entry.',
     'The payout percentages are as follows - 90% to the winner and 10% to 2nd place.',
@@ -32,22 +25,55 @@ export default function RulesDialog() {
   ];
 
   return (
-    <Dialog
-      open={openRulesDialog}
-      handler={handleOpenRulesDialog}
-      className="bg-white dark:bg-black  overflow-y-auto h-96 border dark:border-gray-800 border-gray-500"
-      size="sm"
-    >
-      <DialogHeader className=" capitalize text-primary">
-        Tournament Rules
-      </DialogHeader>
-      <DialogBody>
-        <ol className="list-decimal list-inside flex flex-col gap-3 text-primary">
-          {rules.map((rule, index) => (
-            <li key={index}>{rule}</li>
-          ))}
-        </ol>
-      </DialogBody>
-    </Dialog>
+    <div className="min-h-screen px-4 py-12 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto">
+        <div className="overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
+          <div className="relative p-6 bg-gradient-to-br from-red-500 to-orange-600">
+            {/* <Image
+              src="/images/mahomes.jpg"
+              alt="Background"
+              fill
+              className="object-cover object-top"
+              priority
+            />
+            <div className="absolute inset-0 bg-black/50" />{' '} */}
+
+            <div className="relative z-10">
+              <h1 className="text-3xl font-bold text-center text-white">
+                NFL Last Longer Rules
+              </h1>
+              <div className="flex justify-center">
+                <Logo height={100} width={100} />
+              </div>
+            </div>
+          </div>
+          <div className="p-6">
+            <ul className="space-y-4">
+              {rules.map((rule, index) => (
+                <li key={index} className="flex items-start">
+                  <svg
+                    className="flex-shrink-0 w-6 h-6 mt-1 mr-2 text-red-500 dark:text-red-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span className="text-primary">{rule}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default RulesPage;
