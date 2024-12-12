@@ -68,7 +68,7 @@ const ButtonBar = () => {
         </motion.div>
       </div>
 
-      <button
+      <div
         onClick={() => setRegistrationOpen(!registrationOpen)}
         ref={ref}
         href={'/login'}
@@ -118,7 +118,7 @@ const ButtonBar = () => {
             {' '}
           </div>
         </motion.div>
-      </button>
+      </div>
     </div>
   );
 };

@@ -85,8 +85,10 @@ export const UserProvider = ({ children }) => {
 
   const updateUserPicks = async (week, picks) => {
     try {
-      await UserService.submitPicks(week, picks);
+      const response = await UserService.submitPicks(week, picks);
       fetchData();
+
+      return response;
     } catch (error) {
       console.log(error);
     }
