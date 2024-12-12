@@ -42,7 +42,7 @@ const ButtonBar = () => {
                 picks must be made before the TNF game begins, EVEN IF YOU ARE
                 NOT PICKING THE TNF GAME.
               </p>
-              <div className="relative w-full group">
+              <div className="relative w-full mt-5 group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                 <button
                   onClick={() => setOpenPicksDialog(true)}
@@ -94,7 +94,7 @@ const ButtonBar = () => {
                 Checkout and buy entries into the tournament. After clicking
                 here, You will be redirected to the payment process.
               </p>
-              <div className="relative w-full group">
+              <div className="relative w-full mt-5 group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                 <button
                   onClick={() => signOut({ callbackUrl: '/' })}
