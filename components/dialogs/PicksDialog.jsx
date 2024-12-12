@@ -36,7 +36,7 @@ export default function PicksDialog() {
       className="bg-white dark:bg-black overflow-y-auto max-h-[80vh] border dark:border-gray-800 border-gray-500"
       size="sm"
     >
-      <DialogHeader className="text-primary capitalize text-center">
+      <DialogHeader className="text-center capitalize text-primary">
         Please make your selections
       </DialogHeader>
       <DialogBody>
@@ -165,7 +165,7 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
                 handleOpen(weekIndex);
                 handleWeekChange(weekIndex);
               }}
-              className="text-primary capitalize hover:text-secondary hover:border-blue-600"
+              className="capitalize text-primary hover:text-secondary hover:border-blue-600"
             >
               Week {weekIndex + 1}
             </AccordionHeader>
@@ -181,10 +181,15 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
                   // );
                   return (
                     <div className="flex flex-col gap-1">
-                      <label className="text-primary">Entry {j + 1}</label>
+                      <label className="text-primary">
+                        Entry {j + 1}
+                        {userLoserEntries.includes(j) && (
+                          <span className="text-red-500"> - (Lost)</span>
+                        )}
+                      </label>
                       <select
                         key={j}
-                        className="capitalize text-primary bg-gray-300 dark:bg-gray-900 border border-gray-400 dark:border-gray-800 px-2 py-3 rounded-md"
+                        className="px-2 py-3 capitalize bg-gray-300 border border-gray-400 rounded-md text-primary dark:bg-gray-900 dark:border-gray-800"
                         onChange={(e) => handlePickChange(j, e.target.value)}
                         disabled={userLoserEntries.includes(j)}
                       >
