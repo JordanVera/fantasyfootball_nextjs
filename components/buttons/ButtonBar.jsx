@@ -55,7 +55,7 @@ const ButtonBar = () => {
           </div>
 
           <div
-            className="min-h-[120px] h-full flex flex-col justify-center items-center bg-gray-900 p-5  w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none "
+            className="min-h-[220px] lg:min-h-none h-full flex flex-col justify-center items-center bg-gray-900 p-5  w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none "
             // bg-opacity-50
             style={{
               backgroundImage: "url('/images/1.jpg')",
@@ -107,7 +107,7 @@ const ButtonBar = () => {
           </div>
 
           <div
-            className="min-h-[120px] h-full flex flex-col justify-center items-center bg-gray-900 p-5 w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none"
+            className="min-h-[220px] lg:min-h-none h-full flex flex-col justify-center items-center bg-gray-900 p-5 w-full xl:w-1/2 rounded-t-xl  xl:rounded-tr-xl xl:rounded-br-xl xl:rounded-l-none"
             // bg-opacity-50
             style={{
               backgroundImage: "url('/images/register.jpg')",

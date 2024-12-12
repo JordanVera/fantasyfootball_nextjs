@@ -12,9 +12,8 @@ export default function Home() {
 
       <FourStepProcess />
       {/* <SignupCTA /> */}
-      <div className="m-5">
-        <WhatWeDo />
-      </div>
+
+      <WhatWeDo />
     </main>
   );
 }
