@@ -28,12 +28,25 @@ const RulesPage = () => {
     <div className="min-h-screen px-4 py-12 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
-          <div className="p-6 bg-gradient-to-br from-red-500 to-orange-600">
-            <h1 className="text-3xl font-bold text-center text-primary">
-              NFL Last Longer Rules
-            </h1>
-            <div className="flex justify-center">
-              <Logo height={160} width={160} />
+          <div className="relative p-6 bg-gradient-to-br from-red-500 to-orange-600">
+            {/* <Image
+              src="/images/mahomes.jpg"
+              alt="Background"
+              fill
+              className="object-cover object-top"
+              priority
+            />
+            <div className="absolute inset-0 bg-black/50" />{' '} */}
+
+            <div className="relative z-10">
+              {' '}
+              {/* This ensures content appears above the overlay */}
+              <h1 className="text-3xl font-bold text-center text-white">
+                NFL Last Longer Rules
+              </h1>
+              <div className="flex justify-center">
+                <Logo height={100} width={100} />
+              </div>
             </div>
           </div>
           <div className="p-6">
