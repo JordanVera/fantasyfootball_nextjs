@@ -35,7 +35,7 @@ export default function NoBulletsAlert() {
                 setRegistrationOpen(true);
                 setOpenPicksDialog(false);
               }}
-              className="underline"
+              className="underline hover:text-white"
             >
               Buy-in to the tournament by clicking here.
             </button>

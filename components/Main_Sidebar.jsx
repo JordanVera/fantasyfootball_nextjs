@@ -94,7 +94,7 @@ function Main_Sidebar() {
         className="flex items-center p-2 rounded-lg hover:bg-gray-500 dark:hover:bg-gray-900"
       >
         <Tooltip placement="right-end" content="rules">
-          <ClipboardDocumentListIcon className="text-black dark:text-white" />
+          <ClipboardDocumentListIcon className="text-black dark:text-white h-[24px] w-[24px]" />
         </Tooltip>
         <motion.span
           animate={{ opacity: isCollapsed ? 0 : 1 }}

@@ -68,12 +68,7 @@ const ButtonBar = () => {
         </motion.div>
       </div>
 
-      <div
-        onClick={() => setRegistrationOpen(!registrationOpen)}
-        ref={ref}
-        href={'/login'}
-        className="text-left rounded-xl"
-      >
+      <div ref={ref} href={'/login'} className="text-left rounded-xl">
         <motion.div
           className="flex flex-col-reverse w-full h-full bg-black border border-gray-500 rounded-xl xl:flex-row dark:border-gray-800"
           initial={{ opacity: 0 }} // Start from transparent
@@ -97,10 +92,10 @@ const ButtonBar = () => {
               <div className="relative w-full mt-5 group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                 <button
-                  onClick={() => signOut({ callbackUrl: '/' })}
+                  onClick={() => setRegistrationOpen(!registrationOpen)}
                   className="relative flex items-center justify-center w-full py-3 text-xs font-bold leading-none bg-black divide-x divide-gray-600 px-7 rounded-xl"
                 >
-                  Sign out
+                  Register for Tournament
                 </button>
               </div>
             </div>
