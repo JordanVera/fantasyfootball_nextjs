@@ -241,6 +241,7 @@ const WeeksAccordion = ({
                   className="capitalize"
                   color="blue"
                   size="sm"
+                  disabled={user.bullets === 0}
                 >
                   submit
                 </Button>
