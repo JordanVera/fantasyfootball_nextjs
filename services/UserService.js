@@ -89,8 +89,22 @@ class UserService {
 
       const res = await response.json();
 
-      if (!response.ok) {
-        toast.error(res.error, {
+      // if (!response.ok) {
+      //   toast.error(res.error, {
+      //     position: 'bottom-right',
+      //     autoClose: 5000,
+      //     hideProgressBar: false,
+      //     closeOnClick: true,
+      //     pauseOnHover: true,
+      //     draggable: true,
+      //     progress: undefined,
+      //     theme: 'dark',
+      //   });
+      //   // throw new Error(errorData.error || 'Failed to fetch resscription');
+      // }
+
+      if (response.ok) {
+        toast.success(res.message, {
           position: 'bottom-right',
           autoClose: 5000,
           hideProgressBar: false,
@@ -100,19 +114,7 @@ class UserService {
           progress: undefined,
           theme: 'dark',
         });
-        // throw new Error(errorData.error || 'Failed to fetch resscription');
       }
-
-      toast.success(res.message, {
-        position: 'bottom-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-      });
 
       return res;
     } catch (error) {

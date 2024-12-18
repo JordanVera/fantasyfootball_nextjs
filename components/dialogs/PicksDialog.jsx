@@ -1,18 +1,15 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Button,
   Dialog,
   DialogHeader,
   DialogBody,
-  DialogFooter,
-  Option,
-  Select,
   Accordion,
   AccordionHeader,
   AccordionBody,
 } from '@material-tailwind/react';
-import Image from 'next/image';
 import NoBulletsAlert from '@/components/alerts/NoBulletsAlert';
+import { X } from 'lucide-react';
 
 import { getStartingWeek } from '@/utils/dates';
 import { useUser } from '@/context/UserContext';
@@ -29,6 +26,12 @@ export default function PicksDialog() {
 
   const handleOpen = () => setOpenPicksDialog(!openPicksDialog);
 
+  const [assignmentError, setAssignmentError] = useState('');
+
+  useEffect(() => {
+    console.log({ assignmentError });
+  }, [assignmentError]);
+
   return (
     <Dialog
       open={openPicksDialog}
@@ -39,20 +42,35 @@ export default function PicksDialog() {
       <DialogHeader className="text-center capitalize text-primary">
         Please make your selections
       </DialogHeader>
+
       <DialogBody>
+        {assignmentError && (
+          <div className="flex items-center justify-between p-4 mb-4 text-xs font-medium text-red-500 border-l-4 border-red-500 rounded-r-lg bg-red-500/20">
+            <p>{assignmentError}</p>
+            <button onClick={() => setAssignmentError(null)}>
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+        )}
         {user.bullets === 0 && <NoBulletsAlert />}
 
         <WeeksAccordion
           user={user}
           updateUserPicks={updateUserPicks}
           setOpenPicksDialog={setOpenPicksDialog}
+          setAssignmentError={setAssignmentError}
         />
       </DialogBody>
     </Dialog>
   );
 }
 
-const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
+const WeeksAccordion = ({
+  user,
+  updateUserPicks,
+  setOpenPicksDialog,
+  setAssignmentError,
+}) => {
   const { userLoserEntries } = useUser();
   const [open, setOpen] = useState(-1);
   const [picks, setPicks] = useState([]);
@@ -99,9 +117,17 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    setOpenPicksDialog(false);
+    try {
+      const res = await updateUserPicks(week, picks);
 
-    await updateUserPicks(week, picks);
+      if (res.error) {
+        setAssignmentError(res.error);
+      } else {
+        setOpenPicksDialog(false);
+      }
+    } catch (error) {
+      setAssignmentError('An unexpected error occurred');
+    }
   };
 
   const handleWeekChange = (week) => {
@@ -180,7 +206,10 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
                   //     loser.week === weekIndex + 1 && loser.team === pick
                   // );
                   return (
-                    <div className="flex flex-col gap-1">
+                    <div
+                      className="flex flex-col gap-1"
+                      key={`${j}-${weekIndex}`}
+                    >
                       <label className="text-primary">
                         Entry {j + 1}
                         {userLoserEntries.includes(j) && (
@@ -212,6 +241,7 @@ const WeeksAccordion = ({ user, updateUserPicks, setOpenPicksDialog }) => {
                   className="capitalize"
                   color="blue"
                   size="sm"
+                  disabled={user.bullets === 0}
                 >
                   submit
                 </Button>
