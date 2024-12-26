@@ -62,7 +62,7 @@ const TeamAvailabilityTable = ({ users }) => {
               {TEAMS.map((team, index) => (
                 <th
                   key={index}
-                  className="px-2 py-3 text-xs font-medium tracking-wider text-left capitalize text-primary"
+                  className="px-2 py-3 text-xs font-medium tracking-wider text-center capitalize text-primary"
                 >
                   {team}
                 </th>
@@ -77,7 +77,9 @@ const TeamAvailabilityTable = ({ users }) => {
               {TEAMS.map((team, index) => (
                 <td
                   key={index}
-                  className="px-2 py-2 text-sm text-center text-black whitespace-nowrap dark:text-white"
+                  className={`px-2 py-2 text-sm text-center text-black whitespace-nowrap dark:text-white ${
+                    index !== TEAMS.length - 1 ? 'border-r border-gray-500' : ''
+                  }`}
                 >
                   <div className="flex flex-col">
                     <p>{teamCounts[team]}</p>

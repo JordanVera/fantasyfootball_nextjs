@@ -35,7 +35,7 @@ const UserTable = ({ users }) => {
               {Array.from({ length: 18 }).map((_, index) => (
                 <th
                   key={index}
-                  className="px-2 py-3 text-xs font-medium tracking-wider text-left capitalize text-primary "
+                  className="px-2 py-3 text-xs font-medium tracking-wider text-center capitalize text-primary "
                 >
                   week {index + 1}
                 </th>
@@ -93,7 +93,7 @@ const UserTable = ({ users }) => {
                     return (
                       <td
                         key={`${user.id}-${index}-${weekIndex}`}
-                        className={`${
+                        className={`font-semibold text-sm text-center ${
                           isLoser
                             ? 'text-red-500'
                             : 'text-black dark:text-white'
