@@ -15,7 +15,7 @@ import PicksDialog from '@/components/dialogs/PicksDialog';
 
 import { useUser } from '@/context/UserContext';
 import { useTheme } from '@/context/ThemeContext';
-
+import TeamAvailabilityTable from '@/components/tables/TeamAvailabilityTable';
 const Dashboard_Protected = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -86,6 +86,7 @@ const Dashboard_Protected = () => {
     <div className="flex flex-col justify-center gap-5 p-5 mx-auto">
       <ButtonBar />
       <DashboardHero user={user} />
+      <TeamAvailabilityTable users={users} />
       <UserTable users={users} />
       <PicksDialog user={user} users={users} />
     </div>
