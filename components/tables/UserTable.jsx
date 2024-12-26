@@ -21,7 +21,7 @@ const UserTable = ({ users }) => {
   return (
     <div ref={ref} className="w-full">
       <motion.div
-        className="overflow-x-auto rounded-xl drop-shadow-xl  border dark:border-gray-800 border-gray-500 "
+        className="overflow-x-auto border border-gray-500 rounded-xl drop-shadow-xl dark:border-gray-800 "
         initial={{ opacity: 0 }}
         animate={{ opacity: inView ? 1 : 0 }}
         transition={{ duration: 1, ease: 'easeIn' }}
@@ -29,13 +29,13 @@ const UserTable = ({ users }) => {
         <table className="min-w-full divide-y divide-gray-700 rounded-xl">
           <thead className="bg-white dark:bg-gray-900">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-primary capitalize tracking-wider ">
+              <th className="px-6 py-3 text-xs font-medium tracking-wider text-left capitalize text-primary ">
                 Name
               </th>
               {Array.from({ length: 18 }).map((_, index) => (
                 <th
                   key={index}
-                  className="px-2 py-3 text-left text-xs font-medium text-primary capitalize tracking-wider "
+                  className="px-2 py-3 text-xs font-medium tracking-wider text-center capitalize text-primary "
                 >
                   week {index + 1}
                 </th>
@@ -61,14 +61,14 @@ const UserTable = ({ users }) => {
                 >
                   <td className="px-6 py-2 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="rounded-full bg-gray-700 flex items-center justify-center h-8 w-8">
+                      <div className="flex items-center justify-center w-8 h-8 bg-gray-700 rounded-full">
                         {/* <Avatar
-                          className="h-10 w-10 rounded-full"
+                          className="w-10 h-10 rounded-full"
                           src={user.image}
                           alt={user.username}
                         /> */}
 
-                        <p className="uppercase text-xs">
+                        <p className="text-xs uppercase">
                           {user.firstname.charAt(0) + user.lastname.charAt(0)}
                         </p>
                       </div>
@@ -85,26 +85,15 @@ const UserTable = ({ users }) => {
                     const pick = groupedPicks[index]?.[weekIndex]?.team || '';
                     // console.log({ pick });
 
-                    // Check if the pick is in the losers array
                     const isLoser = losers.some(
                       (loser) =>
                         loser.week === weekIndex + 1 && loser.team === pick
                     );
 
-                    let message;
-
-                    // if (isLoser) {
-                    //   message = `User ${user.username}'s pick for week ${weekIndex} and team ${pick} is a loser.`;
-                    //   console.log(message);
-                    // } else {
-                    //   message = `User ${user.username}'s pick for week ${weekIndex} and team ${pick} is a winner.`;
-                    //   console.log(message);
-                    // }
-
                     return (
                       <td
                         key={`${user.id}-${index}-${weekIndex}`}
-                        className={`${
+                        className={`font-semibold text-sm text-center ${
                           isLoser
                             ? 'text-red-500'
                             : 'text-black dark:text-white'

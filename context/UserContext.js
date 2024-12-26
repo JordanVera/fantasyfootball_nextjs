@@ -17,6 +17,8 @@ export const UserProvider = ({ children }) => {
   const [losers, setLosers] = useState([]);
   const [userLoserEntries, setUserLoserEntries] = useState([]);
   const [isSignUp, setIsSignUp] = useState(false);
+  const [numberOfTotalActiveEntries, setNumberOfTotalActiveEntries] =
+    useState(0);
 
   const handleOpenSettingsDialog = (_) =>
     setOpenSettingsDialog(!openSettingsDialog);
@@ -30,6 +32,22 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     findLoserEntries();
   }, [userPicks, losers]);
+
+  useEffect(() => {
+    // Get all unique entry numbers
+    const allEntryNumbers = [
+      ...new Set(userPicks.map((pick) => pick.entryNumber)),
+    ];
+
+    // Filter out the entry numbers that have lost and get the count
+    const activeCount = allEntryNumbers.filter(
+      (entryNum) => !userLoserEntries.includes(entryNum)
+    ).length;
+
+    console.log({ numberOfTotalActiveEntries: activeCount });
+    // Set the count of active entries
+    setNumberOfTotalActiveEntries(activeCount);
+  }, [userPicks, userLoserEntries]);
 
   const findLoserEntries = (_) => {
     const loserEntries = [];
@@ -117,6 +135,7 @@ export const UserProvider = ({ children }) => {
         fetchLoserData,
         isSignUp,
         setIsSignUp,
+        numberOfTotalActiveEntries,
       }}
     >
       {children}

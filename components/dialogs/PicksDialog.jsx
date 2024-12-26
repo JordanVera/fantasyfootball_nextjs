@@ -8,6 +8,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from '@material-tailwind/react';
+import { TEAMS } from '@/constants/TEAMS';
 import NoBulletsAlert from '@/components/alerts/NoBulletsAlert';
 import { X } from 'lucide-react';
 
@@ -59,6 +60,7 @@ export default function PicksDialog() {
           updateUserPicks={updateUserPicks}
           setOpenPicksDialog={setOpenPicksDialog}
           setAssignmentError={setAssignmentError}
+          TEAMS={TEAMS}
         />
       </DialogBody>
     </Dialog>
@@ -70,46 +72,12 @@ const WeeksAccordion = ({
   updateUserPicks,
   setOpenPicksDialog,
   setAssignmentError,
+  TEAMS,
 }) => {
   const { userLoserEntries } = useUser();
   const [open, setOpen] = useState(-1);
   const [picks, setPicks] = useState([]);
   const [week, setWeek] = useState('');
-
-  const teamsArr = [
-    'ARI',
-    'ATL',
-    'BAL',
-    'BUF',
-    'CAR',
-    'CHI',
-    'CIN',
-    'CLE',
-    'DAL',
-    'DEN',
-    'DET',
-    'GB',
-    'HOU',
-    'IND',
-    'JAX',
-    'KC',
-    'LAC',
-    'LAR',
-    'LV',
-    'MIA',
-    'MIN',
-    'NE',
-    'NO',
-    'NYG',
-    'NYJ',
-    'PHI',
-    'PIT',
-    'SEA',
-    'SF',
-    'TB',
-    'TEN',
-    'WAS',
-  ];
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
@@ -222,7 +190,7 @@ const WeeksAccordion = ({
                         onChange={(e) => handlePickChange(j, e.target.value)}
                         disabled={userLoserEntries.includes(j)}
                       >
-                        {teamsArr.map((team, index) => (
+                        {TEAMS.map((team, index) => (
                           <option
                             key={index}
                             value={team}

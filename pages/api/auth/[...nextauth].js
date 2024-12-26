@@ -39,7 +39,7 @@ export const authOptions = {
         password: { label: 'Password', type: 'password' },
       },
       authorize: async (credentials) => {
-        console.log('authorize credentials', credentials);
+        // console.log('authorize credentials', credentials);
         if (!credentials.identifier || !credentials.password) {
           throw new Error('Invalid Password/Identifier');
         }
@@ -65,24 +65,24 @@ export const authOptions = {
           throw new Error('Invalid username/email or password.');
         }
 
-        console.log('authorized user', user);
+        // console.log('authorized user', user);
         return user;
       },
     }),
   ],
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log('User signed in:', user);
+      // console.log('User signed in:', user);
       return true;
     },
     async session({ session, token }) {
-      console.log('session callback - token:', token);
+      // console.log('session callback - token:', token);
       session.user = token.user;
-      console.log('session callback - session:', session);
+      // console.log('session callback - session:', session);
       return session;
     },
     async jwt({ token, user }) {
-      console.log('JWT callback - user:', user);
+      // console.log('JWT callback - user:', user);
       if (user) {
         token.user = {
           id: user.id,
@@ -90,7 +90,7 @@ export const authOptions = {
           username: user.username,
         };
       }
-      console.log('JWT callback - token:', token);
+      // console.log('JWT callback - token:', token);
       return token;
     },
     async redirect({ url, baseUrl }) {
