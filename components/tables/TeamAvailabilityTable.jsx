@@ -5,7 +5,7 @@ import { TEAMS } from '@/constants/TEAMS';
 import { useRef } from 'react';
 
 const TeamAvailabilityTable = ({ users }) => {
-  const { losers } = useUser();
+  const { losers, numberOfTotalActiveEntries } = useUser();
 
   // Calculate team availability counts
   const teamCounts = TEAMS.reduce((counts, team) => {
@@ -58,7 +58,7 @@ const TeamAvailabilityTable = ({ users }) => {
         <table className="min-w-full divide-y divide-gray-700 rounded-xl">
           <thead className="bg-white dark:bg-gray-900">
             <tr>
-              <th>Total Availablility</th>
+              {/* <th>Total Availablility</th> */}
               {TEAMS.map((team, index) => (
                 <th
                   key={index}
@@ -71,15 +71,24 @@ const TeamAvailabilityTable = ({ users }) => {
           </thead>
           <tbody className="bg-white divide-y divide-gray-700">
             <tr className="bg-white dark:bg-gray-900">
-              <td className="px-2 py-2 text-sm text-center text-black whitespace-nowrap dark:text-white">
-                2 total active entries
-              </td>
+              {/* <td className="px-2 py-2 text-sm text-center text-black whitespace-nowrap dark:text-white">
+                {numberOfTotalActiveEntries} total active entries
+              </td> */}
               {TEAMS.map((team, index) => (
                 <td
                   key={index}
                   className="px-2 py-2 text-sm text-center text-black whitespace-nowrap dark:text-white"
                 >
-                  {teamCounts[team]}
+                  <div className="flex flex-col">
+                    <p>{teamCounts[team]}</p>
+                    <p className="text-xs text-gray-500">
+                      {(
+                        (teamCounts[team] / numberOfTotalActiveEntries) *
+                        100
+                      ).toFixed(1)}
+                      %
+                    </p>
+                  </div>
                 </td>
               ))}
             </tr>
