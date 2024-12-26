@@ -56,7 +56,7 @@ const One = (_) => {
             </p>
             <Link
               href="/rules"
-              className="inline-block px-4 py-2 text-sm font-semibold bg-black rounded-lg w-fit"
+              className="inline-block px-4 py-2 text-sm font-semibold text-white bg-black rounded-lg w-fit"
             >
               Read the Rules
             </Link>
@@ -102,7 +102,7 @@ const Two = (_) => {
 
             <Link
               href="/rules"
-              className="inline-block px-4 py-2 text-sm font-semibold bg-black rounded-lg w-fit"
+              className="inline-block px-4 py-2 text-sm font-semibold text-white bg-black rounded-lg w-fit"
             >
               Read the Rules
             </Link>
