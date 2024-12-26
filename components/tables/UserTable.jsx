@@ -1,17 +1,9 @@
-import { useEffect, useState } from 'react';
-import { Avatar } from '@material-tailwind/react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import UserService from '@/services/UserService';
 import { useUser } from '@/context/UserContext';
 
 const UserTable = ({ users }) => {
   const { losers } = useUser();
-
-  // useEffect(() => {
-  //   console.log('UZRZ');
-  //   console.log(users);
-  // }, [users]);
 
   const { ref, inView } = useInView({
     triggerOnce: true,

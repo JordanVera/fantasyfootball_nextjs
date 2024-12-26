@@ -34,37 +34,47 @@ export const UserProvider = ({ children }) => {
   }, [userPicks, losers]);
 
   useEffect(() => {
-    // Get all unique entry numbers
-    const allEntryNumbers = [
-      ...new Set(userPicks.map((pick) => pick.entryNumber)),
-    ];
+    // Count active entries for each user separately
+    const activeCount = users.reduce((total, user) => {
+      // Get unique entry numbers for this user
+      const userEntryNumbers = [
+        ...new Set((user.Picks || []).map((pick) => pick.entryNumber)),
+      ];
 
-    // Filter out the entry numbers that have lost and get the count
-    const activeCount = allEntryNumbers.filter(
-      (entryNum) => !userLoserEntries.includes(entryNum)
-    ).length;
+      // Find loser entries for this specific user
+      const userLoserEntryNumbers = userLoserEntries
+        .filter((entry) => entry.userId === user.id)
+        .map((entry) => entry.entryNumber);
 
-    console.log({ numberOfTotalActiveEntries: activeCount });
-    // Set the count of active entries
+      // Count active entries (not in loserEntries) for this user
+      const userActiveEntries = userEntryNumbers.filter(
+        (entryNum) => !userLoserEntryNumbers.includes(entryNum)
+      ).length;
+
+      return total + userActiveEntries;
+    }, 0);
+
+    console.log({ activeCount }); // Debug log
     setNumberOfTotalActiveEntries(activeCount);
-  }, [userPicks, userLoserEntries]);
+  }, [users, userLoserEntries]);
 
-  const findLoserEntries = (_) => {
+  const findLoserEntries = () => {
     const loserEntries = [];
 
-    // Iterate over each pick
-    for (const pick of userPicks) {
-      // Check if the pick is in the losers array
-      const isLoser = losers.some(
-        (loser) => loser.week === pick.week + 1 && loser.team === pick.team
-      );
+    // Iterate over each user's picks
+    users.forEach((user) => {
+      (user.Picks || []).forEach((pick) => {
+        // Check if the pick is in the losers array
+        const isLoser = losers.some(
+          (loser) => loser.week === pick.week + 1 && loser.team === pick.team
+        );
 
-      if (isLoser) {
-        loserEntries.push(pick.entryNumber);
-      }
-    }
+        if (isLoser) {
+          loserEntries.push({ userId: user.id, entryNumber: pick.entryNumber });
+        }
+      });
+    });
 
-    // Update the state with the loser entries
     setUserLoserEntries(loserEntries);
   };
 

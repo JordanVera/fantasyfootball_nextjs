@@ -27,7 +27,7 @@ const TeamAvailabilityTable = ({ users }) => {
       const entryPicks = Object.values(groupedPicks[entryIndex] || {});
       const isEntryActive = !entryPicks.some((pick) =>
         losers.some(
-          (loser) => loser.week === pick.week && loser.team === pick.team
+          (loser) => loser.week === pick.week + 1 && loser.team === pick.team
         )
       );
 
