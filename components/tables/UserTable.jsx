@@ -11,7 +11,16 @@ const UserTable = ({ users }) => {
   });
 
   return (
-    <div ref={ref} className="w-full">
+    <div ref={ref} className="flex flex-col w-full gap-2">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: inView ? 1 : 0 }}
+        transition={{ duration: 1, ease: 'easeIn' }}
+      >
+        <h2 className="text-xl font-bold text-center text-primary">
+          Entry Table
+        </h2>
+      </motion.div>
       <motion.div
         className="overflow-x-auto border border-gray-500 rounded-xl drop-shadow-xl dark:border-gray-800 "
         initial={{ opacity: 0 }}
@@ -20,14 +29,14 @@ const UserTable = ({ users }) => {
       >
         <table className="min-w-full divide-y divide-gray-700 rounded-xl">
           <thead className="bg-white dark:bg-gray-900">
-            <tr>
+            {/* <tr>
               <th
                 colSpan={19}
                 className="px-2 py-3 text-sm font-medium tracking-wider text-center border-b border-gray-700 text-primary"
               >
                 Entry Table
               </th>
-            </tr>
+            </tr> */}
             <tr>
               <th className="px-6 py-3 text-xs font-medium tracking-wider text-left capitalize text-primary ">
                 Name
