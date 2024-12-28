@@ -8,7 +8,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Link from 'next/link';
 
 const DashboardHero = () => {
-  const { user, users } = useUser();
+  const { user, users, numberOfTotalActiveEntries } = useUser();
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -47,11 +47,15 @@ const DashboardHero = () => {
 
             <div className="flex flex-col gap-2">
               <h2 className="text-white ">
-                There is a total of {totalActiveUsers} active users with{' '}
+                There is a total of {totalActiveUsers} users with{' '}
                 {totalUserBullets} entries which makes the prize pool $
                 {totalUserBullets * process.env.NEXT_PUBLIC_BUYIN}
               </h2>
 
+              <h2 className="text-white ">
+                *** {numberOfTotalActiveEntries} entries are currently active
+                ***
+              </h2>
               <h2 className="text-white ">
                 Once you buyin you will be able to make your picks{' '}
               </h2>
