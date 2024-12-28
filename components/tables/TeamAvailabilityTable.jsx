@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useUser } from '@/context/UserContext';
 import { TEAMS } from '@/constants/TEAMS';
-import { useRef } from 'react';
 
 const TeamAvailabilityTable = ({ users }) => {
   const { losers, numberOfTotalActiveEntries } = useUser();
