@@ -56,8 +56,15 @@ const TeamAvailabilityTable = ({ users }) => {
       >
         <table className="min-w-full divide-y divide-gray-700 rounded-xl">
           <thead className="bg-white dark:bg-gray-900">
+            {/* <tr>
+              <th
+                colSpan={TEAMS.length}
+                className="px-2 py-3 text-sm font-medium tracking-wider text-center border-b border-gray-700 text-primary"
+              >
+                Team Availability
+              </th>
+            </tr> */}
             <tr>
-              {/* <th>Total Availablility</th> */}
               {TEAMS.map((team, index) => (
                 <th
                   key={index}

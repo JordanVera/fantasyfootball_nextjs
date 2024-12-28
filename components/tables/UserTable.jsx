@@ -21,6 +21,14 @@ const UserTable = ({ users }) => {
         <table className="min-w-full divide-y divide-gray-700 rounded-xl">
           <thead className="bg-white dark:bg-gray-900">
             <tr>
+              <th
+                colSpan={19}
+                className="px-2 py-3 text-sm font-medium tracking-wider text-center border-b border-gray-700 text-primary"
+              >
+                Entry Table
+              </th>
+            </tr>
+            <tr>
               <th className="px-6 py-3 text-xs font-medium tracking-wider text-left capitalize text-primary ">
                 Name
               </th>
