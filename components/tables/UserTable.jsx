@@ -12,7 +12,7 @@ const UserTable = ({ users }) => {
 
   return (
     <div ref={ref} className="flex flex-col w-full gap-2">
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: inView ? 1 : 0 }}
         transition={{ duration: 1, ease: 'easeIn' }}
@@ -20,7 +20,7 @@ const UserTable = ({ users }) => {
         <h2 className="text-xl font-bold text-center text-primary">
           Entry Table
         </h2>
-      </motion.div>
+      </motion.div> */}
       <motion.div
         className="overflow-x-auto border border-gray-500 rounded-xl drop-shadow-xl dark:border-gray-800 "
         initial={{ opacity: 0 }}

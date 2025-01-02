@@ -45,7 +45,7 @@ async function handler(req, res) {
 
           const quantity = parseInt(session.metadata.quantity);
 
-          // console.log(session);
+          console.log(session);
 
           console.log('session.payment_status');
           console.log(session.payment_status);
