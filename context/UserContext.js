@@ -35,7 +35,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     // Count active entries for each user separately
-    const activeCount = users.reduce((total, user) => {
+    const activeCount = users?.reduce((total, user) => {
       // Get unique entry numbers for this user
       const userEntryNumbers = [
         ...new Set((user.Picks || []).map((pick) => pick.entryNumber)),
@@ -62,7 +62,7 @@ export const UserProvider = ({ children }) => {
     const loserEntries = [];
 
     // Iterate over each user's picks
-    users.forEach((user) => {
+    users?.forEach((user) => {
       (user.Picks || []).forEach((pick) => {
         // Check if the pick is in the losers array
         const isLoser = losers.some(
